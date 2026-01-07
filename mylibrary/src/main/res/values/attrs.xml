@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="GenericComposeButtonView">
+        <attr name="buttonText" format="string" />
+        <attr name="themeName" format="string" />
+        <attr name="themeStyle" format="string" /> <!-- auto | light | dark -->
+        <attr name="useLibraryMaterial" format="boolean" />
+    </declare-styleable>
+</resources>
