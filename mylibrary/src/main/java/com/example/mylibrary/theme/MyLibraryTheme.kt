@@ -110,7 +110,7 @@ enum class ThemeStyle { LIGHT, DARK, AUTO }
  */
 @Composable
 fun MyLibraryTheme(
-    theme: LibraryThemeSet,
+    theme: LibraryThemeSet = LibraryThemes.Maracuya,
     style: ThemeStyle = ThemeStyle.AUTO,
     useMaterial: Boolean = false,
     content: @Composable () -> Unit
@@ -136,12 +136,6 @@ fun MyLibraryTheme(
     // dentro de MyLibraryTheme, donde ya tienes `theme: LibraryThemeSet` y resolved tokens:
     val providedIcons = theme.iconAtoms
     val semanticIcons = CorporateIcons.fromAtoms(providedIcons) // deriva semántica
-
-    SideEffect {
-        LibraryThemeManager.syncSystemBars(context, theme, isDark)
-    }
-
-
 
     // Proveer tokens semánticos en la jerarquía Compose
     CompositionLocalProvider(

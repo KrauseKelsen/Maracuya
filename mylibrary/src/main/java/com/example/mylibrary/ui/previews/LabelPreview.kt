@@ -1,15 +1,16 @@
 package com.example.mylibrary.ui.previews
 
-
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mylibrary.ui.components.labels.LabelMrcy
+import com.example.mylibrary.ui.previews.core.Mode
+import com.example.mylibrary.ui.previews.core.PreviewWrapper
 
 @Preview(name = "Label – Default", showBackground = true)
 @Composable
 fun Label_Default() {
-    PreviewWrapper(style = Mode.current){
-        LabelMrcy(text = "Label", icon = false, error = false)
+    PreviewWrapper(style = Mode.current) {
+        LabelMrcy(text = "Label", showIcon = false, error = false)
 
     }
 }
@@ -18,7 +19,7 @@ fun Label_Default() {
 @Composable
 fun Label_With_Icon() {
     PreviewWrapper(style = Mode.current) {
-        LabelMrcy(text = "Label", icon = true, error = false)
+        LabelMrcy(text = "Label", showIcon = true, error = false)
     }
 }
 
@@ -27,7 +28,7 @@ fun Label_With_Icon() {
 @Composable
 fun Label_With_Optional_Icon() {
     PreviewWrapper(style = Mode.current) {
-        LabelMrcy(text = "Label", optional = true, icon = true, error = false)
+        LabelMrcy(text = "Label", optionalText = true, showIcon = true, error = false)
     }
 }
 
@@ -35,7 +36,7 @@ fun Label_With_Optional_Icon() {
 @Composable
 fun Label_Error() {
     PreviewWrapper(style = Mode.current) {
-        LabelMrcy(text = "Label", icon = true, error = true)
+        LabelMrcy(text = "Label", showIcon = true, error = true)
     }
 }
 
@@ -44,7 +45,7 @@ fun Label_Error() {
 @Composable
 fun Label_With_Optional_Icon_Error() {
     PreviewWrapper(style = Mode.current) {
-        LabelMrcy(text = "Label", optional = true, icon = true, error = true)
+        LabelMrcy(text = "Label", optionalText = true, showIcon = true, error = true)
     }
 }
 

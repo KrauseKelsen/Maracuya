@@ -70,6 +70,7 @@ data class LibraryColorTokens(
     val fgSubtle: ColorToken,
     val fgOnPrimary: ColorToken,
     val fgOnInverse: ColorToken,
+    val fgOnInverseAux: ColorToken, // Para ContentColor en Botones
     val fgError: ColorToken,
 
     // Background/Surface
@@ -148,6 +149,7 @@ data class LibraryColorTokens(
             fgSubtle = DefaultColors.Ink.c400,
             fgOnPrimary = DefaultColors.Ink.c900,
             fgOnInverse = DefaultColors.Core.white,
+            fgOnInverseAux = DefaultColors.Brand.Red.c500,
             fgError = DefaultColors.Error.c600,
 
             // Backgrounds
@@ -223,6 +225,7 @@ data class LibraryColorTokens(
             fgSubtle = DefaultColors.Ink.c300,
             fgOnPrimary = DefaultColors.Core.white,
             fgOnInverse = DefaultColors.Core.white,
+            fgOnInverseAux = DefaultColors.Core.white,
             fgError = DefaultColors.Error.c300,
 
             // Backgrounds

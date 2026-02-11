@@ -3,6 +3,8 @@ package com.example.mylibrary.ui.previews
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
+import com.example.mylibrary.ui.previews.core.Mode
+import com.example.mylibrary.ui.previews.core.PreviewWrapper
 
 /* ────────────────────────────────────────────── */
 /* Default                                        */
@@ -121,7 +123,7 @@ fun TextField_Optional_With_Label_Icon() {
             onValueChange = { value = it },
             label = "Label",
             placeholder = "Placeholder",
-            optional = true,
+            optionalText = true,
             showLabelIcon = true,
             bottomText = "Supplementary text"
         )

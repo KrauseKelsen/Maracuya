@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.compositions.LocalFontFamily
+import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryTypography
 import com.example.mylibrary.theme.MyLibraryTheme
 import com.example.mylibrary.theme.LibraryThemeStyles
@@ -21,8 +22,14 @@ import com.example.mylibrary.ui.components.utils.IconPosition
 import com.example.mylibrary.ui.components.buttons.ButtonTokens
 import com.example.mylibrary.ui.components.buttons.GenericButton
 import com.example.mylibrary.ui.components.buttons.GenericButtonIcon
+import com.example.mylibrary.ui.components.buttons.chipchoice.ChipChoiceBaseMrcy
+import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceCarouselMrcy
+import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
+import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceSelectionMode
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokens
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensResolver
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicType
 import com.example.mylibrary.ui.components.labels.LabelMrcy
@@ -38,7 +45,6 @@ class MainActivity : ComponentActivity() {
                 // No esta implementado para poder ver las letras
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    //containerColor = MaterialTheme.colorScheme.background
                 ) { innerPadding ->
                     MyLibraryTheme(
                         theme = LibraryThemes.Maracuya,
@@ -50,6 +56,20 @@ class MainActivity : ComponentActivity() {
                 }
         }
     }
+}
+
+
+private val baseItems = listOf(
+    ChipChoiceItem(id = "1", label = "Item 1"),
+    ChipChoiceItem(id = "2", label = "Item 2"),
+    ChipChoiceItem(id = "3", label = "Item 3"),
+)
+
+private val overflowItems = (1..12).map {
+    ChipChoiceItem(
+        id = it.toString(),
+        label = "Item $it"
+    )
 }
 
 @Composable
@@ -66,9 +86,19 @@ fun DemoScreen(modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
 
+
+
+//            ChipChoiceBaseMrcy(
+//                text = "Item",
+//                onClick = {
+//                    // acción del chip
+//                },
+//                enabled = false
+//            )
+
             Spacer(modifier = Modifier.height(12.dp))
 
-            Host_UseMaterialMode()
+//            Host_UseMaterialMode()
 
             //Spacer(modifier = Modifier.height(12.dp))
 
@@ -86,27 +116,27 @@ fun DemoScreen(modifier: Modifier = Modifier) {
 
             //ExampleScreen()
 
-            Spacer(modifier = Modifier.height(12.dp))
-
-
-            var value by remember { mutableStateOf("") }
-
-            TextFieldMrcy(
-                value = value,
-                onValueChange = { value = it },
-                label = "Label",
-                placeholder = "Placeholder",
-                hasError = true
-            )
-
-            TextFieldMrcy(
-                value = value,
-                onValueChange = { value = it },
-                label = "Label",
-                placeholder = "Placeholder",
-                hasError = false,
-                bottomText = "Bottom text"
-            )
+//            Spacer(modifier = Modifier.height(12.dp))
+//
+//
+//            var value by remember { mutableStateOf("") }
+//
+//            TextFieldMrcy(
+//                value = value,
+//                onValueChange = { value = it },
+//                label = "Label",
+//                placeholder = "Placeholder",
+//                hasError = true
+//            )
+//
+//            TextFieldMrcy(
+//                value = value,
+//                onValueChange = { value = it },
+//                label = "Label",
+//                placeholder = "Placeholder",
+//                hasError = false,
+//                bottomText = "Bottom text"
+//            )
         }
     }
 }
@@ -186,6 +216,7 @@ fun Host_UseMaterialMode() {
     SecondaryButtonMrcy(
         text = "Maracuya puro",
         onClick = {},
+        secondaryButtonTokens = SecondaryButtonTokensResolver.fromMaterial()
     )
 
 

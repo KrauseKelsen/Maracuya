@@ -1,9 +1,7 @@
 package com.example.mylibrary.ui.components.buttons.primary
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -13,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Shape
+import com.example.mylibrary.ui.utils.compose.collectPressedAsState
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter
 import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
@@ -31,21 +30,29 @@ fun PrimaryButtonMrcy (
     // 2) libraryTokens (si la jerarquía los provee via LocalLibraryColorTokens, o por parámetro)
     // 3) MaterialTheme.colorScheme (si la app host habilitó useMaterial en MyLibraryTheme)
     primaryButtonTokens: PrimaryButtonTokens? = null,
+
+
+    /**
+     * Si es true: al presionar (finger down) se muestra spinner en vez de texto.
+     * Ojo: esto es "pressed", no "loading real". Para loading real se usa el overload abajo.
+     */
+    showProgressOnPress: Boolean = true,
 ){
     val tokens = PrimaryButtonTokensResolver.resolve(primaryButtonTokens)
+    val pressed by interactionSource.collectPressedAsState()
 
-    val pressedState by interactionSource.collectPressedAsState()
+    val showProgress = showProgressOnPress && pressed
 
     //Color del fondo del boton segun lo que ocurre
     val backgroundColor = when {
         !enabled -> tokens.disabledContainerColor // si el boton se desabilita
-        pressedState -> tokens.hoverContainerColor // si es presionado
+        pressed -> tokens.hoverContainerColor // si es presionado
         else -> tokens.containerColor // color del boton
     }
 
     val borderColor = when {
         !enabled -> tokens.borderDisabledColor // si el boton se desabilita
-        pressedState -> tokens.hoverContainerColor // si es presionado
+        pressed -> tokens.hoverContainerColor // si es presionado
         else -> tokens.borderContainerColor // color del borde
     }
 
@@ -76,22 +83,11 @@ fun PrimaryButtonMrcy (
             disabledContentColor = disabledContentColorCompose,
         )
     ) {
-        Text(text = text, style = resolvedTextStyle)
+        PrimaryButtonContent(
+            text = text,
+            textStyle = resolvedTextStyle,
+            contentColor = contentColorCompose,
+            showProgress = showProgress
+        )
     }
-}
-
-/** Exporta la interaccion del boton en Jetpack Compose */
-@Composable
-private fun InteractionSource.collectPressedAsState(): State<Boolean> {
-    val pressed = remember { mutableStateOf(false) }
-    LaunchedEffect(this) {
-        interactions.collect { interaction ->
-            when (interaction) {
-                is PressInteraction.Press -> pressed.value = true
-                is PressInteraction.Release,
-                is PressInteraction.Cancel -> pressed.value = false
-            }
-        }
-    }
-    return pressed
 }

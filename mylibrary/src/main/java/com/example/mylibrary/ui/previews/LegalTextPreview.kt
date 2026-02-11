@@ -2,19 +2,15 @@ package com.example.mylibrary.ui.previews
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
+import com.example.mylibrary.ui.components.texts.LegalText
 import com.example.mylibrary.ui.previews.core.Mode
 import com.example.mylibrary.ui.previews.core.PreviewWrapper
 
-
-@Preview(name = "SecondaryButton – Default", showBackground = true)
+@Preview(name = "LegalText – Default", showBackground = true)
 @Composable
-fun SecondaryButton_Default() {
+fun LegalText_Default() {
     PreviewWrapper(style = Mode.current) {
-        SecondaryButtonMrcy(
-            text = "Button",
-            onClick = {},
-            enabled = false
-        )
+        LegalText(text = "Label")
+
     }
 }

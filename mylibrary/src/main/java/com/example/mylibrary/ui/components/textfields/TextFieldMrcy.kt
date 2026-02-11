@@ -34,7 +34,7 @@ fun TextFieldMrcy(
     readOnly: Boolean = false,
     hasError: Boolean = false,
 
-    optional: Boolean = false,
+    optionalText: Boolean = false,
     showLabelIcon: Boolean = false,
 
     bottomText: String? = null,
@@ -53,8 +53,8 @@ fun TextFieldMrcy(
         // ───────── Label ─────────
         LabelMrcy(
             text = label,
-            optional = optional,
-            icon = showLabelIcon,
+            optionalText = optionalText,
+            showIcon = showLabelIcon,
             error = hasError
         )
 

@@ -25,8 +25,8 @@ import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
 fun LabelMrcy(
     modifier: Modifier = Modifier,
     text: String,
-    optional: Boolean = false,
-    icon: Boolean = false,
+    optionalText: Boolean = false,
+    showIcon: Boolean = false,
     error: Boolean = false,
     labelTokens: LabelTokens? = null,
 ) {
@@ -52,7 +52,7 @@ fun LabelMrcy(
             modifier = Modifier.widthIn(max = LabelSpacings.MaxLabelWidth.dp)
         )
 
-        if (optional) {
+        if (optionalText) {
             Text(
                 text = "(Opcional)",
                 style = TypographyComposeAdapter.toTextStyle(
@@ -63,7 +63,7 @@ fun LabelMrcy(
             )
         }
 
-        if (icon) {
+        if (showIcon) {
             IconComposeAdapter.Render(
                 icon = tokens.infoIcon,
                 fillColor = ColorComposeAdapter.toComposeColor(currentColor),

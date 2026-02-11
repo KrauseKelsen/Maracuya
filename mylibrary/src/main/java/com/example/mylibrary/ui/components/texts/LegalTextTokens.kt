@@ -20,12 +20,12 @@ data class LegalTextTokens(
          */
         @Composable
         fun fromCorporate(): LegalTextTokens {
-            val colors = LocalLibraryColorTokens.current!!
+            val colors = LocalLibraryColorTokens.current
             val typographyTokens = LocalLibraryTypography.current
 
             return remember(colors, typographyTokens) {
                 LegalTextTokens(
-                    typographyToken = typographyTokens.legal,
+                    typographyToken = typographyTokens.subtitle3,
                     colorToken = colors.fgDefault
                 )
             }
