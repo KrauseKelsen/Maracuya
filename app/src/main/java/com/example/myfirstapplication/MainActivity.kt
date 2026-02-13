@@ -27,6 +27,7 @@ import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoic
 import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
 import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceSelectionMode
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
+import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonTokensResolver
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokens
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensResolver
@@ -213,10 +214,10 @@ fun DemoScreenPreview() {
 @Composable
 fun Host_UseMaterialMode() {
 
-    SecondaryButtonMrcy(
+    PrimaryButtonMrcy(
         text = "Maracuya puro",
         onClick = {},
-        secondaryButtonTokens = SecondaryButtonTokensResolver.fromMaterial()
+        primaryButtonTokens = PrimaryButtonTokensResolver.fromMaterial()
     )
 
 

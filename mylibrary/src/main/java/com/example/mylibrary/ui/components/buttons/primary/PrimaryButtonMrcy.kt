@@ -56,11 +56,15 @@ fun PrimaryButtonMrcy (
         else -> tokens.borderContainerColor // color del borde
     }
 
+    val contentColor = when {
+        !enabled -> tokens.disabledContentColor // si el boton se desabilita
+        else -> tokens.contentColor // color del borde
+    }
+
     // === Convertimos todos los ColorToken necesarios a Compose Color una sola vez ===
     val containerColorCompose = ColorComposeAdapter.toComposeColor(backgroundColor)
-    val contentColorCompose = ColorComposeAdapter.toComposeColor(tokens.contentColor)
+    val contentColorCompose = ColorComposeAdapter.toComposeColor(contentColor)
     val disabledContainerColorCompose = ColorComposeAdapter.toComposeColor(tokens.disabledContainerColor)
-    val disabledContentColorCompose = ColorComposeAdapter.toComposeColor(tokens.disabledContentColor)
     val borderContainerColorCompose = ColorComposeAdapter.toComposeColor(borderColor)
 
     // === TypographyToken → TextStyle usando adapter del DS ===
@@ -80,7 +84,7 @@ fun PrimaryButtonMrcy (
             containerColor = containerColorCompose,
             contentColor = contentColorCompose,
             disabledContainerColor = disabledContainerColorCompose,
-            disabledContentColor = disabledContentColorCompose,
+            disabledContentColor = contentColorCompose,
         )
     ) {
         PrimaryButtonContent(
