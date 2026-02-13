@@ -6,10 +6,46 @@ import android.widget.FrameLayout
 import com.example.mylibrary.theme.ThemeStyle
 
 /**
- * Contenedor XML para definir el tema de la librería una sola vez por jerarquía de Views.
+ * s4121779 - Krause Kelsen
  *
- * Los wrappers hijos (ej: [com.example.mylibrary.wrappers.components.buttons.primary.PrimaryButtonWrp]) consultan este host para aplicar
- * [com.example.mylibrary.theme.MyLibraryTheme] sin duplicar configuración por componente.
+ * Descripción:
+ * `MyLibraryThemeWrp` es el host XML de theming para wrappers basados en Views.
+ * Su misión es definir una sola vez la configuración de tema para toda una jerarquía
+ * de componentes wrappers, evitando duplicar la misma configuración en cada View hija.
+ *
+ * Función:
+ * - Actuar como contenedor de alcance temático dentro del árbol XML.
+ * - Parsear atributos de tema al crearse y mantener un estado de configuración actual.
+ * - Exponer `currentConfig()` para que wrappers hijos apliquen `MyLibraryTheme`.
+ *
+ * Relación con otras clases:
+ * - `MyLibraryThemeAttributeParser` resuelve atributos XML a `MyLibraryThemeConfig`.
+ * - `MyLibraryThemeProvider` permite a hijos encontrar este host por jerarquía.
+ * - `PrimaryButtonWrp` consume esta configuración para envolver su contenido Compose.
+ *
+ * Uso (host app):
+ * ```xml
+ * <com.example.mylibrary.wrappers.theme.MyLibraryThemeWrp
+ *     android:layout_width="match_parent"
+ *     android:layout_height="wrap_content"
+ *     app:themeName="Maracuya"
+ *     app:themeStyle="auto"
+ *     app:useMaterial="false">
+ *
+ *     <!-- Wrappers hijos aquí -->
+ * </com.example.mylibrary.wrappers.theme.MyLibraryThemeWrp>
+ * ```
+ *
+ * Recomendación:
+ * - Definir este host en el nivel más alto posible de la sección de UI que comparta
+ *   una misma configuración de tema.
+ *
+ * @author Krause Kelsen
+ * @since 11-13-2025
+ * @version 1.5.4
+ *
+ * @see com.example.mylibrary.wrappers.theme.MyLibraryThemeConfig
+ * @see com.example.mylibrary.wrappers.theme.MyLibraryThemeProvider
  */
 class MyLibraryThemeWrp @JvmOverloads constructor(
     context: Context,
