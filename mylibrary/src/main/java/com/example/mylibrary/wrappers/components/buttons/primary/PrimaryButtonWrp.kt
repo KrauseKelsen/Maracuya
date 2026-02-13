@@ -14,10 +14,59 @@ import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
 import com.example.mylibrary.wrappers.theme.MyLibraryThemeProvider
 
 /**
- * Wrapper Android View para consumir [PrimaryButtonMrcy] desde layouts XML.
+ * s4121779 - Krause Kelsen
  *
- * SRP:
- * - Este wrapper solo expone API/atributos del botón y delega theming al host [com.example.mylibrary.wrappers.theme.MyLibraryThemeWrp].
+ * Descripción:
+ * `PrimaryButtonWrp` es el wrapper Android View que expone `PrimaryButtonMrcy` para
+ * uso desde layouts XML tradicionales, permitiendo integrar componentes Compose en
+ * pantallas basadas en el sistema de Views.
+ *
+ * El wrapper se enfoca únicamente en API funcional del botón (texto, enabled,
+ * progreso en press) y delega la resolución de tema al host `MyLibraryThemeWrp`
+ * cuando está disponible en la jerarquía.
+ *
+ * Función:
+ * - Parsear atributos XML del botón y sincronizarlos con estado Compose.
+ * - Respetar cambios de `isEnabled` del sistema de Views.
+ * - Renderizar `PrimaryButtonMrcy` con o sin envoltura temática (`MyLibraryTheme`).
+ *
+ * Relación con otras clases:
+ * - `PrimaryButtonAttributeParser` obtiene configuración inicial desde XML.
+ * - `MyLibraryThemeProvider` busca un `MyLibraryThemeWrp` padre.
+ * - `MyLibraryTheme` aplica tokens/estilo de tema cuando existe host.
+ * - `PrimaryButtonMrcy` es el componente Compose real que se dibuja.
+ *
+ * Uso (host app XML):
+ * ```xml
+ * <com.example.mylibrary.wrappers.theme.MyLibraryThemeWrp
+ *     android:layout_width="match_parent"
+ *     android:layout_height="wrap_content"
+ *     app:themeName="Maracuya"
+ *     app:themeStyle="auto"
+ *     app:useMaterial="false">
+ *
+ *     <com.example.mylibrary.wrappers.components.buttons.primary.PrimaryButtonWrp
+ *         android:id="@+id/primaryButtonFromXml"
+ *         android:layout_width="wrap_content"
+ *         android:layout_height="wrap_content"
+ *         app:text="Continuar"
+ *         app:showProgressOnPress="true"
+ *         app:isEnabled="true" />
+ *
+ * </com.example.mylibrary.wrappers.theme.MyLibraryThemeWrp>
+ * ```
+ *
+ * Notas de integración:
+ * - Si no existe `MyLibraryThemeWrp` padre, el botón se renderiza igual con comportamiento
+ *   por defecto, sin aplicar tema explícito de wrappers.
+ * - `performClick()` se delega como `onClick`, permitiendo interop con listeners de View.
+ *
+ * @author Krause Kelsen
+ * @since 11-13-2025
+ * @version 1.5.4
+ *
+ * @see com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
+ * @see com.example.mylibrary.wrappers.theme.MyLibraryThemeWrp
  */
 class PrimaryButtonWrp @JvmOverloads constructor(
     context: Context,
