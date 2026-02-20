@@ -1,8 +1,13 @@
 package com.example.mylibrary.ui.previews
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
+import com.example.mylibrary.ui.components.textfields.TextFieldVariant
 import com.example.mylibrary.ui.previews.core.Mode
 import com.example.mylibrary.ui.previews.core.PreviewWrapper
 
@@ -167,6 +172,74 @@ fun TextField_Long_Texts() {
             label = "This is a label that can extend to more than one line",
             placeholder = "Placeholder",
             bottomText = "This is a helper text that explains the field in more detail"
+        )
+    }
+}
+
+@Preview(name = "TextField – User With Clear", showBackground = true)
+@Composable
+fun TextField_User_With_Clear() {
+    var value by remember { mutableStateOf("") }
+
+    PreviewWrapper(style = Mode.current) {
+        TextFieldMrcy(
+            value = value,
+            onValueChange = { value = it },
+            label = "Usuario",
+            placeholder = "Placeholder",
+            textFieldVariant = TextFieldVariant.USER_WITH_CLEAR
+        )
+    }
+}
+
+@Preview(name = "TextField – User With Face ID", showBackground = true)
+@Composable
+fun TextField_User_With_Face_Id() {
+    var value by remember { mutableStateOf("Daviuser1234") }
+
+    PreviewWrapper(style = Mode.current) {
+        TextFieldMrcy(
+            value = value,
+            onValueChange = { value = it },
+            label = "Usuario",
+            placeholder = "Placeholder",
+            textFieldVariant = TextFieldVariant.USER_WITH_FACE_ID,
+            onTrailingIconClick = {
+                // Ejemplo de integración: disparar flujo biométrico/Face ID
+            }
+        )
+    }
+}
+
+@Preview(name = "TextField – Password", showBackground = true)
+@Composable
+fun TextField_Password() {
+    var value by remember { mutableStateOf("••••••") }
+
+    PreviewWrapper(style = Mode.current) {
+        TextFieldMrcy(
+            value = value,
+            onValueChange = { value = it },
+            label = "Password",
+            placeholder = "Password",
+            textFieldVariant = TextFieldVariant.PASSWORD
+        )
+    }
+}
+
+@Preview(name = "TextField – User (Example Usage)", showBackground = true)
+@Composable
+fun TextField_User_ExampleUsage() {
+    var value by remember { mutableStateOf("Daviuser1234") }
+
+    PreviewWrapper(style = Mode.current) {
+        TextFieldMrcy(
+            value = value,
+            onValueChange = { value = it },
+            label = "Usuario",
+            placeholder = "Usuario",
+            textFieldVariant = TextFieldVariant.USER,
+            bottomText = "Este ejemplo usa la variante USER"
         )
     }
 }

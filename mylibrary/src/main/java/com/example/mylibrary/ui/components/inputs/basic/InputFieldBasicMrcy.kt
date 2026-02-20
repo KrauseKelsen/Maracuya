@@ -2,35 +2,45 @@ package com.example.mylibrary.ui.components.inputs.basic
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.runtime.*
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Text
 import com.example.mylibrary.tokens.spacings.InputFieldBasicSpacings
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter
+import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
 import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
 
 /**
- * InputFieldBasicMrcy
+ * Input básico del Design System.
  *
- * - UI pura
- * - Sin validaciones
- * - Sin lógica de negocio
- * - Reacciona SOLO a estado visual
+ * Responsabilidades:
+ * - Renderizar el campo con estilos resueltos por tokens.
+ * - Mantener el comportamiento visual de focus/error/disabled/readOnly.
+ * - Permitir acción opcional sobre el ícono derecho cuando exista.
+ *
+ * No contiene lógica de negocio ni validaciones de dominio.
  */
 @Composable
 fun InputFieldBasicMrcy(
@@ -42,20 +52,18 @@ fun InputFieldBasicMrcy(
     enabled: Boolean = true,
     readOnly: Boolean = false,
     hasError: Boolean = false,
+    onTrailingIconClick: (() -> Unit)? = null,
+    trailingIconContentDescription: String? = null,
     inputFieldBasicTokens: InputFieldBasicTokens? = null
 ) {
 
-    val tokens = InputFieldBasicTokensResolver.resolve(inputFieldBasicTokens)
+    val tokens = InputFieldBasicTokensResolver.resolve(override = inputFieldBasicTokens)
 
-    /**
-     * Fuente única de verdad para foco
-     */
+    // Fuente única de verdad para foco
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
 
-    /**
-     * Conversión px → dp (solo en capa Compose)
-     */
+    // Conversión px → dp (solo en capa Compose)
     val density = LocalDensity.current
     val widthDp = with(density) { InputFieldBasicSpacings.WidthInput.toDp() }
     val minHeightDp = with(density) { InputFieldBasicSpacings.HugInput.toDp() }
@@ -79,6 +87,10 @@ fun InputFieldBasicMrcy(
         else
             Color.Transparent
 
+    val iconColor = ColorComposeAdapter.toComposeColor(
+        tokens.iconColor ?: tokens.placeholderColor
+    )
+
     // Teclado
     val keyboardOptions = KeyboardOptions(
         keyboardType = when (inputType) {
@@ -86,6 +98,8 @@ fun InputFieldBasicMrcy(
             InputFieldBasicType.NUMBER -> KeyboardType.Number
         }
     )
+
+    val trailingIconAction = if (enabled) onTrailingIconClick else null
 
     Box(
         modifier = modifier
@@ -107,11 +121,11 @@ fun InputFieldBasicMrcy(
             .padding(
                 horizontal = InputFieldBasicSpacings.HorizontalPadding.dp,
                 vertical = InputFieldBasicSpacings.VerticalPadding.dp,
-
             )
     ) {
 
         BasicTextField(
+            modifier = Modifier.fillMaxWidth(),
             value = value,
             onValueChange = {
                 val filteredValue = filterInputByType(it, inputType)
@@ -138,17 +152,53 @@ fun InputFieldBasicMrcy(
                         ColorComposeAdapter.toComposeColor(tokens.textColor)
                 ),
             decorationBox = { innerTextField ->
-                if (value.isEmpty()) {
-                    Text(
-                        text = placeholder,
-                        style = TypographyComposeAdapter.toTextStyle(
-                            tokens.placeholderTypography,
-                            FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken)
-                        ),
-                        color = ColorComposeAdapter.toComposeColor(tokens.placeholderColor)
-                    )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    tokens.leadingIcon?.let { leading ->
+                        IconComposeAdapter.Render(
+                            icon = leading,
+                            fillColor = iconColor,
+                            size = InputFieldBasicSpacings.IconSize.dp,
+                            modifier = Modifier.padding(end = InputFieldBasicSpacings.IconSpacing.dp)
+                        )
+                    }
+
+                    Box(modifier = Modifier.weight(1f)) {
+                        if (value.isEmpty()) {
+                            Text(
+                                text = placeholder,
+                                style = TypographyComposeAdapter.toTextStyle(
+                                    tokens.placeholderTypography,
+                                    FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken)
+                                ),
+                                color = ColorComposeAdapter.toComposeColor(tokens.placeholderColor)
+                            )
+                        }
+                        innerTextField()
+                    }
+
+                    tokens.trailingIcon?.let { trailing ->
+                        val trailingModifier = Modifier
+                            .padding(start = InputFieldBasicSpacings.IconSpacing.dp)
+                            .then(
+                                if (trailingIconAction != null) {
+                                    Modifier.clickable(onClick = trailingIconAction)
+                                } else {
+                                    Modifier
+                                }
+                            )
+
+                        IconComposeAdapter.Render(
+                            icon = trailing,
+                            fillColor = iconColor,
+                            size = InputFieldBasicSpacings.IconSize.dp,
+                            modifier = trailingModifier,
+                            contentDescription = trailingIconContentDescription,
+                        )
+                    }
                 }
-                innerTextField()
             }
         )
     }
@@ -163,4 +213,3 @@ private fun filterInputByType(
         InputFieldBasicType.NUMBER -> input.filter { it.isDigit() }
     }
 }
-
