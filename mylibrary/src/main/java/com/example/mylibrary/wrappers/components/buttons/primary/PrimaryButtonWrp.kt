@@ -76,6 +76,7 @@ class PrimaryButtonWrp @JvmOverloads constructor(
 
     private var buttonTextState by mutableStateOf("Primary Button")
     private var showProgressOnPressState by mutableStateOf(true)
+
     private var enabledState by mutableStateOf(isEnabled)
 
     init {

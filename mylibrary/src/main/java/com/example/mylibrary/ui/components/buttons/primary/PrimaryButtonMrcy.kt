@@ -31,7 +31,6 @@ fun PrimaryButtonMrcy (
     // 3) MaterialTheme.colorScheme (si la app host habilitó useMaterial en MyLibraryTheme)
     primaryButtonTokens: PrimaryButtonTokens? = null,
 
-
     /**
      * Si es true: al presionar (finger down) se muestra spinner en vez de texto.
      * Ojo: esto es "pressed", no "loading real". Para loading real se usa el overload abajo.
