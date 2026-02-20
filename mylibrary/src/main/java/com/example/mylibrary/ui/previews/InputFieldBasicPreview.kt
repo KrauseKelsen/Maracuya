@@ -151,8 +151,8 @@ fun InputFieldBasic_FaceId_ExampleUsage() {
                 value = "Face ID intentos: $attempts"
             },
             trailingIconContentDescription = "Activar Face ID",
-
-    var value by remember { mutableStateOf("") }
+        )
+    }
     PreviewWrapper(style = Mode.current) {
         InputFieldBasicMrcy(
             value = value,
