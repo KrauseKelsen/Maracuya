@@ -1,11 +1,10 @@
 package com.example.mylibrary.ui.components.textfields
 
-import androidx.compose.runtime.Composable
-import com.example.mylibrary.atoms.LibraryColorTokens
 import com.example.mylibrary.tokens.base.ColorToken
 import com.example.mylibrary.tokens.base.FontFamilyToken
 import com.example.mylibrary.tokens.base.IconToken
 import com.example.mylibrary.tokens.base.TypographyToken
+import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokenGroup
 
 //Component token layer del TextField por defecto
 
@@ -16,5 +15,5 @@ data class TextFieldTokens (
     val bottomTextTypography: TypographyToken, // Tipografia del texto inferior
     val bottomTextColor: ColorToken, // Color del texto inferior
     val bottomTextIcon: IconToken, // Icono del texto inferior
-
+    val inputFieldTokenGroup: InputFieldBasicTokenGroup = InputFieldBasicTokenGroup.BASIC,
 )

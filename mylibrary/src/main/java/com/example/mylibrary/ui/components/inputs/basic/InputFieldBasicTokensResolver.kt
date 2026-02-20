@@ -3,6 +3,7 @@ package com.example.mylibrary.ui.components.inputs.basic
 import androidx.compose.runtime.Composable
 import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
+import com.example.mylibrary.compositions.LocalLibraryIcons
 import com.example.mylibrary.compositions.LocalLibraryTypography
 
 /**
@@ -15,13 +16,14 @@ object InputFieldBasicTokensResolver {
 
     @Composable
     fun resolve(
+        group: InputFieldBasicTokenGroup = InputFieldBasicTokenGroup.BASIC,
         override: InputFieldBasicTokens? = null
     ): InputFieldBasicTokens {
         override?.let { return it }
 
         return when {
-            hasLibraryTokens() -> fromLibrary()
-            else -> fromMaterial()
+            hasLibraryTokens() -> fromLibrary(group)
+            else -> fromMaterial(group)
         }
     }
 
@@ -30,16 +32,20 @@ object InputFieldBasicTokensResolver {
         return runCatching {
             LocalLibraryColorTokens.current
             LocalLibraryTypography.current
+            LocalLibraryIcons.current
+            LocalFontFamily.current
             true
         }.getOrDefault(false)
     }
 
     @Composable
-    private fun fromLibrary(): InputFieldBasicTokens {
+    private fun fromLibrary(group: InputFieldBasicTokenGroup): InputFieldBasicTokens {
         val colors = LocalLibraryColorTokens.current
         val typography = LocalLibraryTypography.current
+        val icons = LocalLibraryIcons.current
         val fontFamily = LocalFontFamily.current
-        return InputFieldBasicTokens(
+
+        val baseTokens = InputFieldBasicTokens(
             borderDefault = colors.borderDefault,
             borderFocus = colors.borderFocus,
             borderError = colors.errorBorder,
@@ -53,13 +59,41 @@ object InputFieldBasicTokensResolver {
             textTypography = typography.placeholder,
 
             fontFamilyToken = fontFamily,
+            iconColor = colors.fgMuted,
         )
+
+        return when (group) {
+            InputFieldBasicTokenGroup.BASIC -> baseTokens
+            InputFieldBasicTokenGroup.LEADING_USER ->
+                baseTokens.copy(
+                    leadingIcon = icons.people.person,
+                )
+
+            InputFieldBasicTokenGroup.TRAILING_FACE_ID ->
+                baseTokens.copy(
+                    trailingIcon = icons.general.fingerprint,
+                )
+
+            InputFieldBasicTokenGroup.LEADING_KEY_TRAILING_VISIBILITY ->
+                baseTokens.copy(
+                    leadingIcon = icons.general.lock,
+                    trailingIcon = icons.general.visibility,
+                    iconColor = colors.fgDefault,
+                )
+
+            InputFieldBasicTokenGroup.LEADING_USER_TRAILING_CLEAR ->
+                baseTokens.copy(
+                    leadingIcon = icons.people.person,
+                    trailingIcon = icons.general.close,
+                    iconColor = colors.fgDefault,
+                )
+        }
     }
 
     /**
      * TODO fallback Material
      */
     @Composable
-    private fun fromMaterial(): InputFieldBasicTokens = fromLibrary()
-
+    private fun fromMaterial(group: InputFieldBasicTokenGroup): InputFieldBasicTokens =
+        fromLibrary(group)
 }

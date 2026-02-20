@@ -2,6 +2,7 @@ package com.example.mylibrary.ui.components.inputs.basic
 
 import com.example.mylibrary.tokens.base.ColorToken
 import com.example.mylibrary.tokens.base.FontFamilyToken
+import com.example.mylibrary.tokens.base.IconToken
 import com.example.mylibrary.tokens.base.TypographyToken
 
 /**
@@ -25,4 +26,8 @@ data class InputFieldBasicTokens(
     val textTypography: TypographyToken, // Tipografia del texto
 
     val fontFamilyToken: FontFamilyToken, // Fuente de letra
+
+    val leadingIcon: IconToken? = null,
+    val trailingIcon: IconToken? = null,
+    val iconColor: ColorToken? = null,
 )
