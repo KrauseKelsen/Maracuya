@@ -32,6 +32,8 @@ import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokens
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensResolver
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
+import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokenGroup
+import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokensResolver
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicType
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
@@ -94,7 +96,19 @@ fun DemoScreen(modifier: Modifier = Modifier) {
                 onValueChange = { value = it },
                 label = "Usuario",
                 placeholder = "Daviuser1234",
-                textFieldVariant = TextFieldVariant.USER_WITH_FACE_ID,
+                textFieldVariant = TextFieldVariant.USER_WITH_CLEAR,
+            )
+
+            InputFieldBasicMrcy(
+                value = value,
+                placeholder = "Daviuser1234",
+                onValueChange = { value = it },
+                inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(
+                    group = InputFieldBasicTokenGroup.TRAILING_FACE_ID
+                ),
+                onTrailingIconClick = {
+                    print("Face ID clicked")
+                }
             )
 
 //            ChipChoiceBaseMrcy(
