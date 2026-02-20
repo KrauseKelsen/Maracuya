@@ -35,6 +35,7 @@ import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicType
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
+import com.example.mylibrary.ui.components.textfields.TextFieldVariant
 import com.example.mylibrary.ui.components.texts.LegalText
 import com.example.mylibrary.ui.components.texts.LegalTextTokens
 
@@ -83,11 +84,18 @@ fun DemoScreen(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            LabelMrcy(text = "Ingrese con su usuario de siempre de Davibank o Davivienda.")
 
-
+            var value by remember { mutableStateOf("") }
+            TextFieldMrcy(
+                value = value,
+                onValueChange = { value = it },
+                label = "Usuario",
+                placeholder = "Daviuser1234",
+                textFieldVariant = TextFieldVariant.USER_WITH_FACE_ID,
+            )
 
 //            ChipChoiceBaseMrcy(
 //                text = "Item",

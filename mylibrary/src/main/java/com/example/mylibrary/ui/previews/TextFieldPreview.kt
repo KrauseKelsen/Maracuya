@@ -207,6 +207,7 @@ fun TextField_User_With_Face_Id() {
             onTrailingIconClick = {
                 // Ejemplo de integración: disparar flujo biométrico/Face ID
             }
+
         )
     }
 }
@@ -230,14 +231,15 @@ fun TextField_Password() {
 @Preview(name = "TextField – User (Example Usage)", showBackground = true)
 @Composable
 fun TextField_User_ExampleUsage() {
-    var value by remember { mutableStateOf("Daviuser1234") }
+
+    var value by remember { mutableStateOf("") }
 
     PreviewWrapper(style = Mode.current) {
         TextFieldMrcy(
             value = value,
             onValueChange = { value = it },
             label = "Usuario",
-            placeholder = "Usuario",
+            placeholder = "Daviuser1234",
             textFieldVariant = TextFieldVariant.USER,
             bottomText = "Este ejemplo usa la variante USER"
         )
