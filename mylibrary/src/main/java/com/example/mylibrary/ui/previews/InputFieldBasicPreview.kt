@@ -138,11 +138,11 @@ fun InputFieldBasic_User_ExampleUsage() {
 @Preview(name = "InputFieldBasic – Face ID (Example Usage)", showBackground = true)
 @Composable
 fun InputFieldBasic_FaceId_ExampleUsage() {
-    var value by remember { mutableStateOf("Daviuser1234") }
+    var value by remember { mutableStateOf("") }
     PreviewWrapper(style = Mode.current) {
         InputFieldBasicMrcy(
             value = value,
-            placeholder = "Usuario",
+            placeholder = "Daviuser1234",
             onValueChange = { value = it },
             inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(
                 group = InputFieldBasicTokenGroup.TRAILING_FACE_ID
