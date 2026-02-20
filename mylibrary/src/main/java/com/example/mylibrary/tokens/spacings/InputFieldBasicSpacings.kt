@@ -23,4 +23,7 @@ object InputFieldBasicSpacings {
     val WidthInput = 800
 
     val HugInput = 24
+
+    val IconSpacing = 8
+    val IconSize = 24
 }

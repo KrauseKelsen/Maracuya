@@ -1,10 +1,12 @@
 package com.example.mylibrary.ui.components.textfields
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
+import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokensResolver
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 
 /**
@@ -40,11 +42,15 @@ fun TextFieldMrcy(
     bottomText: String? = null,
 
     showBottomIcon: Boolean = false,
+    textFieldVariant: TextFieldVariant = TextFieldVariant.DEFAULT,
 
     textFieldTokens: TextFieldTokens? = null,
 ) {
 
-    val resolver = TextFieldTokensResolver.resolve(textFieldTokens)
+    val resolver = TextFieldTokensResolver.resolve(
+        variant = textFieldVariant,
+        override = textFieldTokens,
+    )
 
     Column(
         modifier = modifier
@@ -68,7 +74,10 @@ fun TextFieldMrcy(
             readOnly = readOnly,
             hasError = hasError,
             modifier = Modifier
-                .padding(vertical = 6.dp)
+                .padding(vertical = 6.dp),
+            inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(
+                group = resolver.inputFieldTokenGroup,
+            )
         )
 
 

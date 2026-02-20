@@ -5,6 +5,7 @@ import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
 import com.example.mylibrary.compositions.LocalLibraryTypography
+import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokenGroup
 
 /**
  * TextFieldTokensResolver
@@ -20,13 +21,14 @@ object TextFieldTokensResolver {
      */
     @Composable
     fun resolve(
+        variant: TextFieldVariant = TextFieldVariant.DEFAULT,
         override: TextFieldTokens? = null
     ): TextFieldTokens {
         override?.let { return it }
 
         return when {
-            hasLibraryTokens() -> fromLibrary()
-            else -> fromMaterial()
+            hasLibraryTokens() -> fromLibrary(variant)
+            else -> fromMaterial(variant)
         }
     }
 
@@ -48,20 +50,28 @@ object TextFieldTokensResolver {
      * Resolución desde tokens corporativos (DS)
      */
     @Composable
-    private fun fromLibrary(): TextFieldTokens {
+    private fun fromLibrary(variant: TextFieldVariant): TextFieldTokens {
         val colors = LocalLibraryColorTokens.current
         val typography = LocalLibraryTypography.current
         val icons = LocalLibraryIcons.current
         val fontFamily = LocalFontFamily.current
 
-        return TextFieldTokens(
+        val inputGroup = when (variant) {
+            TextFieldVariant.DEFAULT -> InputFieldBasicTokenGroup.BASIC
+            TextFieldVariant.USER -> InputFieldBasicTokenGroup.LEADING_USER
+            TextFieldVariant.USER_WITH_CLEAR -> InputFieldBasicTokenGroup.LEADING_USER_TRAILING_CLEAR
+            TextFieldVariant.USER_WITH_FACE_ID -> InputFieldBasicTokenGroup.TRAILING_FACE_ID
+            TextFieldVariant.PASSWORD -> InputFieldBasicTokenGroup.LEADING_KEY_TRAILING_VISIBILITY
+        }
 
+        return TextFieldTokens(
             // ───────── Bottom text ─────────
             bottomTextErrorColor = colors.fgError,
             fontFamilyToken = fontFamily,
             bottomTextTypography = typography.bottomText,
             bottomTextColor = colors.fgMuted,
-            bottomTextIcon = icons.alerts.error
+            bottomTextIcon = icons.alerts.error,
+            inputFieldTokenGroup = inputGroup,
         )
     }
 
@@ -71,6 +81,5 @@ object TextFieldTokensResolver {
      * Por ahora reutiliza DS para evitar divergencias visuales
      */
     @Composable
-    private fun fromMaterial(): TextFieldTokens = fromLibrary()
+    private fun fromMaterial(variant: TextFieldVariant): TextFieldTokens = fromLibrary(variant)
 }
-
