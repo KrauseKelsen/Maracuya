@@ -20,6 +20,7 @@ import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.textfields.BottomTextMrcy
 import com.example.mylibrary.ui.components.textfields.TextFieldTokens
 import com.example.mylibrary.ui.components.textfields.TextFieldTokensResolver
+import com.example.mylibrary.ui.components.textfields.TextFieldVariant
 
 @Composable
 fun ChipChoiceCarouselMrcy(
@@ -125,7 +126,7 @@ fun ChipChoiceCarouselMrcy(
             }
         }
 
-        val resolver = TextFieldTokensResolver.resolve(textFieldTokens)
+        val resolver = TextFieldTokensResolver.resolve(TextFieldVariant.DEFAULT)
 
         // ───────── Bottom text ─────────
         if (bottomText != null) {
