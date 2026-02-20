@@ -203,7 +203,11 @@ fun TextField_User_With_Face_Id() {
             onValueChange = { value = it },
             label = "Usuario",
             placeholder = "Placeholder",
-            textFieldVariant = TextFieldVariant.USER_WITH_FACE_ID
+            textFieldVariant = TextFieldVariant.USER_WITH_FACE_ID,
+            onTrailingIconClick = {
+                // Ejemplo de integración: disparar flujo biométrico/Face ID
+            }
+
         )
     }
 }
@@ -227,6 +231,7 @@ fun TextField_Password() {
 @Preview(name = "TextField – User (Example Usage)", showBackground = true)
 @Composable
 fun TextField_User_ExampleUsage() {
+
     var value by remember { mutableStateOf("") }
 
     PreviewWrapper(style = Mode.current) {

@@ -2,6 +2,7 @@ package com.example.mylibrary.ui.components.inputs.basic
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
@@ -31,12 +32,14 @@ import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
 import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
 
 /**
- * InputFieldBasicMrcy
+ * Input básico del Design System.
  *
- * - UI pura
- * - Sin validaciones
- * - Sin lógica de negocio
- * - Reacciona SOLO a estado visual
+ * Responsabilidades:
+ * - Renderizar el campo con estilos resueltos por tokens.
+ * - Mantener el comportamiento visual de focus/error/disabled/readOnly.
+ * - Permitir acción opcional sobre el ícono derecho cuando exista.
+ *
+ * No contiene lógica de negocio ni validaciones de dominio.
  */
 @Composable
 fun InputFieldBasicMrcy(
@@ -48,20 +51,18 @@ fun InputFieldBasicMrcy(
     enabled: Boolean = true,
     readOnly: Boolean = false,
     hasError: Boolean = false,
+    onTrailingIconClick: (() -> Unit)? = null,
+    trailingIconContentDescription: String? = null,
     inputFieldBasicTokens: InputFieldBasicTokens? = null
 ) {
 
     val tokens = InputFieldBasicTokensResolver.resolve(override = inputFieldBasicTokens)
 
-    /**
-     * Fuente única de verdad para foco
-     */
+    // Fuente única de verdad para foco
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
 
-    /**
-     * Conversión px → dp (solo en capa Compose)
-     */
+    // Conversión px → dp (solo en capa Compose)
     val density = LocalDensity.current
     val widthDp = with(density) { InputFieldBasicSpacings.WidthInput.toDp() }
     val minHeightDp = with(density) { InputFieldBasicSpacings.HugInput.toDp() }
@@ -96,6 +97,8 @@ fun InputFieldBasicMrcy(
             InputFieldBasicType.NUMBER -> KeyboardType.Number
         }
     )
+
+    val trailingIconAction = if (enabled) onTrailingIconClick else null
 
     Box(
         modifier = modifier
@@ -176,11 +179,24 @@ fun InputFieldBasicMrcy(
                     }
 
                     tokens.trailingIcon?.let { trailing ->
+
+                        val trailingModifier = Modifier
+                            .padding(start = InputFieldBasicSpacings.IconSpacing.dp)
+                            .then(
+                                if (trailingIconAction != null) {
+                                    Modifier.clickable(onClick = trailingIconAction)
+                                } else {
+                                    Modifier
+                                }
+                            )
+
                         IconComposeAdapter.Render(
                             icon = trailing,
                             fillColor = iconColor,
                             size = InputFieldBasicSpacings.IconSize.dp,
-                            modifier = Modifier.padding(start = InputFieldBasicSpacings.IconSpacing.dp)
+
+                            modifier = trailingModifier,
+                            contentDescription = trailingIconContentDescription,
                         )
                     }
                 }

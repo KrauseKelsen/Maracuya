@@ -10,18 +10,15 @@ import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokensRes
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 
 /**
- * Componente TextFieldMrcy
- *
- * Orquesta:
- * - LabelMrcy
- * - InputFieldBasicMrcy
+ * Componente de alto nivel que orquesta:
+ * - Label
+ * - InputFieldBasic
  * - Bottom text
  *
- * No contiene estilos hardcodeados
+ * Reglas de ícono derecho:
+ * - Por defecto, la variante `USER_WITH_CLEAR` limpia el texto al hacer tap.
+ * - Para variantes con acción externa (ej: Face ID), se puede inyectar `onTrailingIconClick`.
  */
-
-//TODO Falta asegurarse que la tipografia coincida correctamente en el textfield
-
 @Composable
 fun TextFieldMrcy(
     value: String,
@@ -44,6 +41,9 @@ fun TextFieldMrcy(
     showBottomIcon: Boolean = false,
     textFieldVariant: TextFieldVariant = TextFieldVariant.DEFAULT,
 
+    onTrailingIconClick: (() -> Unit)? = null,
+
+
     textFieldTokens: TextFieldTokens? = null,
 ) {
 
@@ -52,11 +52,18 @@ fun TextFieldMrcy(
         override = textFieldTokens,
     )
 
+    val resolvedTrailingAction = resolveTrailingIconAction(
+        variant = textFieldVariant,
+        value = value,
+        onValueChange = onValueChange,
+        explicitAction = onTrailingIconClick,
+    )
+
+
     Column(
         modifier = modifier
     ) {
 
-        // ───────── Label ─────────
         LabelMrcy(
             text = label,
             optionalText = optionalText,
@@ -64,8 +71,6 @@ fun TextFieldMrcy(
             error = hasError
         )
 
-
-        // ───────── Input ─────────
         InputFieldBasicMrcy(
             value = value,
             placeholder = placeholder,
@@ -73,6 +78,7 @@ fun TextFieldMrcy(
             enabled = enabled,
             readOnly = readOnly,
             hasError = hasError,
+            onTrailingIconClick = resolvedTrailingAction,
             modifier = Modifier
                 .padding(vertical = 6.dp),
             inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(
@@ -80,10 +86,7 @@ fun TextFieldMrcy(
             )
         )
 
-
-        // ───────── Bottom text ─────────
         if (bottomText != null) {
-
             BottomTextMrcy(
                 text = bottomText,
                 hasError = hasError,
@@ -91,5 +94,30 @@ fun TextFieldMrcy(
                 textFieldTokens = resolver
             )
         }
+    }
+}
+
+/**
+ * Resuelve la acción del ícono derecho manteniendo reglas fijas del componente.
+ *
+ * Prioridad:
+ * 1) Acción explícita inyectada por el consumidor.
+ * 2) Regla interna de la variante (clear para USER_WITH_CLEAR).
+ * 3) Sin acción.
+ */
+private fun resolveTrailingIconAction(
+    variant: TextFieldVariant,
+    value: String,
+    onValueChange: (String) -> Unit,
+    explicitAction: (() -> Unit)?
+): (() -> Unit)? {
+    explicitAction?.let { return it }
+
+    return when (variant) {
+        TextFieldVariant.USER_WITH_CLEAR -> {
+            { if (value.isNotEmpty()) onValueChange("") }
+        }
+
+        else -> null
     }
 }
