@@ -176,21 +176,6 @@ fun TextField_Long_Texts() {
     }
 }
 
-@Preview(name = "TextField – User With Clear", showBackground = true)
-@Composable
-fun TextField_User_With_Clear() {
-    var value by remember { mutableStateOf("") }
-
-    PreviewWrapper(style = Mode.current) {
-        TextFieldMrcy(
-            value = value,
-            onValueChange = { value = it },
-            label = "Usuario",
-            placeholder = "Placeholder",
-            textFieldVariant = TextFieldVariant.USER_WITH_CLEAR
-        )
-    }
-}
 
 @Preview(name = "TextField – User With Face ID", showBackground = true)
 @Composable
@@ -203,7 +188,7 @@ fun TextField_User_With_Face_Id() {
             onValueChange = { value = it },
             label = "Usuario",
             placeholder = "Placeholder",
-            textFieldVariant = TextFieldVariant.USER_WITH_FACE_ID,
+            textFieldVariant = TextFieldVariant.FACE_ID,
             onTrailingIconClick = {
                 // Ejemplo de integración: disparar flujo biométrico/Face ID
             }

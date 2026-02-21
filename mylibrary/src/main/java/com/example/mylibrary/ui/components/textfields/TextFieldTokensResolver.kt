@@ -59,8 +59,7 @@ object TextFieldTokensResolver {
         val inputGroup = when (variant) {
             TextFieldVariant.DEFAULT -> InputFieldBasicTokenGroup.BASIC
             TextFieldVariant.USER -> InputFieldBasicTokenGroup.LEADING_USER
-            TextFieldVariant.USER_WITH_CLEAR -> InputFieldBasicTokenGroup.LEADING_USER_TRAILING_CLEAR
-            TextFieldVariant.USER_WITH_FACE_ID -> InputFieldBasicTokenGroup.TRAILING_FACE_ID
+            TextFieldVariant.FACE_ID -> InputFieldBasicTokenGroup.TRAILING_FACE_ID
             TextFieldVariant.PASSWORD -> InputFieldBasicTokenGroup.LEADING_KEY_TRAILING_VISIBILITY
         }
 

@@ -7,7 +7,6 @@ package com.example.mylibrary.ui.components.textfields
 enum class TextFieldVariant {
     DEFAULT,
     USER,
-    USER_WITH_CLEAR,
-    USER_WITH_FACE_ID,
+    FACE_ID,
     PASSWORD,
 }

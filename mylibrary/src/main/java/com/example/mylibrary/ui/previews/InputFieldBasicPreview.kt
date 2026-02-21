@@ -103,22 +103,6 @@ fun InputFieldBasic_Password() {
     }
 }
 
-@Preview(name = "InputFieldBasic – User With Clear", showBackground = true)
-@Composable
-fun InputFieldBasic_UserWithClear() {
-    var value by remember { mutableStateOf("") }
-    PreviewWrapper(style = Mode.current) {
-        InputFieldBasicMrcy(
-            value = value,
-            placeholder = "Placeholder",
-            onValueChange = { value = it },
-            inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(
-                group = InputFieldBasicTokenGroup.LEADING_USER_TRAILING_CLEAR
-            )
-        )
-    }
-}
-
 @Preview(name = "InputFieldBasic – User (Example Usage)", showBackground = true)
 @Composable
 fun InputFieldBasic_User_ExampleUsage() {
