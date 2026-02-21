@@ -96,19 +96,30 @@ fun DemoScreen(modifier: Modifier = Modifier) {
                 onValueChange = { value = it },
                 label = "Usuario",
                 placeholder = "Daviuser1234",
-                textFieldVariant = TextFieldVariant.USER_WITH_CLEAR,
+                textFieldVariant = TextFieldVariant.PASSWORD,
             )
+
+            //USER_WITH_FACE_ID no se muestra el user
+            //se debe borrar el clear porque esta implicito en clear
 
             InputFieldBasicMrcy(
                 value = value,
                 placeholder = "Daviuser1234",
                 onValueChange = { value = it },
                 inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(
-                    group = InputFieldBasicTokenGroup.TRAILING_FACE_ID
+                        group = InputFieldBasicTokenGroup.LEADING_KEY_TRAILING_VISIBILITY
                 ),
-                onTrailingIconClick = {
-                    print("Face ID clicked")
-                }
+            )
+
+            InputFieldBasicMrcy(
+                value = value,
+                placeholder = "Daviuser1234",
+                onValueChange = { value = it },
+                enableImplicitTrailingClear = true,
+                inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(
+                    group = InputFieldBasicTokenGroup.BASIC
+                ),
+                hasError = true
             )
 
 //            ChipChoiceBaseMrcy(

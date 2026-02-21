@@ -81,13 +81,6 @@ object InputFieldBasicTokensResolver {
                     trailingIcon = icons.general.visibility,
                     iconColor = colors.fgDefault,
                 )
-
-            InputFieldBasicTokenGroup.LEADING_USER_TRAILING_CLEAR ->
-                baseTokens.copy(
-                    leadingIcon = icons.people.person,
-                    trailingIcon = icons.general.close,
-                    iconColor = colors.fgDefault,
-                )
         }
     }
 

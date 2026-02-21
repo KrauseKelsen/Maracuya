@@ -99,27 +99,3 @@ fun TextFieldMrcy(
     }
 }
 
-/**
- * Resuelve la acción del ícono derecho manteniendo reglas fijas del componente.
- *
- * Prioridad:
- * 1) Acción explícita inyectada por el consumidor.
- * 2) Regla interna de la variante (clear para USER_WITH_CLEAR).
- * 3) Sin acción.
- */
-private fun resolveTrailingIconAction(
-    variant: TextFieldVariant,
-    value: String,
-    onValueChange: (String) -> Unit,
-    explicitAction: (() -> Unit)?
-): (() -> Unit)? {
-    explicitAction?.let { return it }
-
-    return when (variant) {
-        TextFieldVariant.USER_WITH_CLEAR -> {
-            { if (value.isNotEmpty()) onValueChange("") }
-        }
-
-        else -> null
-    }
-}
