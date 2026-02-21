@@ -30,4 +30,5 @@ data class InputFieldBasicTokens(
     val leadingIcon: IconToken? = null,
     val trailingIcon: IconToken? = null,
     val iconColor: ColorToken? = null,
+    val implicitClearTrailingIcon: IconToken? = null,
 )

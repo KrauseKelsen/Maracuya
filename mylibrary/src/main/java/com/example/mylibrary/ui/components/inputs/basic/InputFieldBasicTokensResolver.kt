@@ -60,6 +60,7 @@ object InputFieldBasicTokensResolver {
 
             fontFamilyToken = fontFamily,
             iconColor = colors.fgMuted,
+            implicitClearTrailingIcon = icons.general.close,
         )
 
         return when (group) {
