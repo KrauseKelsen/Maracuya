@@ -16,6 +16,7 @@ import com.example.mylibrary.ui.components.labels.LabelMrcy
  * - Bottom text
  *
  * Reglas de ícono derecho:
+ * - Si no hay trailing explícito, puede mostrarse clear implícito con `enableImplicitTrailingClear`.
  * - Por defecto, la variante `USER_WITH_CLEAR` limpia el texto al hacer tap.
  * - Para variantes con acción externa (ej: Face ID), se puede inyectar `onTrailingIconClick`.
  */
@@ -42,7 +43,7 @@ fun TextFieldMrcy(
     textFieldVariant: TextFieldVariant = TextFieldVariant.DEFAULT,
 
     onTrailingIconClick: (() -> Unit)? = null,
-
+    enableImplicitTrailingClear: Boolean = true,
 
     textFieldTokens: TextFieldTokens? = null,
 ) {
@@ -79,6 +80,7 @@ fun TextFieldMrcy(
             readOnly = readOnly,
             hasError = hasError,
             onTrailingIconClick = resolvedTrailingAction,
+            enableImplicitTrailingClear = enableImplicitTrailingClear,
             modifier = Modifier
                 .padding(vertical = 6.dp),
             inputFieldBasicTokens = InputFieldBasicTokensResolver.resolve(

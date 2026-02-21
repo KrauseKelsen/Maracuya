@@ -38,6 +38,7 @@ import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
  * - Renderizar el campo con estilos resueltos por tokens.
  * - Mantener el comportamiento visual de focus/error/disabled/readOnly.
  * - Permitir acción opcional sobre el ícono derecho cuando exista.
+ * - Incluir clear implícito para entradas TEXT/NUMBER sin trailing explícito.
  *
  * No contiene lógica de negocio ni validaciones de dominio.
  */
@@ -53,33 +54,29 @@ fun InputFieldBasicMrcy(
     hasError: Boolean = false,
     onTrailingIconClick: (() -> Unit)? = null,
     trailingIconContentDescription: String? = null,
+    enableImplicitTrailingClear: Boolean = true,
     inputFieldBasicTokens: InputFieldBasicTokens? = null
 ) {
 
     val tokens = InputFieldBasicTokensResolver.resolve(override = inputFieldBasicTokens)
 
-    // Fuente única de verdad para foco
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
 
-    // Conversión px → dp (solo en capa Compose)
     val density = LocalDensity.current
     val widthDp = with(density) { InputFieldBasicSpacings.WidthInput.toDp() }
     val minHeightDp = with(density) { InputFieldBasicSpacings.HugInput.toDp() }
 
-    // Color del borde según estado
     val borderColor = when {
         hasError -> tokens.borderError
         isFocused -> tokens.borderFocus
         else -> tokens.borderDefault
     }
 
-    // Grosor del borde
     val borderWidth =
         if (isFocused) InputFieldBasicSpacings.BorderWidthFocused
         else InputFieldBasicSpacings.BorderWidthIdle
 
-    // Fondo (solo disabled)
     val backgroundColor =
         if (!enabled)
             ColorComposeAdapter.toComposeColor(tokens.backgroundDisabled)
@@ -90,7 +87,6 @@ fun InputFieldBasicMrcy(
         tokens.iconColor ?: tokens.placeholderColor
     )
 
-    // Teclado
     val keyboardOptions = KeyboardOptions(
         keyboardType = when (inputType) {
             InputFieldBasicType.TEXT -> KeyboardType.Text
@@ -98,7 +94,33 @@ fun InputFieldBasicMrcy(
         }
     )
 
-    val trailingIconAction = if (enabled) onTrailingIconClick else null
+    val shouldUseImplicitClear =
+        enableImplicitTrailingClear &&
+            tokens.trailingIcon == null &&
+            tokens.implicitClearTrailingIcon != null &&
+            value.isNotEmpty()
+
+    val resolvedTrailingIcon = tokens.trailingIcon ?: if (shouldUseImplicitClear) {
+        tokens.implicitClearTrailingIcon
+    } else {
+        null
+    }
+
+    val trailingIconAction = when {
+        !enabled || readOnly -> null
+        onTrailingIconClick != null -> onTrailingIconClick
+        shouldUseImplicitClear -> {
+            { onValueChange("") }
+        }
+
+        else -> null
+    }
+
+    val resolvedTrailingDescription = trailingIconContentDescription ?: if (shouldUseImplicitClear) {
+        "Limpiar texto"
+    } else {
+        null
+    }
 
     Box(
         modifier = modifier
@@ -178,7 +200,7 @@ fun InputFieldBasicMrcy(
                         innerTextField()
                     }
 
-                    tokens.trailingIcon?.let { trailing ->
+                    resolvedTrailingIcon?.let { trailing ->
 
                         val trailingModifier = Modifier
                             .padding(start = InputFieldBasicSpacings.IconSpacing.dp)
@@ -196,7 +218,7 @@ fun InputFieldBasicMrcy(
                             size = InputFieldBasicSpacings.IconSize.dp,
 
                             modifier = trailingModifier,
-                            contentDescription = trailingIconContentDescription,
+                            contentDescription = resolvedTrailingDescription,
                         )
                     }
                 }
