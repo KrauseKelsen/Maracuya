@@ -1,4 +1,4 @@
-package com.example.mylibrary.ui.components.inputs.basic
+package com.example.mylibrary.ui.components.inputs.config
 
 /**
  * Configuraciones visuales predefinidas para InputFieldBasic.

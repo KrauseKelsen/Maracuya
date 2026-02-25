@@ -5,7 +5,7 @@ import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
 import com.example.mylibrary.compositions.LocalLibraryTypography
-import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokenGroup
+import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokenGroup
 
 /**
  * TextFieldTokensResolver
@@ -71,6 +71,8 @@ object TextFieldTokensResolver {
             bottomTextColor = colors.fgMuted,
             bottomTextIcon = icons.alerts.error,
             inputFieldTokenGroup = inputGroup,
+            passwordHiddenIcon = icons.general.visibility,
+            passwordVisibleIcon = icons.general.visibilityOff,
         )
     }
 
