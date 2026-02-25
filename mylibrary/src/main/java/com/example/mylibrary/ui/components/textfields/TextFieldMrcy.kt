@@ -53,14 +53,6 @@ fun TextFieldMrcy(
         override = textFieldTokens,
     )
 
-    val resolvedTrailingAction = resolveTrailingIconAction(
-        variant = textFieldVariant,
-        value = value,
-        onValueChange = onValueChange,
-        explicitAction = onTrailingIconClick,
-    )
-
-
     Column(
         modifier = modifier
     ) {
@@ -79,7 +71,7 @@ fun TextFieldMrcy(
             enabled = enabled,
             readOnly = readOnly,
             hasError = hasError,
-            onTrailingIconClick = resolvedTrailingAction,
+            onTrailingIconClick = onTrailingIconClick,
             enableImplicitTrailingClear = enableImplicitTrailingClear,
             modifier = Modifier
                 .padding(vertical = 6.dp),

@@ -96,7 +96,7 @@ fun DemoScreen(modifier: Modifier = Modifier) {
                 onValueChange = { value = it },
                 label = "Usuario",
                 placeholder = "Daviuser1234",
-                textFieldVariant = TextFieldVariant.PASSWORD,
+                textFieldVariant = TextFieldVariant.FACE_ID,
             )
 
             //USER_WITH_FACE_ID no se muestra el user

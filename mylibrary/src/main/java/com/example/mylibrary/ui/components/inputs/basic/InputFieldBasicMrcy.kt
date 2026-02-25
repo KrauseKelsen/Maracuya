@@ -108,10 +108,11 @@ fun InputFieldBasicMrcy(
 
     val trailingIconAction = when {
         !enabled || readOnly -> null
-        onTrailingIconClick != null -> onTrailingIconClick
         shouldUseImplicitClear -> {
             { onValueChange("") }
         }
+        onTrailingIconClick != null -> onTrailingIconClick
+
 
         else -> null
     }
