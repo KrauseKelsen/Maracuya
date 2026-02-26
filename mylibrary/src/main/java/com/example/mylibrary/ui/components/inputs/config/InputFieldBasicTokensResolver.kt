@@ -1,10 +1,11 @@
-package com.example.mylibrary.ui.components.inputs.basic
+package com.example.mylibrary.ui.components.inputs.config
 
 import androidx.compose.runtime.Composable
 import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
 import com.example.mylibrary.compositions.LocalLibraryTypography
+import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokens
 
 /**
  * InputFieldBasicTokensResolver
@@ -49,15 +50,11 @@ object InputFieldBasicTokensResolver {
             borderDefault = colors.borderDefault,
             borderFocus = colors.borderFocus,
             borderError = colors.errorBorder,
-
             placeholderColor = colors.fgMuted,
             textColor = colors.fgDefault,
-
             backgroundDisabled = colors.surfaceSubtle,
-
             placeholderTypography = typography.placeholder,
             textTypography = typography.placeholder,
-
             fontFamilyToken = fontFamily,
             iconColor = colors.fgMuted,
             implicitClearTrailingIcon = icons.general.close,

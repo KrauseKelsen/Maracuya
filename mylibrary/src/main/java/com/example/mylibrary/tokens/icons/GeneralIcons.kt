@@ -174,6 +174,7 @@ data class GeneralIcons(
     val touchLong: IconToken,
     val travelExplore: IconToken,
     val visibility: IconToken,
+    val visibilityOff: IconToken,
     val wash: IconToken,
     val waterDrop: IconToken
 )
@@ -349,6 +350,7 @@ fun getGeneralIcons(atoms: LibraryIconTokens) = GeneralIcons(
     touchLong = atoms.generalIconsLibrary.touchLong,
     travelExplore = atoms.generalIconsLibrary.travelExplore,
     visibility = atoms.generalIconsLibrary.visibility,
+    visibilityOff = atoms.generalIconsLibrary.visibilityOff,
     wash = atoms.generalIconsLibrary.wash,
     waterDrop = atoms.generalIconsLibrary.waterDrop
 )

@@ -175,6 +175,7 @@ data class LibraryGeneralIconsTokens (
     val touchLong: IconToken,
     val travelExplore: IconToken,
     val visibility: IconToken,
+    val visibilityOff: IconToken,
     val wash: IconToken,
     val waterDrop: IconToken,
 ){
@@ -353,6 +354,7 @@ data class LibraryGeneralIconsTokens (
             touchLong = IconToken("ic_touch_long", R.drawable.ic_touch_long),
             travelExplore = IconToken("ic_travel_explore", R.drawable.ic_travel_explore),
             visibility = IconToken("ic_visibility", R.drawable.ic_visibility),
+            visibilityOff = IconToken("ic_visibility_off", R.drawable.ic_visibility_off),
             wash = IconToken("ic_wash", R.drawable.ic_wash),
             waterDrop = IconToken("ic_water_drop", R.drawable.ic_water_drop),
         )

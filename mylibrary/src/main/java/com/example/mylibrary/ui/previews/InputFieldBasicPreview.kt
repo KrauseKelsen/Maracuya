@@ -7,8 +7,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
-import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokenGroup
-import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokensResolver
+import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokenGroup
+import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokensResolver
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicType
 import com.example.mylibrary.ui.previews.core.Mode
 import com.example.mylibrary.ui.previews.core.PreviewWrapper

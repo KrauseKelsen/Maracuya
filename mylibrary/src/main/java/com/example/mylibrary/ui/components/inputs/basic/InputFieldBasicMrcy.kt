@@ -24,8 +24,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.tokens.spacings.InputFieldBasicSpacings
+import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokensResolver
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter
 import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
@@ -39,8 +41,6 @@ import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
  * - Mantener el comportamiento visual de focus/error/disabled/readOnly.
  * - Permitir acción opcional sobre el ícono derecho cuando exista.
  * - Incluir clear implícito para entradas TEXT/NUMBER sin trailing explícito.
- *
- * No contiene lógica de negocio ni validaciones de dominio.
  */
 @Composable
 fun InputFieldBasicMrcy(
@@ -55,6 +55,8 @@ fun InputFieldBasicMrcy(
     onTrailingIconClick: (() -> Unit)? = null,
     trailingIconContentDescription: String? = null,
     enableImplicitTrailingClear: Boolean = true,
+    keyboardTypeOverride: KeyboardType? = null,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     inputFieldBasicTokens: InputFieldBasicTokens? = null
 ) {
 
@@ -88,7 +90,7 @@ fun InputFieldBasicMrcy(
     )
 
     val keyboardOptions = KeyboardOptions(
-        keyboardType = when (inputType) {
+        keyboardType = keyboardTypeOverride ?: when (inputType) {
             InputFieldBasicType.TEXT -> KeyboardType.Text
             InputFieldBasicType.NUMBER -> KeyboardType.Number
         }
@@ -108,10 +110,8 @@ fun InputFieldBasicMrcy(
 
     val trailingIconAction = when {
         !enabled || readOnly -> null
-        shouldUseImplicitClear -> {
-            { onValueChange("") }
-        }
         onTrailingIconClick != null -> onTrailingIconClick
+        shouldUseImplicitClear -> { { onValueChange("") } }
 
 
         else -> null
@@ -156,6 +156,7 @@ fun InputFieldBasicMrcy(
             enabled = enabled,
             readOnly = readOnly,
             keyboardOptions = keyboardOptions,
+            visualTransformation = visualTransformation,
             singleLine = true,
             maxLines = 1,
             interactionSource = interactionSource,
@@ -217,7 +218,6 @@ fun InputFieldBasicMrcy(
                             icon = trailing,
                             fillColor = iconColor,
                             size = InputFieldBasicSpacings.IconSize.dp,
-
                             modifier = trailingModifier,
                             contentDescription = resolvedTrailingDescription,
                         )
