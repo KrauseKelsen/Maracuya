@@ -112,6 +112,8 @@ fun InputFieldBasicMrcy(
         !enabled || readOnly -> null
         onTrailingIconClick != null -> onTrailingIconClick
         shouldUseImplicitClear -> { { onValueChange("") } }
+
+
         else -> null
     }
 
