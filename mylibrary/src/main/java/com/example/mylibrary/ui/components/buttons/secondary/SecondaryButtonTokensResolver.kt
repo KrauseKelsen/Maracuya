@@ -9,15 +9,17 @@ object SecondaryButtonTokensResolver {
 
     @Composable
     fun resolve(
-        override: SecondaryButtonTokens? = null
+        tokens: SecondaryButtonTokens? = null,
+        override: SecondaryButtonTokensOverride? = null
     ): SecondaryButtonTokens {
-        override?.let { return it }
+        val base = tokens?: defaultTokens()
 
-        return when {
-            hasLibraryTokens() -> fromLibrary()
-            else -> fromMaterial()
-        }
+        return base.merge(override)
     }
+
+    @Composable
+    private fun defaultTokens(): SecondaryButtonTokens =
+        if(hasLibraryTokens() ) fromLibrary() else fromMaterial()
 
     @Composable
     private fun hasLibraryTokens(): Boolean {
@@ -58,4 +60,23 @@ object SecondaryButtonTokensResolver {
      */
     @Composable
     fun fromMaterial(): SecondaryButtonTokens = fromLibrary()
+
+    @Composable
+    private fun SecondaryButtonTokens.merge(
+        override: SecondaryButtonTokensOverride?
+    ): SecondaryButtonTokens {
+        if (override == null) return this
+        return copy(
+            containerColor = override.containerColor ?: containerColor,
+            contentColor = override.contentColor ?: contentColor,
+            contentPressColor = override.contentPressColor ?: contentPressColor,
+            hoverContainerColor = override.hoverContainerColor ?: hoverContainerColor,
+            disabledContainerColor = override.disabledContainerColor ?: disabledContainerColor,
+            disabledContentColor = override.disabledContentColor ?: disabledContentColor,
+            borderContainerColor = override.borderContainerColor ?: borderContainerColor,
+            borderDisabledColor = override.borderDisabledColor ?: borderDisabledColor,
+            textTypography = override.textTypography ?: textTypography,
+            fontFamilyToken = override.fontFamilyToken ?: fontFamilyToken
+        )
+    }
 }

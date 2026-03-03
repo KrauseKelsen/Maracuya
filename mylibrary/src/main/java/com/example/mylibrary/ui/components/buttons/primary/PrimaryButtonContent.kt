@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 
 @Composable
@@ -22,15 +23,15 @@ internal fun PrimaryButtonContent(
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         if (showProgress) {
             CircularProgressIndicator(
-                modifier = Modifier.size(18.dp),
+                modifier = Modifier.padding(vertical= 8.dp).size(20.dp),
                 strokeWidth = 2.dp,
                 color = contentColor
             )
         } else {
             Text(
+                modifier = Modifier.padding(vertical = 8.dp),
                 text = text,
-                style = textStyle,
-                color = contentColor
+                style = textStyle
             )
         }
     }
