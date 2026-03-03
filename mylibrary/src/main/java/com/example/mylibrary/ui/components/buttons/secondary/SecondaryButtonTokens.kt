@@ -16,3 +16,16 @@ data class SecondaryButtonTokens(
     val textTypography: TypographyToken,
     val fontFamilyToken: FontFamilyToken
 )
+
+data class SecondaryButtonTokensOverride(
+    val containerColor: ColorToken? = null, // DefaultColors.Brand.Red.c500: Rojo
+    val contentColor: ColorToken? = null, // DefaultColors.Core.white: Blanco en ambos modos
+    val contentPressColor: ColorToken? = null,
+    val hoverContainerColor: ColorToken? = null, // DefaultColors.Brand.Red.c600: Rojo oscuro
+    val disabledContainerColor: ColorToken? = null,
+    val disabledContentColor: ColorToken? = null,
+    val borderContainerColor: ColorToken? = null, // DefaultColors.Brand.Red.c500: Rojo
+    val borderDisabledColor: ColorToken? = null, // DefaultColors.Neutrals.Inks.c300: Rojo
+    val textTypography: TypographyToken? = null,
+    val fontFamilyToken: FontFamilyToken? = null,
+)

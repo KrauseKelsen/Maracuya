@@ -20,3 +20,12 @@ data class LabelTokens(
     val infoIcon: IconToken,
     val fontFamily: FontFamilyToken
 )
+
+data class LabelTokensOverride(
+    val foregroundDefault: ColorToken? = null,
+    val foregroundError: ColorToken? = null,
+    val labelTypography: TypographyToken? = null,
+    val optionalTypography: TypographyToken? = null,
+    val infoIcon: IconToken? = null,
+    val fontFamily: FontFamilyToken? = null
+)

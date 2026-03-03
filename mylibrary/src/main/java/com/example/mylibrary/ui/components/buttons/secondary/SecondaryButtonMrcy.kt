@@ -33,13 +33,18 @@ fun SecondaryButtonMrcy (
     // 2) libraryTokens (si la jerarquía los provee via LocalLibraryColorTokens, o por parámetro)
     // 3) MaterialTheme.colorScheme (si la app host habilitó useMaterial en MyLibraryTheme)
     secondaryButtonTokens: SecondaryButtonTokens? = null,
+
+    secondaryButtonTokensOverride: SecondaryButtonTokensOverride? = null,
     /**
      * Si es true: al presionar (finger down) se muestra spinner en vez de texto
      * TODO Esto es "pressed", "loading". Para loading real se usa el overload abajo.
      * **/
     showProgressOnPress: Boolean = false,
 ){
-    val tokens = SecondaryButtonTokensResolver.resolve(secondaryButtonTokens)
+    val tokens = SecondaryButtonTokensResolver.resolve(
+        tokens = secondaryButtonTokens,
+        override = secondaryButtonTokensOverride
+    )
 
     val pressed by interactionSource.collectPressedAsState()
 

@@ -17,15 +17,17 @@ object LabelTokensResolver {
 
     @Composable
     fun resolve(
-        override: LabelTokens? = null
+        tokens: LabelTokens? = null,
+        override: LabelTokensOverride? = null
     ): LabelTokens {
-        override?.let { return it }
+        val base = tokens?: defaultTokens()
 
-        return when {
-            hasLibraryTokens() -> fromLibrary()
-            else -> fromMaterial()
-        }
+        return base.merge(override)
     }
+
+    @Composable
+    private fun defaultTokens(): LabelTokens =
+        if(hasLibraryTokens()) fromLibrary() else fromMaterial()
 
     /**
      * Detecta si el DS está correctamente provisto
@@ -79,6 +81,21 @@ object LabelTokensResolver {
             optionalTypography = typography.caption,
             infoIcon = icons.alerts.info,
             fontFamily = fontFamily
+        )
+    }
+
+    @Composable
+    private fun LabelTokens.merge(
+        override: LabelTokensOverride?
+    ): LabelTokens{
+        if (override==null) return this
+        return copy(
+            foregroundDefault = override.foregroundDefault?: foregroundDefault,
+            foregroundError = override.foregroundError?: foregroundError,
+            labelTypography = override.labelTypography?: labelTypography,
+            optionalTypography = override.optionalTypography?: optionalTypography,
+            infoIcon = override.infoIcon?: infoIcon,
+            fontFamily = override.fontFamily?: fontFamily
         )
     }
 }

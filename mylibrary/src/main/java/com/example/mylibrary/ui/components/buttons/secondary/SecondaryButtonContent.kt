@@ -23,7 +23,7 @@ internal fun SecondaryButtonContent(
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         if (showProgress) {
             CircularProgressIndicator(
-                modifier = Modifier.padding(vertical = 8.dp, ).size(18.dp),
+                modifier = Modifier.padding(vertical = 8.dp, ).size(20.dp),
                 strokeWidth = 2.dp,
                 color = contentColor
             )

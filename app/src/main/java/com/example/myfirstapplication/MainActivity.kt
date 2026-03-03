@@ -30,16 +30,20 @@ import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonTokensResolver
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokens
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensOverride
 import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensResolver
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
-import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokenGroup
-import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokensResolver
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicType
+import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokenGroup
+import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokensResolver
 import com.example.mylibrary.ui.components.labels.LabelMrcy
+import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
+import com.example.mylibrary.ui.components.textfields.TextFieldTokensResolver
 import com.example.mylibrary.ui.components.textfields.TextFieldVariant
 import com.example.mylibrary.ui.components.texts.LegalText
 import com.example.mylibrary.ui.components.texts.LegalTextTokens
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,17 +51,85 @@ class MainActivity : ComponentActivity() {
         setContent {
                 // Scaffold usa el background del tema DS
                 // No esta implementado para poder ver las letras
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                ) { innerPadding ->
-                    MyLibraryTheme(
-                        theme = LibraryThemes.Maracuya,
-                        style = LibraryThemeStyles.AUTO,
-                        useMaterial = false
-                    ) {
-                        DemoScreen(modifier = Modifier.padding(innerPadding))
-                    }
+//                Scaffold(
+//                    modifier = Modifier.fillMaxSize(),
+//                ) { innerPadding ->
+//                    MyLibraryTheme(
+//                        theme = LibraryThemes.Maracuya,
+//                        style = LibraryThemeStyles.AUTO,
+//                        useMaterial = false
+//                    ) {
+//                        DemoScreen(modifier = Modifier.padding(innerPadding))
+//                    }
+//                }
+
+            MyLibraryTheme {
+                Box(
+                    modifier = Modifier.padding(12.dp)
+                ){
+                    TopContent()
+                    BottonContent()
                 }
+            }
+
+        }
+    }
+}
+
+@Composable
+fun TopContent(modifier: Modifier = Modifier){
+
+}
+
+
+
+
+@Composable
+fun BottonContent(modifier: Modifier = Modifier){
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.BottomCenter,
+    ) {
+        MyLibraryTheme{
+            Column(
+                modifier = Modifier.padding(vertical = 40.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+
+            ) {
+                PrimaryButtonMrcy(
+                    modifier = Modifier.padding(horizontal = 24.dp).fillMaxWidth(),
+                    text = "Soy cliente",
+                    onClick = {},
+                )
+
+                Spacer(modifier.padding(vertical = 2.dp))
+
+                val colors = LocalLibraryColorTokens.current
+                SecondaryButtonMrcy(
+                    modifier = Modifier.padding(horizontal = 24.dp).fillMaxWidth(),
+                    text = "Soy nuevo en Davivienda",
+                    onClick = {},
+                    secondaryButtonTokensOverride =
+                        SecondaryButtonTokensOverride(
+                            contentColor = colors.fgDefault,
+                            borderContainerColor = colors.fgDefault,
+                            hoverContainerColor = colors.fgDefault
+                        )
+                )
+
+                Spacer(modifier.padding(vertical = 10.dp))
+
+                LabelMrcy(
+                    text = "¿Necesita ayuda?",
+                    labelTokensOverride = LabelTokensOverride(
+                        foregroundDefault = colors.borderFocus
+                    ),
+                    onClick = {
+                        print("hola que tal")
+                    }
+                )
+            }
         }
     }
 }
@@ -97,7 +169,7 @@ fun DemoScreen(modifier: Modifier = Modifier) {
                 label = "Usuario",
                 placeholder = "Daviuser1234",
                 textFieldVariant = TextFieldVariant.FACE_ID,
-            )
+              )
 
             //USER_WITH_FACE_ID no se muestra el user
             //se debe borrar el clear porque esta implicito en clear

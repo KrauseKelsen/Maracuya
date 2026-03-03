@@ -5,14 +5,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicTokens
 
-internal data class TextFieldBehavior(
-    val inputTokens: InputFieldBasicTokens,
-    val onTrailingIconClick: (() -> Unit)?,
-    val trailingIconContentDescription: String?,
-    val keyboardTypeOverride: KeyboardType?,
-    val visualTransformation: VisualTransformation,
-)
-
 internal object TextFieldBehaviorResolver {
 
     fun resolve(
@@ -40,8 +32,8 @@ internal object TextFieldBehaviorResolver {
         }
 
         val useImplicitPasswordBehavior = explicitTrailingAction == null &&
-            textFieldTokens.passwordHiddenIcon != null &&
-            textFieldTokens.passwordVisibleIcon != null
+                textFieldTokens.passwordHiddenIcon != null &&
+                textFieldTokens.passwordVisibleIcon != null
 
         return TextFieldBehavior(
             inputTokens = baseInputTokens.copy(trailingIcon = passwordIcon),
