@@ -123,7 +123,7 @@ object LibraryTypographyTokens {
         fontSize = FontSizeTokens.s21,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s21, LineHeightTokens.ShortRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
+        weight = FontWeightTokens.Bold,
         style = FontStyleTokens.Normal
     )
 

@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.myfirstapplication.lookandfeel.LoginWelcomeScreen
 import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryTypography
@@ -38,6 +39,8 @@ import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokenGro
 import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokensResolver
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.labels.LabelTokensOverride
+import com.example.mylibrary.ui.components.layouts.BackgroundPilotWellkommen
+import com.example.mylibrary.ui.components.layouts.LayoutPilotWellkommen
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
 import com.example.mylibrary.ui.components.textfields.TextFieldTokensResolver
 import com.example.mylibrary.ui.components.textfields.TextFieldVariant
@@ -63,76 +66,12 @@ class MainActivity : ComponentActivity() {
 //                    }
 //                }
 
-            MyLibraryTheme {
-                Box(
-                    modifier = Modifier.padding(12.dp)
-                ){
-                    TopContent()
-                    BottonContent()
-                }
-            }
-
+            LoginWelcomeScreen()
         }
     }
 }
 
-@Composable
-fun TopContent(modifier: Modifier = Modifier){
 
-}
-
-
-
-
-@Composable
-fun BottonContent(modifier: Modifier = Modifier){
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.BottomCenter,
-    ) {
-        MyLibraryTheme{
-            Column(
-                modifier = Modifier.padding(vertical = 40.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-
-            ) {
-                PrimaryButtonMrcy(
-                    modifier = Modifier.padding(horizontal = 24.dp).fillMaxWidth(),
-                    text = "Soy cliente",
-                    onClick = {},
-                )
-
-                Spacer(modifier.padding(vertical = 2.dp))
-
-                val colors = LocalLibraryColorTokens.current
-                SecondaryButtonMrcy(
-                    modifier = Modifier.padding(horizontal = 24.dp).fillMaxWidth(),
-                    text = "Soy nuevo en Davivienda",
-                    onClick = {},
-                    secondaryButtonTokensOverride =
-                        SecondaryButtonTokensOverride(
-                            contentColor = colors.fgDefault,
-                            borderContainerColor = colors.fgDefault,
-                            hoverContainerColor = colors.fgDefault
-                        )
-                )
-
-                Spacer(modifier.padding(vertical = 10.dp))
-
-                LabelMrcy(
-                    text = "¿Necesita ayuda?",
-                    labelTokensOverride = LabelTokensOverride(
-                        foregroundDefault = colors.borderFocus
-                    ),
-                    onClick = {
-                        print("hola que tal")
-                    }
-                )
-            }
-        }
-    }
-}
 
 
 private val baseItems = listOf(
@@ -169,7 +108,7 @@ fun DemoScreen(modifier: Modifier = Modifier) {
                 label = "Usuario",
                 placeholder = "Daviuser1234",
                 textFieldVariant = TextFieldVariant.FACE_ID,
-              )
+            )
 
             //USER_WITH_FACE_ID no se muestra el user
             //se debe borrar el clear porque esta implicito en clear

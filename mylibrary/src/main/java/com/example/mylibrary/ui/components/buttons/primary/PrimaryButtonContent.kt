@@ -29,7 +29,7 @@ internal fun PrimaryButtonContent(
             )
         } else {
             Text(
-                modifier = Modifier.padding(vertical = 8.dp),
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 2.dp),
                 text = text,
                 style = textStyle
             )
