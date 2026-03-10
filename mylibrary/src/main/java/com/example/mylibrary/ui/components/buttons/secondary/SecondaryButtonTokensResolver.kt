@@ -61,22 +61,5 @@ object SecondaryButtonTokensResolver {
     @Composable
     fun fromMaterial(): SecondaryButtonTokens = fromLibrary()
 
-    @Composable
-    private fun SecondaryButtonTokens.merge(
-        override: SecondaryButtonTokensOverride?
-    ): SecondaryButtonTokens {
-        if (override == null) return this
-        return copy(
-            containerColor = override.containerColor ?: containerColor,
-            contentColor = override.contentColor ?: contentColor,
-            contentPressColor = override.contentPressColor ?: contentPressColor,
-            hoverContainerColor = override.hoverContainerColor ?: hoverContainerColor,
-            disabledContainerColor = override.disabledContainerColor ?: disabledContainerColor,
-            disabledContentColor = override.disabledContentColor ?: disabledContentColor,
-            borderContainerColor = override.borderContainerColor ?: borderContainerColor,
-            borderDisabledColor = override.borderDisabledColor ?: borderDisabledColor,
-            textTypography = override.textTypography ?: textTypography,
-            fontFamilyToken = override.fontFamilyToken ?: fontFamilyToken
-        )
-    }
+
 }

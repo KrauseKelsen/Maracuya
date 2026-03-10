@@ -8,20 +8,26 @@ import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryTypography
 import com.example.mylibrary.tokens.base.ColorToken
 import com.example.mylibrary.tokens.base.TypographyToken
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokens
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensOverride
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensResolver
+import com.example.mylibrary.ui.components.buttons.secondary.merge
 
 object PrimaryButtonTokensResolver {
 
     @Composable
     fun resolve(
-        override: PrimaryButtonTokens? = null
+        tokens: PrimaryButtonTokens? = null,
+        override: PrimaryButtonTokensOverride? = null
     ): PrimaryButtonTokens {
-        override?.let { return it }
+        val base = tokens?: defaultTokens()
 
-        return when {
-            hasLibraryTokens() -> fromLibrary()
-            else -> fromMaterial()
-        }
+        return base.merge(override)
     }
+
+    @Composable
+    private fun defaultTokens(): PrimaryButtonTokens =
+        if(PrimaryButtonTokensResolver.hasLibraryTokens()) PrimaryButtonTokensResolver.fromLibrary() else PrimaryButtonTokensResolver.fromMaterial()
 
     @Composable
     private fun hasLibraryTokens(): Boolean {

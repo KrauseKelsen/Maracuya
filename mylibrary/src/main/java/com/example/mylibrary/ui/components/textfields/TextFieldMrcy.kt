@@ -86,7 +86,8 @@ fun TextFieldMrcy(
             keyboardTypeOverride = behavior.keyboardTypeOverride,
             visualTransformation = behavior.visualTransformation,
             enableImplicitTrailingClear = enableImplicitTrailingClear,
-            modifier = Modifier.padding(vertical = 6.dp),
+            //modifier = Modifier.padding(vertical = 6.dp),
+            modifier = modifier.padding(top = 8.dp),
             inputFieldBasicTokens = behavior.inputTokens,
         )
 

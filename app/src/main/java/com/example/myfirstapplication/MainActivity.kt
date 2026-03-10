@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.LoginWelcomeScreen
+import com.example.myfirstapplication.lookandfeel.TermsAndConditionsScreeen
 import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryTypography
@@ -66,7 +67,7 @@ class MainActivity : ComponentActivity() {
 //                    }
 //                }
 
-            LoginWelcomeScreen()
+            TermsAndConditionsScreeen()
         }
     }
 }
@@ -276,21 +277,21 @@ fun Host_UseMaterialMode() {
             Text("Material Design 3 AppHost")
         }
 
-    // material de maracuya con puente semantico
-    MyLibraryTheme(
-        theme = LibraryThemes.Maracuya,
-        style = LibraryThemeStyles.AUTO,
-        useMaterial = true
-    ) {
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.secondary
-            )
-        ) {
-            Text("MD3 de Maracuya")
-        }
-    }
+//    // material de maracuya con puente semantico
+//    MyLibraryTheme(
+//        theme = LibraryThemes.Maracuya,
+//        style = LibraryThemeStyles.AUTO,
+//        useMaterial = true
+//    ) {
+//        Button(
+//            onClick = {},
+//            colors = ButtonDefaults.buttonColors(
+//                containerColor = MaterialTheme.colorScheme.secondary
+//            )
+//        ) {
+//            Text("MD3 de Maracuya")
+//        }
+//    }
 
 }
 

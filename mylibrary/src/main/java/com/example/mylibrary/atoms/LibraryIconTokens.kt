@@ -2,6 +2,7 @@ package com.example.mylibrary.atoms
 
 import com.example.mylibrary.atoms.icons.LibraryAlertsIconsTokens
 import com.example.mylibrary.atoms.icons.LibraryArrowIconsTokens
+import com.example.mylibrary.atoms.icons.LibraryExtensionTokens
 import com.example.mylibrary.atoms.icons.LibraryGeneralIconsTokens
 import com.example.mylibrary.atoms.icons.LibraryMoneyIconsTokens
 import com.example.mylibrary.atoms.icons.LibraryPeopleIconsTokens
@@ -21,7 +22,9 @@ data class LibraryIconTokens(
     //ARROW ICONS (65)
     val arrowIconsLibrary: LibraryArrowIconsTokens,
     //MONEY ICONS (44)
-    val moneyIconsLibrary: LibraryMoneyIconsTokens
+    val moneyIconsLibrary: LibraryMoneyIconsTokens,
+
+    val extensionLibrary: LibraryExtensionTokens,
 
 
 
@@ -33,7 +36,8 @@ data class LibraryIconTokens(
             alertsIconsLibrary = LibraryAlertsIconsTokens.alerts,
             peopleIconsLibrary = LibraryPeopleIconsTokens.people,
             arrowIconsLibrary = LibraryArrowIconsTokens.arrows,
-            moneyIconsLibrary = LibraryMoneyIconsTokens.money
+            moneyIconsLibrary = LibraryMoneyIconsTokens.money,
+            extensionLibrary = LibraryExtensionTokens.extension
 
         )
     }

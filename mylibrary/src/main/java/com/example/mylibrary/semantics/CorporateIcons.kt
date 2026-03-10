@@ -3,11 +3,13 @@ package com.example.mylibrary.semantics
 import com.example.mylibrary.atoms.LibraryIconTokens
 import com.example.mylibrary.tokens.icons.AlertsIcons
 import com.example.mylibrary.tokens.icons.ArrowIcons
+import com.example.mylibrary.tokens.icons.ExtensionIcons
 import com.example.mylibrary.tokens.icons.GeneralIcons
 import com.example.mylibrary.tokens.icons.MoneyIcons
 import com.example.mylibrary.tokens.icons.PeopleIcons
 import com.example.mylibrary.tokens.icons.getAlertsIcons
 import com.example.mylibrary.tokens.icons.getArrowIcons
+import com.example.mylibrary.tokens.icons.getExtensionIcons
 import com.example.mylibrary.tokens.icons.getGeneralIcons
 import com.example.mylibrary.tokens.icons.getMoneyIcons
 import com.example.mylibrary.tokens.icons.getPeopleIcons
@@ -21,7 +23,8 @@ data class CorporateIcons(
     val alerts: AlertsIcons,
     val people: PeopleIcons,
     val arrows: ArrowIcons,
-    val money: MoneyIcons
+    val money: MoneyIcons,
+    val extension: ExtensionIcons
 ) {
 
     companion object {
@@ -32,7 +35,8 @@ data class CorporateIcons(
                 alerts = getAlertsIcons(atoms),
                 people = getPeopleIcons(atoms),
                 arrows = getArrowIcons(atoms),
-                money = getMoneyIcons(atoms)
+                money = getMoneyIcons(atoms),
+                extension = getExtensionIcons(atoms)
             )
         }
     }

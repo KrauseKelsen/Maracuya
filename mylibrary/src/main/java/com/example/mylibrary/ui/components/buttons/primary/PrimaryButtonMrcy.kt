@@ -11,6 +11,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Shape
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensOverride
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensResolver
 import com.example.mylibrary.ui.utils.compose.collectPressedAsState
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter
@@ -31,13 +33,19 @@ fun PrimaryButtonMrcy (
     // 3) MaterialTheme.colorScheme (si la app host habilitó useMaterial en MyLibraryTheme)
     primaryButtonTokens: PrimaryButtonTokens? = null,
 
+    primaryButtonTokensOverride: PrimaryButtonTokensOverride? = null,
+
     /**
      * Si es true: al presionar (finger down) se muestra spinner en vez de texto.
      * Ojo: esto es "pressed", no "loading real". Para loading real se usa el overload abajo.
      */
     showProgressOnPress: Boolean = true,
 ){
-    val tokens = PrimaryButtonTokensResolver.resolve(primaryButtonTokens)
+    val tokens = PrimaryButtonTokensResolver.resolve(
+        tokens = primaryButtonTokens,
+        override = primaryButtonTokensOverride
+    )
+
     val pressed by interactionSource.collectPressedAsState()
 
     val showProgress = showProgressOnPress && pressed

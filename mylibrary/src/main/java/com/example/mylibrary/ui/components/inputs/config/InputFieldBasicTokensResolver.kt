@@ -74,7 +74,7 @@ object InputFieldBasicTokensResolver {
 
             InputFieldBasicTokenGroup.LEADING_KEY_TRAILING_VISIBILITY ->
                 baseTokens.copy(
-                    leadingIcon = icons.general.visibilityOff,
+                    //leadingIcon = icons.general.lock,
                     trailingIcon = icons.general.visibility,
                     iconColor = colors.fgDefault,
                 )

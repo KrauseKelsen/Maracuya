@@ -32,7 +32,8 @@ fun LabelMrcy(
     onClick: (() -> Unit)? = null,
     onClickContentDescription: String? = null,
     labelTokens: LabelTokens? = null,
-    labelTokensOverride: LabelTokensOverride? = null
+    labelTokensOverride: LabelTokensOverride? = null,
+    limitMaxLabel: Boolean? = true
 ) {
 
     val tokens = LabelTokensResolver.resolve(
@@ -55,7 +56,13 @@ fun LabelMrcy(
                 FontFamiliesComposeAdapter.toCompose(tokens.fontFamily)
             ),
             color = ColorComposeAdapter.toComposeColor(currentColor),
-            modifier = Modifier.widthIn(max = LabelSpacings.MaxLabelWidth.dp)
+            modifier = Modifier
+                .then(if(limitMaxLabel == true){
+                    modifier.widthIn(max = LabelSpacings.MaxLabelWidth.dp)
+                }else{
+                    Modifier
+                }
+                )
                 .then(
                     if(onClick!=null){
                         Modifier.clickable(
