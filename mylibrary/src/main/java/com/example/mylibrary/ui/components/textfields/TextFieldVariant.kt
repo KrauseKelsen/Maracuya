@@ -9,4 +9,5 @@ enum class TextFieldVariant {
     USER,
     FACE_ID,
     PASSWORD,
+    PIN,
 }

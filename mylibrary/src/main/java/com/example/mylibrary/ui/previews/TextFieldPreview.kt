@@ -230,3 +230,39 @@ fun TextField_User_ExampleUsage() {
         )
     }
 }
+
+
+@Preview(name = "TextField – PIN 4", showBackground = true)
+@Composable
+fun TextField_Pin_4() {
+    var pinValues by remember { mutableStateOf(List(4) { "" }) }
+
+    PreviewWrapper(style = Mode.current) {
+        TextFieldMrcy(
+            value = pinValues,
+            onValueChange = { pinValues = it },
+            label = "Código de seguridad",
+            length = 4,
+            textFieldVariant = TextFieldVariant.PIN,
+        )
+    }
+}
+
+@Preview(name = "TextField – PIN 4 Error", showBackground = true)
+@Composable
+fun TextField_Pin_4_Error() {
+    var pinValues by remember { mutableStateOf(List(4) { "" }) }
+
+    PreviewWrapper(style = Mode.current) {
+        TextFieldMrcy(
+            value = pinValues,
+            onValueChange = { pinValues = it },
+            label = "Código de seguridad",
+            length = 4,
+            textFieldVariant = TextFieldVariant.PIN,
+            hasError = true,
+            bottomText = "Field-specific error message",
+            showBottomIcon = true,
+        )
+    }
+}

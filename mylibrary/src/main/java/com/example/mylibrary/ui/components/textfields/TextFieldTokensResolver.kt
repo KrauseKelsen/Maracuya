@@ -61,6 +61,7 @@ object TextFieldTokensResolver {
             TextFieldVariant.USER -> InputFieldBasicTokenGroup.LEADING_USER
             TextFieldVariant.FACE_ID -> InputFieldBasicTokenGroup.TRAILING_FACE_ID
             TextFieldVariant.PASSWORD -> InputFieldBasicTokenGroup.LEADING_KEY_TRAILING_VISIBILITY
+            TextFieldVariant.PIN -> InputFieldBasicTokenGroup.BASIC
         }
 
         return TextFieldTokens(

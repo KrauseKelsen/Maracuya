@@ -57,7 +57,8 @@ fun InputFieldBasicMrcy(
     enableImplicitTrailingClear: Boolean = true,
     keyboardTypeOverride: KeyboardType? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    inputFieldBasicTokens: InputFieldBasicTokens? = null
+    inputFieldBasicTokens: InputFieldBasicTokens? = null,
+    expandToContainerWidth: Boolean = false,
 ) {
 
     val tokens = InputFieldBasicTokensResolver.resolve(override = inputFieldBasicTokens)
@@ -125,7 +126,13 @@ fun InputFieldBasicMrcy(
 
     Box(
         modifier = modifier
-            .width(widthDp)
+            .then(
+                if (expandToContainerWidth) {
+                    Modifier.fillMaxWidth()
+                } else {
+                    Modifier.width(widthDp)
+                }
+            )
             .heightIn(min = minHeightDp)
             .background(
                 color = backgroundColor,
