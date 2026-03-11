@@ -3,8 +3,10 @@ package com.example.mylibrary.ui.components.buttons.icon
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -13,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
@@ -80,34 +83,42 @@ fun ButtonIconMrcy(
     ) {
         val showIcon = behavior.iconPosition != null || label.isNullOrBlank()
 
-        Row(horizontalArrangement = Arrangement.Center) {
-            if (showIcon && behavior.iconPosition != IconPosition.END) {
-                IconComposeAdapter.Render(
-                    icon = tokens.iconToken,
-                    fillColor = ColorComposeAdapter.toComposeColor(iconColor),
-                    contentDescription = null,
-                    size = 18.dp,
-                )
-                if (!label.isNullOrBlank()) Spacer(modifier = Modifier.width(8.dp))
+        Box(
+            modifier = Modifier.padding(vertical = 8.dp, horizontal = 2.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Row(horizontalArrangement = Arrangement.Center) {
+                if (showIcon && behavior.iconPosition != IconPosition.END) {
+                    IconComposeAdapter.Render(
+                        icon = tokens.iconToken,
+                        fillColor = ColorComposeAdapter.toComposeColor(iconColor),
+                        contentDescription = null,
+                        size = 18.dp,
+                    )
+                    if (!label.isNullOrBlank()) Spacer(modifier = Modifier.width(8.dp))
+                }
+
+                if (!label.isNullOrBlank()) {
+                    Text(
+                        modifier = Modifier,
+                        text = label,
+                        style = textStyle,
+                        color = ColorComposeAdapter.toComposeColor(contentColor),
+                    )
+
+                }
+
+                if (showIcon && behavior.iconPosition == IconPosition.END) {
+                    if (!label.isNullOrBlank()) Spacer(modifier = Modifier.width(8.dp))
+                    IconComposeAdapter.Render(
+                        icon = tokens.iconToken,
+                        fillColor = ColorComposeAdapter.toComposeColor(iconColor),
+                        contentDescription = null,
+                        size = 18.dp,
+                    )
+                }
             }
 
-            if (!label.isNullOrBlank()) {
-                Text(
-                    text = label,
-                    style = textStyle,
-                    color = ColorComposeAdapter.toComposeColor(contentColor),
-                )
-            }
-
-            if (showIcon && behavior.iconPosition == IconPosition.END) {
-                if (!label.isNullOrBlank()) Spacer(modifier = Modifier.width(8.dp))
-                IconComposeAdapter.Render(
-                    icon = tokens.iconToken,
-                    fillColor = ColorComposeAdapter.toComposeColor(iconColor),
-                    contentDescription = null,
-                    size = 18.dp,
-                )
-            }
         }
     }
 }

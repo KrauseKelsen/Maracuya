@@ -28,6 +28,7 @@ import com.example.mylibrary.tokens.base.ColorToken
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconMrcy
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokenGroup
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokensOverride
+import com.example.mylibrary.ui.components.buttons.icon.ButtonIconVariant
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonTokensOverride
 import com.example.mylibrary.ui.components.labels.LabelMrcy
@@ -92,12 +93,15 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
             onTrailingClick = { },
             group = ButtonIconTokenGroup.SECONDARY,
             buttonIconTokensOverride = ButtonIconTokensOverride(
-                iconToken = icons.arrows.navigateBefore
+                iconToken = icons.arrows.navigateBefore,
+                iconColor = LocalLibraryColorTokens.current.fgMuted
             ),
         )
 
         IconComposeAdapter.Render(
-            icon = icons.extension.lgDavibankHouseEmpty,
+            icon = icons.extension.lgDavibankHouseEmpty.copy(
+                iconColor = LocalLibraryColorTokens.current.brandPrimary
+            ),
             size = 32.dp,
             contentDescription = "LogoDavibank",
             modifier = Modifier.align(Alignment.Center)
@@ -108,7 +112,7 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
             onTrailingClick = { },
             group = ButtonIconTokenGroup.SECONDARY,
             buttonIconTokensOverride = ButtonIconTokensOverride(
-                iconToken = icons.alerts.help
+                iconToken = icons.alerts.help,
             ),
         )
     }
@@ -216,14 +220,14 @@ private fun CentralContent(modifier: Modifier = Modifier) {
 
 @Composable
 private fun BottomContent(modifier: Modifier = Modifier) {
-    PrimaryButtonMrcy(
-        modifier = modifier
-            .padding(bottom = 30.dp),
-        text = "Ingresa con GAUDI",
-        onClick = {},
-        primaryButtonTokensOverride = PrimaryButtonTokensOverride(
+    ButtonIconMrcy(
+        modifier = modifier.padding(bottom = 30.dp),
+        label = "Ingresa con GAUDI",
+        variant = ButtonIconVariant.IconLeft,
+        onTrailingClick = {},
+        buttonIconTokensOverride = ButtonIconTokensOverride(
             containerColor = ColorToken(0xFF003764),
-            borderContainerColor = ColorToken(0xFF003764)
+            iconToken = LocalLibraryIcons.current.general.cardioLoad
         )
     )
 }
