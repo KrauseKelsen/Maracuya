@@ -25,6 +25,7 @@ import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
 
 @Composable
 internal fun BottomTextMrcy(
+    modifier: Modifier = Modifier,
     text: String,
     hasError: Boolean,
     showBottomIcon: Boolean = true,
@@ -36,7 +37,9 @@ internal fun BottomTextMrcy(
         else -> textFieldTokens.bottomTextErrorColor // color del borde
     }
 
-    Row {
+    Row (
+        modifier = modifier.padding(top = 10.dp)
+    ){
 
         // Icono opcional (futuro, vía tokens)
         if (showBottomIcon) {
