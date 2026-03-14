@@ -14,6 +14,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -147,6 +154,7 @@ fun TextFieldMrcy(
         override = textFieldTokens,
     )
 
+    val focusRequesters = remember(length) { List(length) { FocusRequester() } }
     var isPinVisible by remember { mutableStateOf(false) }
 
     val inputTokens = InputFieldBasicTokensResolver.resolve(
@@ -175,7 +183,28 @@ fun TextFieldMrcy(
                 val digit = normalizedPin[index]
 
                 InputFieldBasicMrcy(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .focusRequester(focusRequesters[index])
+                        .onKeyEvent { keyEvent ->
+                            if (!enabled || readOnly) return@onKeyEvent false
+
+                            if (
+                                keyEvent.type == KeyEventType.KeyDown &&
+                                keyEvent.key == Key.Backspace &&
+                                normalizedPin[index].isEmpty() &&
+                                index > 0
+                            ) {
+                                val previousIndex = index - 1
+                                val next = normalizedPin.toMutableList()
+                                next[previousIndex] = ""
+                                onValueChange(next)
+                                focusRequesters[previousIndex].requestFocus()
+                                true
+                            } else {
+                                false
+                            }
+                        },
                     value = digit,
                     placeholder = "",
                     onValueChange = { newValue ->
@@ -185,12 +214,21 @@ fun TextFieldMrcy(
                         val next = normalizedPin.toMutableList()
 
                         if (filtered.isEmpty()) {
+                            val hadValue = next[index].isNotEmpty()
                             next[index] = ""
+                            onValueChange(next)
+
+                            if (hadValue && index > 0) {
+                                focusRequesters[index - 1].requestFocus()
+                            }
                         } else {
                             next[index] = filtered.last().toString()
-                        }
+                            onValueChange(next)
 
-                        onValueChange(next)
+                            if (index < length - 1) {
+                                focusRequesters[index + 1].requestFocus()
+                            }
+                        }
                     },
                     inputType = InputFieldBasicType.NUMBER,
                     enabled = enabled,

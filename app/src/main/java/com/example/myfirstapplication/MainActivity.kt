@@ -67,7 +67,30 @@ class MainActivity : ComponentActivity() {
 //                    }
 //                }
 
-            TermsAndConditionsScreeen()
+            //TermsAndConditionsScreeen()
+
+            var pinValues by remember { mutableStateOf(List(4) { "" }) }
+
+            MyLibraryTheme (
+                theme = LibraryThemes.Maracuya,
+                style = LibraryThemeStyles.AUTO,
+                useMaterial = false
+            ){
+                Scaffold {
+                    innerPadding ->
+                    TextFieldMrcy(
+                        modifier = Modifier.padding(innerPadding),
+                        value = pinValues,
+                        onValueChange = { pinValues = it },
+                        label = "Código de seguridad",
+                        length = 4,
+                        textFieldVariant = TextFieldVariant.PIN,
+                        hasError = true,
+                        bottomText = "Error"
+                    )
+                }
+
+            }
         }
     }
 }
