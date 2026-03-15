@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -59,6 +60,7 @@ fun InputFieldBasicMrcy(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     inputFieldBasicTokens: InputFieldBasicTokens? = null,
     expandToContainerWidth: Boolean = false,
+    textAlign: TextAlign = TextAlign.Start,
 ) {
 
     val tokens = InputFieldBasicTokensResolver.resolve(override = inputFieldBasicTokens)
@@ -176,6 +178,7 @@ fun InputFieldBasicMrcy(
                     FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken)
                 )
                 .copy(
+                    textAlign = textAlign,
                     color = if (readOnly)
                         ColorComposeAdapter.toComposeColor(tokens.placeholderColor)
                     else
@@ -198,12 +201,14 @@ fun InputFieldBasicMrcy(
                     Box(modifier = Modifier.weight(1f)) {
                         if (value.isEmpty()) {
                             Text(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = placeholder,
                                 style = TypographyComposeAdapter.toTextStyle(
                                     tokens.placeholderTypography,
                                     FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken)
                                 ),
-                                color = ColorComposeAdapter.toComposeColor(tokens.placeholderColor)
+                                color = ColorComposeAdapter.toComposeColor(tokens.placeholderColor),
+                                textAlign = textAlign,
                             )
                         }
                         innerTextField()

@@ -24,6 +24,7 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.tokens.base.IconToken
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
@@ -163,6 +164,7 @@ fun TextFieldMrcy(
 
     val trailingHiddenIcon = pinIconToken ?: resolver.passwordHiddenIcon
     val trailingVisibleIcon = resolver.passwordVisibleIcon ?: trailingHiddenIcon
+    val shouldShowPinVisibilityIcon = normalizedPin.any { it.isNotEmpty() }
 
     Column(modifier = modifier) {
         LabelMrcy(
@@ -243,10 +245,11 @@ fun TextFieldMrcy(
                     enableImplicitTrailingClear = false,
                     inputFieldBasicTokens = inputTokens,
                     expandToContainerWidth = true,
+                    textAlign = TextAlign.Center,
                 )
             }
 
-            if (trailingHiddenIcon != null || trailingVisibleIcon != null) {
+            if (shouldShowPinVisibilityIcon && (trailingHiddenIcon != null || trailingVisibleIcon != null)) {
                 PinVisibilityIcon(
                     isVisible = isPinVisible,
                     onClick = { isPinVisible = !isPinVisible },
