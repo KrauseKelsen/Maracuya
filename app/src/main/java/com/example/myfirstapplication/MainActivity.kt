@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.LoginWelcomeScreen
 import com.example.myfirstapplication.lookandfeel.TermsAndConditionsScreeen
+import com.example.myfirstapplication.lookandfeel.VerifyCodeScreen
 import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryTypography
@@ -68,29 +69,8 @@ class MainActivity : ComponentActivity() {
 //                }
 
             //TermsAndConditionsScreeen()
+            VerifyCodeScreen()
 
-            var pinValues by remember { mutableStateOf(List(4) { "" }) }
-
-            MyLibraryTheme (
-                theme = LibraryThemes.Maracuya,
-                style = LibraryThemeStyles.AUTO,
-                useMaterial = false
-            ){
-                Scaffold {
-                    innerPadding ->
-                    TextFieldMrcy(
-                        modifier = Modifier.padding(innerPadding),
-                        value = pinValues,
-                        onValueChange = { pinValues = it },
-                        label = "Código de seguridad",
-                        length = 4,
-                        textFieldVariant = TextFieldVariant.PIN,
-                        hasError = true,
-                        bottomText = "Error"
-                    )
-                }
-
-            }
         }
     }
 }
