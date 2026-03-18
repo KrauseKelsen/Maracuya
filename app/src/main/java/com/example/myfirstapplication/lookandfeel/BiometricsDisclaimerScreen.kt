@@ -2,6 +2,7 @@ package com.example.myfirstapplication.lookandfeel
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -60,8 +61,11 @@ private fun TopContentNavBiometrics(modifier: Modifier = Modifier) {
     NavigationToolbar(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 40.dp)
-        //.background(color = Color.Blue)
+            .padding(
+                top = 40.dp,
+                start = TopNavigationDefaults.HorizontalScreenPadding,
+                end = TopNavigationDefaults.HorizontalScreenPadding,
+            )
     )
 }
 
@@ -71,8 +75,12 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
     val colors = LocalLibraryColorTokens.current
     val typography = LocalLibraryTypography.current
 
-    Box(modifier = modifier) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         LabelMrcy(
+            modifier = Modifier.weight(1f),
             text = "¡Bienvenidx, DaviCliente!",
             labelTokensOverride = LabelTokensOverride(
                 foregroundDefault = colors.fgDefault,
@@ -81,7 +89,6 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
         )
 
         ButtonIconMrcy(
-            modifier = Modifier.align(Alignment.CenterEnd),
             onTrailingClick = { },
             group = ButtonIconTokenGroup.SECONDARY,
             buttonIconTokensOverride = ButtonIconTokensOverride(

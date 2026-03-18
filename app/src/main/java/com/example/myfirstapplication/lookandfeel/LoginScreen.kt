@@ -76,8 +76,11 @@ private fun TopContentNav(modifier: Modifier = Modifier) {
     NavigationToolbar(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 40.dp)
-            //.background(color = Color.Blue)
+            .padding(
+                top = 40.dp,
+                start = TopNavigationDefaults.HorizontalScreenPadding,
+                end = TopNavigationDefaults.HorizontalScreenPadding,
+            )
     )
 }
 

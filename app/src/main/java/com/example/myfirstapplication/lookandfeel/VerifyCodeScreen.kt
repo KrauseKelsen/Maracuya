@@ -69,7 +69,11 @@ private fun TopContentNav(modifier: Modifier = Modifier) {
     NavigationToolbar(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 40.dp)
+            .padding(
+                top = 40.dp,
+                start = TopNavigationDefaults.HorizontalScreenPadding,
+                end = TopNavigationDefaults.HorizontalScreenPadding,
+            )
     )
 }
 
@@ -127,7 +131,11 @@ private fun SecurityCode(modifier: Modifier = Modifier) {
     Spacer(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 40.dp)
+            .padding(
+                top = 40.dp,
+                start = TopNavigationDefaults.HorizontalScreenPadding,
+                end = TopNavigationDefaults.HorizontalScreenPadding,
+            )
     )
 
     TextFieldMrcy(
