@@ -26,7 +26,7 @@ import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.ui.components.layouts.LayoutPilotWellkommen
 
 @Composable
-fun LoginWelcomeScreen () {
+fun LoginMainScreen () {
     MyLibraryTheme {
         LayoutPilotWellkommen {
             Box(

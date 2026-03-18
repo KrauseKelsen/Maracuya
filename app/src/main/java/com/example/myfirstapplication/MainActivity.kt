@@ -8,43 +8,25 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.myfirstapplication.lookandfeel.LoginWelcomeScreen
-import com.example.myfirstapplication.lookandfeel.TermsAndConditionsScreeen
+import com.example.myfirstapplication.lookandfeel.BiometricsDisclaimerScreen
 import com.example.myfirstapplication.lookandfeel.VerifyCodeScreen
 import com.example.mylibrary.compositions.LocalFontFamily
-import com.example.mylibrary.compositions.LocalLibraryColorTokens
-import com.example.mylibrary.compositions.LocalLibraryTypography
-import com.example.mylibrary.theme.MyLibraryTheme
-import com.example.mylibrary.theme.LibraryThemeStyles
-import com.example.mylibrary.theme.LibraryThemes
 import com.example.mylibrary.tokens.base.ColorToken
 import com.example.mylibrary.tokens.base.TypographyToken
 import com.example.mylibrary.ui.components.utils.IconPosition
 import com.example.mylibrary.ui.components.buttons.ButtonTokens
 import com.example.mylibrary.ui.components.buttons.GenericButton
 import com.example.mylibrary.ui.components.buttons.GenericButtonIcon
-import com.example.mylibrary.ui.components.buttons.chipchoice.ChipChoiceBaseMrcy
-import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceCarouselMrcy
 import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
-import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceSelectionMode
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonTokensResolver
-import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
-import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokens
-import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensOverride
-import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensResolver
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicType
 import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokenGroup
 import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokensResolver
 import com.example.mylibrary.ui.components.labels.LabelMrcy
-import com.example.mylibrary.ui.components.labels.LabelTokensOverride
-import com.example.mylibrary.ui.components.layouts.BackgroundPilotWellkommen
-import com.example.mylibrary.ui.components.layouts.LayoutPilotWellkommen
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
-import com.example.mylibrary.ui.components.textfields.TextFieldTokensResolver
 import com.example.mylibrary.ui.components.textfields.TextFieldVariant
 import com.example.mylibrary.ui.components.texts.LegalText
 import com.example.mylibrary.ui.components.texts.LegalTextTokens
@@ -68,9 +50,11 @@ class MainActivity : ComponentActivity() {
 //                    }
 //                }
 
-            //TermsAndConditionsScreeen()
-            VerifyCodeScreen()
+            //LoginMainScreen()
 
+            //LoginScreen()
+            //VerifyCodeScreen()
+            BiometricsDisclaimerScreen()
         }
     }
 }

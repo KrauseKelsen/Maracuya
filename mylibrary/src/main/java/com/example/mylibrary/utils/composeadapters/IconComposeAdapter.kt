@@ -24,13 +24,12 @@ import com.example.mylibrary.tokens.base.IconToken
  */
 object IconComposeAdapter {
 
-    private val DefaultSize: Dp = 18.dp
 
     @Composable
     fun Render(
         icon: IconToken,
         modifier: Modifier = Modifier,
-        size: Dp = DefaultSize,
+        size: Dp = Dp.Unspecified,
         fillColor: Color = Color.Unspecified,
         contentDescription: String? = null
     ) {

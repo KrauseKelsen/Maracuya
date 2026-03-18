@@ -18,7 +18,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
@@ -30,7 +29,6 @@ import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokenGroup
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokensOverride
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconVariant
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
-import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonTokensOverride
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
@@ -39,7 +37,7 @@ import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
 
 @Composable
-fun TermsAndConditionsScreeen() {
+fun LoginScreen() {
     MyLibraryTheme {
         Box(
             modifier = Modifier.fillMaxSize()

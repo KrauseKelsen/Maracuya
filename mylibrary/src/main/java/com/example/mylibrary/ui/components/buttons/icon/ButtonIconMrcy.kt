@@ -93,7 +93,7 @@ fun ButtonIconMrcy(
                         icon = tokens.iconToken,
                         fillColor = ColorComposeAdapter.toComposeColor(iconColor),
                         contentDescription = null,
-                        size = 18.dp,
+                        size = tokens.iconToken.iconSize.dp,
                     )
                     if (!label.isNullOrBlank()) Spacer(modifier = Modifier.width(8.dp))
                 }
@@ -114,7 +114,7 @@ fun ButtonIconMrcy(
                         icon = tokens.iconToken,
                         fillColor = ColorComposeAdapter.toComposeColor(iconColor),
                         contentDescription = null,
-                        size = 18.dp,
+                        size = tokens.iconToken.iconSize.dp,
                     )
                 }
             }

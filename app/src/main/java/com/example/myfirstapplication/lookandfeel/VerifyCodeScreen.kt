@@ -138,12 +138,6 @@ private fun SecurityCode(modifier: Modifier = Modifier) {
         length = 6,
         textFieldVariant = TextFieldVariant.PIN
     )
-
-    Spacer(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 40.dp)
-    )
 }
 
 @Composable
