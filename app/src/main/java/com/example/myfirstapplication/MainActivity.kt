@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.BiometricsDisclaimerScreen
+import com.example.myfirstapplication.lookandfeel.LoginScreen
 import com.example.myfirstapplication.lookandfeel.VerifyCodeScreen
 import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.tokens.base.ColorToken
@@ -48,13 +49,13 @@ class MainActivity : ComponentActivity() {
 //                    ) {
 //                        DemoScreen(modifier = Modifier.padding(innerPadding))
 //                    }
-//                }
+//
 
             //LoginMainScreen()
 
             //LoginScreen()
-            //VerifyCodeScreen()
-            BiometricsDisclaimerScreen()
+            VerifyCodeScreen()
+            //BiometricsDisclaimerScreen()
         }
     }
 }
