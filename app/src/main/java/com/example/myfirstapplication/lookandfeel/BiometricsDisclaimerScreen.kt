@@ -1,12 +1,17 @@
 package com.example.myfirstapplication.lookandfeel
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,6 +25,7 @@ import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokenGroup
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokensOverride
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.labels.LabelTokensOverride
+import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 
 @Composable
 fun BiometricsDisclaimerScreen (){
@@ -30,12 +36,14 @@ fun BiometricsDisclaimerScreen (){
             Column(
                 modifier = Modifier.fillMaxSize()
             ) {
-                TopContentNavBiometrics()
+                TopContentNavBiometrics(
+                    modifier = Modifier
+                )
 
                 Spacer(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 40.dp)
+                        .padding(top = 20.dp)
                 )
 
                 CentralContentBiometrics(
@@ -62,9 +70,9 @@ private fun TopContentNavBiometrics(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .padding(
-                top = 40.dp,
-                start = TopNavigationDefaults.HorizontalScreenPadding,
-                end = TopNavigationDefaults.HorizontalScreenPadding,
+                top = 60.dp,
+                start = 40.dp,
+                end = 20.dp
             )
     )
 }
@@ -81,7 +89,7 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
     ) {
         LabelMrcy(
             modifier = Modifier.weight(1f),
-            text = "¡Bienvenidx, DaviCliente!",
+            text = "¡Bienvenidx, Davicliente!",
             labelTokensOverride = LabelTokensOverride(
                 foregroundDefault = colors.fgDefault,
                 labelTypography = typography.headline24,
@@ -101,7 +109,25 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
 
 @Composable
 private fun CentralContentBiometrics(modifier: Modifier = Modifier) {
+    val colors = LocalLibraryColorTokens.current
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Top
 
+    ) {
+        HorizontalDivider(
+            modifier = Modifier
+                .fillMaxHeight(0.005f)
+                .width(80.dp)
+                .background(color = ColorComposeAdapter.toComposeColor(colors.brandPrimary))
+        )
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp)
+        )
+    }
 }
 
 

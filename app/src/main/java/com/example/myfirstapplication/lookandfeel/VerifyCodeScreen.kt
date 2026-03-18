@@ -70,7 +70,7 @@ private fun TopContentNav(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .padding(
-                top = 40.dp,
+                top = 60.dp,
                 start = TopNavigationDefaults.HorizontalScreenPadding,
                 end = TopNavigationDefaults.HorizontalScreenPadding,
             )

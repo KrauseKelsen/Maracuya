@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.BiometricsDisclaimerScreen
+import com.example.myfirstapplication.lookandfeel.LoginMainScreen
 import com.example.myfirstapplication.lookandfeel.LoginScreen
 import com.example.myfirstapplication.lookandfeel.VerifyCodeScreen
 import com.example.mylibrary.compositions.LocalFontFamily
@@ -54,8 +55,8 @@ class MainActivity : ComponentActivity() {
             //LoginMainScreen()
 
             //LoginScreen()
-            VerifyCodeScreen()
-            //BiometricsDisclaimerScreen()
+            //VerifyCodeScreen()
+            BiometricsDisclaimerScreen()
         }
     }
 }

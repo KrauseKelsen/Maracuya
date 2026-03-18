@@ -107,7 +107,9 @@ fun BottonContent(modifier: Modifier = Modifier) {
                 .padding(horizontal = 24.dp)
                 .fillMaxWidth(),
             text = "Soy nuevo en Davivienda",
-            onClick = {},
+            onClick = {
+
+            },
             secondaryButtonTokensOverride = SecondaryButtonTokensOverride(
                 contentColor = colors.fgDefault,
                 borderContainerColor = colors.fgDefault,
