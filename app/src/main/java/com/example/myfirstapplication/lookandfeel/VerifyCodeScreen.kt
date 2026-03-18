@@ -51,13 +51,13 @@ fun VerifyCodeScreen() {
                 Spacer(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 60.dp)
+                        .padding(top = 40.dp)
                 )
 
                 CentralContent(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
+                        .padding(horizontal = 40.dp)
                 )
             }
         }
