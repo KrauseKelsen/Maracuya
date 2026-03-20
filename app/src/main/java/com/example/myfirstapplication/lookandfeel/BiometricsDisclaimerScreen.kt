@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.mylibrary.R
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
 import com.example.mylibrary.compositions.LocalLibraryTypography
@@ -30,9 +31,13 @@ import com.example.mylibrary.theme.MyLibraryTheme
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconMrcy
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokenGroup
 import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokensOverride
+import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
+import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensOverride
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
+import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
 
 /**
  * Valores visuales centralizados para mantener consistencia y facilitar mantenimiento del layout.
@@ -78,7 +83,7 @@ fun BiometricsDisclaimerScreen (){
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .fillMaxWidth()
-                    .padding(horizontal = 40.dp, vertical = 24.dp)
+                    .padding(horizontal = 40.dp)
             )
         }
     }
@@ -130,7 +135,7 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
 @Composable
 private fun CentralContentBiometrics(modifier: Modifier = Modifier) {
     val colors = LocalLibraryColorTokens.current
-
+    val icons = LocalLibraryIcons.current
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top
@@ -154,7 +159,7 @@ private fun CentralContentBiometrics(modifier: Modifier = Modifier) {
          * Se ubica inmediatamente debajo del primer divisor, respetando el espaciado vertical definido.
          */
         androidx.compose.foundation.Image(
-            painter = painterResource(id = com.example.mylibrary.R.drawable.biometricsdisclamerscreen_imagepage),
+            painter = painterResource(id = R.drawable.biometricsdisclamerscreen_imagepage),
             contentDescription = "Ilustración de disclaimer biométrico",
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.FillWidth
@@ -183,12 +188,7 @@ private fun CentralContentBiometrics(modifier: Modifier = Modifier) {
             title = "Olvidese de las contraseñas",
             description = "Active el ingreso con biometria para entrar a su app de forma rapida y segura.",
             icon = {
-                Icon(
-                    painter = painterResource(id = com.example.mylibrary.R.drawable.ic_fingerprint),
-                    contentDescription = "Icono de huella",
-                    tint = Color.Unspecified,
-                    modifier = Modifier.padding(top = BiometricsDisclaimerLayoutDefaults.cardIconTopPadding)
-                )
+                IconComposeAdapter.Render(icons.general.fingerprint)
             },
             modifier = Modifier.fillMaxWidth()
         )
@@ -259,5 +259,41 @@ private fun BiometricBenefitsCard(
 
 @Composable
 private fun BottomContentBiometrics(modifier: Modifier = Modifier) {
+    val colors = LocalLibraryColorTokens.current
+    val typography = LocalLibraryTypography.current
 
+    Column(
+        modifier = modifier.fillMaxWidth()
+            .padding(vertical = 50.dp)
+    ) {
+        PrimaryButtonMrcy(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { },
+            text = "Activar biometría",
+            showProgressOnPress = false
+        )
+
+        Spacer(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp)
+        )
+        SecondaryButtonMrcy(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { },
+            text = "Quizá más tarde",
+            secondaryButtonTokensOverride = SecondaryButtonTokensOverride(
+                contentColor = colors.fgMuted,
+                textTypography = typography.subtitle2,
+                contentPressColor = colors.fgMuted
+            )
+
+        )
+
+        Spacer(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 30.dp)
+        )
+    }
 }
