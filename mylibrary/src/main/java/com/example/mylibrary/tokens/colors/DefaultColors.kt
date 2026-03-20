@@ -49,6 +49,9 @@ import com.example.mylibrary.tokens.base.ColorToken
  * @see com.example.mylibrary.tokens.colors.DefaultColors
  */
 object DefaultColors {
+    object Extra {
+        val trasparent = ColorToken.fromHex(0x00FFFFFF)
+    }
 
     object Brand {
         object Red {

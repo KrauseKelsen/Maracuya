@@ -64,6 +64,7 @@ import com.example.mylibrary.tokens.colors.DefaultColors
  */
 
 data class LibraryColorTokens(
+    val transparent: ColorToken,
     // Text (foreground)
     val fgDefault: ColorToken,
     val fgMuted: ColorToken,
@@ -143,6 +144,7 @@ data class LibraryColorTokens(
     companion object {
         // Default tokens de la semántica de Figma (tema: light)
         val DefaultLight = LibraryColorTokens(
+            transparent = DefaultColors.Extra.trasparent,
             // Foregrounds
             fgDefault = DefaultColors.Ink.c900,
             fgMuted = DefaultColors.Ink.c500,
@@ -219,6 +221,7 @@ data class LibraryColorTokens(
         )
         // Default tokens de la semántica de Figma (tema: dark)
         val DefaultDark = LibraryColorTokens(
+            transparent = DefaultColors.Extra.trasparent,
             // Foregrounds
             fgDefault = DefaultColors.Core.white,
             fgMuted = DefaultColors.Ink.c400,
