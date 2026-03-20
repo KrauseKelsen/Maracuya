@@ -1,8 +1,9 @@
 package com.example.myfirstapplication.lookandfeel
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,10 +12,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
@@ -26,6 +33,19 @@ import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokensOverride
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
+
+/**
+ * Valores visuales centralizados para mantener consistencia y facilitar mantenimiento del layout.
+ */
+private object BiometricsDisclaimerLayoutDefaults {
+    val sectionSpacing = 20.dp
+    val dividerHorizontalPadding = 20.dp
+    val cardCornerRadius = 16.dp
+    val cardInnerPadding = 16.dp
+    val cardContentSpacing = 8.dp
+    val cardIconColumnEndPadding = 12.dp
+    val cardIconTopPadding = 2.dp
+}
 
 @Composable
 fun BiometricsDisclaimerScreen (){
@@ -110,6 +130,7 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
 @Composable
 private fun CentralContentBiometrics(modifier: Modifier = Modifier) {
     val colors = LocalLibraryColorTokens.current
+
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top
@@ -125,8 +146,113 @@ private fun CentralContentBiometrics(modifier: Modifier = Modifier) {
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 20.dp)
+                .padding(top = BiometricsDisclaimerLayoutDefaults.sectionSpacing)
         )
+
+        /**
+         * Ilustración principal del disclaimer de biometría.
+         * Se ubica inmediatamente debajo del primer divisor, respetando el espaciado vertical definido.
+         */
+        androidx.compose.foundation.Image(
+            painter = painterResource(id = com.example.mylibrary.R.drawable.biometricsdisclamerscreen_imagepage),
+            contentDescription = "Ilustración de disclaimer biométrico",
+            modifier = Modifier.fillMaxWidth(),
+            contentScale = ContentScale.FillWidth
+        )
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = BiometricsDisclaimerLayoutDefaults.sectionSpacing)
+        )
+
+        HorizontalDivider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = BiometricsDisclaimerLayoutDefaults.dividerHorizontalPadding),
+            color = ColorComposeAdapter.toComposeColor(colors.borderSubtle)
+        )
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = BiometricsDisclaimerLayoutDefaults.sectionSpacing)
+        )
+
+        BiometricBenefitsCard(
+            title = "Olvidese de las contraseñas",
+            description = "Active el ingreso con biometria para entrar a su app de forma rapida y segura.",
+            icon = {
+                Icon(
+                    painter = painterResource(id = com.example.mylibrary.R.drawable.ic_fingerprint),
+                    contentDescription = "Icono de huella",
+                    tint = Color.Unspecified,
+                    modifier = Modifier.padding(top = BiometricsDisclaimerLayoutDefaults.cardIconTopPadding)
+                )
+            },
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
+/**
+ * Tarjeta informativa para beneficios biométricos.
+ * Estructura en dos columnas:
+ * 1) Columna angosta izquierda con icono alineado arriba.
+ * 2) Columna derecha expandida con título y descripción.
+ */
+@Composable
+private fun BiometricBenefitsCard(
+    title: String,
+    description: String,
+    icon: @Composable () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val colors = LocalLibraryColorTokens.current
+    val typography = LocalLibraryTypography.current
+
+    Card(
+        modifier = modifier
+            .border(
+                width = 1.dp,
+                color = ColorComposeAdapter.toComposeColor(colors.borderSubtle),
+                shape = RoundedCornerShape(BiometricsDisclaimerLayoutDefaults.cardCornerRadius)
+            ),
+        shape = RoundedCornerShape(BiometricsDisclaimerLayoutDefaults.cardCornerRadius)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(BiometricsDisclaimerLayoutDefaults.cardInnerPadding),
+            verticalAlignment = Alignment.Top
+        ) {
+            Column(
+                modifier = Modifier.padding(end = BiometricsDisclaimerLayoutDefaults.cardIconColumnEndPadding),
+                verticalArrangement = Arrangement.Top
+            ) {
+                icon()
+            }
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(BiometricsDisclaimerLayoutDefaults.cardContentSpacing)
+            ) {
+                LabelMrcy(
+                    text = title,
+                    labelTokensOverride = LabelTokensOverride(
+                        labelTypography = typography.subtitle2
+                    ),
+                    limitMaxLabel = false
+                )
+                LabelMrcy(
+                    text = description,
+                    labelTokensOverride = LabelTokensOverride(
+                        labelTypography = typography.subtitle3
+                    ),
+                    limitMaxLabel = false
+                )
+            }
+        }
     }
 }
 
