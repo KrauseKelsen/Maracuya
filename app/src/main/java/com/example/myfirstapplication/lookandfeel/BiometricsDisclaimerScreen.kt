@@ -118,7 +118,8 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
             labelTokensOverride = LabelTokensOverride(
                 foregroundDefault = colors.fgDefault,
                 labelTypography = typography.headline24,
-            )
+            ),
+            limitMaxLabel = false
         )
 
         ButtonIconMrcy(
@@ -285,7 +286,10 @@ private fun BottomContentBiometrics(modifier: Modifier = Modifier) {
             secondaryButtonTokensOverride = SecondaryButtonTokensOverride(
                 contentColor = colors.fgMuted,
                 textTypography = typography.subtitle2,
-                contentPressColor = colors.fgMuted
+                contentPressColor = colors.fgMuted,
+                borderContainerColor = colors.transparent,
+                hoverContainerColor = colors.transparent,
+
             )
 
         )
