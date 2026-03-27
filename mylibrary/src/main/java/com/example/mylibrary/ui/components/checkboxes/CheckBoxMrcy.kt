@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.tokens.spacings.LabelSpacings
+import com.example.mylibrary.ui.components.inputs.checkbox.InputCheckBoxMrcy
+import com.example.mylibrary.ui.components.inputs.checkbox.InputCheckBoxTokens
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter

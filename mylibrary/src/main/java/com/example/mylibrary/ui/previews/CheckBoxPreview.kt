@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.ui.components.checkboxes.CheckBoxMrcy
 import com.example.mylibrary.ui.components.checkboxes.CheckBoxOption
-import com.example.mylibrary.ui.components.checkboxes.InputCheckBoxMrcy
+import com.example.mylibrary.ui.components.inputs.checkbox.InputCheckBoxMrcy
 import com.example.mylibrary.ui.previews.core.Mode
 import com.example.mylibrary.ui.previews.core.PreviewWrapper
 
@@ -29,27 +29,27 @@ fun InputCheckBox_States_Preview() {
                 label = "Checkbox text",
                 checked = false,
                 onCheckedChange = {},
-                showContainerBorder = true,
+                showContainerBorder = false,
             )
             InputCheckBoxMrcy(
                 label = "Checkbox text",
                 checked = true,
                 onCheckedChange = {},
-                showContainerBorder = true,
+                showContainerBorder = false,
             )
             InputCheckBoxMrcy(
                 label = "Checkbox text",
                 checked = true,
                 onCheckedChange = {},
                 enabled = false,
-                showContainerBorder = true,
+                showContainerBorder = false,
             )
             InputCheckBoxMrcy(
                 label = "Checkbox text",
                 checked = false,
                 onCheckedChange = {},
                 enabled = false,
-                showContainerBorder = true,
+                showContainerBorder = false,
             )
         }
     }
@@ -96,7 +96,9 @@ fun CheckBox_List_Error_Preview() {
             hasError = true,
             bottomText = "Field-specific error message",
             showBottomIcon = true,
-            showInputBorder = true,
+            showInputBorder = false,
+            optionalText = true,
+            showLabelIcon = true,
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mylibrary.ui.components.checkboxes
+package com.example.mylibrary.ui.components.inputs.checkbox
 
 import com.example.mylibrary.tokens.base.ColorToken
 import com.example.mylibrary.tokens.base.FontFamilyToken

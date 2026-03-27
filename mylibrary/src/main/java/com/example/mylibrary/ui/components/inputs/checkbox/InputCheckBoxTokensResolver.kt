@@ -1,4 +1,4 @@
-package com.example.mylibrary.ui.components.checkboxes
+package com.example.mylibrary.ui.components.inputs.checkbox
 
 import androidx.compose.runtime.Composable
 import com.example.mylibrary.compositions.LocalFontFamily
