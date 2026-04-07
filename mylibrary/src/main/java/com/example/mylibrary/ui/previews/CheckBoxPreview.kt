@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.ui.components.checkboxes.CheckBoxMrcy
 import com.example.mylibrary.ui.components.checkboxes.CheckBoxOption
-import com.example.mylibrary.ui.components.checkboxes.InputCheckBoxMrcy
+import com.example.mylibrary.ui.components.inputs.checkbox.InputCheckBoxMrcy
 import com.example.mylibrary.ui.previews.core.Mode
 import com.example.mylibrary.ui.previews.core.PreviewWrapper
 

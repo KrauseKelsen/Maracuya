@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.BiometricsDisclaimerScreen
 import com.example.myfirstapplication.lookandfeel.LoginMainScreen
 import com.example.myfirstapplication.lookandfeel.LoginScreen
+import com.example.myfirstapplication.lookandfeel.OneTimeDisclamerScreen
 import com.example.myfirstapplication.lookandfeel.VerifyCodeScreen
 import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.tokens.base.ColorToken
@@ -56,7 +57,8 @@ class MainActivity : ComponentActivity() {
 
             //LoginScreen()
             //VerifyCodeScreen()
-            BiometricsDisclaimerScreen()
+            //BiometricsDisclaimerScreen()
+            OneTimeDisclamerScreen()
         }
     }
 }

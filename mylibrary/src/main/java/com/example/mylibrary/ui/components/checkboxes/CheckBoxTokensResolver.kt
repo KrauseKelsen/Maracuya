@@ -5,6 +5,7 @@ import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
 import com.example.mylibrary.compositions.LocalLibraryTypography
+import com.example.mylibrary.ui.components.inputs.checkbox.InputCheckBoxTokensGroup
 
 /**
  * Resolver de tokens para CheckBoxMrcy.

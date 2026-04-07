@@ -1,4 +1,4 @@
-package com.example.mylibrary.ui.components.checkboxes
+package com.example.mylibrary.ui.components.inputs.checkbox
 
 import androidx.compose.runtime.Composable
 import com.example.mylibrary.compositions.LocalFontFamily
@@ -17,7 +17,6 @@ object InputCheckBoxTokensResolver {
         override: InputCheckBoxTokens? = null,
     ): InputCheckBoxTokens {
         override?.let { return it }
-
         return when {
             hasLibraryTokens() -> fromLibrary(group)
             else -> fromMaterial(group)
@@ -50,7 +49,7 @@ object InputCheckBoxTokensResolver {
                 checkIconColor = colors.fgOnInverse,
                 labelColor = colors.fgDefault,
                 labelDisabledColor = colors.fgMuted,
-                labelTypography = typography.placeholder,
+                labelTypography = typography.headline16,
                 fontFamilyToken = fontFamily,
                 checkIcon = icons.general.check,
             )

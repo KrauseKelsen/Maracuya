@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.tokens.spacings.LabelSpacings
+import com.example.mylibrary.ui.components.inputs.checkbox.InputCheckBoxMrcy
+import com.example.mylibrary.ui.components.inputs.checkbox.InputCheckBoxTokens
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter
@@ -32,11 +34,11 @@ data class CheckBoxOption(
  */
 @Composable
 fun CheckBoxMrcy(
+    modifier: Modifier = Modifier,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     checkBoxText: String,
-    label: String,
-    modifier: Modifier = Modifier,
+    label: String? = null,
     enabled: Boolean = true,
     optionalText: Boolean = false,
     showLabelIcon: Boolean = false,
@@ -53,12 +55,14 @@ fun CheckBoxMrcy(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        LabelMrcy(
-            text = label,
-            optionalText = optionalText,
-            showIcon = showLabelIcon,
-            error = hasError,
-        )
+        if (label != null){
+            LabelMrcy(
+                text = label,
+                optionalText = optionalText,
+                showIcon = showLabelIcon,
+                error = hasError,
+            )
+        }
 
         InputCheckBoxMrcy(
             label = checkBoxText,

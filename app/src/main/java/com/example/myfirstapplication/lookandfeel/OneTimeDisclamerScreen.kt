@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,7 +25,7 @@ import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryTypography
 import com.example.mylibrary.theme.MyLibraryTheme
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
-import com.example.mylibrary.ui.components.checkboxes.InputCheckBoxMrcy
+import com.example.mylibrary.ui.components.checkboxes.CheckBoxMrcy
 import com.example.mylibrary.ui.components.labels.LabelMrcy
 import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
@@ -45,7 +44,7 @@ fun OneTimeDisclamerScreen() {
                 TopContentOneTimeDisclamer(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 40.dp, vertical = 60.dp)
+                        .padding(horizontal = 40.dp, vertical = 40.dp)
                 )
 
                 CentralContentOneTimeDisclamer(
@@ -62,7 +61,7 @@ fun OneTimeDisclamerScreen() {
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .fillMaxWidth()
-                    .padding(horizontal = 40.dp, vertical = 50.dp),
+                    .padding(horizontal = 40.dp, vertical = 90.dp),
                 buttonEnabled = acceptedPolicy
             )
         }
@@ -82,7 +81,7 @@ private fun TopContentOneTimeDisclamer(modifier: Modifier = Modifier) {
             text = "Su seguridad es nuestra prioridad.",
             labelTokensOverride = LabelTokensOverride(
                 foregroundDefault = colors.fgDefault,
-                labelTypography = typography.headline24
+                labelTypography = typography.headline21
             ),
             limitMaxLabel = false
         )
@@ -110,7 +109,7 @@ private fun CentralContentOneTimeDisclamer(
         verticalArrangement = Arrangement.spacedBy(30.dp)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.biometricsdisclamerscreen_imagepage),
+            painter = painterResource(id = R.drawable.onetimedisclamerscreen_imagepage),
             contentDescription = "Ilustración de seguridad",
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.FillWidth
@@ -120,16 +119,18 @@ private fun CentralContentOneTimeDisclamer(
             text = "Para proteger su dinero, nuestra app analiza las características técnicas de este celular y verifica que no existan aplicaciones maliciosas que puedan robar su información. Si detectamos un riesgo o un ingreso inusual, pausaremos la transacción y le pediremos verificar su identidad para asegurar que es usted.",
             labelTokensOverride = LabelTokensOverride(
                 foregroundDefault = colors.fgDefault,
-                labelTypography = typography.subtitle2
+                labelTypography = typography.headline16
             ),
             limitMaxLabel = false
         )
 
-        InputCheckBoxMrcy(
-            label = "Estoy de acuerdo con las políticas de seguridad.",
+        CheckBoxMrcy(
             checked = checked,
             onCheckedChange = onCheckedChange,
-            showContainerBorder = false
+            checkBoxText = "Estoy de acuerdo con las políticas de seguridad.",
+            optionalText = false,
+            showLabelIcon = false,
+            showInputBorder = false,
         )
     }
 }
