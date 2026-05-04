@@ -4,7 +4,7 @@ package com.example.mylibrary.tokens.spacings
  * Spacings exclusivos de InputCheckBox.
  */
 object InputCheckBoxSpacings {
-    const val CheckSize = 28
+    const val CheckSize = 30
     const val CheckCornerRadius = 6
     const val CheckBorderWidth = 1
     const val CardCornerRadius = 14

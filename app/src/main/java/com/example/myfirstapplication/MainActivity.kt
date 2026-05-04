@@ -15,6 +15,8 @@ import com.example.myfirstapplication.lookandfeel.LoginScreen
 import com.example.myfirstapplication.lookandfeel.OneTimeDisclamerScreen
 import com.example.myfirstapplication.lookandfeel.VerifyCodeScreen
 import com.example.mylibrary.compositions.LocalFontFamily
+import com.example.mylibrary.compositions.LocalLibraryIcons
+import com.example.mylibrary.theme.MyLibraryTheme
 import com.example.mylibrary.tokens.base.ColorToken
 import com.example.mylibrary.tokens.base.TypographyToken
 import com.example.mylibrary.ui.components.utils.IconPosition
@@ -24,6 +26,11 @@ import com.example.mylibrary.ui.components.buttons.GenericButtonIcon
 import com.example.mylibrary.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
 import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonTokensResolver
+import com.example.mylibrary.ui.components.dropdowns.DropDownContent
+import com.example.mylibrary.ui.components.dropdowns.DropDownItem
+import com.example.mylibrary.ui.components.dropdowns.DropDownMrcy
+import com.example.mylibrary.ui.components.dropdowns.DropDownSelectionMode
+import com.example.mylibrary.ui.components.dropdowns.DropDownVariant
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicMrcy
 import com.example.mylibrary.ui.components.inputs.basic.InputFieldBasicType
 import com.example.mylibrary.ui.components.inputs.config.InputFieldBasicTokenGroup
@@ -33,6 +40,8 @@ import com.example.mylibrary.ui.components.textfields.TextFieldMrcy
 import com.example.mylibrary.ui.components.textfields.TextFieldVariant
 import com.example.mylibrary.ui.components.texts.LegalText
 import com.example.mylibrary.ui.components.texts.LegalTextTokens
+import com.example.mylibrary.ui.previews.core.Mode
+import com.example.mylibrary.ui.previews.core.PreviewWrapper
 
 
 class MainActivity : ComponentActivity() {
@@ -58,7 +67,29 @@ class MainActivity : ComponentActivity() {
             //LoginScreen()
             //VerifyCodeScreen()
             //BiometricsDisclaimerScreen()
-            OneTimeDisclamerScreen()
+            //OneTimeDisclamerScreen()
+
+            var selectedIds by remember { mutableStateOf(setOf("national")) }
+
+            val content = DropDownContent.Simple(
+                items = listOf(
+                    DropDownItem(id = "national", label = "Nacional"),
+                    DropDownItem(id = "passport", label = "Pasaporte"),
+                    DropDownItem(id = "foreign", label = "Cédula extranjera"),
+                ),
+            )
+
+            MyLibraryTheme {
+                 DropDownMrcy(
+                     selectedIds = selectedIds,
+                     onSelectionChange = { selectedIds = it },
+                     label = "Tipo de identificación",
+                     placeholder = "Selecciona una opción",
+                     content = content,
+                     dropDownVariant = DropDownVariant.SIMPLE,
+                     bottomText = "Selecciona un tipo de documento",
+                 )
+             }
         }
     }
 }

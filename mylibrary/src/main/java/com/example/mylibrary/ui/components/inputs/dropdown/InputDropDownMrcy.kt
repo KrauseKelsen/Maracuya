@@ -10,17 +10,19 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.mylibrary.tokens.base.IconToken
 import com.example.mylibrary.ui.components.inputs.config.InputDropDownTokenGroup
+import com.example.mylibrary.ui.components.labels.LabelMrcy
+import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
-import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter
 import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
-import com.example.mylibrary.utils.composeadapters.TypographyComposeAdapter
 
 /**
  * Átomo visual de dropdown.
@@ -37,7 +39,7 @@ fun InputDropDownMrcy(
     expanded: Boolean = false,
     variant: InputDropDownVariant = InputDropDownVariant.SIMPLE,
     tokenGroup: InputDropDownTokenGroup = InputDropDownTokenGroup.BASIC,
-    leadingIcon: com.example.mylibrary.tokens.base.IconToken? = null,
+    leadingIcon: IconToken? = null,
     inputDropDownTokens: InputDropDownTokens? = null,
 ) {
     val tokens = InputDropDownTokensResolver.resolve(
@@ -60,30 +62,39 @@ fun InputDropDownMrcy(
         Color.Transparent
     }
 
-    val textColor = if (value.isEmpty()) {
-        ColorComposeAdapter.toComposeColor(tokens.placeholderColor)
-    } else {
-        ColorComposeAdapter.toComposeColor(tokens.textColor)
-    }
-
-    val textStyle = TypographyComposeAdapter.toTextStyle(
-        if (value.isEmpty()) tokens.placeholderTypography else tokens.textTypography,
-        FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken),
+    val labelTokensOverride = LabelTokensOverride(
+        foregroundDefault = if (value.isEmpty()) {
+            tokens.placeholderColor
+        } else {
+            tokens.textColor
+        },
+        foregroundError = if (value.isEmpty()) {
+            tokens.placeholderColor
+        } else {
+            tokens.textColor
+        },
+        labelTypography = if (value.isEmpty()) {
+            tokens.placeholderTypography
+        } else {
+            tokens.textTypography
+        },
     )
 
+    val shape = RoundedCornerShape(16.dp)
     Row(
         modifier = modifier
             .fillMaxWidth()
             .heightIn(min = 56.dp)
             .background(
                 color = backgroundColor,
-                shape = RoundedCornerShape(16.dp),
+                shape = shape,
             )
             .border(
                 width = if (expanded) 2.dp else 1.dp,
                 color = ColorComposeAdapter.toComposeColor(borderColor),
-                shape = RoundedCornerShape(16.dp),
+                shape = shape,
             )
+            .clip(shape)
             .then(
                 if (enabled && !readOnly) {
                     Modifier.clickable(onClick = onClick)
@@ -99,21 +110,21 @@ fun InputDropDownMrcy(
             IconComposeAdapter.Render(
                 icon = icon,
                 fillColor = ColorComposeAdapter.toComposeColor(tokens.iconColor),
-                size = 24.dp,
+                size = 16.dp,
             )
         }
 
-        Text(
+        LabelMrcy(
             modifier = Modifier.weight(1f),
             text = value.ifEmpty { placeholder },
-            style = textStyle,
-            color = textColor,
+            labelTokensOverride = labelTokensOverride,
+            limitMaxLabel = false,
         )
 
         IconComposeAdapter.Render(
             icon = if (expanded) tokens.trailingExpandedIcon else tokens.trailingCollapsedIcon,
             fillColor = ColorComposeAdapter.toComposeColor(tokens.iconColor),
-            modifier = Modifier.size(24.dp),
+            size = 16.dp,
             contentDescription = if (expanded) "Contraer" else "Expandir",
         )
     }

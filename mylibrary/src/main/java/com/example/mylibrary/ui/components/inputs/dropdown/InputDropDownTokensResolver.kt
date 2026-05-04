@@ -5,6 +5,7 @@ import com.example.mylibrary.compositions.LocalFontFamily
 import com.example.mylibrary.compositions.LocalLibraryColorTokens
 import com.example.mylibrary.compositions.LocalLibraryIcons
 import com.example.mylibrary.compositions.LocalLibraryTypography
+import com.example.mylibrary.tokens.base.IconToken
 import com.example.mylibrary.ui.components.inputs.config.InputDropDownTokenGroup
 
 /**
@@ -42,7 +43,7 @@ object InputDropDownTokensResolver {
     private fun fromLibrary(
         group: InputDropDownTokenGroup,
         variant: InputDropDownVariant,
-        leadingIconOverride: com.example.mylibrary.tokens.base.IconToken?,
+        leadingIconOverride: IconToken?,
     ): InputDropDownTokens {
         val colors = LocalLibraryColorTokens.current
         val typography = LocalLibraryTypography.current
@@ -63,7 +64,7 @@ object InputDropDownTokensResolver {
             textColor = colors.fgDefault,
             placeholderColor = colors.fgMuted,
             iconColor = colors.fgDefault,
-            menuBackground = colors.surfaceSubtle,
+            menuBackground = colors.bgBase,
             menuBorder = colors.borderSubtle,
             menuItemTextColor = colors.fgDefault,
             menuItemSelectedTextColor = colors.fgDefault,
@@ -72,8 +73,8 @@ object InputDropDownTokensResolver {
             placeholderTypography = typography.placeholder,
             menuItemTypography = typography.headline16,
             fontFamilyToken = fontFamily,
-            trailingCollapsedIcon = icons.arrows.arrowDropDown,
-            trailingExpandedIcon = icons.arrows.arrowDropUp,
+            trailingCollapsedIcon = icons.arrows.expandMore,
+            trailingExpandedIcon = icons.arrows.expandLess,
             leadingIcon = leadingIconOverride,
             selectedItemLeadingIcon = variantSelectedIcon,
         )
