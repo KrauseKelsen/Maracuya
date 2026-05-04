@@ -21,6 +21,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.example.mylibrary.tokens.spacings.InputCheckBoxSpacings
+import com.example.mylibrary.ui.components.labels.LabelMrcy
+import com.example.mylibrary.ui.components.labels.LabelTokens
+import com.example.mylibrary.ui.components.labels.LabelTokensOverride
 import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
 import com.example.mylibrary.utils.composeadapters.FontFamiliesComposeAdapter
 import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
@@ -99,14 +102,14 @@ fun InputCheckBoxMrcy(
             colors = checkboxColors,
         )
 
-        Text(
+        LabelMrcy(
             text = label,
-            style = TypographyComposeAdapter.toTextStyle(
-                tokens.labelTypography,
-                FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken),
+            labelTokensOverride = LabelTokensOverride(
+                labelTypography = tokens.labelTypography,
+                fontFamily = tokens.fontFamilyToken,
+                foregroundDefault = tokens.labelColor,
             ),
-            color = ColorComposeAdapter.toComposeColor(labelColor),
-            modifier = Modifier.weight(1f),
+            limitMaxLabel = true,
         )
     }
 }
