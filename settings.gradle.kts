@@ -169,4 +169,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MyFirstApplication"
 include(":app")
-include(":mylibrary")
+include(":maracuya")
