@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mylibrary"
+    namespace = "cruxui.android.maracuya"
     compileSdk = 36
 
 

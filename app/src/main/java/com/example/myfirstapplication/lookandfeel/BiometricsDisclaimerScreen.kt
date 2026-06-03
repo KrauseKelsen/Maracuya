@@ -23,21 +23,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.mylibrary.R
-import com.example.mylibrary.compositions.LocalLibraryColorTokens
-import com.example.mylibrary.compositions.LocalLibraryIcons
-import com.example.mylibrary.compositions.LocalLibraryTypography
-import com.example.mylibrary.theme.MyLibraryTheme
-import com.example.mylibrary.ui.components.buttons.icon.ButtonIconMrcy
-import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokenGroup
-import com.example.mylibrary.ui.components.buttons.icon.ButtonIconTokensOverride
-import com.example.mylibrary.ui.components.buttons.primary.PrimaryButtonMrcy
-import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonMrcy
-import com.example.mylibrary.ui.components.buttons.secondary.SecondaryButtonTokensOverride
-import com.example.mylibrary.ui.components.labels.LabelMrcy
-import com.example.mylibrary.ui.components.labels.LabelTokensOverride
-import com.example.mylibrary.utils.composeadapters.ColorComposeAdapter
-import com.example.mylibrary.utils.composeadapters.IconComposeAdapter
+import cruxui.android.maracuya.R
+import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalLibraryIcons
+import cruxui.android.maracuya.compositions.LocalLibraryTypography
+import cruxui.android.maracuya.theme.MyLibraryTheme
+import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconMrcy
+import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokenGroup
+import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.primary.PrimaryButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonTokensOverride
+import cruxui.android.maracuya.ui.components.labels.LabelMrcy
+import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
+import cruxui.android.maracuya.utils.composeadapters.IconComposeAdapter
 
 /**
  * Valores visuales centralizados para mantener consistencia y facilitar mantenimiento del layout.
