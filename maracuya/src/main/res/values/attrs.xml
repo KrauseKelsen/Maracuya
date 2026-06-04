@@ -10,4 +10,15 @@
         <attr name="showProgressOnPress" format="boolean" />
         <attr name="isEnabled" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="ButtonWrp">
+        <attr name="text" />
+        <attr name="showProgressOnPress" />
+        <attr name="isEnabled" />
+        <attr name="buttonVariant" format="enum">
+            <enum name="primary" value="0" />
+            <enum name="secondary" value="1" />
+        </attr>
+        <attr name="buttonTokensOverride" format="string" />
+    </declare-styleable>
 </resources>
