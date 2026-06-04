@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    app:themeName="Maracuya"
+    app:themeStyle="auto"
+    app:useMaterial="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <cruxui.android.maracuya.wrappers.components.buttons.button.ButtonWrp
+            android:id="@+id/buttonMrcyPrimaryFromXml"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:text="Primary XML"
+            app:buttonVariant="primary"
+            app:showProgressOnPress="true"
+            app:isEnabled="true" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.button.ButtonWrp
+            android:id="@+id/buttonMrcySecondaryOverrideFromXml"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:text="Secondary XML override"
+            app:buttonVariant="secondary"
+            app:buttonTokensOverride="mytokensoverride"
+            app:showProgressOnPress="false"
+            app:isEnabled="true" />
+
+    </LinearLayout>
+
+</cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>

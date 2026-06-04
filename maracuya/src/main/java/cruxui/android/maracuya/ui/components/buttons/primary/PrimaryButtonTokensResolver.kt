@@ -8,10 +8,6 @@ import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.tokens.base.ColorToken
 import cruxui.android.maracuya.tokens.base.TypographyToken
-import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonTokens
-import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonTokensResolver
-import cruxui.android.maracuya.ui.components.buttons.secondary.merge
 
 object PrimaryButtonTokensResolver {
 
