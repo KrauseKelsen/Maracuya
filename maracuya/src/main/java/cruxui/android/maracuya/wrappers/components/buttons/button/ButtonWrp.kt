@@ -46,7 +46,7 @@ class ButtonWrp @JvmOverloads constructor(
     init {
         val initialValues = ButtonAttributeParser.parse(context, attrs)
         buttonTextState = initialValues.text
-        modifierState = initialValues.modifier
+        modifierState = initialValues.modifier as Modifier.Companion
         enabledState = initialValues.enabled
         shapeState = initialValues.shape
         interactionSourceState = initialValues.interactionSource
@@ -66,7 +66,7 @@ class ButtonWrp @JvmOverloads constructor(
     var modifier: Modifier
         get() = modifierState
         set(value) {
-            modifierState = value
+            modifierState = value as Modifier.Companion
         }
 
     var shape: Shape
