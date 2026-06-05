@@ -96,6 +96,7 @@ fun TextFieldMrcy(
         )
 
         InputFieldBasicMrcy(
+            modifier = modifier.padding(10.dp),
             value = value,
             placeholder = placeholder,
             onValueChange = onValueChange,
@@ -107,7 +108,6 @@ fun TextFieldMrcy(
             keyboardTypeOverride = behavior.keyboardTypeOverride,
             visualTransformation = behavior.visualTransformation,
             enableImplicitTrailingClear = enableImplicitTrailingClear,
-            modifier = Modifier.padding(top = 8.dp),
             inputFieldBasicTokens = behavior.inputTokens,
         )
 
@@ -177,7 +177,7 @@ fun TextFieldMrcy(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 8.dp),
+                .padding(top = 10.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -251,6 +251,7 @@ fun TextFieldMrcy(
 
             if (shouldShowPinVisibilityIcon && (trailingHiddenIcon != null || trailingVisibleIcon != null)) {
                 PinVisibilityIcon(
+                    modifier = Modifier,
                     isVisible = isPinVisible,
                     onClick = { isPinVisible = !isPinVisible },
                     hiddenIcon = trailingHiddenIcon,
@@ -274,12 +275,14 @@ fun TextFieldMrcy(
 
 @Composable
 private fun PinVisibilityIcon(
+    modifier: Modifier = Modifier,
     isVisible: Boolean,
     onClick: () -> Unit,
     hiddenIcon: IconToken?,
     visibleIcon: IconToken?,
     iconColor: cruxui.android.maracuya.tokens.base.ColorToken,
     enabled: Boolean,
+
 ) {
     val icon = if (isVisible) {
         visibleIcon ?: hiddenIcon
@@ -290,8 +293,7 @@ private fun PinVisibilityIcon(
     IconComposeAdapter.Render(
         icon = icon,
         fillColor = ColorComposeAdapter.toComposeColor(iconColor),
-        modifier = Modifier
-            .size(24.dp)
+        modifier = modifier
             .then(
                 if (enabled) {
                     Modifier.clickable(onClick = onClick)
