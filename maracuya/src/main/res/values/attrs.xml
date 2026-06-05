@@ -21,4 +21,14 @@
         </attr>
         <attr name="buttonTokensOverride" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="LabelWrp">
+        <attr name="text" />
+        <attr name="optionalText" format="boolean" />
+        <attr name="showIcon" format="boolean" />
+        <attr name="error" format="boolean" />
+        <attr name="onClickContentDescription" format="string" />
+        <attr name="labelTokensOverride" format="string" />
+        <attr name="limitMaxLabel" format="boolean" />
+    </declare-styleable>
 </resources>
