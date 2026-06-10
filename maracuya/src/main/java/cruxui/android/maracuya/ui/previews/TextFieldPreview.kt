@@ -1,15 +1,26 @@
 package cruxui.android.maracuya.ui.previews
 
+import android.view.LayoutInflater
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.viewinterop.AndroidView
+import cruxui.android.maracuya.R
+import cruxui.android.maracuya.compositions.LocalFontFamily
+import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalLibraryIcons
+import cruxui.android.maracuya.compositions.LocalLibraryTypography
+import cruxui.android.maracuya.ui.components.inputs.config.InputFieldBasicTokenGroup
+import cruxui.android.maracuya.ui.components.textfields.TextFieldTokens
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
 import cruxui.android.maracuya.ui.components.textfields.TextFieldVariant
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
+import cruxui.android.maracuya.wrappers.components.textfields.TextFieldTokensOverrideRegistry
 
 /* ────────────────────────────────────────────── */
 /* Default                                        */
@@ -263,6 +274,45 @@ fun TextField_Pin_4_Error() {
             hasError = true,
             bottomText = "Field-specific error message",
             showBottomIcon = true,
+        )
+    }
+}
+
+
+private const val XML_PREVIEW_TOKENS_OVERRIDE = "mytokensoverride"
+
+@Preview(name = "TextFieldWrp XML - Tokens override registry", showBackground = true)
+@Composable
+fun TextFieldWrp_XmlTokensOverridePreview() {
+    PreviewWrapper(style = Mode.current) {
+        TextFieldTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE) {
+            val colors = LocalLibraryColorTokens.current
+            val typography = LocalLibraryTypography.current
+            val icons = LocalLibraryIcons.current
+            val fontFamily = LocalFontFamily.current
+
+            TextFieldTokens(
+                fontFamilyToken = fontFamily,
+                bottomTextErrorColor = colors.fgError,
+                bottomTextTypography = typography.bottomText,
+                bottomTextColor = colors.fgDefault,
+                bottomTextIcon = icons.alerts.error,
+                inputFieldTokenGroup = InputFieldBasicTokenGroup.TRAILING_FACE_ID,
+                passwordHiddenIcon = icons.general.visibility,
+                passwordVisibleIcon = icons.general.visibilityOff,
+            )
+        }
+
+        DisposableEffect(Unit) {
+            onDispose {
+                TextFieldTokensOverrideRegistry.unregister(XML_PREVIEW_TOKENS_OVERRIDE)
+            }
+        }
+
+        AndroidView(
+            factory = { context ->
+                LayoutInflater.from(context).inflate(R.layout.textfield_wrp_preview, null)
+            },
         )
     }
 }

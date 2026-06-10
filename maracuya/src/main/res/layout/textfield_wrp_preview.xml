@@ -1,0 +1,171 @@
+<cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    app:themeName="Maracuya"
+    app:themeStyle="auto"
+    app:useMaterial="false">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyDefaultFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textFieldLabel="Label"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyWithValueFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldValue="Angela Dariela"
+                app:textFieldLabel="Label"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyErrorFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="Label"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldHasError="true"
+                app:textFieldBottomText="Field-specific error message"
+                app:textFieldShowBottomIcon="true"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyDisabledFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="Label"
+                app:textFieldPlaceholder="Placeholder"
+                app:isEnabled="false"
+                app:textFieldBottomText="Disabled field"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyReadonlyFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldValue="Readonly value"
+                app:textFieldLabel="Label"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldReadOnly="true"
+                app:textFieldBottomText="Readonly information"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyOptionalIconFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="Label"
+                app:textFieldPlaceholder="Placeholder"
+                app:optionalText="true"
+                app:textFieldShowLabelIcon="true"
+                app:textFieldBottomText="Supplementary text"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyHelperIconFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="Label"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldBottomText="Supplementary text"
+                app:textFieldShowBottomIcon="true"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyLongTextsFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="This is a label that can extend to more than one line"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldBottomText="This is a helper text that explains the field in more detail"
+                app:textFieldVariant="default" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyFaceIdFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldValue="Daviuser1234"
+                app:textFieldLabel="Usuario"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldVariant="face_id" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyPasswordFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldValue="••••••"
+                app:textFieldLabel="Password"
+                app:textFieldPlaceholder="Password"
+                app:textFieldVariant="password" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyUserFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="Usuario"
+                app:textFieldPlaceholder="Daviuser1234"
+                app:textFieldBottomText="Este ejemplo usa la variante USER"
+                app:textFieldVariant="user" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyPin4FromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="Código de seguridad"
+                app:textFieldLength="4"
+                app:textFieldVariant="pin" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyPin4ErrorFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldLabel="Código de seguridad"
+                app:textFieldLength="4"
+                app:textFieldHasError="true"
+                app:textFieldBottomText="Field-specific error message"
+                app:textFieldShowBottomIcon="true"
+                app:textFieldVariant="pin" />
+
+            <cruxui.android.maracuya.wrappers.components.textfields.TextFieldWrp
+                android:id="@+id/textFieldMrcyOverrideFromXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:textFieldValue="Token override XML"
+                app:textFieldLabel="Override"
+                app:textFieldPlaceholder="Placeholder"
+                app:textFieldBottomText="Este campo usa tokens registrados desde Kotlin"
+                app:textFieldTokensOverride="mytokensoverride"
+                app:textFieldVariant="default" />
+
+        </LinearLayout>
+    </ScrollView>
+</cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>
