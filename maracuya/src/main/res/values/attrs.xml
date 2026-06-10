@@ -31,4 +31,22 @@
         <attr name="labelTokensOverride" format="string" />
         <attr name="limitMaxLabel" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="TextFieldWrp">
+        <attr name="textFieldValue" format="string" />
+        <attr name="textFieldPinValue" format="string" />
+        <attr name="textFieldLabel" format="string" />
+        <attr name="textFieldPlaceholder" format="string" />
+        <attr name="textFieldLength" format="string" />
+        <attr name="isEnabled" />
+        <attr name="textFieldReadOnly" format="boolean" />
+        <attr name="textFieldHasError" format="boolean" />
+        <attr name="optionalText" />
+        <attr name="textFieldShowLabelIcon" format="boolean" />
+        <attr name="textFieldBottomText" format="string" />
+        <attr name="textFieldShowBottomIcon" format="boolean" />
+        <attr name="textFieldVariant" format="string" />
+        <attr name="textFieldEnableImplicitTrailingClear" format="boolean" />
+        <attr name="textFieldTokensOverride" format="string" />
+    </declare-styleable>
+
 </resources>
