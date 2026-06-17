@@ -6,11 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.AbstractComposeView
 import cruxui.android.maracuya.theme.LibraryThemes
 import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.ui.components.buttons.primary.PrimaryButtonMrcy
+import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
 import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
@@ -72,7 +71,7 @@ class PrimaryButtonWrp @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : AbstractComposeView(context, attrs, defStyleAttr) {
+) : MrcyXmlComposeView(context, attrs, defStyleAttr) {
 
     private var buttonTextState by mutableStateOf("Primary Button")
     private var showProgressOnPressState by mutableStateOf(true)
@@ -112,7 +111,7 @@ class PrimaryButtonWrp @JvmOverloads constructor(
             PrimaryButtonMrcy(
                 text = buttonTextState,
                 onClick = ::performClick,
-                modifier = Modifier,
+                modifier = modifierState,
                 enabled = enabledState,
                 showProgressOnPress = showProgressOnPressState,
             )
@@ -127,7 +126,7 @@ class PrimaryButtonWrp @JvmOverloads constructor(
             PrimaryButtonMrcy(
                 text = buttonTextState,
                 onClick = ::performClick,
-                modifier = Modifier,
+                modifier = modifierState,
                 enabled = enabledState,
                 showProgressOnPress = showProgressOnPressState,
             )

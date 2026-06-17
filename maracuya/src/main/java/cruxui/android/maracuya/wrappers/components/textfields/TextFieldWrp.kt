@@ -7,14 +7,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.AbstractComposeView
 import cruxui.android.maracuya.theme.LibraryThemes
 import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.tokens.base.IconToken
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
 import cruxui.android.maracuya.ui.components.textfields.TextFieldTokens
 import cruxui.android.maracuya.ui.components.textfields.TextFieldVariant
+import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
 import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
@@ -28,14 +27,13 @@ class TextFieldWrp @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : AbstractComposeView(context, attrs, defStyleAttr) {
+) : MrcyXmlComposeView(context, attrs, defStyleAttr) {
 
     private var valueState by mutableStateOf("")
     private var pinValueState by mutableStateOf(emptyList<String>())
     private var labelState by mutableStateOf("Label")
     private var placeholderState by mutableStateOf("Placeholder")
     private var lengthState by mutableIntStateOf(4)
-    private var modifierState by mutableStateOf<Modifier>(Modifier)
     private var enabledState by mutableStateOf(isEnabled)
     private var readOnlyState by mutableStateOf(false)
     private var hasErrorState by mutableStateOf(false)
@@ -59,7 +57,7 @@ class TextFieldWrp @JvmOverloads constructor(
         labelState = initialValues.label
         placeholderState = initialValues.placeholder
         lengthState = initialValues.length
-        modifierState = initialValues.modifier
+        modifier = initialValues.modifier
         enabledState = initialValues.enabled
         readOnlyState = initialValues.readOnly
         hasErrorState = initialValues.hasError
@@ -106,12 +104,6 @@ class TextFieldWrp @JvmOverloads constructor(
         set(value) {
             lengthState = value.coerceToSupportedPinLength()
             pinValueState = pinValueState.normalizedPin(lengthState)
-        }
-
-    var modifier: Modifier
-        get() = modifierState
-        set(value) {
-            modifierState = value
         }
 
     var readOnly: Boolean

@@ -6,13 +6,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.AbstractComposeView
 import cruxui.android.maracuya.theme.LibraryThemes
 import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokens
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
 import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
@@ -26,9 +25,8 @@ class LabelWrp @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : AbstractComposeView(context, attrs, defStyleAttr) {
+) : MrcyXmlComposeView(context, attrs, defStyleAttr) {
 
-    private var modifierState by mutableStateOf(Modifier)
     private var textState by mutableStateOf("Label")
     private var optionalTextState by mutableStateOf(false)
     private var showIconState by mutableStateOf(false)
@@ -41,7 +39,7 @@ class LabelWrp @JvmOverloads constructor(
 
     init {
         val initialValues = LabelAttributeParser.parse(context, attrs)
-        modifierState = initialValues.modifier
+        modifier = initialValues.modifier
         textState = initialValues.text
         optionalTextState = initialValues.optionalText
         showIconState = initialValues.showIcon
@@ -52,12 +50,6 @@ class LabelWrp @JvmOverloads constructor(
         labelTokensOverrideNameState = initialValues.labelTokensOverrideName
         limitMaxLabelState = initialValues.limitMaxLabel
     }
-
-    var modifier: Modifier
-        get() = modifierState
-        set(value) {
-            modifierState = value
-        }
 
     var text: String
         get() = textState

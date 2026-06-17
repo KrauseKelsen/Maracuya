@@ -8,9 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.platform.AbstractComposeView
 import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.theme.LibraryThemes
 import cruxui.android.maracuya.theme.MyLibraryTheme
@@ -18,6 +16,7 @@ import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokens
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
+import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
 import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
@@ -30,10 +29,9 @@ class ButtonWrp @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : AbstractComposeView(context, attrs, defStyleAttr) {
+) : MrcyXmlComposeView(context, attrs, defStyleAttr) {
 
     private var buttonTextState by mutableStateOf("Button")
-    private var modifierState by mutableStateOf(Modifier)
     private var enabledState by mutableStateOf(isEnabled)
     private var shapeState by mutableStateOf<Shape>(RoundedCornerShape(100.dp))
     private var interactionSourceState by mutableStateOf(MutableInteractionSource())
@@ -46,7 +44,7 @@ class ButtonWrp @JvmOverloads constructor(
     init {
         val initialValues = ButtonAttributeParser.parse(context, attrs)
         buttonTextState = initialValues.text
-        modifierState = initialValues.modifier as Modifier.Companion
+        modifier = initialValues.modifier
         enabledState = initialValues.enabled
         shapeState = initialValues.shape
         interactionSourceState = initialValues.interactionSource
@@ -61,12 +59,6 @@ class ButtonWrp @JvmOverloads constructor(
         get() = buttonTextState
         set(value) {
             buttonTextState = value
-        }
-
-    var modifier: Modifier
-        get() = modifierState
-        set(value) {
-            modifierState = value as Modifier.Companion
         }
 
     var shape: Shape

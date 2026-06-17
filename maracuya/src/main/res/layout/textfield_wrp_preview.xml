@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:textFieldLabel="Label"
-                app:textFieldPlaceholder="Placeholder"
+                app:textFieldPlaceholder="Placeholder bug"
                 app:optionalText="true"
                 app:textFieldShowLabelIcon="true"
                 app:textFieldBottomText="Supplementary text"
@@ -165,7 +165,6 @@
                 app:textFieldBottomText="Este campo usa tokens registrados desde Kotlin"
                 app:textFieldTokensOverride="mytokensoverride"
                 app:textFieldVariant="default" />
-
         </LinearLayout>
     </ScrollView>
 </cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>
