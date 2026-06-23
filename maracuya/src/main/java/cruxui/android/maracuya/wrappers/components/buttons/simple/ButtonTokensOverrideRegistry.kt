@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.wrappers.components.buttons.button
+package cruxui.android.maracuya.wrappers.components.buttons.simple
 
 import androidx.compose.runtime.Composable
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride

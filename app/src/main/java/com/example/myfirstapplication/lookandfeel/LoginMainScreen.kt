@@ -110,6 +110,7 @@ fun BottonContent(modifier: Modifier = Modifier) {
 
             },
             buttonTokensOverride = ButtonTokensOverride(
+                containerColor = colors.fgOnInverse,
                 contentColor = colors.fgDefault,
                 borderContainerColor = colors.fgDefault,
                 hoverContainerColor = colors.fgDefault

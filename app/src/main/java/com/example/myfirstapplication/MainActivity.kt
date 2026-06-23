@@ -66,27 +66,29 @@ class MainActivity : ComponentActivity() {
             //BiometricsDisclaimerScreen()
             //OneTimeDisclamerScreen()
 
-            var selectedIds by remember { mutableStateOf(setOf("national")) }
+//            var selectedIds by remember { mutableStateOf(setOf("national")) }
+//
+//            val content = DropDownContent.Simple(
+//                items = listOf(
+//                    DropDownItem(id = "national", label = "Nacional"),
+//                    DropDownItem(id = "passport", label = "Pasaporte"),
+//                    DropDownItem(id = "foreign", label = "Cédula extranjera"),
+//                ),
+//            )
+//
+//            MyLibraryTheme {
+//                 DropDownMrcy(
+//                     selectedIds = selectedIds,
+//                     onSelectionChange = { selectedIds = it },
+//                     label = "Tipo de identificación",
+//                     placeholder = "Selecciona una opción",
+//                     content = content,
+//                     dropDownVariant = DropDownVariant.SIMPLE,
+//                     bottomText = "Selecciona un tipo de documento",
+//                 )
+//             }
 
-            val content = DropDownContent.Simple(
-                items = listOf(
-                    DropDownItem(id = "national", label = "Nacional"),
-                    DropDownItem(id = "passport", label = "Pasaporte"),
-                    DropDownItem(id = "foreign", label = "Cédula extranjera"),
-                ),
-            )
-
-            MyLibraryTheme {
-                 DropDownMrcy(
-                     selectedIds = selectedIds,
-                     onSelectionChange = { selectedIds = it },
-                     label = "Tipo de identificación",
-                     placeholder = "Selecciona una opción",
-                     content = content,
-                     dropDownVariant = DropDownVariant.SIMPLE,
-                     bottomText = "Selecciona un tipo de documento",
-                 )
-             }
+            LoginMainScreen()
         }
     }
 }

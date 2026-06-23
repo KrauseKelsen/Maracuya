@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <cruxui.android.maracuya.wrappers.components.buttons.button.ButtonWrp
+        <cruxui.android.maracuya.wrappers.components.buttons.simple.ButtonWrp
             android:id="@+id/buttonMrcyPrimaryFromXml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             app:showProgressOnPress="true"
             app:isEnabled="true" />
 
-        <cruxui.android.maracuya.wrappers.components.buttons.button.ButtonWrp
+        <cruxui.android.maracuya.wrappers.components.buttons.simple.ButtonWrp
             android:id="@+id/buttonMrcySecondaryOverrideFromXml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

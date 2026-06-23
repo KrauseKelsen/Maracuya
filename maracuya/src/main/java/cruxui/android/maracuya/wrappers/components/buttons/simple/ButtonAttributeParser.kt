@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.wrappers.components.buttons.button
+package cruxui.android.maracuya.wrappers.components.buttons.simple
 
 import android.content.Context
 import android.util.AttributeSet

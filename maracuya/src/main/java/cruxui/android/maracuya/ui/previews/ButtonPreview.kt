@@ -17,7 +17,7 @@ import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
-import cruxui.android.maracuya.wrappers.components.buttons.button.ButtonTokensOverrideRegistry
+import cruxui.android.maracuya.wrappers.components.buttons.simple.ButtonTokensOverrideRegistry
 
 @Preview(name = "ButtonMrcy - Variants and overrides", showBackground = true)
 @Composable

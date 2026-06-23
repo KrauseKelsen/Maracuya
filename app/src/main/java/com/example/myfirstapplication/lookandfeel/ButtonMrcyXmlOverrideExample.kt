@@ -2,7 +2,7 @@ package com.example.myfirstapplication.lookandfeel
 
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
-import cruxui.android.maracuya.wrappers.components.buttons.button.ButtonTokensOverrideRegistry
+import cruxui.android.maracuya.wrappers.components.buttons.simple.ButtonTokensOverrideRegistry
 
 /**
  * Example of how a View/XML host can expose a Kotlin-built ButtonTokensOverride to XML.

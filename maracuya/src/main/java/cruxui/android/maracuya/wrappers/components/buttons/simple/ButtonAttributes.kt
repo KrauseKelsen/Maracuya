@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.wrappers.components.buttons.button
+package cruxui.android.maracuya.wrappers.components.buttons.simple
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.shape.RoundedCornerShape
