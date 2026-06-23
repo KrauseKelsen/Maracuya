@@ -10,14 +10,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.theme.LibraryThemes
-import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokens
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
 import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
-import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
  * Wrapper Android View que expone `ButtonMrcy` para layouts XML tradicionales.
@@ -110,19 +107,7 @@ class ButtonWrp @JvmOverloads constructor(
 
     @Composable
     override fun Content() {
-        val themeHost = MyLibraryThemeProvider.findFrom(this)
-        val themeConfig = themeHost?.currentConfig()
-
-        if (themeConfig == null) {
-            ButtonContent()
-            return
-        }
-
-        MyLibraryTheme(
-            theme = LibraryThemes.fromName(themeConfig.themeName),
-            style = themeConfig.themeStyle,
-            useMaterial = themeConfig.useMaterial,
-        ) {
+        WithXmlTheme {
             ButtonContent()
         }
     }

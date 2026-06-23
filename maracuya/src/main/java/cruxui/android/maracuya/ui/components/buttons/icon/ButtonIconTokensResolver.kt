@@ -76,7 +76,7 @@ object ButtonIconTokensResolver {
                 disabledContentColor = colors.fgMuted,
                 disabledContainerColor = colors.bgMuted,
                 hoverContainerColor = secondaryHover,
-                iconToken = icons.arrows.keyboardBackspaceRight,
+                iconToken = icons.arrows.keyboardBackspaceLeft,
                 iconColor = colors.fgDefault,
                 typographyToken = typography.buttons,
                 fontFamilyToken = fontFamily,

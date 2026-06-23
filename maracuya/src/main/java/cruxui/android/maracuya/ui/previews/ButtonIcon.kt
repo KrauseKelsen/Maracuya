@@ -2,16 +2,13 @@ package cruxui.android.maracuya.ui.previews
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconMrcy
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokenGroup
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensResolver
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconVariant
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
@@ -46,8 +43,15 @@ fun ButtonIcon_GalleryPreview() {
                 group = ButtonIconTokenGroup.SECONDARY,
                 variant = ButtonIconVariant.IconLeft,
                 onTrailingClick = {},
+            )
+
+            ButtonIconMrcy(
+                label = "Continuar",
+                group = ButtonIconTokenGroup.SECONDARY,
+                variant = ButtonIconVariant.IconRight,
+                onTrailingClick = {},
                 buttonIconTokensOverride = ButtonIconTokensOverride(
-                    iconToken = LocalLibraryIcons.current.arrows.keyboardBackspaceLeft
+                    iconToken = LocalLibraryIcons.current.arrows.keyboardBackspaceRight
                 )
             )
 
@@ -78,6 +82,9 @@ fun ButtonIcon_GalleryPreview() {
                 group = ButtonIconTokenGroup.SECONDARY,
                 variant = ButtonIconVariant.IconRight,
                 onTrailingClick = null,
+                buttonIconTokensOverride = ButtonIconTokensOverride(
+                    iconToken = LocalLibraryIcons.current.arrows.keyboardBackspaceRight
+                )
             )
         }
     }

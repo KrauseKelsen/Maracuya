@@ -7,14 +7,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import cruxui.android.maracuya.theme.LibraryThemes
-import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.tokens.base.IconToken
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
 import cruxui.android.maracuya.ui.components.textfields.TextFieldTokens
 import cruxui.android.maracuya.ui.components.textfields.TextFieldVariant
 import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
-import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
  * Wrapper Android View que expone `TextFieldMrcy` para layouts XML tradicionales.
@@ -197,19 +194,7 @@ class TextFieldWrp @JvmOverloads constructor(
 
     @Composable
     override fun Content() {
-        val themeHost = MyLibraryThemeProvider.findFrom(this)
-        val themeConfig = themeHost?.currentConfig()
-
-        if (themeConfig == null) {
-            TextFieldContent()
-            return
-        }
-
-        MyLibraryTheme(
-            theme = LibraryThemes.fromName(themeConfig.themeName),
-            style = themeConfig.themeStyle,
-            useMaterial = themeConfig.useMaterial,
-        ) {
+        WithXmlTheme {
             TextFieldContent()
         }
     }

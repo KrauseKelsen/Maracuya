@@ -7,10 +7,10 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Shapes
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
+import cruxui.android.maracuya.atoms.LibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalFontFamily
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
@@ -19,7 +19,6 @@ import cruxui.android.maracuya.semantics.CorporateIcons
 import cruxui.android.maracuya.semantics.CorporateTypography
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
 import cruxui.android.maracuya.utils.materialadapters.ColorMaterialAdapter
-import cruxui.android.maracuya.utils.LibraryThemeManager
 import cruxui.android.maracuya.utils.composeadapters.FontFamiliesComposeAdapter
 import cruxui.android.maracuya.utils.materialadapters.TypographyMaterialAdapter
 
@@ -115,6 +114,45 @@ fun MyLibraryTheme(
     useMaterial: Boolean = false,
     content: @Composable () -> Unit
 ) {
+    LibraryThemeContent(
+        theme = theme,
+        style = style,
+        useMaterial = useMaterial,
+        applyBackground = true,
+        content = content,
+    )
+}
+
+/**
+ * Variante interna para wrappers XML de componentes.
+ *
+ * Provee los mismos tokens que `MyLibraryTheme`, pero no pinta `bgBase`; el fondo visual
+ * pertenece al contenedor XML padre o a la pantalla host, no al wrapper de cada componente.
+ */
+@Composable
+internal fun MyLibraryComponentTheme(
+    theme: LibraryThemeSet = LibraryThemes.Maracuya,
+    style: ThemeStyle = ThemeStyle.AUTO,
+    useMaterial: Boolean = false,
+    content: @Composable () -> Unit,
+) {
+    LibraryThemeContent(
+        theme = theme,
+        style = style,
+        useMaterial = useMaterial,
+        applyBackground = false,
+        content = content,
+    )
+}
+
+@Composable
+private fun LibraryThemeContent(
+    theme: LibraryThemeSet,
+    style: ThemeStyle,
+    useMaterial: Boolean,
+    applyBackground: Boolean,
+    content: @Composable () -> Unit,
+) {
     val isDark = when (style) {
         ThemeStyle.DARK -> true
         ThemeStyle.LIGHT -> false
@@ -127,7 +165,6 @@ fun MyLibraryTheme(
     val composeFontFamily =
         FontFamiliesComposeAdapter.toCompose(fontFamilyToken)
 
-    val context = LocalContext.current
     val bgColor = ColorComposeAdapter.toComposeColor(if (isDark) theme.darkTokens.bgBase else theme.lightTokens.bgBase)
 
     // Crear tipografía semántica (no Compose)
@@ -144,28 +181,55 @@ fun MyLibraryTheme(
         LocalLibraryTypography provides semanticTypography,
         LocalLibraryIcons provides semanticIcons
     ) {
-        Box(modifier = Modifier.background(bgColor)) {
-            if (useMaterial) {
-                val colorScheme = remember(tokens, isDark) {
-                    ColorMaterialAdapter.toMaterialColorScheme(tokens, isDark)
-                }
-
-                val adaptedTypography = TypographyMaterialAdapter.adaptedTypography(semanticTypography, composeFontFamily)
-
-                MaterialTheme(
-                    colorScheme = colorScheme,
-                    typography = adaptedTypography,
-                    shapes = Shapes(),
-                    content = content
+        if (applyBackground) {
+            Box(modifier = Modifier.background(bgColor)) {
+                ThemedMaterialContent(
+                    useMaterial = useMaterial,
+                    tokens = tokens,
+                    isDark = isDark,
+                    semanticTypography = semanticTypography,
+                    composeFontFamily = composeFontFamily,
+                    content = content,
                 )
-            } else {
-                // No toca MaterialTheme; solamente proveemos tokens de la librería
-                // Esto garantiza independencia total de Material por defecto.
-                content()
             }
+        } else {
+            ThemedMaterialContent(
+                useMaterial = useMaterial,
+                tokens = tokens,
+                isDark = isDark,
+                semanticTypography = semanticTypography,
+                composeFontFamily = composeFontFamily,
+                content = content,
+            )
+        }
+    }
+}
+
+@Composable
+private fun ThemedMaterialContent(
+    useMaterial: Boolean,
+    tokens: LibraryColorTokens,
+    isDark: Boolean,
+    semanticTypography: CorporateTypography,
+    composeFontFamily: FontFamily,
+    content: @Composable () -> Unit,
+) {
+    if (useMaterial) {
+        val colorScheme = remember(tokens, isDark) {
+            ColorMaterialAdapter.toMaterialColorScheme(tokens, isDark)
         }
 
+        val adaptedTypography = TypographyMaterialAdapter.adaptedTypography(semanticTypography, composeFontFamily)
+
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = adaptedTypography,
+            shapes = Shapes(),
+            content = content
+        )
+    } else {
+        // No toca MaterialTheme; solamente proveemos tokens de la librería
+        // Esto garantiza independencia total de Material por defecto.
+        content()
     }
-
-
 }

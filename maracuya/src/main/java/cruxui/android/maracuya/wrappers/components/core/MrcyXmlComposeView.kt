@@ -5,11 +5,15 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AbstractComposeView
+import cruxui.android.maracuya.theme.LibraryThemes
+import cruxui.android.maracuya.theme.MyLibraryComponentTheme
+import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
  * Base común para wrappers XML que renderizan componentes Maracuya en Compose.
@@ -63,6 +67,26 @@ abstract class MrcyXmlComposeView @JvmOverloads constructor(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         syncLayoutParamsModifier(layoutParams)
+    }
+
+    /**
+     * Aplica tokens de tema XML sin pintar `bgBase` detrás de cada componente.
+     */
+    @Composable
+    protected fun WithXmlTheme(content: @Composable () -> Unit) {
+        val themeConfig = MyLibraryThemeProvider.findFrom(this)?.currentConfig()
+
+        if (themeConfig == null) {
+            content()
+            return
+        }
+
+        MyLibraryComponentTheme(
+            theme = LibraryThemes.fromName(themeConfig.themeName),
+            style = themeConfig.themeStyle,
+            useMaterial = themeConfig.useMaterial,
+            content = content,
+        )
     }
 
     /**

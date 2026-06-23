@@ -20,12 +20,9 @@ import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.tokens.base.ColorToken
 import cruxui.android.maracuya.tokens.base.TypographyToken
 import cruxui.android.maracuya.ui.components.utils.IconPosition
-import cruxui.android.maracuya.ui.components.buttons.ButtonTokens
-import cruxui.android.maracuya.ui.components.buttons.GenericButton
-import cruxui.android.maracuya.ui.components.buttons.GenericButtonIcon
+import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensResolver
 import cruxui.android.maracuya.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
-import cruxui.android.maracuya.ui.components.buttons.primary.PrimaryButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.primary.PrimaryButtonTokensResolver
 import cruxui.android.maracuya.ui.components.dropdowns.DropDownContent
 import cruxui.android.maracuya.ui.components.dropdowns.DropDownItem
 import cruxui.android.maracuya.ui.components.dropdowns.DropDownMrcy
@@ -281,10 +278,9 @@ fun DemoScreenPreview() {
 @Composable
 fun Host_UseMaterialMode() {
 
-    PrimaryButtonMrcy(
+    ButtonMrcy(
         text = "Maracuya puro",
         onClick = {},
-        primaryButtonTokens = PrimaryButtonTokensResolver.fromMaterial()
     )
 
 
@@ -317,63 +313,8 @@ fun Host_UseMaterialMode() {
 
 }
 
-/**
- *
- * Boton Maracuya: Con tokens personalizados
- * Adelante se desarrolla personalizacion de tipografia
- * Tiene una desventaja, no aplica modos, es personalizado por host
- *
- **/
-@Composable
-fun Host_CustomButtonTokensMode() {
-
-    // 1) TypographyToken personalizado (esto sí queda igual)
-    val customTypography = TypographyToken(
-        fontSize = 20f,
-        lineHeight = 24f,
-        letterSpacing = 0f
-    )
-
-    // 2) ColorTokens personalizados (NO Color)
-    val myButtonTokens = ButtonTokens(
-        containerColor = ColorToken(0xFF222222),     // o el color que quieras
-        contentColor = ColorToken(0xFFFFFF00),       // amarillo (0xRRGGBB)
-        hoverContainerColor = ColorToken(0xFFFFC107),
-        disabledContainerColor = ColorToken(0xFFFFE082),
-        disabledContentColor = ColorToken(0xFF9E9E9E),
-        textTypography = customTypography,
-        fontFamilyToken = LocalFontFamily.current
-    )
-
-    // 3) Invocar el botón con los tokens personalizados
-    GenericButton(
-        text = "Botón con tokens custom por host",
-        onClick = {},
-        buttonTokens = myButtonTokens,
-        enabled = true
-    )
 
 
-    GenericButtonIcon(
-        text = "Botón con tokens custom por host",
-        onClick = {},
-        iconPosition = IconPosition.END,
-    )
-}
-
-/**
- * Boton Maracuya: Semantica corporativa sin MD3
- **/
-@Composable
-fun Host_UseLibrarySemanticsMode() {
-
-        GenericButton(
-            text = "Button Maracuya",
-            onClick = {},
-            enabled = false
-        )
-
-}
 
 /**
  * Ejemplo: Tipografía en distintos modos

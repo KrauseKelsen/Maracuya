@@ -18,9 +18,8 @@ import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.R
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.ui.components.buttons.primary.PrimaryButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.components.layouts.LayoutPilotWellkommen
@@ -92,7 +91,7 @@ fun BottonContent(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        PrimaryButtonMrcy(
+        ButtonMrcy(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
                 .fillMaxWidth(),
@@ -102,7 +101,7 @@ fun BottonContent(modifier: Modifier = Modifier) {
 
         Spacer(Modifier.height(2.dp))
 
-        SecondaryButtonMrcy(
+        ButtonMrcy(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
                 .fillMaxWidth(),
@@ -110,7 +109,7 @@ fun BottonContent(modifier: Modifier = Modifier) {
             onClick = {
 
             },
-            secondaryButtonTokensOverride = SecondaryButtonTokensOverride(
+            buttonTokensOverride = ButtonTokensOverride(
                 contentColor = colors.fgDefault,
                 borderContainerColor = colors.fgDefault,
                 hoverContainerColor = colors.fgDefault

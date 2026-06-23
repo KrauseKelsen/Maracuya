@@ -24,11 +24,11 @@ import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.tokens.base.ColorToken
+import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconMrcy
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokenGroup
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconVariant
-import cruxui.android.maracuya.ui.components.buttons.primary.PrimaryButtonMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
@@ -211,7 +211,7 @@ private fun CentralContent(modifier: Modifier = Modifier) {
                 .padding(top = 20.dp)
         )
 
-        PrimaryButtonMrcy(
+        ButtonMrcy(
             modifier = Modifier.fillMaxWidth(),
             text = "Continuar",
             onClick = {},

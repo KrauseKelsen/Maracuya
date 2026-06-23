@@ -6,13 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import cruxui.android.maracuya.theme.LibraryThemes
-import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokens
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
-import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
 
 /**
  * Wrapper Android View que permite usar `LabelMrcy` desde layouts XML.
@@ -110,19 +107,7 @@ class LabelWrp @JvmOverloads constructor(
      */
     @Composable
     override fun Content() {
-        val themeHost = MyLibraryThemeProvider.findFrom(this)
-        val themeConfig = themeHost?.currentConfig()
-
-        if (themeConfig == null) {
-            LabelContent()
-            return
-        }
-
-        MyLibraryTheme(
-            theme = LibraryThemes.fromName(themeConfig.themeName),
-            style = themeConfig.themeStyle,
-            useMaterial = themeConfig.useMaterial,
-        ) {
+        WithXmlTheme {
             LabelContent()
         }
     }

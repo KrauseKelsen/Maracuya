@@ -28,12 +28,11 @@ import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.theme.MyLibraryTheme
+import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconMrcy
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokenGroup
 import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.primary.PrimaryButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.secondary.SecondaryButtonTokensOverride
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
@@ -267,7 +266,7 @@ private fun BottomContentBiometrics(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxWidth()
             .padding(vertical = 50.dp)
     ) {
-        PrimaryButtonMrcy(
+        ButtonMrcy(
             modifier = Modifier.fillMaxWidth(),
             onClick = { },
             text = "Activar biometría",
@@ -279,19 +278,17 @@ private fun BottomContentBiometrics(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(top = 20.dp)
         )
-        SecondaryButtonMrcy(
+        ButtonMrcy(
             modifier = Modifier.fillMaxWidth(),
             onClick = { },
             text = "Quizá más tarde",
-            secondaryButtonTokensOverride = SecondaryButtonTokensOverride(
+            buttonTokensOverride = ButtonTokensOverride(
                 contentColor = colors.fgMuted,
                 textTypography = typography.subtitle2,
                 contentPressColor = colors.fgMuted,
                 borderContainerColor = colors.transparent,
                 hoverContainerColor = colors.transparent,
-
             )
-
         )
 
         Spacer(
