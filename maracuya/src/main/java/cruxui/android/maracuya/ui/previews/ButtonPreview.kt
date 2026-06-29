@@ -66,8 +66,9 @@ private const val XML_PREVIEW_TOKENS_OVERRIDE = "mytokensoverride"
 @Composable
 fun ButtonWrp_XmlTokensOverridePreview() {
     PreviewWrapper(style = Mode.current) {
-        ButtonTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE) {
-            val colors = LocalLibraryColorTokens.current
+        val colors = LocalLibraryColorTokens.current
+
+        ButtonTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE,
 
             ButtonTokensOverride(
                 containerColor = colors.bgBase,
@@ -76,7 +77,8 @@ fun ButtonWrp_XmlTokensOverridePreview() {
                 hoverContainerColor = colors.fgDefault,
                 borderContainerColor = colors.fgDefault,
             )
-        }
+
+        )
 
         DisposableEffect(Unit) {
             onDispose {

@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
 
             //LoginScreen()
             //VerifyCodeScreen()
-            //BiometricsDisclaimerScreen()
+            BiometricsDisclaimerScreen()
             //OneTimeDisclamerScreen()
 
 //            var selectedIds by remember { mutableStateOf(setOf("national")) }
@@ -88,7 +88,7 @@ class MainActivity : ComponentActivity() {
 //                 )
 //             }
 
-            LoginMainScreen()
+//            LoginMainScreen()
         }
     }
 }

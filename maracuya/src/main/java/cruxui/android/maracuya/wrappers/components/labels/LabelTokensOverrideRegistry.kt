@@ -23,9 +23,9 @@ object LabelTokensOverrideRegistry {
      */
     fun register(
         name: String,
-        provider: @Composable () -> LabelTokensOverride,
+        tokensOverride: LabelTokensOverride,
     ) {
-        providers[name.normalizedKey()] = provider
+        providers[name.normalizedKey()] = { tokensOverride }
     }
 
     /**

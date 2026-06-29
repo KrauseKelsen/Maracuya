@@ -15,6 +15,7 @@ import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
 import cruxui.android.maracuya.wrappers.components.labels.LabelTokensOverrideRegistry
+import cruxui.android.maracuya.wrappers.components.labels.LabelXmlOverrides
 
 @Preview(name = "Label – Default", showBackground = true)
 @Composable
@@ -70,18 +71,11 @@ private const val XML_PREVIEW_TOKENS_OVERRIDE = "mytokensoverride"
 @Composable
 fun LabelWrp_XmlStatesAndTokensOverridePreview() {
     PreviewWrapper(style = Mode.current) {
-        LabelTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE) {
-            val colors = LocalLibraryColorTokens.current
-
-            LabelTokensOverride(
-                foregroundDefault = colors.fgError,
-                foregroundError = colors.fgDefault,
-            )
-        }
+        LabelXmlOverrides.register(XML_PREVIEW_TOKENS_OVERRIDE)
 
         DisposableEffect(Unit) {
             onDispose {
-                LabelTokensOverrideRegistry.unregister(XML_PREVIEW_TOKENS_OVERRIDE)
+               cruxui.android.maracuya.wrappers.components.labels.LabelXmlOverrides.unregister(XML_PREVIEW_TOKENS_OVERRIDE)
             }
         }
 

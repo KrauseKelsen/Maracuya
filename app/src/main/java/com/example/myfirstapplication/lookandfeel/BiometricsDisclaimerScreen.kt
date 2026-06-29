@@ -15,11 +15,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -30,9 +28,9 @@ import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconMrcy
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokenGroup
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
@@ -121,10 +119,10 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
             limitMaxLabel = false
         )
 
-        ButtonIconMrcy(
-            onTrailingClick = { },
-            group = ButtonIconTokenGroup.SECONDARY,
-            buttonIconTokensOverride = ButtonIconTokensOverride(
+        ButtonNavigationMrcy(
+            onClick = { },
+            variant = ButtonNavigationVariant.SECONDARY,
+            buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
                 iconToken = icons.alerts.help.copy(iconSize = 24),
             ),
         )
@@ -284,6 +282,7 @@ private fun BottomContentBiometrics(modifier: Modifier = Modifier) {
             text = "Quizá más tarde",
             buttonTokensOverride = ButtonTokensOverride(
                 contentColor = colors.fgMuted,
+                containerColor = colors.transparent,
                 textTypography = typography.subtitle2,
                 contentPressColor = colors.fgMuted,
                 borderContainerColor = colors.transparent,

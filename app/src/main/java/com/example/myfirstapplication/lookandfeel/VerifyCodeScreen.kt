@@ -26,9 +26,9 @@ import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconMrcy
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokenGroup
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
@@ -82,11 +82,11 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
     val icons = LocalLibraryIcons.current
 
     Box(modifier = modifier) {
-        ButtonIconMrcy(
+        ButtonNavigationMrcy(
             modifier = Modifier.align(Alignment.CenterStart),
-            onTrailingClick = { },
-            group = ButtonIconTokenGroup.SECONDARY,
-            buttonIconTokensOverride = ButtonIconTokensOverride(
+            onClick = { },
+            variant = ButtonNavigationVariant.SECONDARY,
+            buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
                 iconToken = icons.arrows.navigateBefore,
                 iconColor = LocalLibraryColorTokens.current.fgMuted
             ),
@@ -102,11 +102,11 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
             modifier = Modifier.align(Alignment.Center)
         )
 
-        ButtonIconMrcy(
+        ButtonNavigationMrcy(
             modifier = Modifier.align(Alignment.CenterEnd),
-            onTrailingClick = { },
-            group = ButtonIconTokenGroup.SECONDARY,
-            buttonIconTokensOverride = ButtonIconTokensOverride(
+            onClick = { },
+            variant = ButtonNavigationVariant.SECONDARY,
+            buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
                 iconToken = icons.alerts.help
             ),
         )

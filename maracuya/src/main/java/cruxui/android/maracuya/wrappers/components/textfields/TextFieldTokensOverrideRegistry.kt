@@ -18,9 +18,9 @@ object TextFieldTokensOverrideRegistry {
     /** Registra o reemplaza un provider de tokens para un nombre estable. */
     fun register(
         name: String,
-        provider: @Composable () -> TextFieldTokens,
+        tokensOverride: TextFieldTokens,
     ) {
-        providers[name.normalizedKey()] = provider
+        providers[name.normalizedKey()] = { tokensOverride }
     }
 
     /** Elimina un provider previamente registrado por la pantalla, preview o test dueño. */

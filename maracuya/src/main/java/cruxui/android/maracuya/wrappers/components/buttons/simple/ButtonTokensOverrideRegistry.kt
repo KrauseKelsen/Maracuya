@@ -53,9 +53,9 @@ object ButtonTokensOverrideRegistry {
      */
     fun register(
         name: String,
-        provider: @Composable () -> ButtonTokensOverride,
+        tokensOverride: ButtonTokensOverride,
     ) {
-        providers[name.normalizedKey()] = provider
+        providers[name.normalizedKey()] = { tokensOverride }
     }
 
     /**

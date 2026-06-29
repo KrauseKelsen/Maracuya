@@ -25,10 +25,9 @@ import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.tokens.base.ColorToken
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconMrcy
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokenGroup
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.icon.ButtonIconVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
@@ -89,11 +88,11 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
     val icons = LocalLibraryIcons.current
 
     Box(modifier = modifier) {
-        ButtonIconMrcy(
+        ButtonNavigationMrcy(
             modifier = Modifier.align(Alignment.CenterStart),
-            onTrailingClick = { },
-            group = ButtonIconTokenGroup.SECONDARY,
-            buttonIconTokensOverride = ButtonIconTokensOverride(
+            onClick = { },
+            variant = ButtonNavigationVariant.SECONDARY,
+            buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
                 iconToken = icons.arrows.navigateBefore,
                 iconColor = LocalLibraryColorTokens.current.fgMuted
             ),
@@ -108,11 +107,11 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
             modifier = Modifier.align(Alignment.Center)
         )
 
-        ButtonIconMrcy(
+        ButtonNavigationMrcy(
             modifier = Modifier.align(Alignment.CenterEnd),
-            onTrailingClick = { },
-            group = ButtonIconTokenGroup.SECONDARY,
-            buttonIconTokensOverride = ButtonIconTokensOverride(
+            onClick = { },
+            variant = ButtonNavigationVariant.SECONDARY,
+            buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
                 iconToken = icons.alerts.help,
             ),
         )
@@ -221,13 +220,18 @@ private fun CentralContent(modifier: Modifier = Modifier) {
 
 @Composable
 private fun BottomContent(modifier: Modifier = Modifier) {
-    ButtonIconMrcy(
+    ButtonNavigationMrcy(
         modifier = modifier.padding(bottom = 30.dp),
         label = "Ingresa con GAUDI",
-        variant = ButtonIconVariant.IconLeft,
-        onTrailingClick = {},
-        buttonIconTokensOverride = ButtonIconTokensOverride(
+        onClick = {},
+        variant = ButtonNavigationVariant.SECONDARY,
+        buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
             containerColor = ColorToken(0xFF003764),
+            contentColor = LocalLibraryColorTokens.current.fgOnInverse,
+            contentPressColor = LocalLibraryColorTokens.current.fgOnInverse,
+            hoverContainerColor = ColorToken(0xFF003764),
+            borderContainerColor = ColorToken(0xFF003764),
+            iconColor = LocalLibraryColorTokens.current.fgOnInverse,
             iconToken = LocalLibraryIcons.current.general.cardioLoad
         )
     )
