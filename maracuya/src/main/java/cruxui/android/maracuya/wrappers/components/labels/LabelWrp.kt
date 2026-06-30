@@ -9,7 +9,7 @@ import androidx.compose.runtime.setValue
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokens
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
-import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
+import cruxui.android.maracuya.wrappers.core.MrcyXmlComposeView
 
 /**
  * Wrapper Android View que permite usar `LabelMrcy` desde layouts XML.

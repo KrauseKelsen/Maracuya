@@ -11,7 +11,7 @@ import cruxui.android.maracuya.tokens.base.IconToken
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
 import cruxui.android.maracuya.ui.components.textfields.TextFieldTokens
 import cruxui.android.maracuya.ui.components.textfields.TextFieldVariant
-import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
+import cruxui.android.maracuya.wrappers.core.MrcyXmlComposeView
 
 /**
  * Wrapper Android View que expone `TextFieldMrcy` para layouts XML tradicionales.

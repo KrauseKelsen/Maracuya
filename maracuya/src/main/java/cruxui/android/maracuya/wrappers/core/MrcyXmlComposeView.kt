@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.wrappers.components.core
+package cruxui.android.maracuya.wrappers.core
 
 import android.content.Context
 import android.util.AttributeSet
@@ -56,7 +56,7 @@ abstract class MrcyXmlComposeView @JvmOverloads constructor(
     /**
      * Actualiza el modifier cuando el padre asigna o cambia los `LayoutParams`.
      */
-    override fun setLayoutParams(params: ViewGroup.LayoutParams?) {
+    override fun setLayoutParams(params: LayoutParams?) {
         super.setLayoutParams(params)
         syncLayoutParamsModifier(params)
     }
@@ -92,7 +92,7 @@ abstract class MrcyXmlComposeView @JvmOverloads constructor(
     /**
      * Recalcula el modifier derivado de los params resueltos por Android.
      */
-    private fun syncLayoutParamsModifier(params: ViewGroup.LayoutParams?) {
+    private fun syncLayoutParamsModifier(params: LayoutParams?) {
         val nextModifier = AndroidLayoutParamsModifierResolver.fromLayoutParams(params)
         if (nextModifier != layoutParamsModifierState) {
             layoutParamsModifierState = nextModifier

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    app:themeName="Maracuya"
+    app:themeStyle="auto"
+    app:useMaterial="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationPrimaryXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:buttonNavigationLabel="Continuar"
+            app:buttonNavigationVariant="primary" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationSubmitOverrideXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationLabel="Submit"
+            app:buttonNavigationTokensOverride="mytokensoverride"
+            app:buttonNavigationVariant="primary"
+            app:isEnabled="true" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationLoadingXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationIsLoading="true"
+            app:buttonNavigationLabel="Loading"
+            app:buttonNavigationStartsLoadingOnClick="true"
+            app:buttonNavigationVariant="primary"
+            app:isEnabled="true" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationBackXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationLabel="Back"
+            app:buttonNavigationVariant="secondary"
+            app:isEnabled="true" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationSkipXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationLabel="Skip"
+            app:buttonNavigationShowIcon="false"
+            app:buttonNavigationVariant="secondary"
+            app:isEnabled="true" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationContinueXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationLabel="Continue"
+            app:buttonNavigationVariant="primary"
+            app:isEnabled="true" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationIconOnlyXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationVariant="primary"
+            app:isEnabled="true" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationDisabledPrimaryXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationLabel="No clickeable"
+            app:buttonNavigationVariant="primary"
+            app:isEnabled="false" />
+
+        <cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationWrp
+            android:id="@+id/buttonNavigationDisabledSecondaryXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:buttonNavigationLabel="No clickeable"
+            app:buttonNavigationVariant="secondary"
+            app:isEnabled="false" />
+
+    </LinearLayout>
+
+</cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>

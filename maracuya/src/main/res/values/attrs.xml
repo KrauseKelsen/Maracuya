@@ -22,6 +22,19 @@
         <attr name="buttonTokensOverride" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="ButtonNavigationWrp">
+        <attr name="buttonNavigationLabel" format="string" />
+        <attr name="isEnabled" />
+        <attr name="buttonNavigationVariant" format="enum">
+            <enum name="primary" value="0" />
+            <enum name="secondary" value="1" />
+        </attr>
+        <attr name="buttonNavigationIsLoading" format="boolean" />
+        <attr name="buttonNavigationStartsLoadingOnClick" format="boolean" />
+        <attr name="buttonNavigationShowIcon" format="boolean" />
+        <attr name="buttonNavigationTokensOverride" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="LabelWrp">
         <attr name="text" />
         <attr name="optionalText" format="boolean" />

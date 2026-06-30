@@ -36,9 +36,9 @@ import cruxui.android.maracuya.utils.composeadapters.TypographyComposeAdapter
  */
 @Composable
 fun ButtonNavigationMrcy(
+    modifier: Modifier = Modifier,
     label: String? = null,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = RoundedCornerShape(100.dp),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },

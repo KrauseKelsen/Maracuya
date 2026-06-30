@@ -14,7 +14,7 @@ import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokens
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
-import cruxui.android.maracuya.wrappers.components.core.MrcyXmlComposeView
+import cruxui.android.maracuya.wrappers.core.MrcyXmlComposeView
 
 /**
  * Wrapper Android View que expone `ButtonMrcy` para layouts XML tradicionales.
