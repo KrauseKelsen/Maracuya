@@ -5,9 +5,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokens
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokens
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonVariant
 
 /**
  * Agrupa los valores de configuración del wrapper `ButtonWrp` obtenidos desde XML

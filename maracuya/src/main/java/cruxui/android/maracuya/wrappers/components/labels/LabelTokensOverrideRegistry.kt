@@ -1,6 +1,14 @@
 package cruxui.android.maracuya.wrappers.components.labels
 
 import androidx.compose.runtime.Composable
+import cruxui.android.maracuya.atoms.LibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalFontFamily
+import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalLibraryIcons
+import cruxui.android.maracuya.compositions.LocalLibraryTypography
+import cruxui.android.maracuya.semantics.CorporateIcons
+import cruxui.android.maracuya.semantics.CorporateTypography
+import cruxui.android.maracuya.tokens.base.FontFamilyToken
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import java.util.concurrent.ConcurrentHashMap
 
@@ -18,14 +26,47 @@ object LabelTokensOverrideRegistry {
     /**
      * Registra o reemplaza un provider de tokens override para labels.
      *
-     * El provider es composable para que pueda leer CompositionLocals del tema actual
-     * justo cuando `LabelWrp` se renderiza.
+     * Usa esta variante cuando el override ya fue construido y no necesita leer
+     * `CompositionLocal`.
      */
     fun register(
         name: String,
         tokensOverride: LabelTokensOverride,
     ) {
         providers[name.normalizedKey()] = { tokensOverride }
+    }
+
+    /**
+'     * Registra o reemplaza un provider de tokens override para labels.
+     *
+     * Usa esta variante cuando el override necesita leer CompositionLocals del tema
+     * actual. El provider se invoca desde `LabelWrp`, dentro de Compose y del scope de
+     * `MyLibraryThemeWrp`.
+     */
+
+    /**
+     * Registra un override declarativo para hosts XML que no deben leer CompositionLocals.
+     *
+     * El builder es una lambda normal. El registry lee los tokens activos dentro de Compose
+     * y se los entrega al builder para construir el override final.
+     */
+    fun register(
+        name: String,
+        builder: (
+            colors: LibraryColorTokens,
+            typography: CorporateTypography,
+            icons: CorporateIcons,
+            fontFamily: FontFamilyToken,
+        ) -> LabelTokensOverride,
+    ) {
+        providers[name.normalizedKey()] = {
+            builder(
+                LocalLibraryColorTokens.current,
+                LocalLibraryTypography.current,
+                LocalLibraryIcons.current,
+                LocalFontFamily.current,
+            )
+        }
     }
 
     /**

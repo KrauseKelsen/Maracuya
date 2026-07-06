@@ -12,9 +12,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.R
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonVariant
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
 import cruxui.android.maracuya.wrappers.components.buttons.simple.ButtonTokensOverrideRegistry
@@ -66,10 +66,8 @@ private const val XML_PREVIEW_TOKENS_OVERRIDE = "mytokensoverride"
 @Composable
 fun ButtonWrp_XmlTokensOverridePreview() {
     PreviewWrapper(style = Mode.current) {
-        val colors = LocalLibraryColorTokens.current
-
-        ButtonTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE,
-
+        ButtonTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE) {
+            colors, typography, icons, fontFamily ->
             ButtonTokensOverride(
                 containerColor = colors.bgBase,
                 contentColor = colors.fgDefault,
@@ -77,8 +75,8 @@ fun ButtonWrp_XmlTokensOverridePreview() {
                 hoverContainerColor = colors.fgDefault,
                 borderContainerColor = colors.fgDefault,
             )
+        }
 
-        )
 
         DisposableEffect(Unit) {
             onDispose {

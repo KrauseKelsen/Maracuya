@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple
 
 import cruxui.android.maracuya.ui.components.utils.IconPosition
 

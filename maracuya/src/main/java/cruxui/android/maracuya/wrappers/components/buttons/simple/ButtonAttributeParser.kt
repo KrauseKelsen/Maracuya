@@ -3,7 +3,7 @@ package cruxui.android.maracuya.wrappers.components.buttons.simple
 import android.content.Context
 import android.util.AttributeSet
 import cruxui.android.maracuya.R
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonVariant
 
 /**
  * Resuelve atributos XML del wrapper `ButtonWrp` y los transforma en un objeto tipado

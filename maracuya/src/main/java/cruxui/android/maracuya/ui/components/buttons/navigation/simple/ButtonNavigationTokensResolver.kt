@@ -1,12 +1,12 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple
 
 import androidx.compose.runtime.Composable
 import cruxui.android.maracuya.compositions.LocalFontFamily
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensResolver
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensResolver
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonVariant
 
 /**
  * Resuelve los tokens del ButtonNavigation desde los tokens visuales de ButtonMrcy.

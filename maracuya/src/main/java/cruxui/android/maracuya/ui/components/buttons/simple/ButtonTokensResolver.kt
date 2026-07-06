@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.button
+package cruxui.android.maracuya.ui.components.buttons.simple
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

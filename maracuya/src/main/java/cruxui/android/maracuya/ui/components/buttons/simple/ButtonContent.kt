@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.button
+package cruxui.android.maracuya.ui.components.buttons.simple
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

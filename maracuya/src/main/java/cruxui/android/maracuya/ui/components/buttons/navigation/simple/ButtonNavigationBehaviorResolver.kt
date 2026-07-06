@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode

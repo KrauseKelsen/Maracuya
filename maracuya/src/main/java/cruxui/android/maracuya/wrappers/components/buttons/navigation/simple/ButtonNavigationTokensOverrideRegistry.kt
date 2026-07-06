@@ -1,7 +1,7 @@
-package cruxui.android.maracuya.wrappers.components.buttons.navigation
+package cruxui.android.maracuya.wrappers.components.buttons.navigation.simple
 
 import androidx.compose.runtime.Composable
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokensOverride
 import java.util.concurrent.ConcurrentHashMap
 
 /**

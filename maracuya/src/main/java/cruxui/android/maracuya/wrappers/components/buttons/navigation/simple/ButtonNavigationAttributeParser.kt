@@ -1,10 +1,10 @@
-package cruxui.android.maracuya.wrappers.components.buttons.navigation
+package cruxui.android.maracuya.wrappers.components.buttons.navigation.simple
 
 import android.content.Context
 import android.util.AttributeSet
 import cruxui.android.maracuya.R
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationVariant
 
 /**
  * Resuelve atributos XML de `ButtonNavigationWrp` y los convierte en un modelo tipado.

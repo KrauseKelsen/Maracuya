@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.wrappers.components.buttons.navigation
+package cruxui.android.maracuya.wrappers.components.buttons.navigation.simple
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,12 +10,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationLoadingScope
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationMrcy
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokens
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationLoadingScope
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokens
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationVariant
 import cruxui.android.maracuya.wrappers.core.MrcyXmlComposeView
 
 /**

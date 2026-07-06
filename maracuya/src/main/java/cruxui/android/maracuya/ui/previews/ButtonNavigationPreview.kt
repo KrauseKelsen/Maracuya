@@ -11,13 +11,13 @@ import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.R
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationMrcy
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
-import cruxui.android.maracuya.wrappers.components.buttons.navigation.ButtonNavigationTokensOverrideRegistry
+import cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationTokensOverrideRegistry
 
 @Preview(name = "ButtonNavigation - Gallery", showBackground = true)
 @Composable
@@ -40,7 +40,6 @@ fun ButtonNavigation_GalleryPreview() {
                     iconToken = LocalLibraryIcons.current.general.check
                 )
             )
-
 
             ButtonNavigationMrcy(
                 label = "Loading",
@@ -68,7 +67,6 @@ fun ButtonNavigation_GalleryPreview() {
                 variant = ButtonNavigationVariant.SECONDARY,
                 buttonNavigationBehavior = ButtonNavigationBehavior(showIcon = false),
             )
-
 
             ButtonNavigationMrcy(
                 label = "Continue",

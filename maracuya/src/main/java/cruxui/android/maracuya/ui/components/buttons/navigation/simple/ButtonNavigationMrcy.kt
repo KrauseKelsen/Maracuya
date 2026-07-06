@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource

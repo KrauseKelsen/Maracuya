@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.button
+package cruxui.android.maracuya.ui.components.buttons.simple
 
 /**
  * Variantes semánticas de ButtonMrcy para resolver

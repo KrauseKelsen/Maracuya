@@ -1,15 +1,15 @@
-package cruxui.android.maracuya.wrappers.components.buttons.navigation
+package cruxui.android.maracuya.wrappers.components.buttons.navigation.simple
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationLoadingScope
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokens
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationLoadingScope
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokens
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationVariant
 
 /**
  * Agrupa la configuracion inicial de `ButtonNavigationWrp`.

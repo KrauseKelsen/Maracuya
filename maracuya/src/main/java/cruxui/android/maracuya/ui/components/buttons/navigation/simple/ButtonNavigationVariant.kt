@@ -1,6 +1,6 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple
 
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonVariant
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonVariant
 
 /**
  * Variantes visuales del ButtonNavigation.

@@ -1,7 +1,15 @@
 package cruxui.android.maracuya.wrappers.components.buttons.simple
 
 import androidx.compose.runtime.Composable
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
+import cruxui.android.maracuya.atoms.LibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalFontFamily
+import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalLibraryIcons
+import cruxui.android.maracuya.compositions.LocalLibraryTypography
+import cruxui.android.maracuya.semantics.CorporateIcons
+import cruxui.android.maracuya.semantics.CorporateTypography
+import cruxui.android.maracuya.tokens.base.FontFamilyToken
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensOverride
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -53,9 +61,21 @@ object ButtonTokensOverrideRegistry {
      */
     fun register(
         name: String,
-        tokensOverride: ButtonTokensOverride,
+        builder: (
+            colors: LibraryColorTokens,
+            typography: CorporateTypography,
+            icons: CorporateIcons,
+            fontFamily: FontFamilyToken,
+        ) -> ButtonTokensOverride,
     ) {
-        providers[name.normalizedKey()] = { tokensOverride }
+        providers[name.normalizedKey()] = {
+            builder(
+                LocalLibraryColorTokens.current,
+                LocalLibraryTypography.current,
+                LocalLibraryIcons.current,
+                LocalFontFamily.current,
+            )
+        }
     }
 
     /**
