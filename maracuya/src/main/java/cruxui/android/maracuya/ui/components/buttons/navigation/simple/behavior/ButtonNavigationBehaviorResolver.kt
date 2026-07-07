@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation.simple
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -13,67 +13,63 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
-import cruxui.android.maracuya.ui.components.utils.IconPosition
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationLoadingScope
 
 /**
  * Resuelve la lógica interactiva del ButtonNavigation.
  *
- * Mantiene el loading local del componente, rota el icono mientras carga y compone
- * el onClick real del boton con el callback opcional que controla el loading.
+ * Maneja el loading local, bloquea el click mientras carga y entrega el callback
+ * final que debe usar el componente renderizado.
  */
 internal object ButtonNavigationBehaviorResolver {
 
     @Composable
     fun resolve(
-        variant: ButtonNavigationVariant,
         behavior: ButtonNavigationBehavior,
         enabled: Boolean,
         onClick: () -> Unit,
-        onTrailingClick: (ButtonNavigationLoadingScope.() -> Unit)?,
-    ): ButtonNavigationResolvedBehavior {
-        var isLoading by remember { mutableStateOf(behavior.isLoading) }
+        onLoadingClick: (ButtonNavigationLoadingScope.() -> Unit)?,
+    ): ButtonNavigationBehaviorState {
+        var internalLoading by remember { mutableStateOf(false) }
         val currentOnClick by rememberUpdatedState(onClick)
-        val currentOnTrailingClick by rememberUpdatedState(onTrailingClick)
+        val currentOnLoadingClick by rememberUpdatedState(onLoadingClick)
 
         LaunchedEffect(behavior.isLoading) {
-            isLoading = behavior.isLoading
+            if (!behavior.isLoading) {
+                internalLoading = false
+            }
         }
 
         LaunchedEffect(enabled) {
             if (!enabled) {
-                isLoading = false
+                internalLoading = false
             }
         }
 
         val loadingScope = remember {
             ButtonNavigationLoadingScope {
-                isLoading = false
+                internalLoading = false
             }
         }
 
-        val iconPosition = when (variant) {
-            ButtonNavigationVariant.PRIMARY -> IconPosition.END
-            ButtonNavigationVariant.SECONDARY -> IconPosition.START
-        }
-
-        val loadingActive = isLoading || behavior.isLoading
+        val loadingActive = behavior.isLoading || internalLoading
         val canClick = enabled && !loadingActive
         val rotationDegrees = resolveLoadingRotationDegrees(
             isLoading = loadingActive,
         )
 
-        return ButtonNavigationResolvedBehavior(
-            iconPosition = iconPosition,
+        return ButtonNavigationBehaviorState(
             isLoading = loadingActive,
             loadingIconRotationDegrees = rotationDegrees,
             canClick = canClick,
+            showIcon = behavior.showIcon,
             onClick = {
                 if (canClick) {
                     if (behavior.startsLoadingOnClick) {
-                        isLoading = true
+                        internalLoading = true
                     }
                     currentOnClick()
-                    currentOnTrailingClick?.invoke(loadingScope)
+                    currentOnLoadingClick?.invoke(loadingScope)
                 }
             },
         )
@@ -102,3 +98,14 @@ internal object ButtonNavigationBehaviorResolver {
         return rotationDegrees
     }
 }
+
+/**
+ * Estado de comportamiento listo para que ButtonNavigationMrcy lo renderice.
+ */
+internal data class ButtonNavigationBehaviorState(
+    val isLoading: Boolean,
+    val loadingIconRotationDegrees: Float,
+    val canClick: Boolean,
+    val showIcon: Boolean,
+    val onClick: () -> Unit,
+)

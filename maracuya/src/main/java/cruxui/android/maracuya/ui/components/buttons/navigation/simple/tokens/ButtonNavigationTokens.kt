@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation.simple
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens
 
 import cruxui.android.maracuya.tokens.base.ColorToken
 import cruxui.android.maracuya.tokens.base.FontFamilyToken
@@ -8,8 +8,7 @@ import cruxui.android.maracuya.tokens.base.TypographyToken
 /**
  * Tokens visuales base para ButtonNavigation.
  *
- * Solo contiene valores de color, tipografia e iconos; la logica interactiva vive
- * en ButtonNavigationBehavior.
+ * Solo contiene valores declarativos de color, tipografia e iconos.
  */
 data class ButtonNavigationTokens(
     val contentColor: ColorToken,

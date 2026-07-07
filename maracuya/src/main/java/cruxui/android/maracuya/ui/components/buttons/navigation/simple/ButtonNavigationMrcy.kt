@@ -21,7 +21,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.ui.components.utils.IconPosition
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehaviorResolver
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehaviorState
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokens
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensResolver
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokensrender.ButtonNavigationTokensRender
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokensrender.ButtonNavigationTokensRenderResolver
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.utils.compose.collectPressedAsState
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.FontFamiliesComposeAdapter
@@ -29,10 +37,9 @@ import cruxui.android.maracuya.utils.composeadapters.IconComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.TypographyComposeAdapter
 
 /**
- * ButtonNavigationMrcy construye el boton de navegacion a partir de los tokens visuales de ButtonMrcy.
+ * Construye el boton de navegacion a partir de behavior, variant y tokens resueltos.
  *
- * La variante define color y posicion del icono. onClick ejecuta la accion del boton y
- * onTrailingClick solo administra el ciclo de loading cuando el comportamiento lo requiere.
+ * Orquesta las capas del componente y delega la logica de seleccion a sus resolvers.
  */
 @Composable
 fun ButtonNavigationMrcy(
@@ -47,6 +54,7 @@ fun ButtonNavigationMrcy(
     buttonNavigationTokens: ButtonNavigationTokens? = null,
     buttonNavigationTokensOverride: ButtonNavigationTokensOverride? = null,
     onTrailingClick: (ButtonNavigationLoadingScope.() -> Unit)? = null,
+    onLoadingClick: (ButtonNavigationLoadingScope.() -> Unit)? = null,
 ) {
     val tokens = ButtonNavigationTokensResolver.resolve(
         variant = variant,
@@ -54,79 +62,49 @@ fun ButtonNavigationMrcy(
         override = buttonNavigationTokensOverride,
     )
 
-    val resolvedBehavior = ButtonNavigationBehaviorResolver.resolve(
-        variant = variant,
+    val behaviorState = ButtonNavigationBehaviorResolver.resolve(
         behavior = buttonNavigationBehavior,
         enabled = enabled,
         onClick = onClick,
-        onTrailingClick = onTrailingClick,
+        onLoadingClick = onLoadingClick ?: onTrailingClick,
     )
 
     val pressed by interactionSource.collectPressedAsState()
-    val isVisuallyDisabled = !enabled
-    val showPressedState = pressed && resolvedBehavior.canClick
-
-    val backgroundColor = when {
-        isVisuallyDisabled -> tokens.disabledContainerColor
-        showPressedState -> tokens.hoverContainerColor
-        else -> tokens.containerColor
-    }
-
-    val borderColor = when {
-        isVisuallyDisabled -> tokens.borderDisabledColor
-        showPressedState -> tokens.hoverContainerColor
-        else -> tokens.borderContainerColor
-    }
-
-    val contentColor = when {
-        isVisuallyDisabled -> tokens.disabledContentColor
-        showPressedState -> tokens.contentPressColor
-        else -> tokens.contentColor
-    }
-
-    val iconColor = when {
-        isVisuallyDisabled -> tokens.disabledContentColor
-        showPressedState -> tokens.contentPressColor
-        else -> tokens.iconColor
-    }
-
-    val disabledContainerColor = if (resolvedBehavior.isLoading) {
-        backgroundColor
-    } else {
-        tokens.disabledContainerColor
-    }
-    val disabledContentColor = if (resolvedBehavior.isLoading) {
-        contentColor
-    } else {
-        tokens.disabledContentColor
-    }
+    val renderTokens = ButtonNavigationTokensRenderResolver.resolve(
+        tokens = tokens,
+        enabled = enabled,
+        pressed = pressed,
+        isLoading = behaviorState.isLoading,
+        canClick = behaviorState.canClick,
+        showIcon = behaviorState.showIcon,
+    )
 
     val textStyle = TypographyComposeAdapter.toTextStyle(
-        token = tokens.typographyToken,
-        fontFamily = FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken),
+        token = renderTokens.typographyToken,
+        fontFamily = FontFamiliesComposeAdapter.toCompose(renderTokens.fontFamilyToken),
     )
 
     Button(
-        onClick = resolvedBehavior.onClick,
-        enabled = resolvedBehavior.canClick,
+        onClick = behaviorState.onClick,
+        enabled = behaviorState.canClick,
         modifier = modifier,
         shape = shape,
-        border = BorderStroke(1.dp, ColorComposeAdapter.toComposeColor(borderColor)),
+        border = BorderStroke(1.dp, ColorComposeAdapter.toComposeColor(renderTokens.borderColor)),
         interactionSource = interactionSource,
         colors = ButtonDefaults.buttonColors(
-            containerColor = ColorComposeAdapter.toComposeColor(backgroundColor),
-            contentColor = ColorComposeAdapter.toComposeColor(contentColor),
-            disabledContainerColor = ColorComposeAdapter.toComposeColor(disabledContainerColor),
-            disabledContentColor = ColorComposeAdapter.toComposeColor(disabledContentColor),
+            containerColor = ColorComposeAdapter.toComposeColor(renderTokens.containerColor),
+            contentColor = ColorComposeAdapter.toComposeColor(renderTokens.contentColor),
+            disabledContainerColor = ColorComposeAdapter.toComposeColor(renderTokens.disabledContainerColor),
+            disabledContentColor = ColorComposeAdapter.toComposeColor(renderTokens.disabledContentColor),
         ),
     ) {
         ButtonNavigationContent(
             label = label,
-            tokens = tokens,
-            behavior = buttonNavigationBehavior,
-            resolvedBehavior = resolvedBehavior,
-            contentColor = ColorComposeAdapter.toComposeColor(contentColor),
-            iconColor = ColorComposeAdapter.toComposeColor(iconColor),
+            tokens = renderTokens,
+            iconAtEnd = variant == ButtonNavigationVariant.PRIMARY,
+            behaviorState = behaviorState,
+            contentColor = ColorComposeAdapter.toComposeColor(renderTokens.contentColor),
+            iconColor = ColorComposeAdapter.toComposeColor(renderTokens.iconColor),
             textStyle = textStyle,
         )
     }
@@ -138,19 +116,14 @@ fun ButtonNavigationMrcy(
 @Composable
 private fun ButtonNavigationContent(
     label: String?,
-    tokens: ButtonNavigationTokens,
-    behavior: ButtonNavigationBehavior,
-    resolvedBehavior: ButtonNavigationResolvedBehavior,
+    tokens: ButtonNavigationTokensRender,
+    iconAtEnd: Boolean,
+    behaviorState: ButtonNavigationBehaviorState,
     contentColor: Color,
     iconColor: Color,
     textStyle: TextStyle,
 ) {
-    val iconToken = if (resolvedBehavior.isLoading) {
-        tokens.loadingIconToken
-    } else {
-        tokens.iconToken
-    }
-    val visibleIconToken = if (behavior.showIcon) iconToken else null
+    val visibleIconToken = tokens.iconToken
     val hasLabel = !label.isNullOrBlank()
 
     Row(
@@ -158,10 +131,10 @@ private fun ButtonNavigationContent(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        if (visibleIconToken != null && resolvedBehavior.iconPosition != IconPosition.END) {
+        if (visibleIconToken != null && !iconAtEnd) {
             IconComposeAdapter.Render(
                 icon = visibleIconToken,
-                modifier = Modifier.rotate(resolvedBehavior.loadingIconRotationDegrees),
+                modifier = Modifier.rotate(behaviorState.loadingIconRotationDegrees),
                 fillColor = iconColor,
                 contentDescription = null,
                 size = visibleIconToken.iconSize.dp,
@@ -179,13 +152,13 @@ private fun ButtonNavigationContent(
             )
         }
 
-        if (visibleIconToken != null && resolvedBehavior.iconPosition == IconPosition.END) {
+        if (visibleIconToken != null && iconAtEnd) {
             if (hasLabel) {
                 Spacer(modifier = Modifier.width(8.dp))
             }
             IconComposeAdapter.Render(
                 icon = visibleIconToken,
-                modifier = Modifier.rotate(resolvedBehavior.loadingIconRotationDegrees),
+                modifier = Modifier.rotate(behaviorState.loadingIconRotationDegrees),
                 fillColor = iconColor,
                 contentDescription = null,
                 size = visibleIconToken.iconSize.dp,

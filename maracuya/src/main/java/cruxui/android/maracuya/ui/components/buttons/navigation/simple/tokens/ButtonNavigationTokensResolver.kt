@@ -1,12 +1,13 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation.simple
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens
 
 import androidx.compose.runtime.Composable
 import cruxui.android.maracuya.compositions.LocalFontFamily
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariantResolver
 import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensResolver
-import cruxui.android.maracuya.ui.components.buttons.simple.ButtonVariant
 
 /**
  * Resuelve los tokens del ButtonNavigation desde los tokens visuales de ButtonMrcy.
@@ -60,7 +61,7 @@ object ButtonNavigationTokensResolver {
     @Composable
     private fun fromLibrary(variant: ButtonNavigationVariant): ButtonNavigationTokens {
         val buttonTokens = ButtonTokensResolver.resolve(
-            variant = variant.toButtonVariant(),
+            variant = ButtonNavigationVariantResolver.resolve(variant),
         )
         val icons = LocalLibraryIcons.current
 
@@ -91,10 +92,4 @@ object ButtonNavigationTokensResolver {
      */
     @Composable
     private fun fromMaterial(variant: ButtonNavigationVariant): ButtonNavigationTokens = fromLibrary(variant)
-
-    private fun ButtonNavigationVariant.toButtonVariant(): ButtonVariant =
-        when (this) {
-            ButtonNavigationVariant.PRIMARY -> ButtonVariant.PRIMARY
-            ButtonNavigationVariant.SECONDARY -> ButtonVariant.SECONDARY
-        }
 }
