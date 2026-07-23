@@ -27,19 +27,21 @@ package cruxui.android.maracuya.tokens.fonts
  * ```
  *
  * @author Krause Kelsen
- * @since 10-31-2025
- * @version 1.5.4
+ * @since 07-16-2026
+ * @version 0.0.13
  *
  * Pesos disponibles:
- * @param Headline  Equivalente a FontWeight.ExtraBold (800).
+ * @param ExtraBold  Equivalente a FontWeight.ExtraBold (900).
+ * @param Headline  Equivalente a FontWeight.Headline (800).
  * @param Bold      Equivalente a FontWeight.Bold (700).
  * @param Medium    Equivalente a FontWeight.Medium (500).
  * @param Regular   Equivalente a FontWeight.Normal (400).
  *
- * @see cruxui.android.maracuya.tokens.fonts.FontWeightTokens
+ * @see cruxui.android.lib.tokens.fonts.FontWeightTokens
  */
 object FontWeightTokens {
-    const val Headline = 800
+    const val ExtraBold     = 900
+    const val Headline = 800 // el headline no existe en ninguna tupografia
     const val Bold     = 700
     const val Medium   = 500
     const val Regular  = 400

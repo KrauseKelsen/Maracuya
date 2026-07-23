@@ -53,98 +53,161 @@ import cruxui.android.maracuya.tokens.colors.DefaultColors
  *  - `adapter/defaultToMaterialColorScheme` (convertidor MD3)
  *
  * @author Krause Kelsen
- * @since 10-24-2025
- * @version 1.5.3
+ * @since 07-16-2026
+ * @version 0.0.13
  *
  * @param DefaultLight Semántica corporativa para modo light
  * @param DefaultDark Semántica corporativa para modo dark
  * @param defaultToMaterialColorScheme Adaptador hacia MD3 (ColorScheme)
  *
- * @see cruxui.android.maracuya.atoms.LibraryColorTokens
+ * @see LibraryColorTokens
  */
 
 data class LibraryColorTokens(
+    /** Color transparente utilizado para fondos invisibles o estados sin color. */
     val transparent: ColorToken,
-    // Text (foreground)
+
+    // ── Foreground (Texto e Íconos) ──────────────────────────────────────────
+
+    /** Color principal de texto e íconos sobre fondos claros. */
     val fgDefault: ColorToken,
+    /** Color de texto secundario/atenuado (placeholders, labels secundarios). */
     val fgMuted: ColorToken,
+    /** Color de texto terciario/sutil (hints, metadata de baja prioridad). */
     val fgSubtle: ColorToken,
+    /** Color de texto sobre superficies primarias (brand). */
     val fgOnPrimary: ColorToken,
+    /** Color de texto sobre superficies inversas (fondos oscuros en light mode y viceversa). */
     val fgOnInverse: ColorToken,
-    val fgOnInverseAux: ColorToken, // Para ContentColor en Botones
+    /** Color auxiliar para contentColor en botones inversos (no definido en Figma). */
+    val fgOnInverseAux: ColorToken,
+    /** Color de texto para mensajes de error. */
     val fgError: ColorToken,
 
-    // Background/Surface
+    // ── Background / Surface ─────────────────────────────────────────────────
+
+    /** Color base del fondo de la aplicación. */
     val bgBase: ColorToken,
+    /** Color de fondo sutil para secciones diferenciadas. */
     val bgSubtle: ColorToken,
+    /** Color de fondo atenuado para áreas de menor jerarquía. */
     val bgMuted: ColorToken,
 
+    /** Color de superficie por defecto para tarjetas y contenedores. */
     val surfaceDefault: ColorToken,
+    /** Color de superficie elevada (cards con sombra, modales). */
     val surfaceRaised: ColorToken,
+    /** Color de superficie sutil (inputs deshabilitados, chips). */
     val surfaceSubtle: ColorToken,
+    //nuevo
+    val surfaceCardBase: ColorToken,
 
-    // Borders/Div
+    // ── Borders / Dividers ───────────────────────────────────────────────────
+
+    /** Color de borde por defecto para inputs y contenedores. */
     val borderDefault: ColorToken,
+    /** Color de borde sutil para separadores y divisores ligeros. */
     val borderSubtle: ColorToken,
+    /** Color de borde con énfasis para estados activos o seleccionados. */
     val borderEmphasis: ColorToken,
+    /** Color de borde para el estado de foco (accesibilidad). */
     val borderFocus: ColorToken,
 
-    // Brand/Primary
+    // ── Brand / Primary ──────────────────────────────────────────────────────
+
+    /** Color primario de marca (CTA principal, acciones destacadas). */
     val brandPrimary: ColorToken,
+    /** Color primario de marca en estado hover/pressed. */
     val brandPrimaryHover: ColorToken,
 
-    // Support/Actions
+    // ── Support / Actions ────────────────────────────────────────────────────
+
+    /** Color de soporte por defecto para acciones secundarias. */
     val supportDefault: ColorToken,
+    /** Color de soporte en estado hover. */
     val supportHover: ColorToken,
+    /** Color de soporte en estado foco. */
     val supportFocus: ColorToken,
 
-    // Links
+    // ── Links ────────────────────────────────────────────────────────────────
+
+    /** Color de enlace por defecto. */
     val linkDefault: ColorToken,
+    /** Color de enlace en estado hover. */
     val linkHover: ColorToken,
 
+    // ── Error States ─────────────────────────────────────────────────────────
 
-    // Error
+    /** Color de relleno principal para estados de error. */
     val errorFillDefault: ColorToken,
+    /** Color de relleno suave para fondos de error (banners, badges). */
     val errorFillSoft: ColorToken,
+    /** Color de borde para indicadores de error. */
     val errorBorder: ColorToken,
+    /** Color de ícono para estados de error. */
     val errorIcon: ColorToken,
+    /** Color de texto sobre superficies de error. */
     val errorText: ColorToken,
 
+    // ── Success States ───────────────────────────────────────────────────────
 
-    // Success states
+    /** Color de relleno principal para estados de éxito. */
     val successFillDefault: ColorToken,
+    /** Color de relleno suave para fondos de éxito. */
     val successFillSoft: ColorToken,
+    /** Color de borde para indicadores de éxito. */
     val successBorder: ColorToken,
+    /** Color de ícono para estados de éxito. */
     val successIcon: ColorToken,
+    /** Color de texto sobre superficies de éxito. */
     val successText: ColorToken,
 
-    // Warning states
+    // ── Warning States ───────────────────────────────────────────────────────
+
+    /** Color de relleno principal para estados de advertencia. */
     val warningFillDefault: ColorToken,
+    /** Color de relleno suave para fondos de advertencia. */
     val warningFillSoft: ColorToken,
+    /** Color de borde para indicadores de advertencia. */
     val warningBorder: ColorToken,
+    /** Color de ícono para estados de advertencia. */
     val warningIcon: ColorToken,
+    /** Color de texto sobre superficies de advertencia. */
     val warningText: ColorToken,
 
-    // Info states
+    // ── Info States ──────────────────────────────────────────────────────────
+
+    /** Color de relleno principal para estados informativos. */
     val infoFillDefault: ColorToken,
+    /** Color de relleno suave para fondos informativos. */
     val infoFillSoft: ColorToken,
+    /** Color de borde para indicadores informativos. */
     val infoBorder: ColorToken,
+    /** Color de ícono para estados informativos. */
     val infoIcon: ColorToken,
+    /** Color de texto sobre superficies informativas. */
     val infoText: ColorToken,
 
-    // New states
+    // ── New States ───────────────────────────────────────────────────────────
+
+    /** Color de relleno principal para indicadores de novedad. */
     val newFillDefault: ColorToken,
+    /** Color de relleno suave para fondos de novedad. */
     val newFillSoft: ColorToken,
+    /** Color de borde para indicadores de novedad. */
     val newBorder: ColorToken,
+    /** Color de ícono para estados de novedad. */
     val newIcon: ColorToken,
+    /** Color de texto sobre superficies de novedad. */
     val newText: ColorToken
 
 
 ) {
     companion object {
-        // Default tokens de la semántica de Figma (tema: light)
+        // Default tokens de la semántica de Figma (tema: light
+        //TODO crear variable generica val colors = DefaultColors
         val DefaultLight = LibraryColorTokens(
-            transparent = DefaultColors.Extra.trasparent,
+            transparent = DefaultColors.Extra.transparent,
             // Foregrounds
             fgDefault = DefaultColors.Ink.c900,
             fgMuted = DefaultColors.Ink.c500,
@@ -163,6 +226,7 @@ data class LibraryColorTokens(
             surfaceDefault = DefaultColors.Core.white,
             surfaceRaised = DefaultColors.Core.white,
             surfaceSubtle = DefaultColors.Ink.c100,
+            surfaceCardBase = DefaultColors.Core.white, //nuevo
 
             // Borders
             borderDefault = DefaultColors.Ink.c300,
@@ -212,20 +276,26 @@ data class LibraryColorTokens(
             infoText = DefaultColors.Core.white,
 
             // New states
-            newFillDefault = DefaultColors.Support.Blue.c500,
-            newFillSoft = DefaultColors.Support.Blue.c300,
-            newBorder = DefaultColors.Support.Blue.c500,
-            newIcon = DefaultColors.Support.Blue.c500,
+            newFillDefault = DefaultColors.Purple.c500,
+            //newFillDefault = DefaultColors.Support.Blue.c500,
+            newFillSoft = DefaultColors.Purple.c300,
+            //newFillSoft = DefaultColors.Support.Blue.c300,
+            newBorder = DefaultColors.Purple.c500,
+            //newBorder = DefaultColors.Support.Blue.c500,
+            newIcon = DefaultColors.Purple.c500,
+            //newIcon = DefaultColors.Support.Blue.c500,
             newText = DefaultColors.Core.white
 
         )
         // Default tokens de la semántica de Figma (tema: dark)
         val DefaultDark = LibraryColorTokens(
-            transparent = DefaultColors.Extra.trasparent,
+            transparent = DefaultColors.Extra.transparent,
             // Foregrounds
             fgDefault = DefaultColors.Core.white,
-            fgMuted = DefaultColors.Ink.c400,
-            fgSubtle = DefaultColors.Ink.c300,
+            fgMuted = DefaultColors.Ink.c300,
+            //fgMuted = DefaultColors.Ink.c400,
+            fgSubtle = DefaultColors.Ink.c200,
+            //fgSubtle = DefaultColors.Ink.c300,
             fgOnPrimary = DefaultColors.Core.white,
             fgOnInverse = DefaultColors.Core.white,
             fgOnInverseAux = DefaultColors.Core.white,
@@ -240,6 +310,7 @@ data class LibraryColorTokens(
             surfaceDefault = DefaultColors.DarkMode.Border.cDefault,
             surfaceRaised = DefaultColors.DarkMode.Surface.c100,
             surfaceSubtle = DefaultColors.DarkMode.Border.cSubtle,
+            surfaceCardBase = DefaultColors.DarkMode.Border.cCardBase, //nuevo
 
             // Borders
             borderDefault = DefaultColors.DarkMode.Border.cDefault,
@@ -263,8 +334,10 @@ data class LibraryColorTokens(
             // Error States
             errorFillDefault = DefaultColors.Error.c600,
             errorFillSoft = DefaultColors.Error.c300,
-            errorBorder = DefaultColors.Error.c600,
-            errorIcon = DefaultColors.Error.c600,
+            errorBorder = DefaultColors.DarkMode.Error.cRojo,
+            //errorBorder = DefaultColors.Error.c600,
+            errorIcon = DefaultColors.Error.c300,
+            //errorIcon = DefaultColors.Error.c600,
             errorText = DefaultColors.Core.white,
 
             // Success states
@@ -289,15 +362,17 @@ data class LibraryColorTokens(
             infoText = DefaultColors.Core.white,
 
             // New states
-            newFillDefault = DefaultColors.Support.Blue.c500,
-            newFillSoft = DefaultColors.Support.Blue.c300,
-            newBorder = DefaultColors.Support.Blue.c500,
-            newIcon = DefaultColors.Support.Blue.c500,
+            newFillDefault = DefaultColors.Purple.c500,
+            //newFillDefault = DefaultColors.Support.Blue.c500,
+            newFillSoft = DefaultColors.Purple.c300,
+            //newFillSoft = DefaultColors.Support.Blue.c300,
+            newBorder = DefaultColors.Purple.c500,
+            //newBorder = DefaultColors.Support.Blue.c500,
+            newIcon = DefaultColors.Purple.c500,
+            //newIcon = DefaultColors.Support.Blue.c500,
             newText = DefaultColors.Core.white
-
         )
         //Otros temas con sus modes light/dark
-
     }
 
 }

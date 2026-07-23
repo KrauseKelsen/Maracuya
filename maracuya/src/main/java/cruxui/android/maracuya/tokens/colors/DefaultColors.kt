@@ -30,8 +30,8 @@ import cruxui.android.maracuya.tokens.base.ColorToken
  * ```
  *
  * @author Krause Kelsen
- * @since 10-23-2025
- * @version 1.5.4
+ * @since 07-16-2026
+ * @version 0.0.13
  *
  * Grupos:
  * @param Brand     Paleta primaria de marca (rojos). Usada para acciones principales.
@@ -46,17 +46,20 @@ import cruxui.android.maracuya.tokens.base.ColorToken
  * @param Error     Estados de error.
  * @param DarkMode  Colores exclusivos para modo oscuro (superficies, bordes, overlays, etc.).
  *
- * @see cruxui.android.maracuya.tokens.colors.DefaultColors
+ * @see cruxui.android.lib.tokens.colors.DefaultColors
  */
 object DefaultColors {
+
     object Extra {
-        val trasparent = ColorToken.fromHex(0x00FFFFFF)
+        val transparent = ColorToken.fromHex(0x00FFFFFF)
     }
 
     object Brand {
         object Red {
             val c600 = ColorToken.fromHex(0xFFB5161F) // Brand: énfasis fuerte (dark)
-            val c500 = ColorToken.fromHex(0xFFED1C27) // Brand principal
+            //val c500 = ColorToken.fromHex(0xFFED1C27) // Brand principal before
+            val c500 = ColorToken.fromHex(0xFFE1111C) // Brand principal, actualizado
+
             val c300 = ColorToken.fromHex(0xFFFFA5A5) // Brand claro (soft)
         }
     }
@@ -73,15 +76,15 @@ object DefaultColors {
     }
 
     object Teal {
-        val c500 = ColorToken.fromHex(0xFF00BFA5)
-        val c300 = ColorToken.fromHex(0xFF99F0E5)
-        val c100 = ColorToken.fromHex(0xFFE0FBF7)
+        val c500 = ColorToken.fromHex(0xFF00BFA5) // Turquesa oscuro
+        val c300 = ColorToken.fromHex(0xFF99F0E5) // Turquesa claro
+        val c100 = ColorToken.fromHex(0xFFE0FBF7) // Turquesa extra claro
     }
 
     object Purple {
-        val c500 = ColorToken.fromHex(0xFF9C27B0)
-        val c300 = ColorToken.fromHex(0xFFE1BEE7)
-        val c100 = ColorToken.fromHex(0xFFF6EBF8)
+        val c500 = ColorToken.fromHex(0xFF9C27B0) // Morado oscuro
+        val c300 = ColorToken.fromHex(0xFFE1BEE7) // Morado claro
+        val c100 = ColorToken.fromHex(0xFFF6EBF8) // Morado extra claro
     }
 
     object Green {
@@ -98,9 +101,12 @@ object DefaultColors {
     }
 
     object Orange {
-        val c500 = ColorToken.fromHex(0xFFF8991D)
-        val c300 = ColorToken.fromHex(0xFFFFF5A1)
-        val c100 = ColorToken.fromHex(0xFFFFFCE3)
+        val c700 = ColorToken.fromHex(0xFFDF7300) // Naranja fuerte, nuevo agregado
+        val c500 = ColorToken.fromHex(0xFFF8991D) // Naranja oscuro
+        val c300 = ColorToken.fromHex(0xFFFFF5A1) // Naranja claro, actualizado
+        //val c300 = ColorToken.fromHex(0xFFFFD59A) // Naranja claro before
+        val c100 = ColorToken.fromHex(0xFFFFFCE3) // Naranja extra claro, actualizado
+        //val c100 = ColorToken.fromHex(0xFFFFF2E1) // Naranja extra claro before
     }
 
     object Ink {
@@ -120,7 +126,8 @@ object DefaultColors {
     object Error {
         val c700 = ColorToken.fromHex(0xFF8F1D26)
         val c600 = ColorToken.fromHex(0xFFC62828)
-        val c500 = ColorToken.fromHex(0xFFE53935)
+        val c500 = ColorToken.fromHex(0xFFEA8886) // actualizado
+        //val c500 = ColorToken.fromHex(0xFFE53935) // before
         val c300 = ColorToken.fromHex(0xFFF8B4B4)
         val c100 = ColorToken.fromHex(0xFFFDECEC)
     }
@@ -151,6 +158,7 @@ object DefaultColors {
         object Border {
             val cSubtle  = ColorToken.fromHex(0xFF26313A)
             val cDefault = ColorToken.fromHex(0xFF2E3A44)
+            val cCardBase = ColorToken.fromHex(0xFF262626) // Nuevo agregado dark/Card base
         }
     }
 }

@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.buttons.navigation.simple
+package cruxui.android.maracuya.ui.components.buttons.navigation.simple.core
 
 /**
  * Expone acciones para controlar el loading interno iniciado por el boton.

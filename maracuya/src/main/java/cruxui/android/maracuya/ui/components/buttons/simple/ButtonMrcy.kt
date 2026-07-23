@@ -70,7 +70,7 @@ fun ButtonMrcy(
 
     Button(
         onClick = onClick,
-        modifier = modifier.padding(0.dp),
+        modifier = modifier,
         enabled = enabled,
         shape = shape,
         border = BorderStroke(1.dp, borderContainerColorCompose),

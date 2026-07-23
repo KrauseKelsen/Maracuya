@@ -1,11 +1,11 @@
 package cruxui.android.maracuya.atoms
 
+import cruxui.android.maracuya.tokens.base.TypographyToken
 import cruxui.android.maracuya.tokens.fonts.FontSizeTokens
 import cruxui.android.maracuya.tokens.fonts.FontStyleTokens
 import cruxui.android.maracuya.tokens.fonts.FontWeightTokens
 import cruxui.android.maracuya.tokens.fonts.LetterSpacingTokens
 import cruxui.android.maracuya.tokens.fonts.LineHeightTokens
-import cruxui.android.maracuya.tokens.base.TypographyToken
 
 /**
  * s4121779 - Krause Kelsen
@@ -60,8 +60,8 @@ import cruxui.android.maracuya.tokens.base.TypographyToken
  *  - Botones (peso headline)
  *
  * @author Krause Kelsen
- * @since 11-13-2025
- * @version 1.5.4
+ * @since 07-16-2026
+ * @version 0.0.13
  *
  * @param base Función constructora común para todos los estilos
  * @param headline Estilos de encabezado corporativos
@@ -71,7 +71,7 @@ import cruxui.android.maracuya.tokens.base.TypographyToken
  * @param legal Estilo para textos legales
  * @param buttons Estilo para botones con peso enfatizado
  *
- * @see cruxui.android.maracuya.atoms.LibraryTypographyTokens
+ * @see cruxui.android.lib.atoms.LibraryTypographyTokens
  */
 
 
@@ -83,39 +83,58 @@ object LibraryTypographyTokens {
         fontSize = FontSizeTokens.s48,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s48, LineHeightTokens.TightRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.Bold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
 
     val headline36 = TypographyToken(
         fontSize = FontSizeTokens.s36,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s36, LineHeightTokens.TightRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.ExtraBold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
 
     val headline32 = TypographyToken(
         fontSize = FontSizeTokens.s32,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s32, LineHeightTokens.ShortRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.ExtraBold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
 
     val headline28 = TypographyToken(
         fontSize = FontSizeTokens.s28,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s28, LineHeightTokens.ShortRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.ExtraBold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
 
     val headline24 = TypographyToken(
         fontSize = FontSizeTokens.s24,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s24, LineHeightTokens.ShortRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
+        weight = FontWeightTokens.ExtraBold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
+    )
+
+    //new
+    val headline24Medium = TypographyToken(
+        fontSize = FontSizeTokens.s24,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s24, LineHeightTokens.ShortRatio),
+        letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.Medium,
         style = FontStyleTokens.Normal
     )
 
@@ -123,7 +142,27 @@ object LibraryTypographyTokens {
         fontSize = FontSizeTokens.s21,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s21, LineHeightTokens.ShortRatio),
         letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.ExtraBold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
+    )
+
+    //new
+    val headline21Bold = TypographyToken(
+        fontSize = FontSizeTokens.s21,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s21, LineHeightTokens.ShortRatio),
+        letterSpacing = LetterSpacingTokens.None,
         weight = FontWeightTokens.Bold,
+        style = FontStyleTokens.Bold
+    )
+
+    //new
+    val headline21Medium = TypographyToken(
+        fontSize = FontSizeTokens.s21,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s21, LineHeightTokens.ShortRatio),
+        letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.Medium,
         style = FontStyleTokens.Normal
     )
 
@@ -131,16 +170,20 @@ object LibraryTypographyTokens {
         fontSize = FontSizeTokens.s18,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s18, LineHeightTokens.ShortRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.ExtraBold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
 
     val headline16 = TypographyToken(
         fontSize = FontSizeTokens.s16,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s16, LineHeightTokens.ShortRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.ExtraBold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
 
     // Subtítulos
@@ -148,22 +191,26 @@ object LibraryTypographyTokens {
         fontSize = FontSizeTokens.s18,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s18, LineHeightTokens.NormalRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.Bold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
     val subtitle2 = TypographyToken(
         fontSize = FontSizeTokens.s16,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s16, LineHeightTokens.NormalRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
+        weight = FontWeightTokens.Bold,
         style = FontStyleTokens.Normal
     )
     val subtitle3 = TypographyToken(
         fontSize = FontSizeTokens.s14,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s14, LineHeightTokens.NormalRatio),
         letterSpacing = LetterSpacingTokens.None,
-        weight = FontWeightTokens.Regular,
-        style = FontStyleTokens.Normal
+        weight = FontWeightTokens.Bold,
+        //weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Bold
+        //style = FontStyleTokens.Normal
     )
 
     // Cuerpo
@@ -175,12 +222,28 @@ object LibraryTypographyTokens {
         style = FontStyleTokens.Normal
     )
 
+    val body1Italic = TypographyToken(
+        fontSize = FontSizeTokens.s18,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s18, LineHeightTokens.NormalRatio),
+        letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Italic
+    )
+
     val body2 = TypographyToken(
         fontSize = FontSizeTokens.s16,
         lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s16, LineHeightTokens.NormalRatio),
         letterSpacing = LetterSpacingTokens.None,
         weight = FontWeightTokens.Regular,
         style = FontStyleTokens.Normal
+    )
+
+    val body2Italic = TypographyToken(
+        fontSize = FontSizeTokens.s16,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s16, LineHeightTokens.NormalRatio),
+        letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Italic
     )
 
     val introduction = TypographyToken(
@@ -200,15 +263,37 @@ object LibraryTypographyTokens {
         style = FontStyleTokens.Normal
     )
 
+    val captionItalic = TypographyToken(
+        fontSize = FontSizeTokens.s14,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s14, LineHeightTokens.NormalRatio),
+        letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.Regular,
+        style = FontStyleTokens.Italic
+    )
+
     val legal = TypographyToken(
         fontSize = FontSizeTokens.s12,
-        lineHeight = LineHeightTokens.lineHeightFrom(
-            FontSizeTokens.s12,
-            LineHeightTokens.NormalRatio
-        ),
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s12, LineHeightTokens.NormalRatio),
         letterSpacing = LetterSpacingTokens.None,
         weight = FontWeightTokens.Regular,
         style = FontStyleTokens.Normal
+    )
+
+    val legalItalic = TypographyToken(
+        fontSize = FontSizeTokens.s12,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s12, LineHeightTokens.NormalRatio),
+        letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.Regular,
+        italic = true,
+        style = FontStyleTokens.Italic
+    )
+
+    val legalBold = TypographyToken(
+        fontSize = FontSizeTokens.s12,
+        lineHeight = LineHeightTokens.lineHeightFrom(FontSizeTokens.s12, LineHeightTokens.NormalRatio),
+        letterSpacing = LetterSpacingTokens.None,
+        weight = FontWeightTokens.Bold,
+        style = FontStyleTokens.Bold
     )
 
     val buttons = TypographyToken(
@@ -245,4 +330,5 @@ object LibraryTypographyTokens {
         weight = FontWeightTokens.Medium,
         style = FontStyleTokens.Normal
     )
+
 }

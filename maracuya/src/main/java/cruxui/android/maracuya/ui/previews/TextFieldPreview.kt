@@ -285,12 +285,8 @@ private const val XML_PREVIEW_TOKENS_OVERRIDE = "mytokensoverride"
 @Composable
 fun TextFieldWrp_XmlTokensOverridePreview() {
     PreviewWrapper(style = Mode.current) {
-        val colors = LocalLibraryColorTokens.current
-        val typography = LocalLibraryTypography.current
-        val icons = LocalLibraryIcons.current
-        val fontFamily = LocalFontFamily.current
-        TextFieldTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE,
-
+        TextFieldTokensOverrideRegistry.register(XML_PREVIEW_TOKENS_OVERRIDE) {
+            colors, typography, icons, fontFamily ->
             TextFieldTokens(
                 fontFamilyToken = fontFamily,
                 bottomTextErrorColor = colors.fgError,
@@ -301,7 +297,7 @@ fun TextFieldWrp_XmlTokensOverridePreview() {
                 passwordHiddenIcon = icons.general.visibility,
                 passwordVisibleIcon = icons.general.visibilityOff,
             )
-        )
+        }
         DisposableEffect(Unit) {
             onDispose {
                 TextFieldTokensOverrideRegistry.unregister(XML_PREVIEW_TOKENS_OVERRIDE)

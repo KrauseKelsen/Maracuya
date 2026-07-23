@@ -1,7 +1,15 @@
 package cruxui.android.maracuya.wrappers.components.buttons.navigation.simple
 
 import androidx.compose.runtime.Composable
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.atoms.LibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalFontFamily
+import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
+import cruxui.android.maracuya.compositions.LocalLibraryIcons
+import cruxui.android.maracuya.compositions.LocalLibraryTypography
+import cruxui.android.maracuya.semantics.CorporateIcons
+import cruxui.android.maracuya.semantics.CorporateTypography
+import cruxui.android.maracuya.tokens.base.FontFamilyToken
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -18,9 +26,21 @@ object ButtonNavigationTokensOverrideRegistry {
     /** Registra o reemplaza un override estable para usar desde XML. */
     fun register(
         name: String,
-        tokensOverride: ButtonNavigationTokensOverride,
+        builder: (
+            colors: LibraryColorTokens,
+            typography: CorporateTypography,
+            icons: CorporateIcons,
+            fontFamily: FontFamilyToken,
+        ) -> ButtonNavigationTokensOverride,
     ) {
-        providers[name.normalizedKey()] = { tokensOverride }
+        providers[name.normalizedKey()] = {
+            builder(
+                LocalLibraryColorTokens.current,
+                LocalLibraryTypography.current,
+                LocalLibraryIcons.current,
+                LocalFontFamily.current,
+            )
+        }
     }
 
     /** Elimina un override previamente registrado por una pantalla, preview o test. */

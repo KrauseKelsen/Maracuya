@@ -5,11 +5,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationLoadingScope
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokens
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.core.ButtonNavigationLoadingScope
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokens
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 
 /**
  * Agrupa la configuracion inicial de `ButtonNavigationWrp`.
@@ -28,5 +28,5 @@ internal data class ButtonNavigationAttributes(
     val buttonNavigationTokens: ButtonNavigationTokens? = null,
     val buttonNavigationTokensOverride: ButtonNavigationTokensOverride? = null,
     val buttonNavigationTokensOverrideName: String? = null,
-    val onTrailingClick: (ButtonNavigationLoadingScope.() -> Unit)? = null,
+    val onLoadingClick: (ButtonNavigationLoadingScope.() -> Unit)? = null,
 )

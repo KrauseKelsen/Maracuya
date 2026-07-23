@@ -2,22 +2,30 @@ package cruxui.android.maracuya.ui.components.buttons.navigation.simple
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehaviorResolver
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.core.ButtonNavigationLoadingScope
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokens
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokensrender.ButtonNavigationTokensRenderResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariantResolver
+import cruxui.android.maracuya.ui.components.labels.LabelMrcy
+import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.utils.compose.collectPressedAsState
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.FontFamiliesComposeAdapter
@@ -71,28 +79,66 @@ fun ButtonNavigationMrcy(
         fontFamily = FontFamiliesComposeAdapter.toCompose(renderTokens.fontFamilyToken),
     )
 
-    Button(
-        onClick = behaviorState.onClick,
-        enabled = behaviorState.canClick,
+    val buttonModifier = ButtonNavigationVariantResolver.resolveButtonModifier(
+        variant = variant,
         modifier = modifier,
+    )
+    val buttonShape = ButtonNavigationVariantResolver.resolveButtonShape(
+        variant = variant,
         shape = shape,
-        border = BorderStroke(1.dp, ColorComposeAdapter.toComposeColor(renderTokens.borderColor)),
-        interactionSource = interactionSource,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = ColorComposeAdapter.toComposeColor(renderTokens.containerColor),
-            contentColor = ColorComposeAdapter.toComposeColor(renderTokens.contentColor),
-            disabledContainerColor = ColorComposeAdapter.toComposeColor(renderTokens.disabledContainerColor),
-            disabledContentColor = ColorComposeAdapter.toComposeColor(renderTokens.disabledContentColor),
-        ),
-    ) {
-        ButtonNavigationContent(
-            label = label,
-            tokens = renderTokens,
-            iconAtEnd = variant == ButtonNavigationVariant.PRIMARY,
-            behaviorState = behaviorState,
-            contentColor = ColorComposeAdapter.toComposeColor(renderTokens.contentColor),
-            iconColor = ColorComposeAdapter.toComposeColor(renderTokens.iconColor),
-            textStyle = textStyle,
-        )
+    )
+    val buttonLabel = ButtonNavigationVariantResolver.resolveButtonLabel(
+        variant = variant,
+        label = label,
+    )
+    val bottomLabel = ButtonNavigationVariantResolver.resolveBottomLabel(
+        variant = variant,
+        label = label,
+    )
+    val bottomLabelSpacing = ButtonNavigationVariantResolver.resolveBottomLabelSpacing(variant)
+    val iconAtEnd = ButtonNavigationVariantResolver.resolveIconAtEnd(variant)
+
+    val button: @Composable () -> Unit = {
+        Button(
+            onClick = behaviorState.onClick,
+            enabled = behaviorState.canClick,
+            modifier = buttonModifier,
+            shape = buttonShape,
+            border = BorderStroke(1.dp, ColorComposeAdapter.toComposeColor(renderTokens.borderColor)),
+            interactionSource = interactionSource,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = ColorComposeAdapter.toComposeColor(renderTokens.containerColor),
+                contentColor = ColorComposeAdapter.toComposeColor(renderTokens.contentColor),
+                disabledContainerColor = ColorComposeAdapter.toComposeColor(renderTokens.disabledContainerColor),
+                disabledContentColor = ColorComposeAdapter.toComposeColor(renderTokens.disabledContentColor),
+            ),
+        ) {
+            ButtonNavigationContent(
+                label = buttonLabel,
+                tokens = renderTokens,
+                iconAtEnd = iconAtEnd,
+                behaviorState = behaviorState,
+                contentColor = ColorComposeAdapter.toComposeColor(renderTokens.contentColor),
+                iconColor = ColorComposeAdapter.toComposeColor(renderTokens.iconColor),
+                textStyle = textStyle,
+            )
+        }
+    }
+
+    if (bottomLabel != null) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            button()
+            Spacer(modifier = Modifier.height(bottomLabelSpacing))
+            LabelMrcy(
+                text = bottomLabel,
+                labelTokensOverride = LabelTokensOverride(
+                    labelTypography = renderTokens.typographyToken,
+                    fontFamily = renderTokens.fontFamilyToken,
+                ),
+                limitMaxLabel = false,
+            )
+        }
+    } else {
+        button()
     }
 }

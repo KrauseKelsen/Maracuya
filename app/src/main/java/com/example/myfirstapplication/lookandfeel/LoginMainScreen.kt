@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.R
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.components.layouts.LayoutPilotWellkommen

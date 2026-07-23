@@ -12,11 +12,12 @@ package cruxui.android.maracuya.tokens.fonts
  *
  * El adaptador en theme convertirá estos tokens a Compose.
  *
- * @author Krause
- * @since 2025-11-18
- * @version 1.5.4
+ * @author Krause Kelsen
+ * @since 07-16-2026
+ * @version 0.0.13
  */
 object FontStyleTokens {
     const val Normal = 0
     const val Italic = 1
+    const val Bold = 2
 }

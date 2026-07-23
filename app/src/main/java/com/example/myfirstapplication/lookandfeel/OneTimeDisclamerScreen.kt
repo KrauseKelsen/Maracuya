@@ -24,7 +24,7 @@ import cruxui.android.maracuya.R
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
 import cruxui.android.maracuya.ui.components.checkboxes.CheckBoxMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride

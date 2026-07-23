@@ -3,8 +3,8 @@ package cruxui.android.maracuya.wrappers.components.buttons.navigation.simple
 import android.content.Context
 import android.util.AttributeSet
 import cruxui.android.maracuya.R
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 
 /**
  * Resuelve atributos XML de `ButtonNavigationWrp` y los convierte en un modelo tipado.
@@ -13,6 +13,8 @@ internal object ButtonNavigationAttributeParser {
 
     private const val VARIANT_PRIMARY = 0
     private const val VARIANT_SECONDARY = 1
+    private const val VARIANT_PRIMARY_SQUARE = 2
+    private const val VARIANT_SECONDARY_SQUARE = 3
 
     fun parse(context: Context, attrs: AttributeSet?): ButtonNavigationAttributes {
         if (attrs == null) {
@@ -33,6 +35,8 @@ internal object ButtonNavigationAttributeParser {
                 )
             ) {
                 VARIANT_SECONDARY -> ButtonNavigationVariant.SECONDARY
+                VARIANT_PRIMARY_SQUARE -> ButtonNavigationVariant.PRIMARYSQUARE
+                VARIANT_SECONDARY_SQUARE -> ButtonNavigationVariant.SECONDARYSQUARE
                 else -> ButtonNavigationVariant.PRIMARY
             }
 

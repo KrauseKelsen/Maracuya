@@ -28,11 +28,32 @@
         <attr name="buttonNavigationVariant" format="enum">
             <enum name="primary" value="0" />
             <enum name="secondary" value="1" />
+            <enum name="primarysquare" value="2" />
+            <enum name="secondarysquare" value="3" />
         </attr>
         <attr name="buttonNavigationIsLoading" format="boolean" />
         <attr name="buttonNavigationStartsLoadingOnClick" format="boolean" />
         <attr name="buttonNavigationShowIcon" format="boolean" />
         <attr name="buttonNavigationTokensOverride" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonNavigationGroupWrp">
+        <attr name="isEnabled" />
+        <attr name="buttonNavigationGroupVariant" format="enum">
+            <enum name="back_continue" value="0" />
+            <enum name="back_submit" value="1" />
+            <enum name="skip_continue" value="2" />
+            <enum name="skip_submit" value="3" />
+        </attr>
+        <attr name="buttonNavigationGroupLeadingLabel" format="string" />
+        <attr name="buttonNavigationGroupTrailingLabel" format="string" />
+        <attr name="buttonNavigationGroupLeadingButtonWidth" format="dimension" />
+        <attr name="buttonNavigationGroupTrailingButtonWidth" format="dimension" />
+        <attr name="buttonNavigationGroupButtonSpacing" format="dimension" />
+        <attr name="buttonNavigationGroupLeadingEnabled" format="boolean" />
+        <attr name="buttonNavigationGroupTrailingEnabled" format="boolean" />
+        <attr name="buttonNavigationGroupIsTrailingLoading" format="boolean" />
+        <attr name="buttonNavigationGroupStartsTrailingLoadingOnClick" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="LabelWrp">

@@ -10,24 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.BiometricsDisclaimerScreen
-import com.example.myfirstapplication.lookandfeel.LoginMainScreen
-import com.example.myfirstapplication.lookandfeel.LoginScreen
-import com.example.myfirstapplication.lookandfeel.OneTimeDisclamerScreen
-import com.example.myfirstapplication.lookandfeel.VerifyCodeScreen
-import cruxui.android.maracuya.compositions.LocalFontFamily
-import cruxui.android.maracuya.compositions.LocalLibraryIcons
-import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.tokens.base.ColorToken
-import cruxui.android.maracuya.tokens.base.TypographyToken
-import cruxui.android.maracuya.ui.components.utils.IconPosition
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.button.ButtonTokensResolver
+import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
 import cruxui.android.maracuya.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
-import cruxui.android.maracuya.ui.components.dropdowns.DropDownContent
-import cruxui.android.maracuya.ui.components.dropdowns.DropDownItem
-import cruxui.android.maracuya.ui.components.dropdowns.DropDownMrcy
-import cruxui.android.maracuya.ui.components.dropdowns.DropDownSelectionMode
-import cruxui.android.maracuya.ui.components.dropdowns.DropDownVariant
 import cruxui.android.maracuya.ui.components.inputs.basic.InputFieldBasicMrcy
 import cruxui.android.maracuya.ui.components.inputs.basic.InputFieldBasicType
 import cruxui.android.maracuya.ui.components.inputs.config.InputFieldBasicTokenGroup
@@ -37,8 +21,6 @@ import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
 import cruxui.android.maracuya.ui.components.textfields.TextFieldVariant
 import cruxui.android.maracuya.ui.components.texts.LegalText
 import cruxui.android.maracuya.ui.components.texts.LegalTextTokens
-import cruxui.android.maracuya.ui.previews.core.Mode
-import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
 
 
 class MainActivity : ComponentActivity() {

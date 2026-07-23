@@ -26,9 +26,9 @@ import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationMrcy
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
 import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
 import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy

@@ -10,12 +10,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationLoadingScope
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.core.ButtonNavigationLoadingScope
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokens
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokens
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 import cruxui.android.maracuya.wrappers.core.MrcyXmlComposeView
 
 /**
@@ -39,7 +39,7 @@ class ButtonNavigationWrp @JvmOverloads constructor(
     private var buttonNavigationTokensState by mutableStateOf<ButtonNavigationTokens?>(null)
     private var buttonNavigationTokensOverrideState by mutableStateOf<ButtonNavigationTokensOverride?>(null)
     private var buttonNavigationTokensOverrideNameState by mutableStateOf<String?>(null)
-    private var onTrailingClickState by mutableStateOf<(ButtonNavigationLoadingScope.() -> Unit)?>(null)
+    private var onLoadingClickState by mutableStateOf<(ButtonNavigationLoadingScope.() -> Unit)?>(null)
 
     init {
         val initialValues = ButtonNavigationAttributeParser.parse(context, attrs)
@@ -53,7 +53,7 @@ class ButtonNavigationWrp @JvmOverloads constructor(
         buttonNavigationTokensState = initialValues.buttonNavigationTokens
         buttonNavigationTokensOverrideState = initialValues.buttonNavigationTokensOverride
         buttonNavigationTokensOverrideNameState = initialValues.buttonNavigationTokensOverrideName
-        onTrailingClickState = initialValues.onTrailingClick
+        onLoadingClickState = initialValues.onLoadingClick
     }
 
     var label: String?
@@ -109,9 +109,14 @@ class ButtonNavigationWrp @JvmOverloads constructor(
         enabledState = enabled
     }
 
-    /** Define la accion opcional que controla el ciclo de loading del icono. */
+    /** Define la accion que acompana el loading iniciado por el boton. */
+    fun setOnLoadingClickListener(listener: (ButtonNavigationLoadingScope.() -> Unit)?) {
+        onLoadingClickState = listener
+    }
+
+    /** Alias legado para integraciones que usaban el nombre anterior. */
     fun setOnTrailingClickListener(listener: (ButtonNavigationLoadingScope.() -> Unit)?) {
-        onTrailingClickState = listener
+        setOnLoadingClickListener(listener)
     }
 
     @Composable
@@ -137,7 +142,7 @@ class ButtonNavigationWrp @JvmOverloads constructor(
             buttonNavigationBehavior = buttonNavigationBehaviorState,
             buttonNavigationTokens = buttonNavigationTokensState,
             buttonNavigationTokensOverride = resolvedTokensOverride,
-            onTrailingClick = onTrailingClickState,
+            onLoadingClick = onLoadingClickState,
         )
     }
 }
