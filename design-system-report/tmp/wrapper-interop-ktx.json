@@ -1,0 +1,50 @@
+{
+  "scope": "maracuya/src/main/java/cruxui/android/maracuya/wrappers",
+  "coreFile": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/core/MrcyXmlComposeView.kt",
+  "coreLines": 120,
+  "currentModifierSignals": {
+    "fillMaxWidth": 2,
+    "fillMaxHeight": 2,
+    "MarginLayoutParams": 0,
+    "setPadding": 0,
+    "doAfterTextChanged": 0,
+    "TextWatcher": 0,
+    "setTextColor": 0
+  },
+  "currentBridgeCoverage": {
+    "layoutWidthHeight": 2,
+    "marginPaddingGravityConstraintWeight": 0,
+    "coreKtxCompatibility": 0,
+    "genericCapabilityLayer": 0
+  },
+  "wrapperFamiliesImpacted": 6,
+  "customSetOnMethods": 7,
+  "expectedBridgeCapabilities": [
+    "layout_width/layout_height",
+    "margin",
+    "padding",
+    "gravity/alignment",
+    "weight/parent layout contracts",
+    "constraint-aware mapping",
+    "native-like listeners and setters"
+  ],
+  "missingNativeLikeExamples": [
+    "EditText.doAfterTextChanged",
+    "TextView.setTextColor / setColor",
+    "listeners y setters habituales de Views que no siempre existen en el wrapper DS"
+  ],
+  "estimate": {
+    "architectureDaysMin": 2.0,
+    "architectureDaysMax": 3.0,
+    "modifierBridgeDaysMin": 3.0,
+    "modifierBridgeDaysMax": 4.0,
+    "coreKtxBridgeDaysMin": 2.0,
+    "coreKtxBridgeDaysMax": 3.0,
+    "migrationDaysMin": 4.0,
+    "migrationDaysMax": 6.0,
+    "regressionDaysMin": 2.0,
+    "regressionDaysMax": 3.0,
+    "totalDaysMin": 13.0,
+    "totalDaysMax": 19.0
+  }
+}

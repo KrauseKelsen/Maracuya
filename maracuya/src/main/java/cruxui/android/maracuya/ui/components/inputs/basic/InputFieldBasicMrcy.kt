@@ -60,7 +60,7 @@ fun InputFieldBasicMrcy(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     inputFieldBasicTokens: InputFieldBasicTokens? = null,
     expandToContainerWidth: Boolean = false,
-    textAlign: TextAlign = TextAlign.Start,
+    textAlign: TextAlign? = null,
 ) {
 
     val tokens = InputFieldBasicTokensResolver.resolve(override = inputFieldBasicTokens)
@@ -177,8 +177,10 @@ fun InputFieldBasicMrcy(
                     tokens.textTypography,
                     FontFamiliesComposeAdapter.toCompose(tokens.fontFamilyToken)
                 )
+                .let { style ->
+                    if (textAlign != null) style.copy(textAlign = textAlign) else style
+                }
                 .copy(
-                    textAlign = textAlign,
                     color = if (readOnly)
                         ColorComposeAdapter.toComposeColor(tokens.placeholderColor)
                     else

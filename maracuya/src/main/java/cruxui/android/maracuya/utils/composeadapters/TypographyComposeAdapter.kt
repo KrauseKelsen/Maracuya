@@ -4,8 +4,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import cruxui.android.maracuya.tokens.base.TypographyToken
+import cruxui.android.maracuya.tokens.fonts.TextAlignTokens
 
 /**
  * s4121779 - Krause Kelsen
@@ -20,6 +22,7 @@ import cruxui.android.maracuya.tokens.base.TypographyToken
  * Notas:
  * - Convierte el `weight` entero a `FontWeight` de Compose.
  * - Respeta `italic` si aplica.
+ * - Convierte `textAlign` desde tokens puros hacia Compose.
  *
  * @since 2025-11-18
  * @version 1.5.4
@@ -41,6 +44,7 @@ object TypographyComposeAdapter {
         val fontStyle = if (token.italic) FontStyle.Companion.Italic else FontStyle.Companion.Normal
 
         return TextStyle(
+            textAlign = token.textAlign.toComposeTextAlign(),
             fontFamily = fontFamily,
             fontSize = token.fontSize.sp,
             lineHeight = token.lineHeight.sp,
@@ -48,5 +52,18 @@ object TypographyComposeAdapter {
             fontWeight = fontWeight,
             fontStyle = fontStyle
         )
+    }
+
+    private fun Int.toComposeTextAlign(): TextAlign {
+        return when (this) {
+            TextAlignTokens.Left -> TextAlign.Left
+            TextAlignTokens.Right -> TextAlign.Right
+            TextAlignTokens.Center -> TextAlign.Center
+            TextAlignTokens.Justify -> TextAlign.Justify
+            TextAlignTokens.Start -> TextAlign.Start
+            TextAlignTokens.End -> TextAlign.End
+            TextAlignTokens.Unspecified -> TextAlign.Unspecified
+            else -> TextAlign.Unspecified
+        }
     }
 }

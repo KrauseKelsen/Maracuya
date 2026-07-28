@@ -12,6 +12,7 @@ import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.tokens.base.ColorToken
 import cruxui.android.maracuya.tokens.base.IconToken
 import cruxui.android.maracuya.tokens.base.TypographyToken
+import cruxui.android.maracuya.tokens.fonts.TextAlignTokens
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariantResolver
 import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensResolver
@@ -86,7 +87,9 @@ object ButtonNavigationTokensResolver {
                     iconToken = icons.arrows.keyboardBackspaceRight,
                     loadingIconToken = icons.arrows.sync,
                     iconColor = colors.fgOnInverse,
-                    typographyToken = typography.legal,
+                    typographyToken = typography.legal.copy(
+                        textAlign = TextAlignTokens.Center
+                    ),
                     fontFamilyToken = fontFamily,
                 )
 
@@ -102,7 +105,9 @@ object ButtonNavigationTokensResolver {
                     iconToken = icons.arrows.keyboardBackspaceLeft,
                     loadingIconToken = icons.arrows.sync,
                     iconColor = colors.brandPrimary,
-                    typographyToken = typography.legal,
+                    typographyToken = typography.legal.copy(
+                        textAlign = TextAlignTokens.Center
+                    ),
                     fontFamilyToken = fontFamily,
                 )
 

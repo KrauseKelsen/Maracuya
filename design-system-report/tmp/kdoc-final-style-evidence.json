@@ -1,0 +1,85 @@
+{
+  "input": "/Users/krausekelsen/Documents/AndroidProjects/MyFirstApplication/design-system-report/Reporte_Deuda_Design_System_preview.docx",
+  "fonts_by_char_count": {
+    "Helvetica Neue": 1723
+  },
+  "direct_run_formatting_runs": 33,
+  "direct_paragraph_formatting_paragraphs": 37,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 51,
+      "text": "Hallazgo",
+      "style": "normal"
+    },
+    {
+      "para_index": 52,
+      "text": "Evidencia / alcance",
+      "style": "normal"
+    },
+    {
+      "para_index": 53,
+      "text": "Prioridad",
+      "style": "normal"
+    }
+  ],
+  "examples": {
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 1,
+        "text": "",
+        "style": "normal"
+      },
+      {
+        "para_index": 2,
+        "text": "",
+        "style": "normal"
+      },
+      {
+        "para_index": 3,
+        "text": "Design System: Deuda",
+        "style": "Title"
+      },
+      {
+        "para_index": 4,
+        "text": "",
+        "style": "normal"
+      },
+      {
+        "para_index": 5,
+        "text": "Contenido",
+        "style": "normal"
+      }
+    ],
+    "direct_run_formatting": [
+      {
+        "para_index": 5,
+        "run_text": "Contenido",
+        "style": "normal"
+      },
+      {
+        "para_index": 11,
+        "run_text": "Formalizar la deuda de documentaci\u00f3n KDoc como primer punto del backlog t\u00e9cnico ",
+        "style": "normal"
+      },
+      {
+        "para_index": 12,
+        "run_text": "Asegurar que cada clase, token, atom y componente Mrcy explique descripci\u00f3n, jer",
+        "style": "normal"
+      },
+      {
+        "para_index": 13,
+        "run_text": "Mantener una tabla de prioridad preliminar sin puntaje hasta completar todos los",
+        "style": "normal"
+      },
+      {
+        "para_index": 24,
+        "run_text": "Riesgo principal. ",
+        "style": "normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

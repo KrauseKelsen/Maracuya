@@ -1,0 +1,239 @@
+{
+  "methodology": "Audits wrappers as XML exposure families. Each family is evaluated for repeated parser, attribute model, registry, mutable state and direct Content orchestration patterns. The target architecture markers are checked globally and are currently absent.",
+  "targetArchitectureMarkers": {
+    "WrapperTokens": false,
+    "WrapperTokensResolver": false,
+    "WrapperVariant": false,
+    "WrapperVariantResolver": false,
+    "WrapperBehavior": false,
+    "WrapperBehaviorResolver": false,
+    "WrapperRender": false,
+    "WrapperRenderResolver": false
+  },
+  "totals": {
+    "ktFiles": 26,
+    "families": 7,
+    "xmlComponentFamilies": 6,
+    "wrapperViews": 6,
+    "attributeParsers": 6,
+    "attributeModels": 6,
+    "tokensOverrideRegistries": 5,
+    "obtainStyledAttributes": 6,
+    "styleableRefs": 54,
+    "mutableStateOf": 67,
+    "contentOverrides": 5,
+    "setEnabledOverrides": 4,
+    "targetMarkersPresent": 0,
+    "architectureDesignDaysMin": 3.0,
+    "architectureDesignDaysMax": 4.0,
+    "familyMigrationDaysMin": 9.25,
+    "familyMigrationDaysMax": 13.75,
+    "regressionDaysMin": 3.0,
+    "regressionDaysMax": 4.0,
+    "totalDaysMin": 15.25,
+    "totalDaysMax": 21.75
+  },
+  "families": [
+    {
+      "family": "buttons/navigation/group",
+      "files": [
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupWrp.kt"
+      ],
+      "fileCount": 4,
+      "hasWrapperView": true,
+      "complexity": "media",
+      "estimateDays": {
+        "min": 1.5,
+        "max": 2.25
+      },
+      "signals": {
+        "obtainStyledAttributes": 1,
+        "styleableRefs": 12,
+        "mutableStateOf": 13,
+        "setEnabledOverrides": 1,
+        "contentOverrides": 1,
+        "registryObjects": 1,
+        "parserObjects": 1,
+        "attributeModels": 1,
+        "directRegistryResolve": 0,
+        "whenBlocks": 1,
+        "publicSetters": 3
+      }
+    },
+    {
+      "family": "buttons/navigation/simple",
+      "files": [
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationWrp.kt"
+      ],
+      "fileCount": 4,
+      "hasWrapperView": true,
+      "complexity": "media",
+      "estimateDays": {
+        "min": 1.5,
+        "max": 2.25
+      },
+      "signals": {
+        "obtainStyledAttributes": 1,
+        "styleableRefs": 8,
+        "mutableStateOf": 11,
+        "setEnabledOverrides": 1,
+        "contentOverrides": 1,
+        "registryObjects": 1,
+        "parserObjects": 1,
+        "attributeModels": 1,
+        "directRegistryResolve": 1,
+        "whenBlocks": 1,
+        "publicSetters": 3
+      }
+    },
+    {
+      "family": "buttons/simple",
+      "files": [
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonWrp.kt"
+      ],
+      "fileCount": 4,
+      "hasWrapperView": true,
+      "complexity": "media",
+      "estimateDays": {
+        "min": 1.5,
+        "max": 2.25
+      },
+      "signals": {
+        "obtainStyledAttributes": 1,
+        "styleableRefs": 6,
+        "mutableStateOf": 10,
+        "setEnabledOverrides": 1,
+        "contentOverrides": 1,
+        "registryObjects": 1,
+        "parserObjects": 1,
+        "attributeModels": 1,
+        "directRegistryResolve": 1,
+        "whenBlocks": 1,
+        "publicSetters": 1
+      }
+    },
+    {
+      "family": "core",
+      "files": [
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/core/MrcyXmlComposeView.kt"
+      ],
+      "fileCount": 1,
+      "hasWrapperView": false,
+      "complexity": "base",
+      "estimateDays": {
+        "min": 0.75,
+        "max": 1.0
+      },
+      "signals": {
+        "obtainStyledAttributes": 0,
+        "styleableRefs": 0,
+        "mutableStateOf": 3,
+        "setEnabledOverrides": 0,
+        "contentOverrides": 0,
+        "registryObjects": 0,
+        "parserObjects": 0,
+        "attributeModels": 0,
+        "directRegistryResolve": 0,
+        "whenBlocks": 0,
+        "publicSetters": 1
+      }
+    },
+    {
+      "family": "labels",
+      "files": [
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelWrp.kt"
+      ],
+      "fileCount": 4,
+      "hasWrapperView": true,
+      "complexity": "media",
+      "estimateDays": {
+        "min": 1.5,
+        "max": 2.25
+      },
+      "signals": {
+        "obtainStyledAttributes": 1,
+        "styleableRefs": 8,
+        "mutableStateOf": 10,
+        "setEnabledOverrides": 0,
+        "contentOverrides": 1,
+        "registryObjects": 1,
+        "parserObjects": 1,
+        "attributeModels": 1,
+        "directRegistryResolve": 1,
+        "whenBlocks": 0,
+        "publicSetters": 0
+      }
+    },
+    {
+      "family": "textfields",
+      "files": [
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldWrp.kt"
+      ],
+      "fileCount": 4,
+      "hasWrapperView": true,
+      "complexity": "alta",
+      "estimateDays": {
+        "min": 2.5,
+        "max": 3.5
+      },
+      "signals": {
+        "obtainStyledAttributes": 1,
+        "styleableRefs": 16,
+        "mutableStateOf": 20,
+        "setEnabledOverrides": 1,
+        "contentOverrides": 1,
+        "registryObjects": 1,
+        "parserObjects": 1,
+        "attributeModels": 1,
+        "directRegistryResolve": 1,
+        "whenBlocks": 3,
+        "publicSetters": 4
+      }
+    },
+    {
+      "family": "theme",
+      "files": [
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeConfig.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeMapper.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeProvider.kt",
+        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeWrp.kt"
+      ],
+      "fileCount": 5,
+      "hasWrapperView": true,
+      "complexity": "baja",
+      "estimateDays": {
+        "min": 0.75,
+        "max": 1.25
+      },
+      "signals": {
+        "obtainStyledAttributes": 1,
+        "styleableRefs": 4,
+        "mutableStateOf": 0,
+        "setEnabledOverrides": 0,
+        "contentOverrides": 0,
+        "registryObjects": 0,
+        "parserObjects": 1,
+        "attributeModels": 1,
+        "directRegistryResolve": 0,
+        "whenBlocks": 1,
+        "publicSetters": 0
+      }
+    }
+  ]
+}

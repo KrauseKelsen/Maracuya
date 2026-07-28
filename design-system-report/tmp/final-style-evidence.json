@@ -1,0 +1,85 @@
+{
+  "input": "/Users/krausekelsen/Documents/AndroidProjects/MyFirstApplication/design-system-report/Reporte_Deuda_Design_System_preview.docx",
+  "fonts_by_char_count": {
+    "Helvetica Neue": 1911
+  },
+  "direct_run_formatting_runs": 33,
+  "direct_paragraph_formatting_paragraphs": 37,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 51,
+      "text": "\u00c1rea",
+      "style": "normal"
+    },
+    {
+      "para_index": 52,
+      "text": "Deuda a documentar",
+      "style": "normal"
+    },
+    {
+      "para_index": 53,
+      "text": "Riesgo si no se atiende",
+      "style": "normal"
+    }
+  ],
+  "examples": {
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 1,
+        "text": "",
+        "style": "normal"
+      },
+      {
+        "para_index": 2,
+        "text": "",
+        "style": "normal"
+      },
+      {
+        "para_index": 3,
+        "text": "Design System: Deuda",
+        "style": "Title"
+      },
+      {
+        "para_index": 4,
+        "text": "",
+        "style": "normal"
+      },
+      {
+        "para_index": 5,
+        "text": "Contenido",
+        "style": "normal"
+      }
+    ],
+    "direct_run_formatting": [
+      {
+        "para_index": 5,
+        "run_text": "Contenido",
+        "style": "normal"
+      },
+      {
+        "para_index": 11,
+        "run_text": "Inventariar deuda t\u00e9cnica, deuda visual, fixes pendientes, c\u00f3digo espagueti y ma",
+        "style": "normal"
+      },
+      {
+        "para_index": 12,
+        "run_text": "Priorizar cada hallazgo por impacto en escalabilidad, mantenibilidad, flexibilid",
+        "style": "normal"
+      },
+      {
+        "para_index": 13,
+        "run_text": "Convertir cada implementaci\u00f3n pendiente en esfuerzo estimado, fecha objetivo y r",
+        "style": "normal"
+      },
+      {
+        "para_index": 24,
+        "run_text": "Riesgo principal. ",
+        "style": "normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

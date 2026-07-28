@@ -1,0 +1,30 @@
+{
+  "scope": "maracuya/src/main/java/cruxui/android/maracuya",
+  "previewAnnotations": 51,
+  "previewFiles": 11,
+  "showkaseAnnotations": 0,
+  "showkaseFiles": 0,
+  "targetInitialComponents": 13,
+  "kdocTemplatePendingItems": 167,
+  "dependency": "Debe ejecutarse después de completar la plantilla KDoc para que el catálogo visual tenga definiciones útiles.",
+  "estimatedDays": {
+    "researchMin": 2.0,
+    "researchMax": 3.0,
+    "demoMin": 3.0,
+    "demoMax": 4.0,
+    "taxonomyMin": 2.0,
+    "taxonomyMax": 3.0,
+    "annotationMin": 5.0,
+    "annotationMax": 8.0,
+    "maintenanceGuideMin": 1.0,
+    "maintenanceGuideMax": 2.0,
+    "totalMin": 13.0,
+    "totalMax": 20.0
+  },
+  "officialSource": "https://github.com/airbnb/Showkase",
+  "risks": [
+    "Sin catálogo visual, el uso del DS depende de explicaciones manuales del maintainer.",
+    "Sin KDoc completo, Showkase tendría ejemplos visuales con definiciones técnicas pobres.",
+    "Si XML puro ofrece una experiencia más familiar y completa, los devs pueden evitar el DS."
+  ]
+}

@@ -1,6 +1,7 @@
 package cruxui.android.maracuya.tokens.base
 
 import cruxui.android.maracuya.tokens.fonts.FontStyleTokens
+import cruxui.android.maracuya.tokens.fonts.TextAlignTokens
 
 /**
  * s4121779 - Krause Kelsen
@@ -9,7 +10,7 @@ import cruxui.android.maracuya.tokens.fonts.FontStyleTokens
  * Token tipográfico atómico/semántico independiente de Compose.
  * Esta clase representa los valores mínimos necesarios para construir
  * un estilo tipográfico en cualquier plataforma (fontSize, lineHeight, tracking,
- * weight como entero, y estilo normal/italic).
+ * weight como entero, estilo normal/italic y alineación horizontal).
  *
  * Importante: NO usar Compose aquí. El adaptador en `theme` (TypographyAdapter)
  * transformará estos tokens a `androidx.compose.ui.text.TextStyle` cuando sea requerido.
@@ -35,5 +36,8 @@ data class TypographyToken(
     val italic: Boolean = false,
 
     /** Nuevo sistema unificado de estilo */
-    val style: Int = FontStyleTokens.Normal
+    val style: Int = FontStyleTokens.Normal,
+
+    /** Alineación horizontal del texto usando tokens puros del Design System. */
+    val textAlign: Int = TextAlignTokens.Unspecified
 )

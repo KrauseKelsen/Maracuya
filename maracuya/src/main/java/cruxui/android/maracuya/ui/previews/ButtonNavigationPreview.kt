@@ -97,18 +97,19 @@ fun ButtonNavigation_GalleryPreview() {
 
 
             ButtonNavigationMrcy(
-                modifier = Modifier.width(60.dp),
+                modifier = Modifier.width(50.dp),
                 label = null,
                 onClick = {},
                 buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
                     iconToken = LocalLibraryIcons.current.arrows.navigateBefore,
                     iconColor = LocalLibraryColorTokens.current.fgMuted,
                     containerColor = LocalLibraryColorTokens.current.transparent,
-                    borderContainerColor = LocalLibraryColorTokens.current.transparent,
+                    borderContainerColor = LocalLibraryColorTokens.current.brandPrimary,
                 )
             )
 
             ButtonNavigationMrcy(
+                modifier = Modifier.height(34.dp),
                 label = "No clickeable",
                 onClick = {},
                 enabled = false,

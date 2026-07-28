@@ -1,0 +1,361 @@
+{
+  "scope": "maracuya/src/main/res/values",
+  "currentValuesXmlFiles": 1,
+  "attrsXmlFiles": 1,
+  "largestValuesFile": {
+    "path": "maracuya/src/main/res/values/attrs.xml",
+    "lines": 86
+  },
+  "styleableCount": 7,
+  "attrOccurrences": 51,
+  "uniqueAttrNames": 43,
+  "repeatedAttrNames": {
+    "text": 3,
+    "showProgressOnPress": 2,
+    "isEnabled": 5,
+    "optionalText": 2
+  },
+  "repeatedAttrCount": 4,
+  "formatBreakdown": {
+    "boolean": 19,
+    "string": 18,
+    "referencia compartida": 8,
+    "enum": 3,
+    "dimension": 3
+  },
+  "styleables": [
+    {
+      "name": "MyLibraryThemeWrp",
+      "family": "theme",
+      "attrCount": 3,
+      "attrs": [
+        {
+          "name": "useMaterial",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "themeStyle",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "themeName",
+          "format": "string",
+          "lineHint": null
+        }
+      ]
+    },
+    {
+      "name": "PrimaryButtonWrp",
+      "family": "button",
+      "attrCount": 3,
+      "attrs": [
+        {
+          "name": "text",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "showProgressOnPress",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "isEnabled",
+          "format": "boolean",
+          "lineHint": null
+        }
+      ]
+    },
+    {
+      "name": "ButtonWrp",
+      "family": "button",
+      "attrCount": 5,
+      "attrs": [
+        {
+          "name": "text",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "showProgressOnPress",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "isEnabled",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "buttonVariant",
+          "format": "enum",
+          "lineHint": null
+        },
+        {
+          "name": "buttonTokensOverride",
+          "format": "string",
+          "lineHint": null
+        }
+      ]
+    },
+    {
+      "name": "ButtonNavigationWrp",
+      "family": "button_navigation",
+      "attrCount": 7,
+      "attrs": [
+        {
+          "name": "buttonNavigationLabel",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "isEnabled",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationVariant",
+          "format": "enum",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationIsLoading",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationStartsLoadingOnClick",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationShowIcon",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationTokensOverride",
+          "format": "string",
+          "lineHint": null
+        }
+      ]
+    },
+    {
+      "name": "ButtonNavigationGroupWrp",
+      "family": "button_navigation_group",
+      "attrCount": 11,
+      "attrs": [
+        {
+          "name": "isEnabled",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupVariant",
+          "format": "enum",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupLeadingLabel",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupTrailingLabel",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupLeadingButtonWidth",
+          "format": "dimension",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupTrailingButtonWidth",
+          "format": "dimension",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupButtonSpacing",
+          "format": "dimension",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupLeadingEnabled",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupTrailingEnabled",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupIsTrailingLoading",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "buttonNavigationGroupStartsTrailingLoadingOnClick",
+          "format": "boolean",
+          "lineHint": null
+        }
+      ]
+    },
+    {
+      "name": "LabelWrp",
+      "family": "label",
+      "attrCount": 7,
+      "attrs": [
+        {
+          "name": "text",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "optionalText",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "showIcon",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "error",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "onClickContentDescription",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "labelTokensOverride",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "limitMaxLabel",
+          "format": "boolean",
+          "lineHint": null
+        }
+      ]
+    },
+    {
+      "name": "TextFieldWrp",
+      "family": "text_field",
+      "attrCount": 15,
+      "attrs": [
+        {
+          "name": "textFieldValue",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldPinValue",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldLabel",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldPlaceholder",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldLength",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "isEnabled",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldReadOnly",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldHasError",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "optionalText",
+          "format": "referencia compartida",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldShowLabelIcon",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldBottomText",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldShowBottomIcon",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldVariant",
+          "format": "string",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldEnableImplicitTrailingClear",
+          "format": "boolean",
+          "lineHint": null
+        },
+        {
+          "name": "textFieldTokensOverride",
+          "format": "string",
+          "lineHint": null
+        }
+      ]
+    }
+  ],
+  "recommendedFiles": [
+    "attrs_shared.xml",
+    "attrs_button.xml",
+    "attrs_button_navigation.xml",
+    "attrs_button_navigation_group.xml",
+    "attrs_label.xml",
+    "attrs_text_field.xml",
+    "attrs_theme.xml"
+  ],
+  "targetValuesXmlFiles": 7,
+  "fileSplitGap": 6,
+  "architectureMarkersPresent": 0,
+  "estimate": {
+    "analysisDaysMin": 0.75,
+    "analysisDaysMax": 1.0,
+    "splitDaysMin": 3.33,
+    "splitDaysMax": 5.25,
+    "validationDaysMin": 1.0,
+    "validationDaysMax": 1.5,
+    "totalDaysMin": 5.08,
+    "totalDaysMax": 7.75,
+    "businessDaysRange": "5.08 a 7.75 dias"
+  },
+  "risks": [
+    "Contratos XML de familias distintas concentrados en un unico archivo.",
+    "Atributos reutilizados sin frontera explicita de propiedad.",
+    "Cada nuevo wrapper agranda el mismo archivo y aumenta el riesgo de colisiones.",
+    "No existe separacion por dominio para theme, button, navigation, label y textfield."
+  ]
+}
