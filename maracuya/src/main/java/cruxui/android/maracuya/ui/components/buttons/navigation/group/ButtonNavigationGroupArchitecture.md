@@ -2,9 +2,9 @@
 
 Este documento describe la arquitectura de `ButtonNavigationGroupMrcy`.
 
-El grupo no crea un boton nuevo. Solo hace dos cosas:
+El grupo no crea un boton visual nuevo. Solo hace dos cosas:
 
-1. Une una lista personalizada de botones `ButtonNavigationMrcy`.
+1. Une una lista personalizada de hijos compatibles con `ButtonNavigationMrcy`.
 2. Renderiza una de las cuatro variantes fijas del grupo.
 
 La estructura replica `ButtonNavigationArchitecture.md`: cada capa declarativa tiene
@@ -15,10 +15,17 @@ su resolver de logica y el render solo orquesta.
 | Carpeta / Archivo | Tipo | Responsabilidad principal |
 | --- | --- | --- |
 | `ButtonNavigationGroupMrcy.kt` | Render | Orquesta resolvers y renderiza la fila final. |
-| `core/ButtonNavigationGroupButton.kt` | Core config | Declara botones personalizados que heredan `ButtonNavigationMrcy`. |
+| `child/ButtonNavigationChildMrcy.kt` | Child render | Pinta el child resuelto usando `ButtonNavigationMrcy` como detalle interno. |
+| `child/core/ButtonNavigationChild.kt` | Child core config | Declara hijos personalizados compatibles con `ButtonNavigationMrcy`. |
+| `child/variant/ButtonNavigationChildVariant.kt` | Child variant declarativo | Declara las variantes permitidas para hijos personalizados. |
+| `child/variant/ButtonNavigationChildVariantResolver.kt` | Child variant resolver | Traduce la variante del child a `ButtonNavigationMrcy`. |
+| `child/tokens/ButtonNavigationChildTokens.kt` | Child tokens declarativos | Declara overrides visuales permitidos para el child. |
+| `child/tokens/ButtonNavigationChildTokensResolver.kt` | Child tokens resolver | Traduce overrides del child a overrides nativos sin exponer loading. |
+| `child/tokensrender/ButtonNavigationChildTokensRender.kt` | Child render tokens | Declara el hijo final listo para render nativo. |
+| `child/tokensrender/ButtonNavigationChildTokensRenderResolver.kt` | Child render resolver | Convierte el child publico en parametros nativos. |
 | `core/ButtonNavigationGroupDefaults.kt` | Core defaults | Centraliza medidas por defecto del grupo. |
-| `variant/ButtonNavigationGroupVariant.kt` | Variant declarativo | Declara las cuatro variantes fijas publicas. |
-| `variant/ButtonNavigationGroupVariantResolver.kt` | Variant resolver | Responde decisiones concretas de variante sin modelos intermedios. |
+| `variant/ButtonNavigationGroupVariant.kt` | Group variant declarativo | Declara las cuatro variantes fijas publicas. |
+| `variant/ButtonNavigationGroupVariantResolver.kt` | Group variant resolver | Responde decisiones concretas de variante sin modelos intermedios. |
 | `behavior/ButtonNavigationGroupBehavior.kt` | Behavior declarativo | Declara loading del boton trailing. |
 | `behavior/ButtonNavigationGroupBehaviorResolver.kt` | Behavior resolver | Traduce behavior publico a `ButtonNavigationBehavior` nativo. |
 | `tokens/ButtonNavigationGroupTokens.kt` | Tokens declarativos | Declara spacing, anchos, minimos y radio. |
@@ -52,31 +59,39 @@ ButtonNavigationGroupMrcy
 ## Flujo De Lista Personalizada
 
 ```kotlin
-core/ButtonNavigationGroupButton + buttonSpacing
+child/core/ButtonNavigationChild + buttonSpacing
     -> ButtonNavigationGroupTokensResolver
     -> ButtonNavigationGroupResolvedTokens
 
-core/ButtonNavigationGroupButton + ResolvedTokens
+child/core/ButtonNavigationChild + ResolvedTokens
     -> ButtonNavigationGroupTokensRenderResolver
+    -> ButtonNavigationChildTokensRenderResolver
     -> ButtonNavigationGroupTokensRender
 
 ButtonNavigationGroupMrcy
-    -> une la lista de ButtonNavigationMrcy
+    -> delega cada hijo a ButtonNavigationChildMrcy
 ```
 
-Cuando se recibe `buttons`, el developer personaliza cada boton. El grupo no cambia
-sus tokens, variant ni behavior: solo ajusta forma, enabled global y separacion.
+Cuando se recibe `children`, el developer personaliza cada hijo. El grupo no cambia
+su behavior interno: solo traduce su variante propia, aplica overrides visuales,
+ajusta forma, enabled global y separacion.
 
 ## Reglas De Capa
 
 | Capa | Puede hacer | No debe hacer |
 | --- | --- | --- |
+| **Child Variant** | Declarar `PRIMARY`/`SECONDARY` del child. | Exponer square, loading, leer iconos reales o renderizar UI. |
+| **Child VariantResolver** | Traducir la variante del child a la variante nativa. | Resolver labels del group, loading o tokens visuales. |
+| **Child Tokens** | Declarar overrides visuales permitidos por el child. | Exponer `loadingIconToken` u otros tokens de responsabilidades externas. |
+| **Child TokensResolver** | Traducir overrides del child a overrides nativos. | Leer `LocalLibraryIcons` o decidir variantes. |
+| **Child TokensRenderResolver** | Crear el render nativo del child personalizado. | Resolver spacing, shapes por indice o loading del grupo. |
+| **Child Mrcy** | Pintar un child ya resuelto con `ButtonNavigationMrcy`. | Resolver variante publica, spacing o tokens del grupo. |
 | **Variant** | Declarar `BACK_CONTINUE`, `BACK_SUBMIT`, `SKIP_CONTINUE`, `SKIP_SUBMIT`. | Declarar loading, leer iconos reales o renderizar UI. |
 | **VariantResolver** | Resolver labels fallback, variant nativa, visibilidad de icono y submit icon. | Crear tokens intermedios, leer `LocalLibraryIcons` o manejar loading. |
 | **Behavior** | Declarar loading externo o loading iniciado por click. | Cambiar labels, iconos, variantes o spacing. |
 | **BehaviorResolver** | Resolver `ButtonNavigationBehavior` por posicion y fallback de loading. | Crear tokens intermedios, leer tokens visuales o crear botones Compose. |
 | **Core** | Declarar configuracion compartida, botones personalizados y defaults de layout. | Resolver variantes, behavior, tokens visuales o render final. |
-| **Tokens** | Declarar spacing, anchos, minimos y radio. | Resolver shapes por indice o leer estado interactivo. |
+| **Tokens** | Declarar spacing, anchos, minimos, radio y solape de union. | Resolver shapes por indice o leer estado interactivo. |
 | **TokensResolver** | Normalizar medidas y obtener el icono submit del DS. | Crear `ButtonNavigationMrcy` o decidir labels. |
 | **TokensRenderResolver** | Crear especificaciones finales de hijos, shapes y overrides puntuales. | Leer `LocalLibraryIcons` o resolver variantes publicas. |
 | **Mrcy** | Orquestar resolvers y pintar la fila. | Tener `when` de variantes, resolver iconos o calcular loading. |
@@ -119,22 +134,20 @@ La carpeta `core` contiene configuracion compartida de la API publica del grupo.
 No es una capa de logica visual: solo declara modelos y defaults que otras capas
 pueden consumir.
 
-### `core/ButtonNavigationGroupButton.kt`
+### `child/core/ButtonNavigationChild.kt`
 
-Responsabilidad: **declarar un boton personalizado que el grupo puede unir**.
+Responsabilidad: **declarar un hijo personalizado que el grupo puede unir**.
 
-Este modelo conserva la herencia del boton nativo:
+Este modelo conserva solo la configuracion compatible con el layout del grupo:
 
 - `variant`
-- `buttonNavigationBehavior`
-- `buttonNavigationTokens`
-- `buttonNavigationTokensOverride`
-- `onTrailingClick`
-- `onLoadingClick`
+- `buttonNavigationChildTokensOverride`
+- `showIcon`
 - `label`, `enabled`, `shape`, `width` y `minWidth`
 
-No debe resolver shapes por posicion, spacing, labels fallback ni overrides del
-submit fijo. Esa traduccion ocurre en `tokensrender`.
+No debe exponer loading, callbacks de loading, variantes square, shapes por
+posicion, spacing, labels fallback ni overrides del submit fijo. Esa traduccion
+ocurre en `tokensrender`.
 
 ### `core/ButtonNavigationGroupDefaults.kt`
 
@@ -153,6 +166,8 @@ Si `buttonSpacing` no se envia, o se envia como `0.dp`, los botones se unen:
 - Botones intermedios: ambas paredes rectas.
 - Ultimo boton: pared izquierda recta, pared derecha redonda.
 - Si solo hay un boton, conserva su forma original.
+- Los bordes internos se colapsan con `JoinedChildBorderOverlap` para evitar
+  paredes verticales duplicadas entre hijos unidos.
 
 Si `buttonSpacing` es mayor a `0.dp`, los botones no usan la logica de paredes y
 cada uno conserva su shape propio.
@@ -166,21 +181,22 @@ usan el ancho enviado o su minimo.
 Si `buttonSpacing` se envia, el grupo pinta la variante fija con esa distancia
 entre botones y sin spacer ponderado.
 
-## Herencia Del Boton Nativo
+## Child Personalizado
 
-`core/ButtonNavigationGroupButton` expone la configuracion heredable de
-`ButtonNavigationMrcy`:
+`child/core/ButtonNavigationChild` expone una configuracion restringida y compatible
+con el grupo:
 
-- `variant` (`PRIMARY` o `SECONDARY`)
-- `buttonNavigationBehavior`
-- `buttonNavigationTokens`
-- `buttonNavigationTokensOverride`
-- `onTrailingClick`
-- `onLoadingClick`
+- `variant` (`ButtonNavigationChildVariant.PRIMARY` o `SECONDARY`)
+- `buttonNavigationChildTokensOverride` para personalizaciones visuales puntuales
+- `showIcon`
 - `label`, `enabled`, `shape`, `width` y `minWidth`
 
-Esto permite que los colores, iconos, loading, labels nulos e icon-only sigan
-siendo resueltos por el boton nativo.
+Esto permite personalizar colores e iconos con overrides sin permitir square,
+loading o behaviors que descuadran el layout unido.
+
+`child/tokens/ButtonNavigationChildTokensOverride` no contiene `loadingIconToken`.
+El adapter hacia `ButtonNavigationMrcy` vive dentro de `child/*`, como detalle
+interno, para no filtrar responsabilidades nativas en la API publica del child.
 
 ## Ejemplos
 
@@ -222,15 +238,15 @@ ButtonNavigationGroupMrcy(
 
 ```kotlin
 ButtonNavigationGroupMrcy(
-    buttons = listOf(
-        ButtonNavigationGroupButton(
+    children = listOf(
+        ButtonNavigationChild(
             label = "Volver",
-            variant = ButtonNavigationVariant.SECONDARY,
+            variant = ButtonNavigationChildVariant.SECONDARY,
             onClick = {},
         ),
-        ButtonNavigationGroupButton(
+        ButtonNavigationChild(
             label = "Continuar",
-            variant = ButtonNavigationVariant.PRIMARY,
+            variant = ButtonNavigationChildVariant.PRIMARY,
             onClick = {},
         ),
     ),
@@ -241,16 +257,16 @@ ButtonNavigationGroupMrcy(
 
 ```kotlin
 ButtonNavigationGroupMrcy(
-    buttons = listOf(
-        ButtonNavigationGroupButton(
+    children = listOf(
+        ButtonNavigationChild(
             label = "Omitir",
-            variant = ButtonNavigationVariant.SECONDARY,
-            buttonNavigationBehavior = ButtonNavigationBehavior(showIcon = false),
+            variant = ButtonNavigationChildVariant.SECONDARY,
+            showIcon = false,
             onClick = {},
         ),
-        ButtonNavigationGroupButton(
+        ButtonNavigationChild(
             label = "Continuar",
-            variant = ButtonNavigationVariant.PRIMARY,
+            variant = ButtonNavigationChildVariant.PRIMARY,
             onClick = {},
         ),
     ),

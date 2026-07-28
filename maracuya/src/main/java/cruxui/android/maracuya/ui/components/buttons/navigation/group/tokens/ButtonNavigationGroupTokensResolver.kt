@@ -36,6 +36,7 @@ internal object ButtonNavigationGroupTokensResolver {
             minLeadingButtonWidth = tokens.minLeadingButtonWidth,
             minTrailingButtonWidth = tokens.minTrailingButtonWidth,
             cornerRadius = tokens.cornerRadius.coerceAtLeast(0.dp),
+            joinedChildBorderOverlap = tokens.joinedChildBorderOverlap.coerceAtLeast(0.dp),
             submitIconToken = icons.general.check,
         )
     }

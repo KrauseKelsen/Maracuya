@@ -12,13 +12,12 @@ import androidx.compose.ui.viewinterop.AndroidView
 import cruxui.android.maracuya.R
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
-import cruxui.android.maracuya.ui.components.buttons.navigation.group.core.ButtonNavigationGroupButton
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.ButtonNavigationGroupMrcy
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.behavior.ButtonNavigationGroupBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.core.ButtonNavigationChild
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokens.ButtonNavigationChildTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.variant.ButtonNavigationChildVariant
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.variant.ButtonNavigationGroupVariant
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
 
@@ -80,28 +79,27 @@ fun ButtonNavigationGroup_FixedVariantsPreview() {
             )
 
             ButtonNavigationGroupMrcy(
-                buttons = listOf(
-                    ButtonNavigationGroupButton(
-                        variant = ButtonNavigationVariant.SECONDARY,
+                children = listOf(
+                    ButtonNavigationChild(
+                        variant = ButtonNavigationChildVariant.SECONDARY,
                         onClick = {},
                     ),
-                    ButtonNavigationGroupButton(
-                        variant = ButtonNavigationVariant.PRIMARY,
+                    ButtonNavigationChild(
+                        variant = ButtonNavigationChildVariant.SECONDARY,
                         onClick = {},
                     ),
-                    ButtonNavigationGroupButton(
-                        variant = ButtonNavigationVariant.PRIMARY,
+                    ButtonNavigationChild(
+                        variant = ButtonNavigationChildVariant.SECONDARY,
                         onClick = {},
-                        buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        buttonNavigationChildTokensOverride = ButtonNavigationChildTokensOverride(
                             iconToken = LocalLibraryIcons.current.alerts.info,
                             iconColor = LocalLibraryColorTokens.current.fgMuted,
                             containerColor = LocalLibraryColorTokens.current.transparent,
                             borderContainerColor = LocalLibraryColorTokens.current.transparent,
                         )
                     ),
-                    ButtonNavigationGroupButton(
-                        variant = ButtonNavigationVariant.PRIMARY,
-                        buttonNavigationBehavior = ButtonNavigationBehavior.Default,
+                    ButtonNavigationChild(
+                        variant = ButtonNavigationChildVariant.PRIMARY,
                         onClick = {},
                     ),
                 ),
@@ -110,26 +108,25 @@ fun ButtonNavigationGroup_FixedVariantsPreview() {
 
             ButtonNavigationGroupMrcy(
                 buttonSpacing = 10.dp,
-                buttons = listOf(
-                    ButtonNavigationGroupButton(
-                        variant = ButtonNavigationVariant.SECONDARY,
+                children = listOf(
+                    ButtonNavigationChild(
+                        variant = ButtonNavigationChildVariant.SECONDARY,
                         onClick = {},
-                        buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        buttonNavigationChildTokensOverride = ButtonNavigationChildTokensOverride(
                             iconToken = LocalLibraryIcons.current.general.cardioLoad,
                         )
                     ),
-                    ButtonNavigationGroupButton(
-                        variant = ButtonNavigationVariant.PRIMARY,
+                    ButtonNavigationChild(
+                        variant = ButtonNavigationChildVariant.PRIMARY,
                         onClick = {},
-                        buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        buttonNavigationChildTokensOverride = ButtonNavigationChildTokensOverride(
                             iconToken = LocalLibraryIcons.current.alerts.info,
                         )
                     ),
-                    ButtonNavigationGroupButton(
-                        variant = ButtonNavigationVariant.PRIMARY,
-                        buttonNavigationBehavior = ButtonNavigationBehavior.Default,
+                    ButtonNavigationChild(
+                        variant = ButtonNavigationChildVariant.PRIMARY,
                         onClick = {},
-                        buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        buttonNavigationChildTokensOverride = ButtonNavigationChildTokensOverride(
                             iconToken = LocalLibraryIcons.current.general.fingerprint,
                         )
                     ),
@@ -137,16 +134,16 @@ fun ButtonNavigationGroup_FixedVariantsPreview() {
             )
 
             ButtonNavigationGroupMrcy(
-                buttons = listOf(
-                    ButtonNavigationGroupButton(
+                children = listOf(
+                    ButtonNavigationChild(
                         label = "Omitir",
-                        variant = ButtonNavigationVariant.SECONDARY,
-                        buttonNavigationBehavior = ButtonNavigationBehavior(showIcon = false),
+                        variant = ButtonNavigationChildVariant.SECONDARY,
+                        showIcon = false,
                         onClick = {},
                     ),
-                    ButtonNavigationGroupButton(
+                    ButtonNavigationChild(
                         label = "Enviar",
-                        variant = ButtonNavigationVariant.PRIMARY,
+                        variant = ButtonNavigationChildVariant.PRIMARY,
                         onClick = {},
                     ),
                 ),

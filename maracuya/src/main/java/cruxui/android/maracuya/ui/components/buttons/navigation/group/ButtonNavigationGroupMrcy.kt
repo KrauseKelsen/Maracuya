@@ -4,26 +4,22 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.isSpecified
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.behavior.ButtonNavigationGroupBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.group.core.ButtonNavigationGroupButton
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.ButtonNavigationChildMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.core.ButtonNavigationChild
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.core.ButtonNavigationGroupDefaults
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.tokens.ButtonNavigationGroupTokens
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.tokens.ButtonNavigationGroupTokensResolver
-import cruxui.android.maracuya.ui.components.buttons.navigation.group.tokensrender.ButtonNavigationGroupButtonRender
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.tokensrender.ButtonNavigationGroupTokensRender
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.tokensrender.ButtonNavigationGroupTokensRenderResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.variant.ButtonNavigationGroupVariant
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
 
 /**
- * Une una lista personalizada de `ButtonNavigationMrcy`.
+ * Une una lista personalizada de `ButtonNavigationChild`.
  *
  * Si no se envia separacion, los botones se pegan y el grupo resuelve las paredes
  * externas redondas e internas rectas. Si se envia separacion, cada boton conserva
@@ -31,7 +27,7 @@ import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNav
  */
 @Composable
 fun ButtonNavigationGroupMrcy(
-    buttons: List<ButtonNavigationGroupButton>,
+    children: List<ButtonNavigationChild>,
     modifier: Modifier = Modifier,
     buttonSpacing: Dp = ButtonNavigationGroupDefaults.ButtonSpacing,
     enabled: Boolean = true,
@@ -41,8 +37,8 @@ fun ButtonNavigationGroupMrcy(
             buttonSpacing = buttonSpacing,
         ),
     )
-    val renderTokens = ButtonNavigationGroupTokensRenderResolver.resolveCustomButtons(
-        buttons = buttons,
+    val renderTokens = ButtonNavigationGroupTokensRenderResolver.resolveCustomChildren(
+        children = children,
         enabled = enabled,
         tokens = groupTokens,
     )
@@ -101,7 +97,7 @@ fun ButtonNavigationGroupMrcy(
 }
 
 /**
- * Pinta la fila final con botones ya resueltos por `TokensRenderResolver`.
+ * Pinta la fila final con hijos ya resueltos por `TokensRenderResolver`.
  */
 @Composable
 private fun ButtonNavigationGroupLayout(
@@ -111,53 +107,13 @@ private fun ButtonNavigationGroupLayout(
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(renderTokens.buttonSpacing),
+        horizontalArrangement = Arrangement.spacedBy(renderTokens.childSpacing),
     ) {
-        renderTokens.buttons.forEachIndexed { index, button ->
-            ButtonNavigationGroupChild(button = button)
+        renderTokens.children.forEachIndexed { index, child ->
+            ButtonNavigationChildMrcy(child = child)
             if (renderTokens.useMaxEdgeSeparation && index == 0) {
                 Spacer(modifier = Modifier.weight(1f))
             }
         }
-    }
-}
-
-/**
- * Renderiza un boton hijo conservando la API nativa de `ButtonNavigationMrcy`.
- */
-@Composable
-private fun ButtonNavigationGroupChild(
-    button: ButtonNavigationGroupButtonRender,
-) {
-    ButtonNavigationMrcy(
-        modifier = button.modifier.buttonNavigationGroupWidth(
-            width = button.width,
-            minWidth = button.minWidth,
-        ),
-        label = button.label,
-        onClick = button.onClick,
-        enabled = button.enabled,
-        shape = button.shape,
-        variant = button.variant,
-        buttonNavigationBehavior = button.buttonNavigationBehavior,
-        buttonNavigationTokens = button.buttonNavigationTokens,
-        buttonNavigationTokensOverride = button.buttonNavigationTokensOverride,
-        onTrailingClick = button.onTrailingClick,
-        onLoadingClick = button.onLoadingClick,
-    )
-}
-
-private fun Modifier.buttonNavigationGroupWidth(
-    width: Dp,
-    minWidth: Dp,
-): Modifier {
-    val hasWidth = width.isSpecified
-    val hasMinWidth = minWidth.isSpecified
-
-    return when {
-        hasWidth && hasMinWidth -> width(width.coerceAtLeast(minWidth))
-        hasWidth -> width(width)
-        hasMinWidth -> widthIn(min = minWidth)
-        else -> this
     }
 }

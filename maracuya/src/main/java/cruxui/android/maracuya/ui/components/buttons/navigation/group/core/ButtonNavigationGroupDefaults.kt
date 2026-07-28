@@ -16,4 +16,5 @@ object ButtonNavigationGroupDefaults {
     val MinLeadingButtonWidth = 136.dp
     val MinTrailingButtonWidth = 176.dp
     val CornerRadius = 100.dp
+    val JoinedChildBorderOverlap = 1.dp
 }

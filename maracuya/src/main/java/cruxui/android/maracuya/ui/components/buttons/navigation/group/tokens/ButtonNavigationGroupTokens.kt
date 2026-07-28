@@ -9,7 +9,7 @@ import cruxui.android.maracuya.ui.components.buttons.navigation.group.core.Butto
  * Declara los tokens estructurales del grupo de navegacion.
  *
  * Estos tokens no reemplazan los tokens visuales de `ButtonNavigationMrcy`; solo
- * describen medidas, separacion y radio que el grupo necesita para organizar hijos.
+ * describen medidas, separacion, radio y union que el grupo necesita para organizar hijos.
  */
 data class ButtonNavigationGroupTokens(
     val buttonSpacing: Dp = ButtonNavigationGroupDefaults.ButtonSpacing,
@@ -18,6 +18,7 @@ data class ButtonNavigationGroupTokens(
     val minLeadingButtonWidth: Dp = ButtonNavigationGroupDefaults.MinLeadingButtonWidth,
     val minTrailingButtonWidth: Dp = ButtonNavigationGroupDefaults.MinTrailingButtonWidth,
     val cornerRadius: Dp = ButtonNavigationGroupDefaults.CornerRadius,
+    val joinedChildBorderOverlap: Dp = ButtonNavigationGroupDefaults.JoinedChildBorderOverlap,
 )
 
 /**
@@ -31,6 +32,7 @@ internal data class ButtonNavigationGroupResolvedTokens(
     val minLeadingButtonWidth: Dp,
     val minTrailingButtonWidth: Dp,
     val cornerRadius: Dp,
+    val joinedChildBorderOverlap: Dp,
     val submitIconToken: IconToken,
 ) {
     val hasSeparatedButtons: Boolean

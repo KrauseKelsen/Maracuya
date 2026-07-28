@@ -5,9 +5,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.ui.components.buttons.navigation.group.core.ButtonNavigationGroupButton
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.behavior.ButtonNavigationGroupBehavior
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.behavior.ButtonNavigationGroupBehaviorResolver
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.core.ButtonNavigationChild
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokensrender.ButtonNavigationChildRender
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokensrender.ButtonNavigationChildTokensRenderResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.tokens.ButtonNavigationGroupResolvedTokens
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.variant.ButtonNavigationGroupVariant
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.variant.ButtonNavigationGroupVariantResolver
@@ -16,7 +18,7 @@ import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.Bu
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 
 /**
- * Convierte tokens de variant, behavior y layout en botones listos para render.
+ * Convierte tokens de variant, behavior y layout en hijos listos para render.
  *
  * Esta capa concentra la traduccion final hacia `ButtonNavigationMrcy` sin leer
  * composiciones locales ni decidir nuevos tokens base.
@@ -24,28 +26,35 @@ import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.B
 internal object ButtonNavigationGroupTokensRenderResolver {
 
     /**
-     * Resuelve una lista personalizada de botones enviados por el developer.
+     * Resuelve una lista personalizada de hijos enviados por el developer.
      */
-    fun resolveCustomButtons(
-        buttons: List<ButtonNavigationGroupButton>,
+    fun resolveCustomChildren(
+        children: List<ButtonNavigationChild>,
         enabled: Boolean,
         tokens: ButtonNavigationGroupResolvedTokens,
-    ): ButtonNavigationGroupTokensRender =
-        ButtonNavigationGroupTokensRender(
-            buttons = buttons.mapIndexed { index, button ->
-                button.toRenderButton(
-                    enabled = enabled && button.enabled,
-                    shape = resolveCustomButtonShape(
-                        button = button,
+    ): ButtonNavigationGroupTokensRender {
+        val hasJoinedChildren = children.size > 1 && !tokens.hasSeparatedButtons
+
+        return ButtonNavigationGroupTokensRender(
+            children = children.mapIndexed { index, child ->
+                ButtonNavigationChildTokensRenderResolver.resolve(
+                    child = child,
+                    enabled = enabled && child.enabled,
+                    shape = resolveCustomChildShape(
+                        child = child,
                         index = index,
-                        buttonCount = buttons.size,
+                        childCount = children.size,
                         tokens = tokens,
                     ),
                 )
             },
-            buttonSpacing = if (tokens.hasSeparatedButtons) tokens.buttonSpacing else 0.dp,
+            childSpacing = resolveChildSpacing(
+                tokens = tokens,
+                hasJoinedChildren = hasJoinedChildren,
+            ),
             useMaxEdgeSeparation = false,
         )
+    }
 
     /**
      * Resuelve una de las variantes fijas del grupo.
@@ -60,10 +69,13 @@ internal object ButtonNavigationGroupTokensRenderResolver {
         trailingEnabled: Boolean,
         onLeadingButtonClick: () -> Unit,
         onTrailingButtonClick: () -> Unit,
-    ): ButtonNavigationGroupTokensRender =
-        ButtonNavigationGroupTokensRender(
-            buttons = listOf(
-                createVariantButtonRender(
+    ): ButtonNavigationGroupTokensRender {
+        val useMaxEdgeSeparation = !tokens.hasExplicitButtonSpacing
+        val hasJoinedChildren = !useMaxEdgeSeparation && tokens.buttonSpacing == 0.dp
+
+        return ButtonNavigationGroupTokensRender(
+            children = listOf(
+                createVariantChildRender(
                     label = ButtonNavigationGroupVariantResolver.resolveLeadingLabel(
                         variant = variant,
                         explicitLabel = leadingLabel,
@@ -76,10 +88,10 @@ internal object ButtonNavigationGroupTokensRenderResolver {
                     width = tokens.leadingButtonWidth,
                     minWidth = tokens.minLeadingButtonWidth,
                     shape = RoundedCornerShape(tokens.cornerRadius),
-                    tokensOverride = null,
+                    nativeTokensOverride = null,
                     onClick = onLeadingButtonClick,
                 ),
-                createVariantButtonRender(
+                createVariantChildRender(
                     label = ButtonNavigationGroupBehaviorResolver.resolveTrailingLabel(
                         behavior = behavior,
                         explicitLabel = trailingLabel,
@@ -94,7 +106,7 @@ internal object ButtonNavigationGroupTokensRenderResolver {
                     width = tokens.trailingButtonWidth,
                     minWidth = tokens.minTrailingButtonWidth,
                     shape = RoundedCornerShape(tokens.cornerRadius),
-                    tokensOverride = if (ButtonNavigationGroupVariantResolver.resolveTrailingSubmitIcon(variant)) {
+                    nativeTokensOverride = if (ButtonNavigationGroupVariantResolver.resolveTrailingSubmitIcon(variant)) {
                         tokens.submitTokensOverride()
                     } else {
                         null
@@ -102,31 +114,15 @@ internal object ButtonNavigationGroupTokensRenderResolver {
                     onClick = onTrailingButtonClick,
                 ),
             ),
-            buttonSpacing = if (tokens.hasExplicitButtonSpacing) tokens.buttonSpacing else 0.dp,
-            useMaxEdgeSeparation = !tokens.hasExplicitButtonSpacing,
+            childSpacing = resolveChildSpacing(
+                tokens = tokens,
+                hasJoinedChildren = hasJoinedChildren,
+            ),
+            useMaxEdgeSeparation = useMaxEdgeSeparation,
         )
+    }
 
-    private fun ButtonNavigationGroupButton.toRenderButton(
-        enabled: Boolean,
-        shape: Shape,
-    ): ButtonNavigationGroupButtonRender =
-        ButtonNavigationGroupButtonRender(
-            modifier = modifier,
-            label = label,
-            onClick = onClick,
-            enabled = enabled,
-            width = width,
-            minWidth = minWidth,
-            shape = shape,
-            variant = variant,
-            buttonNavigationBehavior = buttonNavigationBehavior,
-            buttonNavigationTokens = buttonNavigationTokens,
-            buttonNavigationTokensOverride = buttonNavigationTokensOverride,
-            onTrailingClick = onTrailingClick,
-            onLoadingClick = onLoadingClick,
-        )
-
-    private fun createVariantButtonRender(
+    private fun createVariantChildRender(
         label: String,
         variant: ButtonNavigationVariant,
         behavior: ButtonNavigationBehavior,
@@ -134,10 +130,10 @@ internal object ButtonNavigationGroupTokensRenderResolver {
         width: Dp,
         minWidth: Dp,
         shape: Shape,
-        tokensOverride: ButtonNavigationTokensOverride?,
+        nativeTokensOverride: ButtonNavigationTokensOverride?,
         onClick: () -> Unit,
-    ): ButtonNavigationGroupButtonRender =
-        ButtonNavigationGroupButtonRender(
+    ): ButtonNavigationChildRender =
+        ButtonNavigationChildRender(
             modifier = Modifier,
             label = label,
             onClick = onClick,
@@ -147,19 +143,16 @@ internal object ButtonNavigationGroupTokensRenderResolver {
             shape = shape,
             variant = variant,
             buttonNavigationBehavior = behavior,
-            buttonNavigationTokens = null,
-            buttonNavigationTokensOverride = tokensOverride,
-            onTrailingClick = null,
-            onLoadingClick = null,
+            nativeTokensOverride = nativeTokensOverride,
         )
 
-    private fun resolveCustomButtonShape(
-        button: ButtonNavigationGroupButton,
+    private fun resolveCustomChildShape(
+        child: ButtonNavigationChild,
         index: Int,
-        buttonCount: Int,
+        childCount: Int,
         tokens: ButtonNavigationGroupResolvedTokens,
     ): Shape {
-        if (buttonCount <= 1 || tokens.hasSeparatedButtons) return button.shape
+        if (childCount <= 1 || tokens.hasSeparatedButtons) return child.shape
 
         val radius = tokens.cornerRadius
         return when (index) {
@@ -170,7 +163,7 @@ internal object ButtonNavigationGroupTokensRenderResolver {
                 bottomEnd = 0.dp,
             )
 
-            buttonCount - 1 -> RoundedCornerShape(
+            childCount - 1 -> RoundedCornerShape(
                 topStart = 0.dp,
                 bottomStart = 0.dp,
                 topEnd = radius,
@@ -180,6 +173,19 @@ internal object ButtonNavigationGroupTokensRenderResolver {
             else -> RoundedCornerShape(0.dp)
         }
     }
+
+    /**
+     * Colapsa el borde compartido entre hijos unidos sin depender de su variante visual.
+     */
+    private fun resolveChildSpacing(
+        tokens: ButtonNavigationGroupResolvedTokens,
+        hasJoinedChildren: Boolean,
+    ): Dp =
+        when {
+            tokens.hasSeparatedButtons -> tokens.buttonSpacing
+            hasJoinedChildren -> -tokens.joinedChildBorderOverlap
+            else -> 0.dp
+        }
 
     private fun ButtonNavigationGroupResolvedTokens.submitTokensOverride(): ButtonNavigationTokensOverride =
         ButtonNavigationTokensOverride(
