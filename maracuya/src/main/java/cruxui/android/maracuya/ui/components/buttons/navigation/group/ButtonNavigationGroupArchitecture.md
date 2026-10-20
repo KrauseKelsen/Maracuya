@@ -19,8 +19,8 @@ su resolver de logica y el render solo orquesta.
 | `child/core/ButtonNavigationChild.kt` | Child core config | Declara hijos personalizados compatibles con `ButtonNavigationMrcy`. |
 | `child/variant/ButtonNavigationChildVariant.kt` | Child variant declarativo | Declara las variantes permitidas para hijos personalizados. |
 | `child/variant/ButtonNavigationChildVariantResolver.kt` | Child variant resolver | Traduce la variante del child a `ButtonNavigationMrcy`. |
-| `child/tokens/ButtonNavigationChildTokens.kt` | Child tokens declarativos | Declara overrides visuales permitidos para el child. |
-| `child/tokens/ButtonNavigationChildTokensResolver.kt` | Child tokens resolver | Traduce overrides del child a overrides nativos sin exponer loading. |
+| `child/tokens/ButtonNavigationChildTokens.kt` | Child tokens declarativos | Declara tokens visuales base, overrides y merge del child. |
+| `child/tokens/ButtonNavigationChildTokensResolver.kt` | Child tokens resolver | Resuelve tokens del child y los adapta a tokens nativos sin exponer loading. |
 | `child/tokensrender/ButtonNavigationChildTokensRender.kt` | Child render tokens | Declara el hijo final listo para render nativo. |
 | `child/tokensrender/ButtonNavigationChildTokensRenderResolver.kt` | Child render resolver | Convierte el child publico en parametros nativos. |
 | `core/ButtonNavigationGroupDefaults.kt` | Core defaults | Centraliza medidas por defecto del grupo. |
@@ -66,6 +66,8 @@ child/core/ButtonNavigationChild + buttonSpacing
 child/core/ButtonNavigationChild + ResolvedTokens
     -> ButtonNavigationGroupTokensRenderResolver
     -> ButtonNavigationChildTokensRenderResolver
+    -> ButtonNavigationChildTokensResolver
+    -> ButtonNavigationChildTokens.merge
     -> ButtonNavigationGroupTokensRender
 
 ButtonNavigationGroupMrcy
@@ -73,7 +75,7 @@ ButtonNavigationGroupMrcy
 ```
 
 Cuando se recibe `children`, el developer personaliza cada hijo. El grupo no cambia
-su behavior interno: solo traduce su variante propia, aplica overrides visuales,
+su behavior interno: solo traduce su variante propia, resuelve tokens del child,
 ajusta forma, enabled global y separacion.
 
 ## Reglas De Capa
@@ -82,8 +84,8 @@ ajusta forma, enabled global y separacion.
 | --- | --- | --- |
 | **Child Variant** | Declarar `PRIMARY`/`SECONDARY` del child. | Exponer square, loading, leer iconos reales o renderizar UI. |
 | **Child VariantResolver** | Traducir la variante del child a la variante nativa. | Resolver labels del group, loading o tokens visuales. |
-| **Child Tokens** | Declarar overrides visuales permitidos por el child. | Exponer `loadingIconToken` u otros tokens de responsabilidades externas. |
-| **Child TokensResolver** | Traducir overrides del child a overrides nativos. | Leer `LocalLibraryIcons` o decidir variantes. |
+| **Child Tokens** | Declarar tokens base, overrides visuales y merge del child. | Exponer `loadingIconToken` u otros tokens de responsabilidades externas. |
+| **Child TokensResolver** | Resolver tokens base, aplicar merge y adaptar a tokens nativos. | Decidir variantes, spacing o behavior. |
 | **Child TokensRenderResolver** | Crear el render nativo del child personalizado. | Resolver spacing, shapes por indice o loading del grupo. |
 | **Child Mrcy** | Pintar un child ya resuelto con `ButtonNavigationMrcy`. | Resolver variante publica, spacing o tokens del grupo. |
 | **Variant** | Declarar `BACK_CONTINUE`, `BACK_SUBMIT`, `SKIP_CONTINUE`, `SKIP_SUBMIT`. | Declarar loading, leer iconos reales o renderizar UI. |
@@ -141,6 +143,7 @@ Responsabilidad: **declarar un hijo personalizado que el grupo puede unir**.
 Este modelo conserva solo la configuracion compatible con el layout del grupo:
 
 - `variant`
+- `buttonNavigationChildTokens`
 - `buttonNavigationChildTokensOverride`
 - `showIcon`
 - `label`, `enabled`, `shape`, `width` y `minWidth`
@@ -187,6 +190,7 @@ entre botones y sin spacer ponderado.
 con el grupo:
 
 - `variant` (`ButtonNavigationChildVariant.PRIMARY` o `SECONDARY`)
+- `buttonNavigationChildTokens` para reemplazar los tokens base del child
 - `buttonNavigationChildTokensOverride` para personalizaciones visuales puntuales
 - `showIcon`
 - `label`, `enabled`, `shape`, `width` y `minWidth`
@@ -194,8 +198,10 @@ con el grupo:
 Esto permite personalizar colores e iconos con overrides sin permitir square,
 loading o behaviors que descuadran el layout unido.
 
-`child/tokens/ButtonNavigationChildTokensOverride` no contiene `loadingIconToken`.
-El adapter hacia `ButtonNavigationMrcy` vive dentro de `child/*`, como detalle
+`child/tokens/ButtonNavigationChildTokens` y `ButtonNavigationChildTokensOverride`
+siguen la misma estructura declarativa que `ButtonNavigationTokens`, pero no
+contienen `loadingIconToken`. El merge ocurre en `ButtonNavigationChildTokens.merge`
+y el adapter hacia `ButtonNavigationMrcy` vive dentro de `child/*`, como detalle
 interno, para no filtrar responsabilidades nativas en la API publica del child.
 
 ## Ejemplos

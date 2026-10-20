@@ -1,29 +1,61 @@
 package cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokens
 
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import androidx.compose.runtime.Composable
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.variant.ButtonNavigationChildVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.variant.ButtonNavigationChildVariantResolver
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokens
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensResolver
 
 /**
- * Traduce los overrides publicos del child al override nativo de `ButtonNavigationMrcy`.
+ * Resuelve tokens visuales del child y los adapta al boton nativo.
  */
 internal object ButtonNavigationChildTokensResolver {
 
-    fun resolveNativeOverride(
+    @Composable
+    fun resolve(
+        variant: ButtonNavigationChildVariant,
+        tokens: ButtonNavigationChildTokens?,
         override: ButtonNavigationChildTokensOverride?,
-    ): ButtonNavigationTokensOverride? =
-        override?.let {
-            ButtonNavigationTokensOverride(
-                contentColor = it.contentColor,
-                contentPressColor = it.contentPressColor,
-                containerColor = it.containerColor,
-                disabledContentColor = it.disabledContentColor,
-                disabledContainerColor = it.disabledContainerColor,
-                hoverContainerColor = it.hoverContainerColor,
-                borderContainerColor = it.borderContainerColor,
-                borderDisabledColor = it.borderDisabledColor,
-                iconToken = it.iconToken,
-                iconColor = it.iconColor,
-                typographyToken = it.typographyToken,
-                fontFamilyToken = it.fontFamilyToken,
-            )
-        }
+    ): ButtonNavigationChildTokens {
+        val base = tokens ?: ButtonNavigationTokensResolver.resolve(
+            variant = ButtonNavigationChildVariantResolver.resolveNativeVariant(variant),
+        ).toChildTokens()
+
+        return base.merge(override)
+    }
+
+    fun toNativeTokens(
+        tokens: ButtonNavigationChildTokens,
+    ): ButtonNavigationTokens =
+        ButtonNavigationTokens(
+            contentColor = tokens.contentColor,
+            contentPressColor = tokens.contentPressColor,
+            containerColor = tokens.containerColor,
+            disabledContentColor = tokens.disabledContentColor,
+            disabledContainerColor = tokens.disabledContainerColor,
+            hoverContainerColor = tokens.hoverContainerColor,
+            borderContainerColor = tokens.borderContainerColor,
+            borderDisabledColor = tokens.borderDisabledColor,
+            iconToken = tokens.iconToken,
+            loadingIconToken = null,
+            iconColor = tokens.iconColor,
+            typographyToken = tokens.typographyToken,
+            fontFamilyToken = tokens.fontFamilyToken,
+        )
+
+    private fun ButtonNavigationTokens.toChildTokens(): ButtonNavigationChildTokens =
+        ButtonNavigationChildTokens(
+            contentColor = contentColor,
+            contentPressColor = contentPressColor,
+            containerColor = containerColor,
+            disabledContentColor = disabledContentColor,
+            disabledContainerColor = disabledContainerColor,
+            hoverContainerColor = hoverContainerColor,
+            borderContainerColor = borderContainerColor,
+            borderDisabledColor = borderDisabledColor,
+            iconToken = iconToken,
+            iconColor = iconColor,
+            typographyToken = typographyToken,
+            fontFamilyToken = fontFamilyToken,
+        )
 }

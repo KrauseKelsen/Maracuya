@@ -1,6 +1,7 @@
 package cruxui.android.maracuya.ui.components.buttons.navigation.group.tokensrender
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
@@ -8,12 +9,13 @@ import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.behavior.ButtonNavigationGroupBehavior
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.behavior.ButtonNavigationGroupBehaviorResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.core.ButtonNavigationChild
-import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokensrender.ButtonNavigationChildRender
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokensrender.ButtonNavigationChildTokensRender
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokensrender.ButtonNavigationChildTokensRenderResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.tokens.ButtonNavigationGroupResolvedTokens
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.variant.ButtonNavigationGroupVariant
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.variant.ButtonNavigationGroupVariantResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensResolver
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 
@@ -28,6 +30,7 @@ internal object ButtonNavigationGroupTokensRenderResolver {
     /**
      * Resuelve una lista personalizada de hijos enviados por el developer.
      */
+    @Composable
     fun resolveCustomChildren(
         children: List<ButtonNavigationChild>,
         enabled: Boolean,
@@ -59,6 +62,7 @@ internal object ButtonNavigationGroupTokensRenderResolver {
     /**
      * Resuelve una de las variantes fijas del grupo.
      */
+    @Composable
     fun resolveVariant(
         variant: ButtonNavigationGroupVariant,
         behavior: ButtonNavigationGroupBehavior,
@@ -122,6 +126,7 @@ internal object ButtonNavigationGroupTokensRenderResolver {
         )
     }
 
+    @Composable
     private fun createVariantChildRender(
         label: String,
         variant: ButtonNavigationVariant,
@@ -132,8 +137,13 @@ internal object ButtonNavigationGroupTokensRenderResolver {
         shape: Shape,
         nativeTokensOverride: ButtonNavigationTokensOverride?,
         onClick: () -> Unit,
-    ): ButtonNavigationChildRender =
-        ButtonNavigationChildRender(
+    ): ButtonNavigationChildTokensRender {
+        val nativeTokens = ButtonNavigationTokensResolver.resolve(
+            variant = variant,
+            override = nativeTokensOverride,
+        )
+
+        return ButtonNavigationChildTokensRender(
             modifier = Modifier,
             label = label,
             onClick = onClick,
@@ -143,8 +153,9 @@ internal object ButtonNavigationGroupTokensRenderResolver {
             shape = shape,
             variant = variant,
             buttonNavigationBehavior = behavior,
-            nativeTokensOverride = nativeTokensOverride,
+            nativeTokens = nativeTokens,
         )
+    }
 
     private fun resolveCustomChildShape(
         child: ButtonNavigationChild,

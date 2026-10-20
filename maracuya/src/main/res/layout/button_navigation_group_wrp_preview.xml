@@ -1,74 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
-    app:themeName="Maracuya"
-    app:themeStyle="auto"
-    app:useMaterial="false">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <LinearLayout
+    <cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="16dp"
+        app:themeName="Maracuya"
+        app:themeStyle="auto"
+        app:useMaterial="false">
 
-        <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
-            android:id="@+id/buttonNavigationGroupBackContinueXml"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:buttonNavigationGroupVariant="back_continue" />
+            android:orientation="vertical">
 
-        <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
-            android:id="@+id/buttonNavigationGroupBackSubmitXml"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:buttonNavigationGroupVariant="back_submit" />
+            <!-- Equivalente al grupo Compose con variantes PRIMARYSQUARE y SECONDARYSQUARE alternadas. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal|top"
+                android:orientation="horizontal">
 
-        <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
-            android:id="@+id/buttonNavigationGroupBackContinueLoadingXml"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:buttonNavigationGroupIsTrailingLoading="true"
-            app:buttonNavigationGroupVariant="back_continue" />
+                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                    android:id="@+id/buttonNavigationServicesOneXml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonNavigationLabel="Pagar servicios"
+                    app:buttonNavigationVariant="primarysquare" />
 
-        <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
-            android:id="@+id/buttonNavigationGroupSkipContinueXml"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:buttonNavigationGroupVariant="skip_continue" />
+                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                    android:id="@+id/buttonNavigationServicesTwoXml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    app:buttonNavigationLabel="Sinpe\nmóvil"
+                    app:buttonNavigationVariant="secondarysquare" />
 
-        <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
-            android:id="@+id/buttonNavigationGroupSkipSubmitXml"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:buttonNavigationGroupVariant="skip_submit" />
+                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                    android:id="@+id/buttonNavigationServicesThreeXml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    app:buttonNavigationLabel="Seguridad"
+                    app:buttonNavigationVariant="primarysquare" />
 
-        <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
-            android:id="@+id/buttonNavigationGroupSkipContinueLoadingXml"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:buttonNavigationGroupIsTrailingLoading="true"
-            app:buttonNavigationGroupVariant="skip_continue" />
+                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                    android:id="@+id/buttonNavigationServicesFourXml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    app:buttonNavigationLabel="Comercios"
+                    app:buttonNavigationVariant="secondarysquare" />
+            </LinearLayout>
 
-        <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
-            android:id="@+id/buttonNavigationGroupCustomXml"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:buttonNavigationGroupButtonSpacing="12dp"
-            app:buttonNavigationGroupLeadingButtonWidth="144dp"
-            app:buttonNavigationGroupLeadingLabel="Volver"
-            app:buttonNavigationGroupTrailingButtonWidth="184dp"
-            app:buttonNavigationGroupTrailingLabel="Siguiente"
-            app:buttonNavigationGroupVariant="back_continue" />
+            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+                android:id="@+id/buttonNavigationGroupBackContinueXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:buttonNavigationGroupVariant="back_continue" />
 
-    </LinearLayout>
+            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+                android:id="@+id/buttonNavigationGroupBackSubmitXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:buttonNavigationGroupVariant="back_submit" />
 
-</cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>
+            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+                android:id="@+id/buttonNavigationGroupBackContinueLoadingXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:buttonNavigationGroupIsTrailingLoading="true"
+                app:buttonNavigationGroupVariant="back_continue" />
+
+            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+                android:id="@+id/buttonNavigationGroupSkipContinueXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:buttonNavigationGroupVariant="skip_continue" />
+
+            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+                android:id="@+id/buttonNavigationGroupSkipSubmitXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:buttonNavigationGroupVariant="skip_submit" />
+
+            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+                android:id="@+id/buttonNavigationGroupSkipContinueLoadingXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:buttonNavigationGroupIsTrailingLoading="true"
+                app:buttonNavigationGroupVariant="skip_continue" />
+
+            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+                android:id="@+id/buttonNavigationGroupCustomXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:buttonNavigationGroupButtonSpacing="12dp"
+                app:buttonNavigationGroupLeadingButtonWidth="144dp"
+                app:buttonNavigationGroupLeadingLabel="Volver"
+                app:buttonNavigationGroupTrailingButtonWidth="184dp"
+                app:buttonNavigationGroupTrailingLabel="Siguiente"
+                app:buttonNavigationGroupVariant="back_continue" />
+
+        </LinearLayout>
+
+    </cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>
+
+</ScrollView>

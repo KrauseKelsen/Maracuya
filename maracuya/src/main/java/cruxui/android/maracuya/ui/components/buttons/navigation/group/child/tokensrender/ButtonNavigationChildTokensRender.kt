@@ -4,13 +4,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.behavior.ButtonNavigationBehavior
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokens
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 
 /**
  * Especificacion final de un `ButtonNavigationMrcy` hijo.
  */
-internal data class ButtonNavigationChildRender(
+internal data class ButtonNavigationChildTokensRender(
     val modifier: Modifier,
     val label: String?,
     val onClick: () -> Unit,
@@ -20,5 +20,5 @@ internal data class ButtonNavigationChildRender(
     val shape: Shape,
     val variant: ButtonNavigationVariant,
     val buttonNavigationBehavior: ButtonNavigationBehavior,
-    val nativeTokensOverride: ButtonNavigationTokensOverride?,
+    val nativeTokens: ButtonNavigationTokens,
 )

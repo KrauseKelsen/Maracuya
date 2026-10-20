@@ -4,6 +4,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokens.ButtonNavigationChildTokens
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokens.ButtonNavigationChildTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.variant.ButtonNavigationChildVariant
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.core.ButtonNavigationGroupDefaults
@@ -25,5 +26,6 @@ data class ButtonNavigationChild(
     val shape: Shape = RoundedCornerShape(ButtonNavigationGroupDefaults.CornerRadius),
     val variant: ButtonNavigationChildVariant = ButtonNavigationChildVariant.PRIMARY,
     val showIcon: Boolean = true,
+    val buttonNavigationChildTokens: ButtonNavigationChildTokens? = null,
     val buttonNavigationChildTokensOverride: ButtonNavigationChildTokensOverride? = null,
 )

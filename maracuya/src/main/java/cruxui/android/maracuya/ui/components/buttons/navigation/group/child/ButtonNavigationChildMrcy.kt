@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.isSpecified
-import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokensrender.ButtonNavigationChildRender
+import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokensrender.ButtonNavigationChildTokensRender
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
 
 /**
@@ -14,7 +14,7 @@ import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNav
  */
 @Composable
 internal fun ButtonNavigationChildMrcy(
-    child: ButtonNavigationChildRender,
+    child: ButtonNavigationChildTokensRender,
 ) {
     ButtonNavigationMrcy(
         modifier = child.modifier.buttonNavigationChildWidth(
@@ -27,7 +27,7 @@ internal fun ButtonNavigationChildMrcy(
         shape = child.shape,
         variant = child.variant,
         buttonNavigationBehavior = child.buttonNavigationBehavior,
-        buttonNavigationTokensOverride = child.nativeTokensOverride,
+        buttonNavigationTokens = child.nativeTokens,
     )
 }
 

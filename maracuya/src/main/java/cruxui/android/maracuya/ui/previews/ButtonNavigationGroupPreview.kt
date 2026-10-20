@@ -3,8 +3,11 @@ package cruxui.android.maracuya.ui.previews
 import android.view.LayoutInflater
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -18,17 +21,59 @@ import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.core
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.tokens.ButtonNavigationChildTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.variant.ButtonNavigationChildVariant
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.variant.ButtonNavigationGroupVariant
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
+import cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
 import cruxui.android.maracuya.ui.previews.core.Mode
 import cruxui.android.maracuya.ui.previews.core.PreviewWrapper
 
-@Preview(name = "ButtonNavigationGroup - Fixed variants", showBackground = true)
+@Preview(name = "ButtonNavigationGroup - Fixed variants", showBackground = true, heightDp = 800)
 @Composable
 fun ButtonNavigationGroup_FixedVariantsPreview() {
     PreviewWrapper(style = Mode.current) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
+            ButtonNavigationGroupMrcy(
+                buttonSpacing = 12.dp,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                ButtonNavigationMrcy(
+                    label = "Pagar servicios",
+                    onClick = {},
+                    variant = ButtonNavigationVariant.PRIMARYSQUARE,
+                    buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        iconToken = LocalLibraryIcons.current.general.bolt.copy(iconSize = 24),
+                    ),
+                )
+                ButtonNavigationMrcy(
+                    label = "Sinpe\nmóvil",
+                    onClick = {},
+                    variant = ButtonNavigationVariant.SECONDARYSQUARE,
+                    buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        iconToken = LocalLibraryIcons.current.general.contract.copy(iconSize = 24),
+                    ),
+                )
+                ButtonNavigationMrcy(
+                    label = "Seguridad",
+                    onClick = {},
+                    variant = ButtonNavigationVariant.PRIMARYSQUARE,
+                    buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        iconToken = LocalLibraryIcons.current.general.fingerprint.copy(iconSize = 24),
+                    ),
+                )
+                ButtonNavigationMrcy(
+                    label = "Comercios",
+                    onClick = {},
+                    variant = ButtonNavigationVariant.SECONDARYSQUARE,
+                    buttonNavigationTokensOverride = ButtonNavigationTokensOverride(
+                        iconToken = LocalLibraryIcons.current.general.store.copy(iconSize = 24),
+                    ),
+                )
+            }
+
             ButtonNavigationGroupMrcy(
                 variant = ButtonNavigationGroupVariant.BACK_CONTINUE,
                 onLeadingButtonClick = {},
@@ -85,7 +130,7 @@ fun ButtonNavigationGroup_FixedVariantsPreview() {
                         onClick = {},
                     ),
                     ButtonNavigationChild(
-                        variant = ButtonNavigationChildVariant.SECONDARY,
+                        variant = ButtonNavigationChildVariant.PRIMARY,
                         onClick = {},
                     ),
                     ButtonNavigationChild(
@@ -153,13 +198,35 @@ fun ButtonNavigationGroup_FixedVariantsPreview() {
     }
 }
 
-@Preview(name = "ButtonNavigationGroupWrp XML - Fixed variants", showBackground = true)
+@Preview(name = "ButtonNavigationGroupWrp XML - Fixed variants", showBackground = true, heightDp = 800)
 @Composable
 fun ButtonNavigationGroupWrp_XmlFixedVariantsPreview() {
     PreviewWrapper(style = Mode.current) {
+        val icons = LocalLibraryIcons.current.general
+        val servicesTokens = mapOf(
+            R.id.buttonNavigationServicesOneXml to ButtonNavigationTokensOverride(
+                iconToken = icons.bolt.copy(iconSize = 24),
+            ),
+            R.id.buttonNavigationServicesTwoXml to ButtonNavigationTokensOverride(
+                iconToken = icons.contract.copy(iconSize = 24),
+            ),
+            R.id.buttonNavigationServicesThreeXml to ButtonNavigationTokensOverride(
+                iconToken = icons.fingerprint.copy(iconSize = 24),
+            ),
+            R.id.buttonNavigationServicesFourXml to ButtonNavigationTokensOverride(
+                iconToken = icons.store.copy(iconSize = 24),
+            ),
+        )
         AndroidView(
+            modifier = Modifier.fillMaxSize(),
             factory = { context ->
                 LayoutInflater.from(context).inflate(R.layout.button_navigation_group_wrp_preview, null)
+            },
+            update = { view ->
+                // XML declara los botones; el token del ícono se obtiene del tema de la preview.
+                servicesTokens.forEach { (id, tokens) ->
+                    view.findViewById<ButtonNavigationWrp>(id).buttonNavigationTokensOverride = tokens
+                }
             },
         )
     }

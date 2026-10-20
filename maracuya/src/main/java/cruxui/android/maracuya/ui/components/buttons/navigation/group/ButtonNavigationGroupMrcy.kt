@@ -2,12 +2,14 @@ package cruxui.android.maracuya.ui.components.buttons.navigation.group
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.behavior.ButtonNavigationGroupBehavior
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.ButtonNavigationChildMrcy
 import cruxui.android.maracuya.ui.components.buttons.navigation.group.child.core.ButtonNavigationChild
@@ -116,4 +118,27 @@ private fun ButtonNavigationGroupLayout(
             }
         }
     }
+}
+
+/**
+ * Distribuye botones nativos, incluidas variantes square, conservando su forma y comportamiento.
+ *
+ * @param modifier Modificador de la fila, que ocupa el ancho disponible.
+ * @param buttonSpacing Separación entre botones; por defecto `12.dp`. Debe ser no negativa.
+ * @param horizontalAlignment Alineación horizontal del conjunto; por defecto al inicio.
+ * @param content Botones del grupo. Cada botón define su propio estado habilitado y acción.
+ */
+@Composable
+fun ButtonNavigationGroupMrcy(
+    modifier: Modifier = Modifier,
+    buttonSpacing: Dp = 12.dp,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    content: @Composable RowScope.() -> Unit,
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.Top,
+        horizontalArrangement = Arrangement.spacedBy(buttonSpacing, horizontalAlignment),
+        content = content,
+    )
 }
