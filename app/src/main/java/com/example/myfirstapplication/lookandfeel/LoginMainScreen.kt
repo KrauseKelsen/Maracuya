@@ -21,7 +21,7 @@ import cruxui.android.maracuya.theme.MyLibraryTheme
 import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
 import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensOverride
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
 import cruxui.android.maracuya.ui.components.layouts.LayoutPilotWellkommen
 
 @Composable

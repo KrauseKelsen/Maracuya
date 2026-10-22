@@ -1,0 +1,13 @@
+<resources>
+    <string name="text_view_optional">(Optional)</string>
+    <string name="text_view_error">Error</string>
+    <string name="text_view_demo_name">Full name</string>
+    <string name="text_view_demo_error">Please check the information</string>
+    <string name="text_view_demo_disabled">Disabled text</string>
+    <string name="text_view_demo_custom">Text styled in XML</string>
+    <string name="text_view_demo_icons">Profile information</string>
+    <string name="text_view_demo_styled_error">Error with XML selector</string>
+    <string name="text_view_demo_icon_start_description">View profile</string>
+    <string name="text_view_demo_icon_end_description">More information</string>
+    <string name="text_view_demo_error_icon_description">Error indicator</string>
+</resources>

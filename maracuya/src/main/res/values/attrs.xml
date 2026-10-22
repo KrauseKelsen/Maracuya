@@ -83,4 +83,49 @@
         <attr name="textFieldTokensOverride" format="string" />
     </declare-styleable>
 
+    <attr name="textViewStyle" format="reference" />
+    <attr name="state_error" format="boolean" />
+    <declare-styleable name="DesignTextView">
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="android:fontFamily" />
+        <attr name="android:textStyle" />
+        <attr name="android:textFontWeight" />
+        <attr name="android:lineHeight" />
+        <attr name="android:lineSpacingExtra" />
+        <attr name="android:lineSpacingMultiplier" />
+        <attr name="android:letterSpacing" />
+        <attr name="android:textAppearance" />
+        <attr name="android:enabled" />
+        <attr name="variant">
+            <enum name="standard" value="0" />
+            <enum name="optional" value="1" />
+        </attr>
+        <attr name="typography">
+            <enum name="label" value="0" />
+            <enum name="caption" value="1" />
+            <enum name="body" value="2" />
+        </attr>
+        <attr name="textColorRole">
+            <enum name="foreground" value="0" />
+            <enum name="muted" value="1" />
+            <enum name="disabled" value="2" />
+            <enum name="error" value="3" />
+            <enum name="primary" value="4" />
+        </attr>
+        <attr name="error" />
+        <attr name="android:drawableStart" />
+        <attr name="android:drawableEnd" />
+        <attr name="android:drawablePadding" />
+        <attr name="iconStart" format="reference" />
+        <attr name="iconEnd" format="reference" />
+        <attr name="showIconStart" format="boolean" />
+        <attr name="showIconEnd" format="boolean" />
+        <attr name="iconPadding" format="dimension" />
+        <attr name="iconStartContentDescription" format="string" />
+        <attr name="iconEndContentDescription" format="string" />
+        <attr name="errorTextColor" format="color|reference" />
+        <attr name="disabledTextColor" format="color|reference" />
+    </declare-styleable>
 </resources>

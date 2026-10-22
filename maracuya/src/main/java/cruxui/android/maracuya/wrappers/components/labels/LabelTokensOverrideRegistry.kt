@@ -9,7 +9,7 @@ import cruxui.android.maracuya.compositions.LocalLibraryTypography
 import cruxui.android.maracuya.semantics.CorporateIcons
 import cruxui.android.maracuya.semantics.CorporateTypography
 import cruxui.android.maracuya.tokens.base.FontFamilyToken
-import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
 import java.util.concurrent.ConcurrentHashMap
 
 /**

@@ -1,6 +1,8 @@
 # Propuesta: componentes XML con variantes, comportamiento y tokens compartidos
 
-Fecha: 20 de octubre de 2026. Estado: propuesta de diseño; no implementada.
+Fecha: 20 de octubre de 2026. Estado: propuesta inicial conservada como antecedente.
+
+**Contrato vigente:** [TextView nativo implementado](03-textview-implementado.md). Por el requisito posterior de heredar las capacidades de Android, la implementación usa `AppCompatTextView`, con sus propios tokens, overrides y renderer. Este documento describe la alternativa inicial basada en Compose; sus nombres y ejemplos no son la API implementada.
 
 Todos los nombres nuevos, atributos, setters y recursos de los ejemplos describen la API objetivo. No pueden copiarse todavía al proyecto esperando que funcionen. Los imports y parte del código de infraestructura se omiten para explicar el contrato.
 

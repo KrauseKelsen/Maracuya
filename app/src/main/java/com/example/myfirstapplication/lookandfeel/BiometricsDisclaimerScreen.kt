@@ -32,7 +32,7 @@ import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNav
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
 import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.IconComposeAdapter
 

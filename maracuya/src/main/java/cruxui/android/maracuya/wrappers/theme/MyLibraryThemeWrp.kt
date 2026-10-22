@@ -3,6 +3,9 @@ package cruxui.android.maracuya.wrappers.theme
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import android.content.res.Configuration
+import android.view.ViewGroup
+import cruxui.android.maracuya.wrappers.core.theme.AndroidThemeAware
 import cruxui.android.maracuya.theme.ThemeStyle
 
 /**
@@ -60,19 +63,36 @@ class MyLibraryThemeWrp @JvmOverloads constructor(
         get() = configState.themeName
         set(value) {
             configState = configState.copy(themeName = value)
+            notifyNativeChildren(this)
         }
 
     var themeStyle: ThemeStyle
         get() = configState.themeStyle
         set(value) {
             configState = configState.copy(themeStyle = value)
+            notifyNativeChildren(this)
         }
 
     var useMaterial: Boolean
         get() = configState.useMaterial
         set(value) {
             configState = configState.copy(useMaterial = value)
+            notifyNativeChildren(this)
         }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        notifyNativeChildren(this)
+    }
+
+    private fun notifyNativeChildren(parent: ViewGroup) {
+        for (index in 0 until parent.childCount) {
+            val child = parent.getChildAt(index)
+            if (child is MyLibraryThemeWrp) continue
+            if (child is AndroidThemeAware) child.refreshTheme()
+            if (child is ViewGroup) notifyNativeChildren(child)
+        }
+    }
 
     internal fun currentConfig(): MyLibraryThemeConfig = configState
 }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    app:themeName="Maracuya"
+    app:themeStyle="auto"
+    tools:background="#FFFFFF">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_demo_name" />
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextOptional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:variant="optional" />
+
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/text_view_demo_error"
+            app:error="true"
+            app:showIconEnd="true"
+            app:showIconStart="true"
+            app:iconEndContentDescription="@string/text_view_demo_icon_end_description" />
+
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextIcons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/text_view_demo_icons"
+            app:iconStart="@drawable/ic_account_circle"
+            app:iconEnd="@drawable/ic_info"
+            app:showIconStart="false"
+            app:showIconEnd="true"
+            app:iconPadding="8dp"
+            app:iconStartContentDescription="@string/text_view_demo_icon_start_description"
+            app:iconEndContentDescription="@string/text_view_demo_icon_end_description" />
+
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextStyledError"
+            style="@style/Widget.Maracuya.TextView.Demo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/text_view_demo_styled_error"
+            app:error="true"
+            app:iconEnd="@drawable/ic_error"
+            app:iconEndContentDescription="@string/text_view_demo_error_icon_description" />
+
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextDisabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/text_view_demo_disabled"
+            android:enabled="false" />
+
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextStyled"
+            style="@style/Widget.Maracuya.TextView.Demo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/text_view_demo_custom"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <cruxui.android.maracuya.wrappers.components.textviews.TextView
+            android:id="@+id/nativeTextLocalStyled" style="@style/Widget.Maracuya.TextView.Demo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/text_view_demo_custom"
+            android:textSize="21sp"
+            android:lineSpacingExtra="6dp"
+            android:lineSpacingMultiplier="1.2" />
+    </LinearLayout>
+</cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_icon_start_click">Activate start icon</string>
+    <string name="action_icon_end_click">Activate end icon</string>
+    <string name="action_icon_start_long_click">Long press start icon</string>
+    <string name="action_icon_end_long_click">Long press end icon</string>
+</resources>

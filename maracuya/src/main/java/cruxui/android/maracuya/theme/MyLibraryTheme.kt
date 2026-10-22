@@ -15,17 +15,11 @@ import cruxui.android.maracuya.compositions.LocalFontFamily
 import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
 import cruxui.android.maracuya.compositions.LocalLibraryIcons
 import cruxui.android.maracuya.compositions.LocalLibraryTypography
-import cruxui.android.maracuya.semantics.CorporateIcons
 import cruxui.android.maracuya.semantics.CorporateTypography
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
 import cruxui.android.maracuya.utils.materialadapters.ColorMaterialAdapter
 import cruxui.android.maracuya.utils.composeadapters.FontFamiliesComposeAdapter
 import cruxui.android.maracuya.utils.materialadapters.TypographyMaterialAdapter
-
-/**
- * Define los estilos del tema: Light, Dark o Auto (según el sistema).
- */
-enum class ThemeStyle { LIGHT, DARK, AUTO }
 
 /**
  * s4121779 - Krause Kelsen
@@ -159,20 +153,20 @@ private fun LibraryThemeContent(
         ThemeStyle.AUTO -> isSystemInDarkTheme()
     }
 
-    val tokens = if (isDark) theme.darkTokens else theme.lightTokens
+    val snapshot = remember(theme, isDark) { LibraryThemeSnapshot.resolve(theme, isDark) }
+    val tokens = snapshot.colors
     // Determina la familia de fuente según el tema
-    val fontFamilyToken = FontResources.forTheme(theme.name)
+    val fontFamilyToken = snapshot.fontFamily
     val composeFontFamily =
         FontFamiliesComposeAdapter.toCompose(fontFamilyToken)
 
     val bgColor = ColorComposeAdapter.toComposeColor(if (isDark) theme.darkTokens.bgBase else theme.lightTokens.bgBase)
 
     // Crear tipografía semántica (no Compose)
-    val semanticTypography = remember { CorporateTypography() }
+    val semanticTypography = snapshot.typography
 
     // dentro de MyLibraryTheme, donde ya tienes `theme: LibraryThemeSet` y resolved tokens:
-    val providedIcons = theme.iconAtoms
-    val semanticIcons = CorporateIcons.fromAtoms(providedIcons) // deriva semántica
+    val semanticIcons = snapshot.icons // deriva semántica
 
     // Proveer tokens semánticos en la jerarquía Compose
     CompositionLocalProvider(

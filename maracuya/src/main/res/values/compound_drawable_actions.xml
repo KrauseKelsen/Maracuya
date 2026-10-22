@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_icon_start_click" type="id" />
+    <item name="action_icon_end_click" type="id" />
+    <item name="action_icon_start_long_click" type="id" />
+    <item name="action_icon_end_long_click" type="id" />
+    <string name="action_icon_start_click">Activar icono inicial</string>
+    <string name="action_icon_end_click">Activar icono final</string>
+    <string name="action_icon_start_long_click">Mantener pulsado el icono inicial</string>
+    <string name="action_icon_end_long_click">Mantener pulsado el icono final</string>
+</resources>

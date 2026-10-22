@@ -4,81 +4,27 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import cruxui.android.maracuya.R
+import cruxui.android.maracuya.theme.FontResourceCatalog
 import cruxui.android.maracuya.tokens.base.FontFamilyToken
 
-/**
- * s4121779 - Krause Kelsen
- *
- * Descripción:
- * Define las **familias tipográficas atómicas** del Design System a partir de los
- * archivos localizados en `res/font/`.
- *
- * Este archivo constituye la **única fuente de verdad** para las fuentes físicas
- * utilizadas por el sistema, previo a su asignación semántica en:
- *
- *  - `fonts/FontFamilies` (tokens → tamaño, peso y estilo)
- *  - `atoms/LibraryTypographyTokens` (construcción semántica)
- *  - `semantics/CorporateTypography` (inyección final al tema)
- *
- * Las familias aquí definidas **NO deben ser accedidas directamente por el host**
- * ni por componentes. Su propósito es ser consumidas únicamente por los tokens
- * de tipografía.
- *
- * Uso:
- * ```
- * // Uso interno dentro de LibraryTypographyTokens
- * val fontFamily: FontFamily = FontFamilies.Mulish
- * ```
- *
- * @author Krause Kelsen
- * @since 10-31-2025
- * @version 1.5.4
- *
- * Familias:
- * @param Mulish      Fuente principal para textos del sistema (regular, medium, bold).
- * @param Davivienda  Fuente digital de Davivienda (regular/bold) (en mantenimiento).
- *
- * @see cruxui.android.maracuya.utils.composeadapters.FontFamiliesComposeAdapter
- */
-
-
+/** Compose representation of the same bundled TTF catalog used by Android Views. */
 object FontFamiliesComposeAdapter {
+    val Mulish: FontFamily = create(FontFamilyToken.MULISH, setOf(400, 500, 700))
+    val Davivienda: FontFamily = create(FontFamilyToken.DAVIVIENDA, setOf(400, 700))
 
-    val Mulish = FontFamily(
-        Font(
-            resId = R.font.mulish_regular,
-            weight = FontWeight.Companion.Normal,
-            style = FontStyle.Companion.Normal
-        ),
-        Font(
-            resId = R.font.mulish_medium,
-            weight = FontWeight.Companion.Medium,
-            style = FontStyle.Companion.Normal
-        ),
-        Font(
-            resId = R.font.mulish_bold,
-            weight = FontWeight.Companion.Bold,
-            style = FontStyle.Companion.Normal
-        ),
+    fun toCompose(token: FontFamilyToken): FontFamily = when (token) {
+        FontFamilyToken.MULISH -> Mulish
+        FontFamilyToken.DAVIVIENDA -> Davivienda
+    }
+
+    // Keep the existing Compose face selection; both adapters share physical resource mappings.
+    private fun create(family: FontFamilyToken, weights: Set<Int>): FontFamily = FontFamily(
+        FontResourceCatalog.faces(family).filter { !it.italic && it.weight in weights }.map { face ->
+            Font(
+                resId = face.resourceId,
+                weight = FontWeight(face.weight),
+                style = if (face.italic) FontStyle.Italic else FontStyle.Normal,
+            )
+        },
     )
-
-    val Davivienda = FontFamily(
-        Font(
-            resId = R.font.davivienda_regular,
-            weight = FontWeight.Companion.Normal,
-            style = FontStyle.Companion.Normal
-        ),
-        Font(
-            resId = R.font.davivienda_bold,
-            weight = FontWeight.Companion.Bold,
-            style = FontStyle.Companion.Normal
-        ),
-    )
-
-    fun toCompose(token: FontFamilyToken): FontFamily =
-        when (token) {
-            FontFamilyToken.MULISH -> FontFamiliesComposeAdapter.Mulish
-            FontFamilyToken.DAVIVIENDA -> FontFamiliesComposeAdapter.Davivienda
-        }
 }

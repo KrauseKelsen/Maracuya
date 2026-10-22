@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AbstractComposeView
 import cruxui.android.maracuya.theme.LibraryThemes
 import cruxui.android.maracuya.theme.MyLibraryComponentTheme
 import cruxui.android.maracuya.wrappers.theme.MyLibraryThemeProvider
+import cruxui.android.maracuya.wrappers.core.theme.AndroidThemeAware
 
 /**
  * Base común para wrappers XML que renderizan componentes Maracuya en Compose.
@@ -26,7 +28,13 @@ abstract class MrcyXmlComposeView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : AbstractComposeView(context, attrs, defStyleAttr) {
+) : AbstractComposeView(context, attrs, defStyleAttr), AndroidThemeAware {
+
+    private var themeRevision by mutableIntStateOf(0)
+
+    override fun refreshTheme() {
+        themeRevision++
+    }
 
     private var layoutParamsModifierState by mutableStateOf<Modifier>(Modifier)
     private var componentModifierState by mutableStateOf<Modifier>(Modifier)
@@ -74,7 +82,7 @@ abstract class MrcyXmlComposeView @JvmOverloads constructor(
      */
     @Composable
     protected fun WithXmlTheme(content: @Composable () -> Unit) {
-        val themeConfig = MyLibraryThemeProvider.findFrom(this)?.currentConfig()
+        val themeConfig = themeRevision.let { MyLibraryThemeProvider.findFrom(this)?.currentConfig() }
 
         if (themeConfig == null) {
             content()

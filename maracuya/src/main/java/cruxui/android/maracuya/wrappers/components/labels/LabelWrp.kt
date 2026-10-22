@@ -7,8 +7,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.labels.LabelTokens
-import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokens
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
 import cruxui.android.maracuya.wrappers.core.MrcyXmlComposeView
 
 /**
@@ -18,6 +18,7 @@ import cruxui.android.maracuya.wrappers.core.MrcyXmlComposeView
  * pantallas híbridas puedan actualizar texto, estado de error, icono, optional text,
  * descripción de accesibilidad y tokens sin recrear la vista.
  */
+@Deprecated("Use wrappers.components.textviews.TextView for native XML components and independent overrides")
 class LabelWrp @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

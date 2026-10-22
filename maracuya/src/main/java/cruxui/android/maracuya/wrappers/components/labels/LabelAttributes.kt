@@ -1,8 +1,8 @@
 package cruxui.android.maracuya.wrappers.components.labels
 
 import androidx.compose.ui.Modifier
-import cruxui.android.maracuya.ui.components.labels.LabelTokens
-import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokens
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
 
 /**
  * Agrupa la configuración del `LabelWrp` resuelta desde XML o desde valores por defecto.

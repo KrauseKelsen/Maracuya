@@ -9,7 +9,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import cruxui.android.maracuya.ui.components.labels.variant.LabelVariant
+import cruxui.android.maracuya.ui.components.labels.variant.LabelVariantResolver
 import cruxui.android.maracuya.tokens.spacings.LabelSpacings
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokens
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensResolver
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.FontFamiliesComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.IconComposeAdapter
@@ -52,7 +58,7 @@ fun LabelMrcy(
         Text(
             text = text,
             style = TypographyComposeAdapter.toTextStyle(
-                tokens.labelTypography,
+                LabelVariantResolver.typography(LabelVariant.Default, tokens),
                 FontFamiliesComposeAdapter.toCompose(tokens.fontFamily)
             ),
             color = ColorComposeAdapter.toComposeColor(currentColor),
@@ -77,9 +83,9 @@ fun LabelMrcy(
 
         if (optionalText) {
             Text(
-                text = "(Opcional)",
+                text = stringResource(requireNotNull(LabelVariantResolver.defaultTextResource(LabelVariant.Optional))),
                 style = TypographyComposeAdapter.toTextStyle(
-                    tokens.optionalTypography,
+                    LabelVariantResolver.typography(LabelVariant.Optional, tokens),
                     FontFamiliesComposeAdapter.toCompose(tokens.fontFamily)
                 ),
                 color = ColorComposeAdapter.toComposeColor(currentColor)

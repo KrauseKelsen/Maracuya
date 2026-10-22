@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.labels
+package cruxui.android.maracuya.ui.components.labels.tokens
 
 import cruxui.android.maracuya.tokens.base.ColorToken
 import cruxui.android.maracuya.tokens.base.FontFamilyToken

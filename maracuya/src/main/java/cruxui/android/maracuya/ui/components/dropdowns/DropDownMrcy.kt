@@ -25,7 +25,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import cruxui.android.maracuya.tokens.base.IconToken
 import cruxui.android.maracuya.tokens.spacings.LabelSpacings
@@ -34,7 +33,7 @@ import cruxui.android.maracuya.ui.components.inputs.dropdown.InputDropDownMrcy
 import cruxui.android.maracuya.ui.components.inputs.dropdown.InputDropDownTokens
 import cruxui.android.maracuya.ui.components.inputs.dropdown.InputDropDownVariant
 import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
+import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
 import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.FontFamiliesComposeAdapter
 import cruxui.android.maracuya.utils.composeadapters.IconComposeAdapter

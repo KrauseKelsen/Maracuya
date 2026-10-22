@@ -1,4 +1,4 @@
-package cruxui.android.maracuya.ui.components.labels
+package cruxui.android.maracuya.ui.components.labels.behavior
 
 internal object  LabelBehaviorResolver {
     fun resolve(

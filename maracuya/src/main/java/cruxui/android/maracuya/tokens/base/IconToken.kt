@@ -1,7 +1,5 @@
 package cruxui.android.maracuya.tokens.base
 
-import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
-
 /**
  * Representa el asset atómico de un icono en el DS.
  *

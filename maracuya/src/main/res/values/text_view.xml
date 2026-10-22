@@ -1,0 +1,25 @@
+<resources>
+    <string name="text_view_optional">(Opcional)</string>
+    <string name="text_view_error">Error</string>
+    <string name="text_view_demo_name">Nombre completo</string>
+    <string name="text_view_demo_error">Revise la información</string>
+    <string name="text_view_demo_disabled">Texto deshabilitado</string>
+    <string name="text_view_demo_custom">Texto con estilo XML</string>
+    <string name="text_view_demo_icons">Información del perfil</string>
+    <string name="text_view_demo_styled_error">Error con selector XML</string>
+    <string name="text_view_demo_icon_start_description">Ver perfil</string>
+    <string name="text_view_demo_icon_end_description">Más información</string>
+    <string name="text_view_demo_error_icon_description">Indicador de error</string>
+    <style name="Widget.Maracuya.TextView" parent="">
+        <item name="variant">standard</item>
+        <item name="android:textAppearance">@null</item>
+    </style>
+    <style name="Widget.Maracuya.TextView.Demo" parent="Widget.Maracuya.TextView">
+        <item name="android:textColor">@color/text_view_demo_states</item>
+        <item name="android:fontFamily">@font/mulish_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <color name="text_view_demo_normal">#2450A4</color>
+    <color name="text_view_demo_error">#B3261E</color>
+    <color name="text_view_demo_disabled">#767676</color>
+</resources>

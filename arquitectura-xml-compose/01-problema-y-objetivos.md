@@ -272,4 +272,6 @@ Rutas relativas a la raíz del repositorio:
 - `maracuya/src/main/java/cruxui/android/maracuya/tokens/base/`: modelos de color, tipografía y familia.
 - `maracuya/src/main/res/font/`: fuentes disponibles en la biblioteca.
 
-El diagnóstico inicial se basa en lectura del código. Los ejemplos no se han incorporado a la aplicación ni ejecutado como pruebas. Las fuentes externas y las decisiones propuestas se registran en [referencias](../referencias-arquitectura-xml/README.md) y en la [propuesta de arquitectura](02-propuesta-arquitectura.md).
+El diagnóstico inicial se basa en lectura del código. Las fuentes externas y las decisiones propuestas se registran en [referencias](../referencias-arquitectura-xml/README.md) y en la [propuesta de arquitectura](02-propuesta-arquitectura.md).
+
+La primera implementación en la rama `XMLArchitecture` se documenta en [TextView nativo implementado](03-textview-implementado.md), con la API efectiva, ejemplos XML/Kotlin, diagrama y validación. Conservamos este documento como descripción del problema y de sus objetivos.
