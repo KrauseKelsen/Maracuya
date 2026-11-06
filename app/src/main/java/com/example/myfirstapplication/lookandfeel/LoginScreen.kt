@@ -19,21 +19,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
-import cruxui.android.maracuya.compositions.LocalLibraryIcons
-import cruxui.android.maracuya.compositions.LocalLibraryTypography
-import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.tokens.base.ColorToken
-import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
-import cruxui.android.maracuya.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
-import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
-import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
-import cruxui.android.maracuya.ui.components.textfields.TextFieldVariant
-import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
-import cruxui.android.maracuya.utils.composeadapters.IconComposeAdapter
+import cruxui.android.lib.compositions.LocalLibraryColorTokens
+import cruxui.android.lib.compositions.LocalLibraryIcons
+import cruxui.android.lib.compositions.LocalLibraryTypography
+import cruxui.android.lib.theme.MyLibraryTheme
+import cruxui.android.lib.tokens.base.ColorToken
+import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.lib.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
+import cruxui.android.lib.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
+import cruxui.android.lib.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
+import cruxui.android.lib.ui.components.labels.LabelMrcy
+import cruxui.android.lib.ui.components.labels.tokens.LabelTokensOverride
+import cruxui.android.lib.ui.components.textfields.TextFieldMrcy
+import cruxui.android.lib.ui.components.textfields.TextFieldVariant
+import cruxui.android.lib.utils.composeadapters.ColorComposeAdapter
+import cruxui.android.lib.utils.composeadapters.IconComposeAdapter
 
 @Composable
 fun LoginScreen() {

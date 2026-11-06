@@ -1,0 +1,1954 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guía de transferencia · cruxui.android.lib</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f1f5f3;color:#183038;font:16px/1.7 system-ui,Segoe UI,sans-serif}main{max-width:1100px;margin:32px auto;padding:40px 48px;background:white;border:1px solid #dae5df;border-radius:16px}h1{font-size:38px;line-height:1.15;color:#075f58}h2{margin-top:48px;padding-top:20px;border-top:1px solid #dce7e1;line-height:1.3}h3{margin-top:32px}a{color:#006b65}table{display:block;overflow:auto;border-collapse:collapse;font-size:14px;margin:20px 0}td,th{border:1px solid #d4e0da;padding:12px;text-align:left;min-width:110px}th{background:#e9f2ee}pre{white-space:pre;overflow:auto;background:#153039;color:#e7f4ed;padding:22px;border-radius:8px;font-size:13px;line-height:1.6}code{font-family:Consolas,monospace;font-size:.88em;overflow-wrap:anywhere}p,li{overflow-wrap:anywhere}li{margin:6px 0}.toc{background:#edf5f0;padding:18px 28px;border-radius:10px}.toc ul{list-style:none;padding-left:15px}.toc>ul{padding-left:0}.toc ul ul{display:none}.topbar{background:#153039;color:white;padding:20px;text-align:center}button{border:0;background:#c1e6cd;color:#153039;border-radius:6px;padding:10px 18px;font-weight:700;cursor:pointer;margin-left:15px}@media(max-width:720px){main{padding:24px 18px;margin:0;border-radius:0}h1{font-size:29px}}@media print{body{background:white;font-size:10pt}main{border:0;margin:0;padding:0;max-width:none}.topbar,.toc{display:none}h2{break-before:page}pre{white-space:pre-wrap;color:#183038;background:#f1f5f3}table{display:table;width:100%;font-size:9pt}tr{break-inside:avoid}a{color:inherit;text-decoration:none}}
+</style></head><body><div class="topbar">Traslado manual · Código, generación y documentación <button onclick="window.print()">Imprimir / Guardar PDF</button></div><main><div class="toc">
+<ul>
+<li><a href="#guia-de-traslado-manual-a-cruxuiandroidlib">Guía de traslado manual a cruxui.android.lib</a><ul>
+<li><a href="#1-nombres-y-rutas-que-vas-a-utilizar">1. Nombres y rutas que vas a utilizar</a></li>
+<li><a href="#2-preparacion-antes-del-primer-correo">2. Preparación antes del primer correo</a></li>
+<li><a href="#3-regla-para-sustituir-una-estructura-antigua">3. Regla para sustituir una estructura antigua</a></li>
+<li><a href="#4-orden-de-copiado-del-codigo-de-la-libreria">4. Orden de copiado del código de la librería</a></li>
+<li><a href="#5-crear-token-exporter-desde-cero">5. Crear Token Exporter desde cero</a><ul>
+<li><a href="#51-crear-el-modulo-como-carpeta">5.1. Crear el módulo como carpeta</a></li>
+<li><a href="#52-copiarlo-en-lotes-pequenos">5.2. Copiarlo en lotes pequeños</a></li>
+<li><a href="#53-adaptar-las-dos-rutas-de-fuentes">5.3. Adaptar las dos rutas de fuentes</a></li>
+<li><a href="#54-registrar-el-modulo-y-el-plugin">5.4. Registrar el módulo y el plugin</a></li>
+<li><a href="#55-conectar-el-exportador-a-la-libreria-android">5.5. Conectar el exportador a la librería Android</a></li>
+<li><a href="#56-entorno-usado-para-la-verificacion-local">5.6. Entorno usado para la verificación local</a></li>
+</ul>
+</li>
+<li><a href="#6-pasar-los-recursos-android-y-las-pruebas">6. Pasar los recursos Android y las pruebas</a></li>
+<li><a href="#7-archivos-antiguos-que-no-debes-conservar-como-implementacion-manual">7. Archivos antiguos que no debes conservar como implementación manual</a></li>
+<li><a href="#8-puntos-de-comprobacion-cuando-compilar">8. Puntos de comprobación: cuándo compilar</a><ul>
+<li><a href="#a-comprobar-que-gradle-reconoce-el-modulo">A. Comprobar que Gradle reconoce el módulo</a></li>
+<li><a href="#b-generar-y-probar-el-catalogo">B. Generar y probar el catálogo</a></li>
+<li><a href="#c-exportar-recursos-android">C. Exportar recursos Android</a></li>
+<li><a href="#d-compilar-la-libreria-completa">D. Compilar la librería completa</a></li>
+<li><a href="#e-verificacion-final-desde-cero">E. Verificación final desde cero</a></li>
+</ul>
+</li>
+<li><a href="#9-pasar-la-documentacion-sin-perder-la-estructura">9. Pasar la documentación sin perder la estructura</a></li>
+<li><a href="#10-problemas-frecuentes-durante-el-traslado">10. Problemas frecuentes durante el traslado</a></li>
+<li><a href="#11-checklist-de-cierre">11. Checklist de cierre</a></li>
+<li><a href="#anexo-a-buildgradlekts-completo-de-token-exporter">Anexo A. build.gradle.kts completo de Token Exporter</a></li>
+<li><a href="#anexo-b-buildgradlekts-actual-de-la-libreria-android">Anexo B. build.gradle.kts actual de la librería Android</a></li>
+<li><a href="#anexo-c-catalogo-de-versiones-y-dependencias-de-referencia">Anexo C. Catálogo de versiones y dependencias de referencia</a></li>
+<li><a href="#anexo-d-inventario-exacto-para-comprobar-cada-correo">Anexo D. Inventario exacto para comprobar cada correo</a><ul>
+<li><a href="#codigo-de-la-libreria-251-archivos">Código de la librería (251 archivos)</a></li>
+<li><a href="#recursos-de-produccion-430-archivos">Recursos de producción (430 archivos)</a></li>
+<li><a href="#recursos-de-pruebas-4-archivos">Recursos de pruebas (4 archivos)</a></li>
+<li><a href="#pruebas-unitarias-9-archivos">Pruebas unitarias (9 archivos)</a></li>
+<li><a href="#pruebas-instrumentadas-4-archivos">Pruebas instrumentadas (4 archivos)</a></li>
+<li><a href="#fuentes-del-exportador-31-archivos">Fuentes del exportador (31 archivos)</a></li>
+<li><a href="#documentacion-vigente-7-archivos">Documentación vigente (7 archivos)</a></li>
+<li><a href="#referencias-de-arquitectura-4-archivos">Referencias de arquitectura (4 archivos)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="guia-de-traslado-manual-a-cruxuiandroidlib">Guía de traslado manual a cruxui.android.lib</h1>
+<p>Guía para actualizar el proyecto del trabajo anterior a <code>xmlarchitecture</code> usando el código actual de este proyecto. Preparada el 3 de noviembre de 2026. Puedes enviar carpetas pequeñas o archivos por correo y pegarlos progresivamente.</p>
+<p><strong>Empieza por esta guía.</strong> El orden sirve para organizar la copia; no significa que cada carpeta compile por separado. Es normal que Android Studio marque referencias sin resolver hasta completar los bloques y generar el catálogo.</p>
+<h2 id="1-nombres-y-rutas-que-vas-a-utilizar">1. Nombres y rutas que vas a utilizar</h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>En esta computadora</th>
+<th>En la computadora del trabajo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paquete Kotlin y namespace</td>
+<td><code>cruxui.android.lib</code></td>
+<td><code>cruxui.android.lib</code></td>
+</tr>
+<tr>
+<td>Módulo Android de la librería</td>
+<td><code>maracuya</code></td>
+<td>Su nombre real, por ejemplo <code>lib</code></td>
+</tr>
+<tr>
+<td>Directorio de código</td>
+<td><code>maracuya/src/main/java/cruxui/android/lib/</code></td>
+<td><code>&lt;modulo&gt;/src/main/java/cruxui/android/lib/</code></td>
+</tr>
+<tr>
+<td>Directorio de recursos</td>
+<td><code>maracuya/src/main/res/</code></td>
+<td><code>&lt;modulo&gt;/src/main/res/</code></td>
+</tr>
+<tr>
+<td>Módulo nuevo del exportador</td>
+<td><code>token-exporter</code></td>
+<td><code>token-exporter</code> en la raíz del proyecto</td>
+</tr>
+</tbody>
+</table>
+<p>En los comandos de esta guía se supone que el módulo del trabajo se llama <strong><code>lib</code></strong>. Si se llama distinto, cambia <code>:lib:</code> por su ruta Gradle real. Si la carpeta física del módulo tiene otro nombre, adapta también las dos rutas de fuentes del exportador. El paquete no cambia por cambiar el nombre del módulo.</p>
+<p>No cambies el <code>applicationId</code> de la aplicación del trabajo ni su nombre de proyecto. El namespace indicado corresponde a la librería.</p>
+<h2 id="2-preparacion-antes-del-primer-correo">2. Preparación antes del primer correo</h2>
+<ul>
+<li>[ ] Guarda un commit o una copia de respaldo del proyecto del trabajo. Haz la migración en una rama propia, por ejemplo <code>migracion-xml-compose</code>.</li>
+<li>[ ] Identifica el módulo Android que contiene <code>cruxui.android.lib</code> y apunta su carpeta física.</li>
+<li>[ ] Separa las personalizaciones exclusivas del trabajo: marcas, paletas, componentes propios, publicación y configuración corporativa.</li>
+<li>[ ] Confirma que el proyecto actual del trabajo compila antes de empezar. Así distingues problemas previos de problemas de traslado.</li>
+<li>[ ] Envía <code>GUIA-TRANSFERENCIA.html</code> a la otra computadora. Se abre directamente en un navegador, sin conexión. El <code>.md</code> es la versión editable del mismo contenido.</li>
+</ul>
+<p><strong>Cómo enviar cada lote:</strong> usa un asunto como <code>XML-Compose / 04 / atoms/icons</code>, indica la ruta destino y si el envío contiene la carpeta completa o solo una parte. Si pegas código en el correo, indica el nombre completo de cada archivo y copia todo su contenido, desde <code>package</code> hasta la última línea. Reemplaza el archivo completo; no lo agregues al final del anterior. Conserva carpetas anidadas, nombres y mayúsculas.</p>
+<p>Marca un lote como completo solo cuando hayas copiado todos sus archivos. El inventario al final permite comprobarlos. Archivos de fuentes tipográficas (<code>.ttf</code>, <code>.otf</code>) se envían como archivos, no como texto.</p>
+<h2 id="3-regla-para-sustituir-una-estructura-antigua">3. Regla para sustituir una estructura antigua</h2>
+<p>Para cada carpeta del sistema de diseño, compara sus archivos actuales con el inventario de esta guía. Copiar encima no elimina archivos viejos y puede dejar clases duplicadas.</p>
+<ol>
+<li>Respalda las modificaciones particulares del trabajo.</li>
+<li>Copia los archivos actuales completos a su ruta correspondiente.</li>
+<li>Retira del árbol de fuentes las implementaciones antiguas que el nuevo árbol sustituye. Si quieres conservarlas temporalmente, colócalas fuera de <code>src</code>, no en otro paquete dentro del código compilado.</li>
+<li>Reaplica las personalizaciones del trabajo sobre los contratos actuales y compruébalas al final.</li>
+</ol>
+<p>La lista de retiradas de la sección 7 está comprobada contra la revisión base de este repositorio. Como no tenemos aquí la copia del trabajo, puede haber allí otros archivos antiguos o particulares que debas comparar.</p>
+<h2 id="4-orden-de-copiado-del-codigo-de-la-libreria">4. Orden de copiado del código de la librería</h2>
+<p>Todas las rutas de esta tabla parten de <code>maracuya/src/main/java/cruxui/android/lib/</code>. En destino parten de <code>&lt;modulo&gt;/src/main/java/cruxui/android/lib/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Hecho</th>
+<th>Lote</th>
+<th>Carpeta o archivos a pasar</th>
+<th>Indicaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>☐</td>
+<td>01</td>
+<td><code>tokens/base</code></td>
+<td>Tipos base: color, tipografía, icono, fuente y anotación de grupos.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>02</td>
+<td><code>tokens/colors</code>, <code>tokens/fonts</code></td>
+<td>Puedes mandar cada carpeta por separado.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>03</td>
+<td><code>tokens/spacings</code></td>
+<td>Incluye <code>InteractionSpacings</code>; no omitir las medidas existentes de otros componentes.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>04</td>
+<td><code>atoms/icons</code></td>
+<td>Copiar todos los grupos Library; puede ser un archivo por correo.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>05</td>
+<td>Archivos de primer nivel de <code>atoms</code></td>
+<td>Colores, tipografías y catálogo de iconos. No copiar solo los tres archivos sin sus grupos.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>06</td>
+<td><code>theme</code></td>
+<td>Copiar todos los archivos actuales; retirar <code>LibraryThemeSet.kt</code> antiguo como explica la sección 7.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>07</td>
+<td><code>core/text</code>, <code>core/components</code></td>
+<td>Núcleo compartido; incluye las reglas y medidas comunes de TextView.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>08</td>
+<td><code>compositions</code></td>
+<td>Proveedores Compose del tema.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>09</td>
+<td><code>utils</code></td>
+<td>Incluir archivos directos y subcarpetas <code>composeadapters</code> y <code>materialadapters</code>.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>10</td>
+<td><code>wrappers/core</code></td>
+<td>Dividir por subcarpetas: registro, tokens, recursos, atributos, tema, render y comportamiento.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>11</td>
+<td><code>wrappers/capabilities</code></td>
+<td>Copiar texto y drawables por separado si hace falta.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>12</td>
+<td><code>wrappers/adapters</code>, <code>wrappers/theme</code></td>
+<td>Puente Compose y proveedor de tema XML.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>13</td>
+<td><code>wrappers/components/textviews</code></td>
+<td>Dividir por <code>attributes</code>, <code>behavior</code>, <code>core</code>, <code>tokens</code>, <code>tokensrender</code>, <code>variant</code>, <code>render</code>; incluir el archivo principal <code>TextView.kt</code>.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>14</td>
+<td><code>wrappers/components/buttons</code>, <code>labels</code>, <code>textfields</code></td>
+<td>Copiar por componente. Los wrappers existentes también usan contratos actualizados.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>15</td>
+<td><code>ui/components/textviews</code></td>
+<td>Implementación Compose que comparte el núcleo.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>16</td>
+<td>Resto de <code>ui/components</code></td>
+<td>Una familia por correo: <code>buttons</code>, <code>checkboxes</code>, <code>dropdowns</code>, <code>inputs</code>, <code>labels</code>, <code>layouts</code>, <code>textfields</code>, <code>texts</code>, <code>utils</code>. Dividir <code>buttons</code> por subcarpetas.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>17</td>
+<td><code>ui/previews</code>, <code>wrappers/previews</code></td>
+<td>Algunas vistas previas se referencian desde layouts; copiarlas también.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No envíes una carpeta <code>semantics</code> antigua.</strong> <code>CorporateIcons</code> y <code>CorporateTypography</code> ahora son aliases generados. También se generan los antiguos tipos de <code>tokens/icons</code>, las colecciones y los roles del catálogo. Su ausencia entre las fuentes manuales es intencional.</p>
+<p>Para este traslado completo, copia también las familias de componentes que ya existían: sus imports y adaptadores pueden haber cambiado. No basta con agregar únicamente TextView y dejar todos los archivos anteriores intactos.</p>
+<h2 id="5-crear-token-exporter-desde-cero">5. Crear Token Exporter desde cero</h2>
+<h3 id="51-crear-el-modulo-como-carpeta">5.1. Crear el módulo como carpeta</h3>
+<p>En la raíz del proyecto del trabajo, junto a la carpeta del módulo Android, crea esta estructura. No necesita asistente de Android Studio, <code>AndroidManifest.xml</code> ni <code>res</code>, porque es un módulo Kotlin/JVM de construcción.</p>
+<pre><code class="language-text">proyecto-del-trabajo/
+  settings.gradle.kts
+  build.gradle.kts
+  gradle/libs.versions.toml
+  lib/                         # o el nombre real del módulo Android
+  token-exporter/
+    build.gradle.kts
+    README.md
+    src/
+      catalogSchema/kotlin/schema/
+      main/kotlin/exporter/
+      test/kotlin/schema/
+      test/kotlin/exporter/
+</code></pre>
+<h3 id="52-copiarlo-en-lotes-pequenos">5.2. Copiarlo en lotes pequeños</h3>
+<table>
+<thead>
+<tr>
+<th>Hecho</th>
+<th>Envío</th>
+<th>Origen y destino relativo dentro de token-exporter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>☐</td>
+<td>E1</td>
+<td><code>build.gradle.kts</code> y <code>README.md</code></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>E2</td>
+<td><code>src/catalogSchema/kotlin/schema/</code> completo; dividir por archivos si hace falta</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>E3</td>
+<td><code>src/main/kotlin/exporter/catalog/</code> y <code>validation/</code></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>E4</td>
+<td><code>src/main/kotlin/exporter/output/</code></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>E5</td>
+<td><code>src/main/kotlin/exporter/android/</code></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>E6</td>
+<td><code>src/main/kotlin/exporter/kotlin/</code></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>E7</td>
+<td><code>src/main/kotlin/exporter/components/</code> y el archivo directo <code>ExportLibraryTokens.kt</code></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>E8</td>
+<td><code>src/test/kotlin/schema/</code> y <code>src/test/kotlin/exporter/</code></td>
+</tr>
+</tbody>
+</table>
+<p>No crees una dependencia de <code>token-exporter</code> hacia el módulo Android. El exportador compila directamente una selección de fuentes puras, mientras que el módulo Android consume sus salidas: agregar una dependencia de vuelta crea un ciclo.</p>
+<h3 id="53-adaptar-las-dos-rutas-de-fuentes">5.3. Adaptar las dos rutas de fuentes</h3>
+<p>El <code>token-exporter/build.gradle.kts</code> completo está en el anexo A de esta guía, ya adaptado al ejemplo de módulo físico <code>lib</code>.</p>
+<p>Si copias el archivo original desde este repositorio, cambia <strong>las dos apariciones</strong> de:</p>
+<pre><code class="language-kotlin">kotlin.srcDir(&quot;../maracuya/src/main/java&quot;)
+</code></pre>
+<p>por la ruta física real, por ejemplo:</p>
+<pre><code class="language-kotlin">kotlin.srcDir(&quot;../lib/src/main/java&quot;)
+</code></pre>
+<p>Los filtros <code>cruxui/android/lib/...</code> se conservan. No añadas todas las fuentes Android al exportador ni elimines los filtros <code>include</code>.</p>
+<h3 id="54-registrar-el-modulo-y-el-plugin">5.4. Registrar el módulo y el plugin</h3>
+<p>En <code>settings.gradle.kts</code> del trabajo, conserva sus repositorios y configuración corporativa y agrega, una sola vez:</p>
+<pre><code class="language-kotlin">include(&quot;:token-exporter&quot;)
+</code></pre>
+<p>La declaración existente de <code>include(":lib")</code>, o su equivalente real, se conserva. No reemplaces <code>rootProject.name</code> ni las credenciales o repositorios corporativos por los de esta computadora.</p>
+<p>En la sección <code>[plugins]</code> de <code>gradle/libs.versions.toml</code>, agrega si falta:</p>
+<pre><code class="language-toml">kotlin-jvm = { id = &quot;org.jetbrains.kotlin.jvm&quot;, version.ref = &quot;kotlin&quot; }
+</code></pre>
+<p>En el bloque <code>plugins</code> del <code>build.gradle.kts</code> raíz, agrega si falta:</p>
+<pre><code class="language-kotlin">alias(libs.plugins.kotlin.jvm) apply false
+</code></pre>
+<p>Todos los plugins Kotlin deben usar una versión alineada. El anexo C recoge el catálogo actual completo como referencia para integrar aliases y dependencias faltantes, sin duplicar secciones TOML.</p>
+<h3 id="55-conectar-el-exportador-a-la-libreria-android">5.5. Conectar el exportador a la librería Android</h3>
+<p>En <code>&lt;modulo&gt;/build.gradle.kts</code>:</p>
+<ol>
+<li>Configura <code>namespace = "cruxui.android.lib"</code>.</li>
+<li>Conserva los plugins Android Library, Kotlin Android y Kotlin Compose de la versión actual.</li>
+<li>Integra las dependencias y las opciones de compilación/pruebas del anexo B.</li>
+<li>Agrega los imports <code>javax.inject.Inject</code> y <code>org.gradle.process.ExecOperations</code> al inicio del archivo.</li>
+<li>Agrega, a nivel superior, el bloque que comienza en <code>val tokenExporter by configurations.creating</code> y termina en <code>androidComponents.onVariants</code>. Debe quedar fuera de <code>android {}</code> y de <code>dependencies {}</code>. Se incluye completo en el anexo B.</li>
+</ol>
+<p>La dependencia del exportador pertenece a la configuración <code>tokenExporter</code>, <strong>no</strong> a <code>implementation</code>. El host que consume la librería no debe ejecutar ni empaquetar la herramienta.</p>
+<p>El build actual usa el plugin Kotlin Compose; retira el bloque antiguo <code>composeOptions { kotlinCompilerExtensionVersion = ... }</code> si venía de la estructura anterior. Conserva <code>buildFeatures { compose = true }</code>.</p>
+<h3 id="56-entorno-usado-para-la-verificacion-local">5.6. Entorno usado para la verificación local</h3>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Configuración actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gradle Wrapper</td>
+<td>8.13</td>
+</tr>
+<tr>
+<td>Android Gradle Plugin</td>
+<td>8.13.0</td>
+</tr>
+<tr>
+<td>Kotlin y plugins Kotlin</td>
+<td>2.0.21</td>
+</tr>
+<tr>
+<td>Java y Kotlin bytecode target</td>
+<td>19</td>
+</tr>
+<tr>
+<td>compileSdk de la librería</td>
+<td>36</td>
+</tr>
+<tr>
+<td>minSdk de la librería</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+<p>El JDK que ejecuta Gradle debe poder compilar target 19 y ser compatible con Gradle/AGP; usa la configuración del entorno validado o una equivalente comprobada. No basta con tener instalado cualquier JDK. No cambies únicamente Kotlin o AGP de forma aislada.</p>
+<p>Si el trabajo usa otras versiones, esta guía no confirma su compatibilidad: alinea el conjunto o valida esa combinación allí. Mantén el acceso a dependencias a través de sus repositorios corporativos. <code>--offline</code> solo sirve cuando las dependencias ya están en la caché de esa computadora.</p>
+<h2 id="6-pasar-los-recursos-android-y-las-pruebas">6. Pasar los recursos Android y las pruebas</h2>
+<p>El código Kotlin por sí solo no completa el traslado. Copia desde <code>maracuya/</code> al módulo destino, manteniendo estas rutas:</p>
+<table>
+<thead>
+<tr>
+<th>Hecho</th>
+<th>Ruta</th>
+<th>Qué revisar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>☐</td>
+<td><code>src/main/res/drawable/</code></td>
+<td>Todos los assets usados por Library. Se puede dividir por nombres en varios correos.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/main/res/font/</code></td>
+<td>Todos los archivos tipográficos; adjuntar los binarios.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/main/res/values/</code></td>
+<td>Incluye <code>attrs.xml</code>, textos y acciones. Si el trabajo tiene recursos propios, integrar por nombre, sin duplicar atributos ni styleables.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/main/res/values-en/</code></td>
+<td>Traducciones actuales. Conservar otros idiomas del trabajo.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/main/res/layout/</code></td>
+<td>Previews de catálogo, tipografía, TextView y wrappers. Los nombres de clases usan <code>cruxui.android.lib</code>.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/main/res/color/</code></td>
+<td>Comparar el contenido real; no reconstruir selectores antiguos que ahora son fixtures de debug.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/main/AndroidManifest.xml</code></td>
+<td>El manifiesto actual de la librería es mínimo; integrar sin borrar declaraciones propias necesarias.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>consumer-rules.pro</code> y <code>proguard-rules.pro</code></td>
+<td>Comparar e integrar las reglas del módulo.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/debug/res/</code></td>
+<td>Cuatro fixtures para las pruebas; mantenerlos en debug, no en main.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/test/java/cruxui/android/lib/</code></td>
+<td>Pruebas unitarias; copiar por subcarpetas.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/androidTest/java/cruxui/android/lib/</code></td>
+<td>Tres archivos de pruebas de interacción y paridad.</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><code>src/androidTest/AndroidManifest.xml</code></td>
+<td>Habilita RTL en el APK de pruebas.</td>
+</tr>
+</tbody>
+</table>
+<p>No copiar <code>build/generated</code> a <code>src/main</code>: sus clases y recursos se recrean al compilar. Si la estructura antigua tenía exportaciones copiadas manualmente, retíralas cuando coincidan con las salidas nuevas para evitar duplicados. No borres recursos exclusivos del trabajo.</p>
+<p>La aplicación del trabajo mantiene sus pantallas. Para consumir la librería usa su dependencia real, por ejemplo <code>implementation(project(":lib"))</code>. El módulo <code>app</code> de esta computadora es una demo; no reemplaces con él la app del trabajo. Puedes trasladar los ejemplos que necesites y actualizar sus imports.</p>
+<h2 id="7-archivos-antiguos-que-no-debes-conservar-como-implementacion-manual">7. Archivos antiguos que no debes conservar como implementación manual</h2>
+<p>Las siguientes rutas son relativas a <code>src/main/java/cruxui/android/lib/</code> del módulo del trabajo. Si existen, compara y retira su implementación anterior al completar la copia:</p>
+<table>
+<thead>
+<tr>
+<th>Ruta anterior</th>
+<th>Qué ocurre ahora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>semantics/CorporateIcons.kt</code></td>
+<td>Alias generado durante el build.</td>
+</tr>
+<tr>
+<td><code>semantics/CorporateTypography.kt</code></td>
+<td>Alias generado durante el build.</td>
+</tr>
+<tr>
+<td><code>tokens/icons/AlertsIcons.kt</code>, <code>ArrowIcons.kt</code>, <code>ExtensionIcons.kt</code>, <code>GeneralIcons.kt</code>, <code>MoneyIcons.kt</code>, <code>PeopleIcons.kt</code></td>
+<td>Aliases de compatibilidad generados; los valores viven en <code>atoms/icons</code>.</td>
+</tr>
+<tr>
+<td><code>theme/LibraryThemeSet.kt</code></td>
+<td>La declaración actual vive en <code>theme/LibraryThemes.kt</code>; mantener ambos duplica el tipo.</td>
+</tr>
+<tr>
+<td><code>wrappers/components/textviews/core/TextViewDefaults.kt</code></td>
+<td>Defaults y medidas compartidos en <code>core/components/textviews</code>.</td>
+</tr>
+<tr>
+<td><code>wrappers/core/render/CompoundDrawableRenderer.kt</code></td>
+<td>La implementación actual está en <code>wrappers/capabilities/compounddrawables</code>.</td>
+</tr>
+<tr>
+<td><code>wrappers/core/theme/AndroidThemeSnapshot.kt</code></td>
+<td>Se usa el contrato compartido <code>LibraryThemeSnapshot</code>.</td>
+</tr>
+<tr>
+<td><code>wrappers/core/tokens/ViewTokenValues.kt</code></td>
+<td>Sustituido por archivos de fuentes de valores separados en <code>wrappers/core/tokens</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Si existe <code>src/main/res/color/text_view_demo_states.xml</code>, ya no forma parte de producción. Los fixtures actuales están en <code>src/debug/res/</code>.</p>
+<p><strong>No elimines toda la carpeta <code>wrappers/core/behavior</code>:</strong> conserva archivos vigentes, incluidas fachadas de compatibilidad. Usa el inventario actual. Tampoco retires todos los imports <code>Corporate*</code> indiscriminadamente: algunos se mantienen mediante aliases generados.</p>
+<p>Los aliases preservan usos habituales de código fuente Kotlin, pero no garantizan compatibilidad binaria ni Java con una librería anterior. Recompila la app y los consumidores; revisa usos Java si los hay.</p>
+<h2 id="8-puntos-de-comprobacion-cuando-compilar">8. Puntos de comprobación: cuándo compilar</h2>
+<p>Ejecuta los comandos desde la raíz del proyecto del trabajo. En Windows usa <code>gradlew.bat</code> (en PowerShell, <code>.\gradlew.bat</code>); en macOS/Linux, <code>./gradlew</code>. Sustituye <code>lib</code> por el módulo real.</p>
+<h3 id="a-comprobar-que-gradle-reconoce-el-modulo">A. Comprobar que Gradle reconoce el módulo</h3>
+<p>Cuando hayas integrado la configuración de Gradle:</p>
+<pre><code class="language-sh">./gradlew projects
+</code></pre>
+<p>Debe aparecer <code>:token-exporter</code> junto a la librería. La sincronización puede requerir descargar plugins. Si falla por repositorios o versiones, resuelve eso antes de interpretar errores de código.</p>
+<h3 id="b-generar-y-probar-el-catalogo">B. Generar y probar el catálogo</h3>
+<p>Cuando estén completos <code>tokens</code>, <code>atoms</code>, <code>theme</code> y todos los archivos del exportador, y no queden los tipos manuales retirados:</p>
+<pre><code class="language-sh">./gradlew :token-exporter:generateCatalogApi :token-exporter:test
+</code></pre>
+<p>Deben generarse fuentes bajo <code>token-exporter/build/generated/catalogApi/</code>. Algunas APIs faltantes antes de este punto son esperables; no las reconstruyas manualmente.</p>
+<h3 id="c-exportar-recursos-android">C. Exportar recursos Android</h3>
+<p>Cuando también hayas trasladado todos los recursos físicos de iconos y fuentes:</p>
+<pre><code class="language-sh">./gradlew :lib:generateLibraryTokens
+</code></pre>
+<p>Verifica <code>&lt;modulo&gt;/build/generated/libraryTokens/kotlin/cruxui/android/lib/</code> y <code>&lt;modulo&gt;/build/generated/libraryTokens/res/</code>. Deben existir colecciones, aliases, roles, referencias Kotlin y recursos XML.</p>
+<h3 id="d-compilar-la-libreria-completa">D. Compilar la librería completa</h3>
+<p>Solo después de copiar todo el código, recursos, limpieza y configuración:</p>
+<pre><code class="language-sh">./gradlew :lib:assembleDebug :lib:assembleRelease
+</code></pre>
+<p>Es el primer punto para exigir que compile toda la librería. No borres imports ni funciones nuevas para intentar compilar un lote incompleto.</p>
+<h3 id="e-verificacion-final-desde-cero">E. Verificación final desde cero</h3>
+<p>Después de integrar también pruebas y sus dependencias:</p>
+<pre><code class="language-sh">./gradlew clean :token-exporter:test :lib:testDebugUnitTest :lib:lintDebug :lib:assembleRelease :lib:assembleDebugAndroidTest
+</code></pre>
+<p>Compila además el módulo de la aplicación del trabajo, por ejemplo <code>./gradlew :app:assembleDebug</code>, ajustando variantes si utiliza flavors. No uses <code>--offline</code> como primera opción en una computadora que todavía no tiene las dependencias.</p>
+<p>Con un emulador o dispositivo disponible:</p>
+<pre><code class="language-sh">./gradlew :lib:connectedDebugAndroidTest
+</code></pre>
+<p>Si Gradle no puede obtener UTP pero ya tienes el APK compilado, puedes ejecutar directamente el APK de pruebas. Ajusta el nombre del APK a la salida real del módulo:</p>
+<pre><code class="language-sh">adb install -r lib/build/outputs/apk/androidTest/debug/lib-debug-androidTest.apk
+adb shell am instrument -w -r cruxui.android.lib.test/androidx.test.runner.AndroidJUnitRunner
+</code></pre>
+<p>El último comando debe terminar con <code>OK (8 tests)</code> para la suite actual. Compilar el APK no significa que esas pruebas se hayan ejecutado. El paquete de pruebas indicado presupone el namespace por defecto; si el trabajo declara <code>testApplicationId</code>, usa su valor real.</p>
+<p><strong>Referencia local tras el cambio de paquete:</strong> 14 pruebas del exportador + 62 de la librería aprobadas, 8 instrumentadas aprobadas en API 36, lint con 0 errores, 22 advertencias y 1 sugerencia. AAR release y app debug compilados, app iniciada. Estos resultados corresponden a esta computadora; hay que repetir la verificación en el proyecto del trabajo.</p>
+<h2 id="9-pasar-la-documentacion-sin-perder-la-estructura">9. Pasar la documentación sin perder la estructura</h2>
+<p>Crea las mismas carpetas en la raíz del proyecto del trabajo, fuera de <code>src</code>:</p>
+<ol>
+<li><strong>Esta guía:</strong> <code>transferencias/GUIA-TRANSFERENCIA.html</code> y, si quieres editarla, su <code>.md</code>.</li>
+<li><strong>Arquitectura vigente:</strong> copiar los siete <code>.md</code> de <code>arquitectura-xml-compose/</code>. Léelos en orden: problema → arquitectura → TextView → responsabilidades → tipografía → colores/iconos → paridad.</li>
+<li><strong>Exportador:</strong> <code>token-exporter/README.md</code>, junto a su <code>build.gradle.kts</code>.</li>
+<li><strong>Referencias de diseño:</strong> <code>referencias-arquitectura-xml/</code> completo. Son contexto y fundamentos; para implementar, manda la documentación vigente.</li>
+<li><strong>Resumen para el jefe:</strong> <code>entregables/Maracuya-avances-XML-Compose.html</code>. Es autónomo: contiene documentos y capturas, no necesita las carpetas originales para abrirse. Refleja el corte del informe anterior, no los resultados nuevos de esta migración.</li>
+<li><strong>README raíz:</strong> integrar en el README del trabajo los enlaces y la sección del paquete; conservar su documentación propia.</li>
+<li><strong>Documentación junto al código:</strong> copiar también los <code>.md</code> internos de las carpetas de componentes; están enumerados en el inventario.</li>
+<li><strong>Guía de app de ejemplo:</strong> <code>app/src/main/java/com/example/myfirstapplication/guia_verificacion_lib.md</code> como referencia opcional, por ejemplo en <code>docs/guia-verificacion-lib.md</code> del trabajo. Sus rutas de la app de demostración deben adaptarse.</li>
+</ol>
+<p>Conservar nombres y posiciones de las carpetas mantiene los enlaces relativos entre Markdown. Copia los documentos como archivos completos; los bloques Kotlin/XML deben conservar sus delimitadores y saltos de línea. La guía HTML y el informe HTML pueden abrirse sin JFG ni otro visor.</p>
+<h2 id="10-problemas-frecuentes-durante-el-traslado">10. Problemas frecuentes durante el traslado</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Revisar primero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No aparece <code>:token-exporter</code></td>
+<td><code>include(":token-exporter")</code>, ubicación junto al módulo y sincronización de Gradle.</td>
+</tr>
+<tr>
+<td>No se reconoce <code>libs.plugins.kotlin.jvm</code></td>
+<td>Alias en <code>[plugins]</code> del TOML y versión Kotlin compartida.</td>
+</tr>
+<tr>
+<td>El exportador no encuentra <code>Library*</code></td>
+<td>Las dos rutas <code>kotlin.srcDir</code> y que ya copiaste <code>atoms</code>, <code>tokens</code> y <code>theme</code>.</td>
+</tr>
+<tr>
+<td><code>LibraryTypography</code>, <code>LibraryIcons</code>, roles o <code>LibraryAssetResources</code> no resueltos</td>
+<td>Ejecutar la generación y verificar que <code>androidComponents.onVariants</code> registra las fuentes generadas.</td>
+</tr>
+<tr>
+<td><code>Redeclaration</code>, clases o recursos duplicados</td>
+<td>Tipos antiguos de semantics/iconos/tema o copias manuales de <code>build/generated</code> dentro de <code>src</code>.</td>
+</tr>
+<tr>
+<td>Asset inexistente o <code>resourceName</code> inválido</td>
+<td>Falta un drawable o una fuente; revisar nombres y copiar los recursos restantes.</td>
+</tr>
+<tr>
+<td>Fallo al inflar un XML</td>
+<td>Nombre completo de clase, <code>attrs.xml</code>, tipos retirados, recetas registradas y overlay de tema.</td>
+</tr>
+<tr>
+<td>El generador funciona, pero wrappers o UI no compilan</td>
+<td>Lotes incompletos de <code>core</code>, <code>compositions</code>, <code>utils</code>, wrappers o componentes Compose.</td>
+</tr>
+<tr>
+<td><code>Inconsistent JVM-target</code> o target 19 no soportado</td>
+<td>Alinear target Java/Kotlin y JDK que usa Gradle en todos los módulos implicados.</td>
+</tr>
+<tr>
+<td>Error de descarga de plugin/dependencia</td>
+<td>Configuración de repositorios del trabajo y disponibilidad del artefacto; no es un fallo del paquete.</td>
+</tr>
+<tr>
+<td>La prueba de dependencias no localiza wrappers</td>
+<td>Revisar las rutas en <code>WrapperDependencyRulesTest</code>; se ejecuta desde el módulo, con fallback para <code>maracuya</code> si se ejecuta desde la raíz. Adaptar ese fallback si hace falta.</td>
+</tr>
+<tr>
+<td>XML y Compose se ven distintos</td>
+<td>Tema equivalente, mismas recetas, medidas explícitas, fuente e iconos; comprobar con la galería de paridad.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-checklist-de-cierre">11. Checklist de cierre</h2>
+<ul>
+<li>[ ] Todos los lotes de código, recursos y exportador copiados.</li>
+<li>[ ] Sin implementaciones manuales antiguas duplicadas.</li>
+<li>[ ] Ningún import, declaración de paquete o clase en XML usa <code>cruxui.android.maracuya</code>.</li>
+<li>[ ] Exportador y generación Android funcionan desde una compilación limpia.</li>
+<li>[ ] Librería, aplicación y pruebas compiladas en el trabajo.</li>
+<li>[ ] Pruebas ejecutadas y resultados revisados; galería XML/Compose comprobada.</li>
+<li>[ ] Personalizaciones corporativas reintegradas y verificadas.</li>
+<li>[ ] Documentación guardada y HTML abierto en la computadora del trabajo.</li>
+<li>[ ] Commit final de la migración en el proyecto del trabajo.</li>
+</ul>
+<h2 id="anexo-a-buildgradlekts-completo-de-token-exporter">Anexo A. build.gradle.kts completo de Token Exporter</h2>
+<p>Ejemplo listo para un módulo Android cuya <strong>carpeta física sea <code>lib</code></strong>. Si se llama distinto, adapta ambas rutas <code>../lib/src/main/java</code>.</p>
+<pre><code class="language-kotlin">plugins {
+    alias(libs.plugins.kotlin.jvm)
+    application
+}
+
+// Compila las fuentes puras del DS: no analiza texto Kotlin ni duplica valores.
+kotlin.sourceSets.main {
+    kotlin.srcDir(&quot;../lib/src/main/java&quot;)
+    kotlin.include(&quot;cruxui/android/lib/atoms/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/tokens/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/semantics/**&quot;)
+    listOf(&quot;LibraryThemes&quot;, &quot;LibraryThemeSnapshot&quot;, &quot;ThemeStyle&quot;, &quot;FontResources&quot;, &quot;FontAssetCatalog&quot;).forEach {
+        kotlin.include(&quot;cruxui/android/lib/theme/$it.kt&quot;)
+    }
+    kotlin.include(&quot;cruxui/android/lib/theme/catalog/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/theme/collections/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/wrappers/core/tokens/*Role.kt&quot;)
+    kotlin.include(&quot;exporter/**&quot;)
+}
+
+// Fase independiente: catálogos Library y tokens puros; no depende de temas ni de APIs generadas.
+val catalogSchema by sourceSets.creating
+kotlin.sourceSets.named(&quot;catalogSchema&quot;) {
+    kotlin.srcDir(&quot;../lib/src/main/java&quot;)
+    kotlin.include(&quot;schema/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/atoms/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/tokens/base/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/tokens/colors/**&quot;)
+    kotlin.include(&quot;cruxui/android/lib/tokens/fonts/**&quot;)
+}
+configurations[catalogSchema.implementationConfigurationName].extendsFrom(configurations.implementation.get())
+
+val catalogSources = layout.buildDirectory.dir(&quot;generated/catalogApi/kotlin&quot;)
+val catalogResources = layout.buildDirectory.dir(&quot;generated/catalogApi/resources&quot;)
+val generateCatalogApi = tasks.register&lt;JavaExec&gt;(&quot;generateCatalogApi&quot;) {
+    description = &quot;Genera colecciones, consultas y roles de colores, tipografías e iconos desde Library.&quot;
+    classpath = catalogSchema.runtimeClasspath
+    mainClass.set(&quot;schema.GenerateCatalogApiKt&quot;)
+    outputs.dirs(catalogSources, catalogResources)
+    args(catalogSources.get().asFile.absolutePath, catalogResources.get().asFile.absolutePath)
+}
+kotlin.sourceSets.main { kotlin.srcDir(catalogSources) }
+sourceSets.main { resources.srcDir(catalogResources) }
+tasks.named(&quot;compileKotlin&quot;) { dependsOn(generateCatalogApi) }
+tasks.named(&quot;processResources&quot;) { dependsOn(generateCatalogApi) }
+
+application { mainClass.set(&quot;exporter.ExportLibraryTokensKt&quot;) }
+kotlin.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_19)
+java {
+    sourceCompatibility = JavaVersion.VERSION_19
+    targetCompatibility = JavaVersion.VERSION_19
+}
+
+// Las pruebas de exportación no requieren Android ni un dispositivo.
+dependencies { testImplementation(libs.junit) }
+
+// Prueba los escritores de la fase inicial sin incluirlos en el artefacto de ejecución.
+kotlin.sourceSets.test { kotlin.srcDir(&quot;src/catalogSchema/kotlin&quot;) }
+
+</code></pre>
+<h2 id="anexo-b-buildgradlekts-actual-de-la-libreria-android">Anexo B. build.gradle.kts actual de la librería Android</h2>
+<p>Referencia completa para integrar plugins, dependencias, opciones y generación. Conserva la publicación, repositorios y configuración específica del trabajo. No pegues un segundo bloque de la misma tarea si ya lo incorporaste.</p>
+<pre><code class="language-kotlin">import javax.inject.Inject
+import org.gradle.process.ExecOperations
+
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace = &quot;cruxui.android.lib&quot;
+    compileSdk = 36
+
+
+    //Esto garantiza que todos los archivos dentro de src/main/java/... sean visibles.
+    sourceSets {
+        getByName(&quot;main&quot;) {
+            java.srcDirs(&quot;src/main/java&quot;)
+        }
+    }
+
+    defaultConfig {
+        minSdk = 28
+
+        testInstrumentationRunner = &quot;androidx.test.runner.AndroidJUnitRunner&quot;
+        consumerProguardFiles(&quot;consumer-rules.pro&quot;)
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile(&quot;proguard-android-optimize.txt&quot;),
+                &quot;proguard-rules.pro&quot;
+            )
+        }
+    }
+
+    // --- 🔹 HABILITAMOS COMPOSE ---
+    buildFeatures{
+        compose = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
+    }
+
+    // El plugin Kotlin Compose configura el compilador con la versión del catálogo.
+    kotlinOptions {
+        jvmTarget = &quot;19&quot;
+    }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
+}
+
+dependencies {
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+
+    // --- 🔹 Jetpack Compose (usando catálogo y BOM) ---
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.runtime)
+
+    // --- 🔹 Solo en debug (opcional) ---
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // --- 🔹 Tests ---
+    testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+}
+
+// Proyección de las fuentes del tema durante el build, independiente de la compilación Android.
+val tokenExporter by configurations.creating
+dependencies { tokenExporter(project(&quot;:token-exporter&quot;)) }
+
+/**
+ * s4121779 - Krause Kelsen
+ *
+ * Descripción:
+ * GenerateLibraryTokens ejecuta el exportador JVM y publica recursos y referencias Kotlin del DS.
+ *
+ * Justificación:
+ * Conecta las salidas del catálogo con cada variante Android sin duplicar valores en archivos manuales.
+ * Gradle comprueba el classpath y los assets de entrada para regenerar solo cuando corresponde.
+ *
+ * Uso:
+ * Tarea interna del build. androidComponents registra sus salidas; el host consume los recursos generados.
+ *
+ * Objetivos:
+ * - Mantener Library como fuente única para Compose y XML.
+ * - Eliminar salidas obsoletas cuando se retiran tokens.
+ *
+ * @author Krause Kelsen
+ * @since 07-16-2026
+ * @version 0.0.13
+ * @param exec Servicio Gradle para ejecutar el exportador en una JVM independiente.
+ */
+abstract class GenerateLibraryTokens @Inject constructor(private val exec: ExecOperations) : DefaultTask() {
+    @get:Classpath abstract val exporterClasspath: ConfigurableFileCollection
+    @get:InputDirectory @get:PathSensitive(PathSensitivity.RELATIVE) abstract val assets: DirectoryProperty
+    @get:OutputDirectory abstract val resources: DirectoryProperty
+    @get:OutputDirectory abstract val sources: DirectoryProperty
+
+    /** Regenera únicamente las salidas propias para no conservar recursos de tokens eliminados. */
+    @TaskAction fun generate() {
+        resources.get().asFile.deleteRecursively()
+        sources.get().asFile.deleteRecursively()
+        exec.javaexec {
+            classpath(exporterClasspath)
+            mainClass.set(&quot;exporter.ExportLibraryTokensKt&quot;)
+            args(resources.get().asFile.absolutePath, sources.get().asFile.absolutePath, assets.get().asFile.absolutePath)
+        }.assertNormalExitValue()
+    }
+}
+
+val generateLibraryTokens = tasks.register&lt;GenerateLibraryTokens&gt;(&quot;generateLibraryTokens&quot;) {
+    exporterClasspath.from(tokenExporter)
+    assets.set(layout.projectDirectory.dir(&quot;src/main/res&quot;))
+    resources.set(layout.buildDirectory.dir(&quot;generated/libraryTokens/res&quot;))
+    sources.set(layout.buildDirectory.dir(&quot;generated/libraryTokens/kotlin&quot;))
+}
+
+androidComponents.onVariants { variant -&gt;
+    variant.sources.res?.addGeneratedSourceDirectory(generateLibraryTokens, GenerateLibraryTokens::resources)
+    variant.sources.java?.addGeneratedSourceDirectory(generateLibraryTokens, GenerateLibraryTokens::sources)
+}
+
+</code></pre>
+<h2 id="anexo-c-catalogo-de-versiones-y-dependencias-de-referencia">Anexo C. Catálogo de versiones y dependencias de referencia</h2>
+<p>Integrar dentro de las secciones existentes de <code>gradle/libs.versions.toml</code>. No duplicar <code>[versions]</code>, <code>[libraries]</code> ni <code>[plugins]</code>. Conservar aliases específicos del trabajo.</p>
+<pre><code class="language-toml">[versions]
+agp = &quot;8.13.0&quot;
+kotlin = &quot;2.0.21&quot;
+coreKtx = &quot;1.17.0&quot;
+junit = &quot;4.13.2&quot;
+robolectric = &quot;4.17&quot;
+junitVersion = &quot;1.3.0&quot;
+espressoCore = &quot;3.7.0&quot;
+lifecycleRuntimeKtx = &quot;2.9.4&quot;
+activityCompose = &quot;1.11.0&quot;
+composeBom = &quot;2024.09.00&quot;
+appcompat = &quot;1.7.1&quot;
+material = &quot;1.13.0&quot;
+runtime = &quot;1.10.5&quot;
+material3 = &quot;1.4.0&quot;
+runtimeVersion = &quot;1.10.6&quot;
+
+[libraries]
+androidx-core-ktx = { group = &quot;androidx.core&quot;, name = &quot;core-ktx&quot;, version.ref = &quot;coreKtx&quot; }
+junit = { group = &quot;junit&quot;, name = &quot;junit&quot;, version.ref = &quot;junit&quot; }
+robolectric = { group = &quot;org.robolectric&quot;, name = &quot;robolectric&quot;, version.ref = &quot;robolectric&quot; }
+androidx-junit = { group = &quot;androidx.test.ext&quot;, name = &quot;junit&quot;, version.ref = &quot;junitVersion&quot; }
+androidx-espresso-core = { group = &quot;androidx.test.espresso&quot;, name = &quot;espresso-core&quot;, version.ref = &quot;espressoCore&quot; }
+androidx-lifecycle-runtime-ktx = { group = &quot;androidx.lifecycle&quot;, name = &quot;lifecycle-runtime-ktx&quot;, version.ref = &quot;lifecycleRuntimeKtx&quot; }
+androidx-activity-compose = { group = &quot;androidx.activity&quot;, name = &quot;activity-compose&quot;, version.ref = &quot;activityCompose&quot; }
+androidx-compose-bom = { group = &quot;androidx.compose&quot;, name = &quot;compose-bom&quot;, version.ref = &quot;composeBom&quot; }
+androidx-compose-ui = { group = &quot;androidx.compose.ui&quot;, name = &quot;ui&quot; }
+androidx-compose-ui-graphics = { group = &quot;androidx.compose.ui&quot;, name = &quot;ui-graphics&quot; }
+androidx-compose-ui-tooling = { group = &quot;androidx.compose.ui&quot;, name = &quot;ui-tooling&quot; }
+androidx-compose-ui-tooling-preview = { group = &quot;androidx.compose.ui&quot;, name = &quot;ui-tooling-preview&quot; }
+androidx-compose-ui-test-manifest = { group = &quot;androidx.compose.ui&quot;, name = &quot;ui-test-manifest&quot; }
+androidx-compose-ui-test-junit4 = { group = &quot;androidx.compose.ui&quot;, name = &quot;ui-test-junit4&quot; }
+androidx-compose-material3 = { group = &quot;androidx.compose.material3&quot;, name = &quot;material3&quot; }
+androidx-appcompat = { group = &quot;androidx.appcompat&quot;, name = &quot;appcompat&quot;, version.ref = &quot;appcompat&quot; }
+material = { group = &quot;com.google.android.material&quot;, name = &quot;material&quot;, version.ref = &quot;material&quot; }
+androidx-compose-runtime = { group = &quot;androidx.compose.runtime&quot;, name = &quot;runtime&quot;, version.ref = &quot;runtime&quot; }
+androidx-material3 = { group = &quot;androidx.compose.material3&quot;, name = &quot;material3&quot;, version.ref = &quot;material3&quot; }
+androidx-runtime = { group = &quot;androidx.compose.runtime&quot;, name = &quot;runtime&quot;, version.ref = &quot;runtimeVersion&quot; }
+
+[plugins]
+android-application = { id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; }
+kotlin-android = { id = &quot;org.jetbrains.kotlin.android&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-compose = { id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;kotlin&quot; }
+android-library = { id = &quot;com.android.library&quot;, version.ref = &quot;agp&quot; }
+
+kotlin-jvm = { id = &quot;org.jetbrains.kotlin.jvm&quot;, version.ref = &quot;kotlin&quot; }
+
+</code></pre>
+<h2 id="anexo-d-inventario-exacto-para-comprobar-cada-correo">Anexo D. Inventario exacto para comprobar cada correo</h2>
+<p>Rutas de origen de esta computadora. Para las entradas de <code>maracuya/</code>, sustituye ese prefijo por la carpeta del módulo del trabajo. Las entradas de <code>token-exporter/</code> mantienen su ruta. No se incluyen <code>build</code>, <code>.gradle</code>, <code>.idea</code>, <code>.DS_Store</code>, cachés ni archivos de configuración local de la computadora.</p>
+<h3 id="codigo-de-la-libreria-251-archivos">Código de la librería (251 archivos)</h3>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/atoms/</code></strong></p>
+<ul>
+<li>[ ] <code>LibraryColorTokens.kt</code></li>
+<li>[ ] <code>LibraryIconTokens.kt</code></li>
+<li>[ ] <code>LibraryTypographyTokens.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/atoms/icons/</code></strong></p>
+<ul>
+<li>[ ] <code>LibraryAlertsIconsTokens.kt</code></li>
+<li>[ ] <code>LibraryArrowIconsTokens.kt</code></li>
+<li>[ ] <code>LibraryExtensionTokens.kt</code></li>
+<li>[ ] <code>LibraryGeneralIconsTokens.kt</code></li>
+<li>[ ] <code>LibraryMoneyIconsTokens.kt</code></li>
+<li>[ ] <code>LibraryPeopleIconsTokens.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/compositions/</code></strong></p>
+<ul>
+<li>[ ] <code>LocalFontFamily.kt</code></li>
+<li>[ ] <code>LocalLibraryColorTokens.kt</code></li>
+<li>[ ] <code>LocalLibraryIcons.kt</code></li>
+<li>[ ] <code>LocalLibraryTypography.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/core/components/textviews/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewBehavior.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/core/components/textviews/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewLayoutTokens.kt</code></li>
+<li>[ ] <code>TextViewTokenDefaults.kt</code></li>
+<li>[ ] <code>TextViewTokens.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/core/components/textviews/tokensrender/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewTokensRender.kt</code></li>
+<li>[ ] <code>TextViewTokensRenderResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/core/components/textviews/variant/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewVariant.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/core/text/</code></strong></p>
+<ul>
+<li>[ ] <code>TextInteraction.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/theme/</code></strong></p>
+<ul>
+<li>[ ] <code>FontAssetCatalog.kt</code></li>
+<li>[ ] <code>FontResourceCatalog.kt</code></li>
+<li>[ ] <code>FontResources.kt</code></li>
+<li>[ ] <code>LibraryTheme.kt</code></li>
+<li>[ ] <code>LibraryThemeSnapshot.kt</code></li>
+<li>[ ] <code>LibraryThemes.kt</code></li>
+<li>[ ] <code>MyLibraryTheme.kt</code></li>
+<li>[ ] <code>ThemeExports.kt</code></li>
+<li>[ ] <code>ThemeStyle.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/tokens/base/</code></strong></p>
+<ul>
+<li>[ ] <code>ColorToken.kt</code></li>
+<li>[ ] <code>FontFamilyToken.kt</code></li>
+<li>[ ] <code>IconToken.kt</code></li>
+<li>[ ] <code>LibraryIconGroup.kt</code></li>
+<li>[ ] <code>TypographyToken.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/tokens/colors/</code></strong></p>
+<ul>
+<li>[ ] <code>DefaultColors.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/tokens/fonts/</code></strong></p>
+<ul>
+<li>[ ] <code>FontSizeTokens.kt</code></li>
+<li>[ ] <code>FontStyleTokens.kt</code></li>
+<li>[ ] <code>FontWeightTokens.kt</code></li>
+<li>[ ] <code>LetterSpacingTokens.kt</code></li>
+<li>[ ] <code>LineHeightTokens.kt</code></li>
+<li>[ ] <code>TextAlignTokens.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/tokens/spacings/</code></strong></p>
+<ul>
+<li>[ ] <code>ChipChoiceSpacings.kt</code></li>
+<li>[ ] <code>InputCheckBoxSpacings.kt</code></li>
+<li>[ ] <code>InputFieldBasicSpacings.kt</code></li>
+<li>[ ] <code>InteractionSpacings.kt</code></li>
+<li>[ ] <code>LabelSpacings.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/</code></strong></p>
+<ul>
+<li>[ ] <code>ChipChoiceBaseMrcy.kt</code></li>
+<li>[ ] <code>ChipChoiceBaseTokens.kt</code></li>
+<li>[ ] <code>ChipChoiceBaseTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/</code></strong></p>
+<ul>
+<li>[ ] <code>ChipChoiceCarouselMrcy.kt</code></li>
+<li>[ ] <code>ChipChoiceCarouselTokens.kt</code></li>
+<li>[ ] <code>ChipChoiceCarouselTokensResolver.kt</code></li>
+<li>[ ] <code>ChipChoiceModels.kt</code></li>
+<li>[ ] <code>ChipChoiceSelectionState.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupArchitecture.md</code></li>
+<li>[ ] <code>ButtonNavigationGroupMrcy.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupBehavior.kt</code></li>
+<li>[ ] <code>ButtonNavigationGroupBehaviorResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/child/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationChildMrcy.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/child/core/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationChild.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/child/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationChildTokens.kt</code></li>
+<li>[ ] <code>ButtonNavigationChildTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/child/tokensrender/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationChildTokensRender.kt</code></li>
+<li>[ ] <code>ButtonNavigationChildTokensRenderResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/child/variant/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationChildVariant.kt</code></li>
+<li>[ ] <code>ButtonNavigationChildVariantResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupDefaults.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupTokens.kt</code></li>
+<li>[ ] <code>ButtonNavigationGroupTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupTokensRender.kt</code></li>
+<li>[ ] <code>ButtonNavigationGroupTokensRenderResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/variant/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupVariant.kt</code></li>
+<li>[ ] <code>ButtonNavigationGroupVariantResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationArchitecture.md</code></li>
+<li>[ ] <code>ButtonNavigationContent.kt</code></li>
+<li>[ ] <code>ButtonNavigationMrcy.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationBehavior.kt</code></li>
+<li>[ ] <code>ButtonNavigationBehaviorResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/core/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationLoadingScope.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationTokens.kt</code></li>
+<li>[ ] <code>ButtonNavigationTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokensrender/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationTokensRender.kt</code></li>
+<li>[ ] <code>ButtonNavigationTokensRenderResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationVariant.kt</code></li>
+<li>[ ] <code>ButtonNavigationVariantResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonContent.kt</code></li>
+<li>[ ] <code>ButtonMrcy.kt</code></li>
+<li>[ ] <code>ButtonTokens.kt</code></li>
+<li>[ ] <code>ButtonTokensResolver.kt</code></li>
+<li>[ ] <code>ButtonVariant.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/</code></strong></p>
+<ul>
+<li>[ ] <code>CheckBoxMrcy.kt</code></li>
+<li>[ ] <code>CheckBoxTokens.kt</code></li>
+<li>[ ] <code>CheckBoxTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/</code></strong></p>
+<ul>
+<li>[ ] <code>DropDownContent.kt</code></li>
+<li>[ ] <code>DropDownMrcy.kt</code></li>
+<li>[ ] <code>DropDownTokens.kt</code></li>
+<li>[ ] <code>DropDownTokensResolver.kt</code></li>
+<li>[ ] <code>DropDownVariant.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/</code></strong></p>
+<ul>
+<li>[ ] <code>InputFieldBasicMrcy.kt</code></li>
+<li>[ ] <code>InputFieldBasicTokens.kt</code></li>
+<li>[ ] <code>InputFieldBasicTypes.kt</code></li>
+<li>[ ] <code>InputFieldBasicWidthType.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/</code></strong></p>
+<ul>
+<li>[ ] <code>InputCheckBoxMrcy.kt</code></li>
+<li>[ ] <code>InputCheckBoxTokens.kt</code></li>
+<li>[ ] <code>InputCheckBoxTokensGroup.kt</code></li>
+<li>[ ] <code>InputCheckBoxTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/config/</code></strong></p>
+<ul>
+<li>[ ] <code>InputDropDownTokenGroup.kt</code></li>
+<li>[ ] <code>InputFieldBasicTokenGroup.kt</code></li>
+<li>[ ] <code>InputFieldBasicTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/</code></strong></p>
+<ul>
+<li>[ ] <code>InputDropDownMrcy.kt</code></li>
+<li>[ ] <code>InputDropDownTokenGroup.kt</code></li>
+<li>[ ] <code>InputDropDownTokens.kt</code></li>
+<li>[ ] <code>InputDropDownTokensResolver.kt</code></li>
+<li>[ ] <code>InputDropDownVariant.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/labels/</code></strong></p>
+<ul>
+<li>[ ] <code>LabelMrcy.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/labels/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>LabelBehavior.kt</code></li>
+<li>[ ] <code>LabelBehaviorResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/labels/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>LabelTokens.kt</code></li>
+<li>[ ] <code>LabelTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/labels/variant/</code></strong></p>
+<ul>
+<li>[ ] <code>LabelVariant.kt</code></li>
+<li>[ ] <code>LabelVariantResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/layouts/</code></strong></p>
+<ul>
+<li>[ ] <code>BackgroundLayoutSpec.kt</code></li>
+<li>[ ] <code>BackgroundPilotWellkommen.kt</code></li>
+<li>[ ] <code>BackgroundVectorLayout.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/</code></strong></p>
+<ul>
+<li>[ ] <code>BottomTextMrcy.kt</code></li>
+<li>[ ] <code>TextFieldBehavior.kt</code></li>
+<li>[ ] <code>TextFieldBehaviorResolver.kt</code></li>
+<li>[ ] <code>TextFieldMrcy.kt</code></li>
+<li>[ ] <code>TextFieldTokens.kt</code></li>
+<li>[ ] <code>TextFieldTokensResolver.kt</code></li>
+<li>[ ] <code>TextFieldVariant.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/texts/</code></strong></p>
+<ul>
+<li>[ ] <code>LegalText.kt</code></li>
+<li>[ ] <code>LegalTextTokens.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/textviews/</code></strong></p>
+<ul>
+<li>[ ] <code>TextView.kt</code></li>
+<li>[ ] <code>TextViewArchitecture.md</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/textviews/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewBehavior.kt</code></li>
+<li>[ ] <code>TextViewBehaviorResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/textviews/content/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewContent.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/textviews/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewTokens.kt</code></li>
+<li>[ ] <code>TextViewTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/textviews/tokensrender/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewTokensRender.kt</code></li>
+<li>[ ] <code>TextViewTokensRenderResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/textviews/variant/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewVariant.kt</code></li>
+<li>[ ] <code>TextViewVariantResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/components/utils/</code></strong></p>
+<ul>
+<li>[ ] <code>IconPosition.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/previews/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupPreview.kt</code></li>
+<li>[ ] <code>ButtonNavigationPreview.kt</code></li>
+<li>[ ] <code>ButtonPreview.kt</code></li>
+<li>[ ] <code>CheckBoxPreview.kt</code></li>
+<li>[ ] <code>ChipChoiceCarouselPreview.kt</code></li>
+<li>[ ] <code>DropDownPreview.kt</code></li>
+<li>[ ] <code>InputFieldBasicPreview.kt</code></li>
+<li>[ ] <code>LabelPreview.kt</code></li>
+<li>[ ] <code>LayoutPilotWellkommenPreview.kt</code></li>
+<li>[ ] <code>LegalTextPreview.kt</code></li>
+<li>[ ] <code>TextFieldPreview.kt</code></li>
+<li>[ ] <code>TextViewPreview.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/ui/previews/core/</code></strong></p>
+<ul>
+<li>[ ] <code>Mode.kt</code></li>
+<li>[ ] <code>PreviewWrapper.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/utils/</code></strong></p>
+<ul>
+<li>[ ] <code>InteractionStates.kt</code></li>
+<li>[ ] <code>LibraryThemeManager.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/utils/composeadapters/</code></strong></p>
+<ul>
+<li>[ ] <code>ColorComposeAdapter.kt</code></li>
+<li>[ ] <code>FontFamiliesComposeAdapter.kt</code></li>
+<li>[ ] <code>IconComposeAdapter.kt</code></li>
+<li>[ ] <code>TypographyComposeAdapter.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/utils/materialadapters/</code></strong></p>
+<ul>
+<li>[ ] <code>ColorMaterialAdapter.kt</code></li>
+<li>[ ] <code>TypographyMaterialAdapter.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/adapters/compose/</code></strong></p>
+<ul>
+<li>[ ] <code>AndroidLayoutParamsModifierResolver.kt</code></li>
+<li>[ ] <code>ComposeOverrideResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/capabilities/compounddrawables/</code></strong></p>
+<ul>
+<li>[ ] <code>CompoundDrawableBehaviorController.kt</code></li>
+<li>[ ] <code>CompoundDrawableGeometry.kt</code></li>
+<li>[ ] <code>CompoundDrawableRenderer.kt</code></li>
+<li>[ ] <code>IconCallbacks.kt</code></li>
+<li>[ ] <code>InlineCompoundDrawableLayout.kt</code></li>
+<li>[ ] <code>OffsetCompoundDrawable.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/capabilities/text/</code></strong></p>
+<ul>
+<li>[ ] <code>NativeTextStyle.kt</code></li>
+<li>[ ] <code>NativeTextStyleAttributeReader.kt</code></li>
+<li>[ ] <code>NativeTextStyleOverrides.kt</code></li>
+<li>[ ] <code>NativeTextStyleRenderer.kt</code></li>
+<li>[ ] <code>NativeTextStyleResolver.kt</code></li>
+<li>[ ] <code>NativeTextTouchTarget.kt</code></li>
+<li>[ ] <code>TextAlignmentRenderer.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationGroupAttributeParser.kt</code></li>
+<li>[ ] <code>ButtonNavigationGroupAttributes.kt</code></li>
+<li>[ ] <code>ButtonNavigationGroupTokensOverrideRegistry.kt</code></li>
+<li>[ ] <code>ButtonNavigationGroupWrp.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonNavigationAttributeParser.kt</code></li>
+<li>[ ] <code>ButtonNavigationAttributes.kt</code></li>
+<li>[ ] <code>ButtonNavigationTokensOverrideRegistry.kt</code></li>
+<li>[ ] <code>ButtonNavigationWrp.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/</code></strong></p>
+<ul>
+<li>[ ] <code>ButtonAttributeParser.kt</code></li>
+<li>[ ] <code>ButtonAttributes.kt</code></li>
+<li>[ ] <code>ButtonTokensOverrideRegistry.kt</code></li>
+<li>[ ] <code>ButtonWrp.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/</code></strong></p>
+<ul>
+<li>[ ] <code>LabelAttributeParser.kt</code></li>
+<li>[ ] <code>LabelAttributes.kt</code></li>
+<li>[ ] <code>LabelTokensOverrideRegistry.kt</code></li>
+<li>[ ] <code>LabelWrp.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/</code></strong></p>
+<ul>
+<li>[ ] <code>TextFieldAttributeParser.kt</code></li>
+<li>[ ] <code>TextFieldAttributes.kt</code></li>
+<li>[ ] <code>TextFieldTokensOverrideRegistry.kt</code></li>
+<li>[ ] <code>TextFieldWrp.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/</code></strong></p>
+<ul>
+<li>[ ] <code>TextView.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/attributes/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewAttributeReader.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewBehavior.kt</code></li>
+<li>[ ] <code>TextViewBehaviorResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/core/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewState.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/render/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewRenderer.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewNativeOverrides.kt</code></li>
+<li>[ ] <code>TextViewOverrideAdapter.kt</code></li>
+<li>[ ] <code>TextViewTokens.kt</code></li>
+<li>[ ] <code>TextViewTokensOverride.kt</code></li>
+<li>[ ] <code>TextViewTokensOverrideRegistry.kt</code></li>
+<li>[ ] <code>TextViewTokensResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/tokensrender/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewTokensRender.kt</code></li>
+<li>[ ] <code>TextViewTokensRenderResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/components/textviews/variant/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewVariant.kt</code></li>
+<li>[ ] <code>TextViewVariantResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/</code></strong></p>
+<ul>
+<li>[ ] <code>MrcyXmlComposeView.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/attributes/</code></strong></p>
+<ul>
+<li>[ ] <code>NativeAttributeValues.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>CompoundDrawableBehaviorController.kt</code></li>
+<li>[ ] <code>ViewGestureController.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/registry/</code></strong></p>
+<ul>
+<li>[ ] <code>TokensOverrideRegistry.kt</code></li>
+<li>[ ] <code>TokensOverrideSource.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/render/</code></strong></p>
+<ul>
+<li>[ ] <code>SurfaceRenderer.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/resources/</code></strong></p>
+<ul>
+<li>[ ] <code>AndroidFontLoader.kt</code></li>
+<li>[ ] <code>AndroidIconLoader.kt</code></li>
+<li>[ ] <code>AndroidTokenAdapter.kt</code></li>
+<li>[ ] <code>ColorSourceResolver.kt</code></li>
+<li>[ ] <code>DimensionResolver.kt</code></li>
+<li>[ ] <code>FittedIconDrawable.kt</code></li>
+<li>[ ] <code>FontSourceResolver.kt</code></li>
+<li>[ ] <code>IconSourceResolver.kt</code></li>
+<li>[ ] <code>SurfaceResolver.kt</code></li>
+<li>[ ] <code>TypographySourceResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/theme/</code></strong></p>
+<ul>
+<li>[ ] <code>AndroidThemeResolver.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/core/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>ComponentTokenBinding.kt</code></li>
+<li>[ ] <code>TextColor.kt</code></li>
+<li>[ ] <code>TextDimension.kt</code></li>
+<li>[ ] <code>TextFont.kt</code></li>
+<li>[ ] <code>TextLineSpacing.kt</code></li>
+<li>[ ] <code>TextTypography.kt</code></li>
+<li>[ ] <code>ViewIcon.kt</code></li>
+<li>[ ] <code>ViewSurface.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/previews/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewGalleryPreview.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/java/cruxui/android/lib/wrappers/theme/</code></strong></p>
+<ul>
+<li>[ ] <code>MyLibraryThemeAttributeParser.kt</code></li>
+<li>[ ] <code>MyLibraryThemeConfig.kt</code></li>
+<li>[ ] <code>MyLibraryThemeMapper.kt</code></li>
+<li>[ ] <code>MyLibraryThemeProvider.kt</code></li>
+<li>[ ] <code>MyLibraryThemeWrp.kt</code></li>
+</ul>
+<h3 id="recursos-de-produccion-430-archivos">Recursos de producción (430 archivos)</h3>
+<p><strong><code>maracuya/src/main/res/drawable/</code></strong></p>
+<ul>
+<li>[ ] <code>bg_pilot_wellkommen_shape.xml</code></li>
+<li>[ ] <code>biometricsdisclamerscreen_imagepage.png</code></li>
+<li>[ ] <code>ic_accessibility.xml</code></li>
+<li>[ ] <code>ic_accessibility_new.xml</code></li>
+<li>[ ] <code>ic_accessible.xml</code></li>
+<li>[ ] <code>ic_accessible_forward.xml</code></li>
+<li>[ ] <code>ic_accessible_menu.xml</code></li>
+<li>[ ] <code>ic_account_balance_wallet.xml</code></li>
+<li>[ ] <code>ic_account_child_invert.xml</code></li>
+<li>[ ] <code>ic_account_circle.xml</code></li>
+<li>[ ] <code>ic_account_circle_off.xml</code></li>
+<li>[ ] <code>ic_acute.xml</code></li>
+<li>[ ] <code>ic_add.xml</code></li>
+<li>[ ] <code>ic_add_2.xml</code></li>
+<li>[ ] <code>ic_add_a_photo.xml</code></li>
+<li>[ ] <code>ic_add_ad.xml</code></li>
+<li>[ ] <code>ic_add_alert.xml</code></li>
+<li>[ ] <code>ic_add_box.xml</code></li>
+<li>[ ] <code>ic_add_card.xml</code></li>
+<li>[ ] <code>ic_add_chat_on.xml</code></li>
+<li>[ ] <code>ic_add_circle.xml</code></li>
+<li>[ ] <code>ic_add_link.xml</code></li>
+<li>[ ] <code>ic_add_notes.xml</code></li>
+<li>[ ] <code>ic_add_shopping_cart.xml</code></li>
+<li>[ ] <code>ic_add_task.xml</code></li>
+<li>[ ] <code>ic_add_to_photos.xml</code></li>
+<li>[ ] <code>ic_admin_moderator.xml</code></li>
+<li>[ ] <code>ic_admin_panel_settings.xml</code></li>
+<li>[ ] <code>ic_ads_click.xml</code></li>
+<li>[ ] <code>ic_air.xml</code></li>
+<li>[ ] <code>ic_alarm.xml</code></li>
+<li>[ ] <code>ic_alarm_add.xml</code></li>
+<li>[ ] <code>ic_alarm_off.xml</code></li>
+<li>[ ] <code>ic_alarm_on.xml</code></li>
+<li>[ ] <code>ic_alarm_smart_wake.xml</code></li>
+<li>[ ] <code>ic_android_wifi_3_bar.xml</code></li>
+<li>[ ] <code>ic_approval_delegation.xml</code></li>
+<li>[ ] <code>ic_approval_delegation_off.xml</code></li>
+<li>[ ] <code>ic_ar_on_you.xml</code></li>
+<li>[ ] <code>ic_ar_stickers.xml</code></li>
+<li>[ ] <code>ic_archive.xml</code></li>
+<li>[ ] <code>ic_arming_countdown.xml</code></li>
+<li>[ ] <code>ic_arrow_circle_down.xml</code></li>
+<li>[ ] <code>ic_arrow_circle_left.xml</code></li>
+<li>[ ] <code>ic_arrow_circle_right.xml</code></li>
+<li>[ ] <code>ic_arrow_circle_up.xml</code></li>
+<li>[ ] <code>ic_arrow_drop_down.xml</code></li>
+<li>[ ] <code>ic_arrow_drop_up.xml</code></li>
+<li>[ ] <code>ic_arrow_left.xml</code></li>
+<li>[ ] <code>ic_arrow_or_edge.xml</code></li>
+<li>[ ] <code>ic_arrow_range_horiz.xml</code></li>
+<li>[ ] <code>ic_arrow_range_vert.xml</code></li>
+<li>[ ] <code>ic_arrow_right.xml</code></li>
+<li>[ ] <code>ic_arrow_selector_tool.xml</code></li>
+<li>[ ] <code>ic_arrow_split.xml</code></li>
+<li>[ ] <code>ic_arrows_input.xml</code></li>
+<li>[ ] <code>ic_arrows_more_down_left.xml</code></li>
+<li>[ ] <code>ic_arrows_more_down_right.xml</code></li>
+<li>[ ] <code>ic_arrows_more_up_left.xml</code></li>
+<li>[ ] <code>ic_arrows_more_up_right.xml</code></li>
+<li>[ ] <code>ic_arrows_output.xml</code></li>
+<li>[ ] <code>ic_arrows_outward_horiz.xml</code></li>
+<li>[ ] <code>ic_arrows_outward_vert.xml</code></li>
+<li>[ ] <code>ic_article.xml</code></li>
+<li>[ ] <code>ic_article_person.xml</code></li>
+<li>[ ] <code>ic_article_shortcut.xml</code></li>
+<li>[ ] <code>ic_artist.xml</code></li>
+<li>[ ] <code>ic_assist_walker.xml</code></li>
+<li>[ ] <code>ic_asterisk.xml</code></li>
+<li>[ ] <code>ic_attach_email.xml</code></li>
+<li>[ ] <code>ic_attach_file.xml</code></li>
+<li>[ ] <code>ic_attach_file_off.xml</code></li>
+<li>[ ] <code>ic_attachment.xml</code></li>
+<li>[ ] <code>ic_auto_delete.xml</code></li>
+<li>[ ] <code>ic_auto_schedule.xml</code></li>
+<li>[ ] <code>ic_award_star.xml</code></li>
+<li>[ ] <code>ic_baby_changing_station.xml</code></li>
+<li>[ ] <code>ic_back_hand.xml</code></li>
+<li>[ ] <code>ic_backlight_high.xml</code></li>
+<li>[ ] <code>ic_ballot.xml</code></li>
+<li>[ ] <code>ic_bar_chart.xml</code></li>
+<li>[ ] <code>ic_bar_chart_4_bars.xml</code></li>
+<li>[ ] <code>ic_bigtop_updates.xml</code></li>
+<li>[ ] <code>ic_bitcoin.xml</code></li>
+<li>[ ] <code>ic_blind.xml</code></li>
+<li>[ ] <code>ic_block.xml</code></li>
+<li>[ ] <code>ic_bluetooth.xml</code></li>
+<li>[ ] <code>ic_body_system.xml</code></li>
+<li>[ ] <code>ic_bolt.xml</code></li>
+<li>[ ] <code>ic_book_3.xml</code></li>
+<li>[ ] <code>ic_book_4_spark.xml</code></li>
+<li>[ ] <code>ic_bookmark.xml</code></li>
+<li>[ ] <code>ic_bookmark_add.xml</code></li>
+<li>[ ] <code>ic_bookmark_added.xml</code></li>
+<li>[ ] <code>ic_bookmark_heart.xml</code></li>
+<li>[ ] <code>ic_bookmark_manager.xml</code></li>
+<li>[ ] <code>ic_bookmark_star.xml</code></li>
+<li>[ ] <code>ic_border_color.xml</code></li>
+<li>[ ] <code>ic_boy.xml</code></li>
+<li>[ ] <code>ic_build.xml</code></li>
+<li>[ ] <code>ic_business_center.xml</code></li>
+<li>[ ] <code>ic_calendar_add_on.xml</code></li>
+<li>[ ] <code>ic_calendar_check.xml</code></li>
+<li>[ ] <code>ic_calendar_clock.xml</code></li>
+<li>[ ] <code>ic_calendar_lock.xml</code></li>
+<li>[ ] <code>ic_calendar_month.xml</code></li>
+<li>[ ] <code>ic_calendar_today.xml</code></li>
+<li>[ ] <code>ic_cancel.xml</code></li>
+<li>[ ] <code>ic_captive_portal.xml</code></li>
+<li>[ ] <code>ic_card_membership.xml</code></li>
+<li>[ ] <code>ic_card_travel.xml</code></li>
+<li>[ ] <code>ic_cardio_load.xml</code></li>
+<li>[ ] <code>ic_celebration.xml</code></li>
+<li>[ ] <code>ic_chat.xml</code></li>
+<li>[ ] <code>ic_chat_info.xml</code></li>
+<li>[ ] <code>ic_check.xml</code></li>
+<li>[ ] <code>ic_check_circle.xml</code></li>
+<li>[ ] <code>ic_check_circle_unread.xml</code></li>
+<li>[ ] <code>ic_checkbook.xml</code></li>
+<li>[ ] <code>ic_checklist.xml</code></li>
+<li>[ ] <code>ic_cheer.xml</code></li>
+<li>[ ] <code>ic_chrome_reader_mode.xml</code></li>
+<li>[ ] <code>ic_chrome_restore.xml</code></li>
+<li>[ ] <code>ic_clarify.xml</code></li>
+<li>[ ] <code>ic_close.xml</code></li>
+<li>[ ] <code>ic_close_fullscreen.xml</code></li>
+<li>[ ] <code>ic_co_present.xml</code></li>
+<li>[ ] <code>ic_code.xml</code></li>
+<li>[ ] <code>ic_colon.xml</code></li>
+<li>[ ] <code>ic_communication.xml</code></li>
+<li>[ ] <code>ic_conditions.xml</code></li>
+<li>[ ] <code>ic_construction.xml</code></li>
+<li>[ ] <code>ic_contact_page.xml</code></li>
+<li>[ ] <code>ic_contact_support.xml</code></li>
+<li>[ ] <code>ic_content_copy.xml</code></li>
+<li>[ ] <code>ic_content_cut.xml</code></li>
+<li>[ ] <code>ic_content_paste.xml</code></li>
+<li>[ ] <code>ic_content_paste_go.xml</code></li>
+<li>[ ] <code>ic_content_paste_off.xml</code></li>
+<li>[ ] <code>ic_content_paste_search.xml</code></li>
+<li>[ ] <code>ic_contract.xml</code></li>
+<li>[ ] <code>ic_contract_delete.xml</code></li>
+<li>[ ] <code>ic_contract_edit.xml</code></li>
+<li>[ ] <code>ic_create_new_folder.xml</code></li>
+<li>[ ] <code>ic_credit_card.xml</code></li>
+<li>[ ] <code>ic_credit_card_clock.xml</code></li>
+<li>[ ] <code>ic_credit_card_gear.xml</code></li>
+<li>[ ] <code>ic_credit_card_heart.xml</code></li>
+<li>[ ] <code>ic_credit_card_off.xml</code></li>
+<li>[ ] <code>ic_credit_score.xml</code></li>
+<li>[ ] <code>ic_crisis_alert.xml</code></li>
+<li>[ ] <code>ic_dehaze.xml</code></li>
+<li>[ ] <code>ic_design_services.xml</code></li>
+<li>[ ] <code>ic_directions_run.xml</code></li>
+<li>[ ] <code>ic_directions_walk.xml</code></li>
+<li>[ ] <code>ic_discover_tune.xml</code></li>
+<li>[ ] <code>ic_distance.xml</code></li>
+<li>[ ] <code>ic_diversity_1.xml</code></li>
+<li>[ ] <code>ic_diversity_2.xml</code></li>
+<li>[ ] <code>ic_diversity_3.xml</code></li>
+<li>[ ] <code>ic_docs.xml</code></li>
+<li>[ ] <code>ic_docs_add_on.xml</code></li>
+<li>[ ] <code>ic_dollar.xml</code></li>
+<li>[ ] <code>ic_dollar_circle.xml</code></li>
+<li>[ ] <code>ic_dollar_exchange.xml</code></li>
+<li>[ ] <code>ic_dollar_off.xml</code></li>
+<li>[ ] <code>ic_done_all.xml</code></li>
+<li>[ ] <code>ic_download.xml</code></li>
+<li>[ ] <code>ic_drag_click.xml</code></li>
+<li>[ ] <code>ic_drag_indicator.xml</code></li>
+<li>[ ] <code>ic_draw.xml</code></li>
+<li>[ ] <code>ic_drive_file_rename_outline.xml</code></li>
+<li>[ ] <code>ic_earthquake.xml</code></li>
+<li>[ ] <code>ic_eda.xml</code></li>
+<li>[ ] <code>ic_edit_calendar.xml</code></li>
+<li>[ ] <code>ic_edit_document.xml</code></li>
+<li>[ ] <code>ic_elderly.xml</code></li>
+<li>[ ] <code>ic_elderly_woman.xml</code></li>
+<li>[ ] <code>ic_emergency_home.xml</code></li>
+<li>[ ] <code>ic_emoji_people.xml</code></li>
+<li>[ ] <code>ic_encrypted.xml</code></li>
+<li>[ ] <code>ic_encrypted_add_circle.xml</code></li>
+<li>[ ] <code>ic_encrypted_minus_circle.xml</code></li>
+<li>[ ] <code>ic_encrypted_off.xml</code></li>
+<li>[ ] <code>ic_energy_program_time_used.xml</code></li>
+<li>[ ] <code>ic_equit_square.xml</code></li>
+<li>[ ] <code>ic_error.xml</code></li>
+<li>[ ] <code>ic_euro.xml</code></li>
+<li>[ ] <code>ic_expand_all.xml</code></li>
+<li>[ ] <code>ic_expand_circle_down.xml</code></li>
+<li>[ ] <code>ic_expand_circle_left.xml</code></li>
+<li>[ ] <code>ic_expand_circle_right.xml</code></li>
+<li>[ ] <code>ic_expand_circle_up.xml</code></li>
+<li>[ ] <code>ic_expand_less.xml</code></li>
+<li>[ ] <code>ic_expand_more.xml</code></li>
+<li>[ ] <code>ic_fact_check.xml</code></li>
+<li>[ ] <code>ic_falling.xml</code></li>
+<li>[ ] <code>ic_family_restroom.xml</code></li>
+<li>[ ] <code>ic_feature_search.xml</code></li>
+<li>[ ] <code>ic_file_copy.xml</code></li>
+<li>[ ] <code>ic_file_copy_off.xml</code></li>
+<li>[ ] <code>ic_file_download_done.xml</code></li>
+<li>[ ] <code>ic_filter_alt.xml</code></li>
+<li>[ ] <code>ic_filter_none.xml</code></li>
+<li>[ ] <code>ic_fingerprint.xml</code></li>
+<li>[ ] <code>ic_flash_on.xml</code></li>
+<li>[ ] <code>ic_folder.xml</code></li>
+<li>[ ] <code>ic_folder_check_2.xml</code></li>
+<li>[ ] <code>ic_folder_match.xml</code></li>
+<li>[ ] <code>ic_folder_off.xml</code></li>
+<li>[ ] <code>ic_folder_shared.xml</code></li>
+<li>[ ] <code>ic_folder_supervised.xml</code></li>
+<li>[ ] <code>ic_follow_the_signs.xml</code></li>
+<li>[ ] <code>ic_footprint.xml</code></li>
+<li>[ ] <code>ic_format_color_reset.xml</code></li>
+<li>[ ] <code>ic_format_ink_highlighter.xml</code></li>
+<li>[ ] <code>ic_forward_media.xml</code></li>
+<li>[ ] <code>ic_franc.xml</code></li>
+<li>[ ] <code>ic_glucose.xml</code></li>
+<li>[ ] <code>ic_gpp_bad.xml</code></li>
+<li>[ ] <code>ic_gpp_maybe.xml</code></li>
+<li>[ ] <code>ic_grade.xml</code></li>
+<li>[ ] <code>ic_group.xml</code></li>
+<li>[ ] <code>ic_group_add.xml</code></li>
+<li>[ ] <code>ic_group_auto.xml</code></li>
+<li>[ ] <code>ic_group_remove.xml</code></li>
+<li>[ ] <code>ic_group_search.xml</code></li>
+<li>[ ] <code>ic_guardian.xml</code></li>
+<li>[ ] <code>ic_hail.xml</code></li>
+<li>[ ] <code>ic_hand_bones.xml</code></li>
+<li>[ ] <code>ic_hand_gesture.xml</code></li>
+<li>[ ] <code>ic_hand_gesture_off.xml</code></li>
+<li>[ ] <code>ic_handshake.xml</code></li>
+<li>[ ] <code>ic_health_and_safety.xml</code></li>
+<li>[ ] <code>ic_help.xml</code></li>
+<li>[ ] <code>ic_highlight_keyboard_focus.xml</code></li>
+<li>[ ] <code>ic_hiking.xml</code></li>
+<li>[ ] <code>ic_how_to_reg.xml</code></li>
+<li>[ ] <code>ic_info.xml</code></li>
+<li>[ ] <code>ic_input.xml</code></li>
+<li>[ ] <code>ic_keyboard_arrow_left.xml</code></li>
+<li>[ ] <code>ic_keyboard_arrow_right.xml</code></li>
+<li>[ ] <code>ic_keyboard_backspace_down.xml</code></li>
+<li>[ ] <code>ic_keyboard_backspace_left.xml</code></li>
+<li>[ ] <code>ic_keyboard_backspace_right.xml</code></li>
+<li>[ ] <code>ic_keyboard_backspace_up.xml</code></li>
+<li>[ ] <code>ic_keyboard_double_arrow_down.xml</code></li>
+<li>[ ] <code>ic_keyboard_double_arrow_up.xml</code></li>
+<li>[ ] <code>ic_keyboard_tab_down.xml</code></li>
+<li>[ ] <code>ic_keyboard_tab_left.xml</code></li>
+<li>[ ] <code>ic_keyboard_tab_right.xml</code></li>
+<li>[ ] <code>ic_keyboard_tab_up.xml</code></li>
+<li>[ ] <code>ic_library_add_check.xml</code></li>
+<li>[ ] <code>ic_lift_to_talk.xml</code></li>
+<li>[ ] <code>ic_link.xml</code></li>
+<li>[ ] <code>ic_link_off.xml</code></li>
+<li>[ ] <code>ic_lira.xml</code></li>
+<li>[ ] <code>ic_lock.xml</code></li>
+<li>[ ] <code>ic_lock_reset.xml</code></li>
+<li>[ ] <code>ic_login.xml</code></li>
+<li>[ ] <code>ic_logout.xml</code></li>
+<li>[ ] <code>ic_look_open.xml</code></li>
+<li>[ ] <code>ic_look_open_right.xml</code></li>
+<li>[ ] <code>ic_magic_button.xml</code></li>
+<li>[ ] <code>ic_man.xml</code></li>
+<li>[ ] <code>ic_man_4.xml</code></li>
+<li>[ ] <code>ic_manage_accounts.xml</code></li>
+<li>[ ] <code>ic_manage_search.xml</code></li>
+<li>[ ] <code>ic_massage.xml</code></li>
+<li>[ ] <code>ic_medical_services.xml</code></li>
+<li>[ ] <code>ic_minus_bar.xml</code></li>
+<li>[ ] <code>ic_mode_heat.xml</code></li>
+<li>[ ] <code>ic_mode_heat_off.xml</code></li>
+<li>[ ] <code>ic_money_bag.xml</code></li>
+<li>[ ] <code>ic_money_range.xml</code></li>
+<li>[ ] <code>ic_more_time.xml</code></li>
+<li>[ ] <code>ic_navigate_before.xml</code></li>
+<li>[ ] <code>ic_navigate_next.xml</code></li>
+<li>[ ] <code>ic_network_check.xml</code></li>
+<li>[ ] <code>ic_new_releases.xml</code></li>
+<li>[ ] <code>ic_new_window.xml</code></li>
+<li>[ ] <code>ic_news.xml</code></li>
+<li>[ ] <code>ic_newsmode.xml</code></li>
+<li>[ ] <code>ic_not_accessible.xml</code></li>
+<li>[ ] <code>ic_notification_add.xml</code></li>
+<li>[ ] <code>ic_notification_important.xml</code></li>
+<li>[ ] <code>ic_notification_settings.xml</code></li>
+<li>[ ] <code>ic_notification_sound.xml</code></li>
+<li>[ ] <code>ic_notifications.xml</code></li>
+<li>[ ] <code>ic_notifications_active.xml</code></li>
+<li>[ ] <code>ic_notifications_unread.xml</code></li>
+<li>[ ] <code>ic_open_in_full.xml</code></li>
+<li>[ ] <code>ic_open_in_new.xml</code></li>
+<li>[ ] <code>ic_open_in_new_down.xml</code></li>
+<li>[ ] <code>ic_open_in_new_off.xml</code></li>
+<li>[ ] <code>ic_open_run.xml</code></li>
+<li>[ ] <code>ic_open_with.xml</code></li>
+<li>[ ] <code>ic_output.xml</code></li>
+<li>[ ] <code>ic_passkey.xml</code></li>
+<li>[ ] <code>ic_payment_arrow_down.xml</code></li>
+<li>[ ] <code>ic_payment_card.xml</code></li>
+<li>[ ] <code>ic_payments.xml</code></li>
+<li>[ ] <code>ic_pending.xml</code></li>
+<li>[ ] <code>ic_pending_actions.xml</code></li>
+<li>[ ] <code>ic_perm_contact_calendar.xml</code></li>
+<li>[ ] <code>ic_person.xml</code></li>
+<li>[ ] <code>ic_person_add.xml</code></li>
+<li>[ ] <code>ic_person_alert.xml</code></li>
+<li>[ ] <code>ic_person_cancel.xml</code></li>
+<li>[ ] <code>ic_person_celebrate.xml</code></li>
+<li>[ ] <code>ic_person_edit.xml</code></li>
+<li>[ ] <code>ic_person_heart.xml</code></li>
+<li>[ ] <code>ic_person_injury.xml</code></li>
+<li>[ ] <code>ic_person_off.xml</code></li>
+<li>[ ] <code>ic_person_remove.xml</code></li>
+<li>[ ] <code>ic_person_search.xml</code></li>
+<li>[ ] <code>ic_person_shield.xml</code></li>
+<li>[ ] <code>ic_photo_camera.xml</code></li>
+<li>[ ] <code>ic_pound.xml</code></li>
+<li>[ ] <code>ic_privacy_tip.xml</code></li>
+<li>[ ] <code>ic_production_quantity_limits.xml</code></li>
+<li>[ ] <code>ic_productivity.xml</code></li>
+<li>[ ] <code>ic_psychiatry.xml</code></li>
+<li>[ ] <code>ic_recent_patient.xml</code></li>
+<li>[ ] <code>ic_redeem.xml</code></li>
+<li>[ ] <code>ic_reduce_capacity.xml</code></li>
+<li>[ ] <code>ic_repeat.xml</code></li>
+<li>[ ] <code>ic_ruble.xml</code></li>
+<li>[ ] <code>ic_rupee.xml</code></li>
+<li>[ ] <code>ic_safety_divider.xml</code></li>
+<li>[ ] <code>ic_savings.xml</code></li>
+<li>[ ] <code>ic_send_money.xml</code></li>
+<li>[ ] <code>ic_settings_alert.xml</code></li>
+<li>[ ] <code>ic_shopping_bag.xml</code></li>
+<li>[ ] <code>ic_shopping_bag_speed.xml</code></li>
+<li>[ ] <code>ic_shopping_cart.xml</code></li>
+<li>[ ] <code>ic_shopping_cart_checkout.xml</code></li>
+<li>[ ] <code>ic_shopping_cart_off.xml</code></li>
+<li>[ ] <code>ic_soap.xml</code></li>
+<li>[ ] <code>ic_sprint.xml</code></li>
+<li>[ ] <code>ic_star_shine.xml</code></li>
+<li>[ ] <code>ic_store.xml</code></li>
+<li>[ ] <code>ic_supervised_user_circle.xml</code></li>
+<li>[ ] <code>ic_supervisor_account.xml</code></li>
+<li>[ ] <code>ic_swap_horiz.xml</code></li>
+<li>[ ] <code>ic_swap_vert.xml</code></li>
+<li>[ ] <code>ic_swipe.xml</code></li>
+<li>[ ] <code>ic_swipe_down.xml</code></li>
+<li>[ ] <code>ic_swipe_left.xml</code></li>
+<li>[ ] <code>ic_swipe_right.xml</code></li>
+<li>[ ] <code>ic_swipe_up.xml</code></li>
+<li>[ ] <code>ic_swipe_vertical.xml</code></li>
+<li>[ ] <code>ic_sync.xml</code></li>
+<li>[ ] <code>ic_sync_disabled.xml</code></li>
+<li>[ ] <code>ic_temp_preferences_custom.xml</code></li>
+<li>[ ] <code>ic_thumb_down_off.xml</code></li>
+<li>[ ] <code>ic_thumb_up.xml</code></li>
+<li>[ ] <code>ic_thumbs_up_double.xml</code></li>
+<li>[ ] <code>ic_thumbs_up_down.xml</code></li>
+<li>[ ] <code>ic_toll.xml</code></li>
+<li>[ ] <code>ic_touch_app.xml</code></li>
+<li>[ ] <code>ic_touch_double.xml</code></li>
+<li>[ ] <code>ic_touch_long.xml</code></li>
+<li>[ ] <code>ic_transfer_within_a_station.xml</code></li>
+<li>[ ] <code>ic_travel_explore.xml</code></li>
+<li>[ ] <code>ic_trending_up.xml</code></li>
+<li>[ ] <code>ic_universal_currency.xml</code></li>
+<li>[ ] <code>ic_universal_currency_alt.xml</code></li>
+<li>[ ] <code>ic_upload.xml</code></li>
+<li>[ ] <code>ic_visibility.xml</code></li>
+<li>[ ] <code>ic_visibility_off.xml</code></li>
+<li>[ ] <code>ic_wallet.xml</code></li>
+<li>[ ] <code>ic_warning.xml</code></li>
+<li>[ ] <code>ic_wash.xml</code></li>
+<li>[ ] <code>ic_water_drop.xml</code></li>
+<li>[ ] <code>ic_wc.xml</code></li>
+<li>[ ] <code>ic_yen.xml</code></li>
+<li>[ ] <code>logo_davibank_house_empty.xml</code></li>
+<li>[ ] <code>onetimedisclamerscreen_imagepage.png</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/res/font/</code></strong></p>
+<ul>
+<li>[ ] <code>davivienda_bold.ttf</code></li>
+<li>[ ] <code>davivienda_bold_italic.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_bold.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_bold_italic.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_extra_bold.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_extra_bold_italic.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_italic.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_light.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_light_italic.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_regular.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_semi_bold.ttf</code></li>
+<li>[ ] <code>davivienda_condensed_semi_bold_italic.ttf</code></li>
+<li>[ ] <code>davivienda_extra_bold.ttf</code></li>
+<li>[ ] <code>davivienda_extra_bold_italic.ttf</code></li>
+<li>[ ] <code>davivienda_italic.ttf</code></li>
+<li>[ ] <code>davivienda_light.ttf</code></li>
+<li>[ ] <code>davivienda_light_italic.ttf</code></li>
+<li>[ ] <code>davivienda_regular.ttf</code></li>
+<li>[ ] <code>davivienda_semi_bold.ttf</code></li>
+<li>[ ] <code>davivienda_semi_bold_italic.ttf</code></li>
+<li>[ ] <code>mulish_black.ttf</code></li>
+<li>[ ] <code>mulish_black_italic.ttf</code></li>
+<li>[ ] <code>mulish_bold.ttf</code></li>
+<li>[ ] <code>mulish_bold_italic.ttf</code></li>
+<li>[ ] <code>mulish_extra_bold.ttf</code></li>
+<li>[ ] <code>mulish_extra_bold_italic.ttf</code></li>
+<li>[ ] <code>mulish_extra_light.ttf</code></li>
+<li>[ ] <code>mulish_extra_light_italic.ttf</code></li>
+<li>[ ] <code>mulish_italic.ttf</code></li>
+<li>[ ] <code>mulish_light.ttf</code></li>
+<li>[ ] <code>mulish_light_italic.ttf</code></li>
+<li>[ ] <code>mulish_medium.ttf</code></li>
+<li>[ ] <code>mulish_medium_italic.ttf</code></li>
+<li>[ ] <code>mulish_regular.ttf</code></li>
+<li>[ ] <code>mulish_semi_bold.ttf</code></li>
+<li>[ ] <code>mulish_semi_bold_italic.ttf</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/res/layout/</code></strong></p>
+<ul>
+<li>[ ] <code>button_navigation_group_wrp_preview.xml</code></li>
+<li>[ ] <code>button_navigation_wrp_preview.xml</code></li>
+<li>[ ] <code>button_wrp_preview.xml</code></li>
+<li>[ ] <code>catalog_preview.xml</code></li>
+<li>[ ] <code>label_wrp_preview.xml</code></li>
+<li>[ ] <code>text_view_preview.xml</code></li>
+<li>[ ] <code>textfield_wrp_preview.xml</code></li>
+<li>[ ] <code>typography_preview.xml</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/res/values/</code></strong></p>
+<ul>
+<li>[ ] <code>attrs.xml</code></li>
+<li>[ ] <code>compound_drawable_actions.xml</code></li>
+<li>[ ] <code>label.xml</code></li>
+<li>[ ] <code>text_view.xml</code></li>
+</ul>
+<p><strong><code>maracuya/src/main/res/values-en/</code></strong></p>
+<ul>
+<li>[ ] <code>compound_drawable_actions.xml</code></li>
+<li>[ ] <code>label.xml</code></li>
+<li>[ ] <code>text_view.xml</code></li>
+</ul>
+<h3 id="recursos-de-pruebas-4-archivos">Recursos de pruebas (4 archivos)</h3>
+<p><strong><code>maracuya/src/debug/res/color/</code></strong></p>
+<ul>
+<li>[ ] <code>text_view_test_states.xml</code></li>
+</ul>
+<p><strong><code>maracuya/src/debug/res/layout/</code></strong></p>
+<ul>
+<li>[ ] <code>text_view_native_style_test.xml</code></li>
+<li>[ ] <code>text_view_registry_test.xml</code></li>
+</ul>
+<p><strong><code>maracuya/src/debug/res/values/</code></strong></p>
+<ul>
+<li>[ ] <code>text_view_test.xml</code></li>
+</ul>
+<h3 id="pruebas-unitarias-9-archivos">Pruebas unitarias (9 archivos)</h3>
+<p><strong><code>maracuya/src/test/java/cruxui/android/lib/theme/</code></strong></p>
+<ul>
+<li>[ ] <code>ColorIconCatalogTest.kt</code></li>
+<li>[ ] <code>TokenBridgeTest.kt</code></li>
+<li>[ ] <code>TypographyCatalogTest.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/test/java/cruxui/android/lib/ui/components/textviews/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewArchitectureTest.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/test/java/cruxui/android/lib/wrappers/capabilities/</code></strong></p>
+<ul>
+<li>[ ] <code>IndependentCapabilitiesTest.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/test/java/cruxui/android/lib/wrappers/components/textviews/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewTest.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/test/java/cruxui/android/lib/wrappers/core/</code></strong></p>
+<ul>
+<li>[ ] <code>WrapperDependencyRulesTest.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/test/java/cruxui/android/lib/wrappers/core/behavior/</code></strong></p>
+<ul>
+<li>[ ] <code>CompoundDrawableBehaviorControllerTest.kt</code></li>
+</ul>
+<p><strong><code>maracuya/src/test/java/cruxui/android/lib/wrappers/core/tokens/</code></strong></p>
+<ul>
+<li>[ ] <code>ComponentTokenBindingTest.kt</code></li>
+</ul>
+<h3 id="pruebas-instrumentadas-4-archivos">Pruebas instrumentadas (4 archivos)</h3>
+<p><strong><code>maracuya/src/androidTest/</code></strong></p>
+<ul>
+<li>[ ] <code>AndroidManifest.xml</code></li>
+</ul>
+<p><strong><code>maracuya/src/androidTest/java/cruxui/android/lib/ui/components/textviews/</code></strong></p>
+<ul>
+<li>[ ] <code>TextViewGalleryParityTest.kt</code></li>
+<li>[ ] <code>TextViewInteractionTest.kt</code></li>
+<li>[ ] <code>TextViewParityTest.kt</code></li>
+</ul>
+<h3 id="fuentes-del-exportador-31-archivos">Fuentes del exportador (31 archivos)</h3>
+<p><strong><code>token-exporter/src/catalogSchema/kotlin/schema/</code></strong></p>
+<ul>
+<li>[ ] <code>ColorCatalogSource.kt</code></li>
+<li>[ ] <code>CompatibilitySource.kt</code></li>
+<li>[ ] <code>GenerateCatalogApi.kt</code></li>
+<li>[ ] <code>LibraryCatalogSchema.kt</code></li>
+<li>[ ] <code>LibraryIconsSource.kt</code></li>
+<li>[ ] <code>LibraryTypographySource.kt</code></li>
+<li>[ ] <code>RolesSource.kt</code></li>
+<li>[ ] <code>SchemaDocumentation.kt</code></li>
+<li>[ ] <code>TypographyRolesSource.kt</code></li>
+<li>[ ] <code>TypographySchema.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/main/kotlin/exporter/</code></strong></p>
+<ul>
+<li>[ ] <code>ExportLibraryTokens.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/main/kotlin/exporter/android/</code></strong></p>
+<ul>
+<li>[ ] <code>AttributeResourceWriter.kt</code></li>
+<li>[ ] <code>ColorResourceWriter.kt</code></li>
+<li>[ ] <code>FontResourceWriter.kt</code></li>
+<li>[ ] <code>ParagraphAttributes.kt</code></li>
+<li>[ ] <code>ThemeOverlayWriter.kt</code></li>
+<li>[ ] <code>TypographyResourceWriter.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/main/kotlin/exporter/catalog/</code></strong></p>
+<ul>
+<li>[ ] <code>CatalogWriter.kt</code></li>
+<li>[ ] <code>ExportCatalog.kt</code></li>
+<li>[ ] <code>ThemeCatalogReader.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/main/kotlin/exporter/components/text/</code></strong></p>
+<ul>
+<li>[ ] <code>TextWidgetStyleWriter.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/main/kotlin/exporter/kotlin/</code></strong></p>
+<ul>
+<li>[ ] <code>AssetBindingsWriter.kt</code></li>
+<li>[ ] <code>CatalogApiWriter.kt</code></li>
+<li>[ ] <code>XmlReferencesWriter.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/main/kotlin/exporter/output/</code></strong></p>
+<ul>
+<li>[ ] <code>ExportOutput.kt</code></li>
+<li>[ ] <code>GeneratedDocumentation.kt</code></li>
+<li>[ ] <code>ResourceNames.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/main/kotlin/exporter/validation/</code></strong></p>
+<ul>
+<li>[ ] <code>CatalogValidator.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/test/kotlin/exporter/</code></strong></p>
+<ul>
+<li>[ ] <code>CatalogExportTest.kt</code></li>
+</ul>
+<p><strong><code>token-exporter/src/test/kotlin/schema/</code></strong></p>
+<ul>
+<li>[ ] <code>LibraryCatalogSchemaTest.kt</code></li>
+<li>[ ] <code>TypographySchemaTest.kt</code></li>
+</ul>
+<h3 id="documentacion-vigente-7-archivos">Documentación vigente (7 archivos)</h3>
+<p><strong><code>arquitectura-xml-compose/</code></strong></p>
+<ul>
+<li>[ ] <code>01-problema-y-objetivos.md</code></li>
+<li>[ ] <code>02-propuesta-arquitectura.md</code></li>
+<li>[ ] <code>03-textview-implementado.md</code></li>
+<li>[ ] <code>04-escalabilidad-y-responsabilidades.md</code></li>
+<li>[ ] <code>05-tipografia-fuente-unica.md</code></li>
+<li>[ ] <code>06-colores-iconos-fuente-unica.md</code></li>
+<li>[ ] <code>07-paridad-textview-compose-xml.md</code></li>
+</ul>
+<h3 id="referencias-de-arquitectura-4-archivos">Referencias de arquitectura (4 archivos)</h3>
+<p><strong><code>referencias-arquitectura-xml/</code></strong></p>
+<ul>
+<li>[ ] <code>01-bases-cientificas.md</code></li>
+<li>[ ] <code>02-design-systems-android-xml.md</code></li>
+<li>[ ] <code>03-fundamentos-propuesta.md</code></li>
+<li>[ ] <code>README.md</code></li>
+</ul></main></body></html>

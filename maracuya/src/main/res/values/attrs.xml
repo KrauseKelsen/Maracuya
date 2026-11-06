@@ -1,131 +1,502 @@
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    attrs.xml declara el contrato de atributos consumido por los wrappers del DS.
+
+    Justificación:
+    Android genera los styleables que permiten leer valores tipados y respetar la cascada de estilos sin duplicar
+    tokens semánticos.
+
+    Se comunica con:
+    Los parsers de cada wrapper, TextViewAttributeReader y el proveedor MyLibraryThemeWrp leen estos grupos.
+
+    Uso:
+    El host usa android: para atributos del sistema y app: para atributos DS, con
+    xmlns:app="http://schemas.android.com/apk/res-auto".
+    En TextView declarar app:textViewTokensOverride="sectionTitle" después de registrar esa receta en Kotlin. Usar
+    android:textAppearance para estilos nativos y no inventar un atributo mrcyTypographyToken.
+    Los atributos libraryColor*, libraryTypography*, libraryFontPrimary y libraryIcon* se generan desde
+    LibraryThemes durante la compilación; no añadir copias manuales aquí.
+    Los textos deben ser recursos localizados de la app y las dimensiones deben declarar unidad.
+
+    Objetivos:
+    - Publicar atributos tipados.
+    - Separar los contratos de cada wrapper.
+    - Documentar uso y prioridad por atributo.
+
+    @author Krause Kelsen
+    @since 07-16-2026
+    @version 0.0.13
+    @see cruxui.android.lib.wrappers.components.textviews.attributes.TextViewAttributeReader
+-->
 <resources>
+    <!--
+        Ámbito de marca/modo para wrappers. El host declara este contenedor y sus hijos; los parsers internos leen
+        los atributos. Para usar ?attr generado, aplicar además el overlay Android coherente.
+    -->
     <declare-styleable name="MyLibraryThemeWrp">
+        <!--
+            Booleano del proveedor. app:useMaterial="true" permite a los wrappers Compose proporcionar
+            MaterialTheme derivado; no convierte un TextView nativo en Compose.
+        -->
         <attr name="useMaterial" format="boolean" />
+        <!--
+            Modo del proveedor: app:themeStyle="light", "dark" o "auto". AUTO sigue el sistema; el componente
+            recibe la biblioteca resuelta de su ámbito.
+        -->
         <attr name="themeStyle" format="string" />
+        <!--
+            Marca del catálogo, por ejemplo app:themeName="Maracuya". LibraryThemes resuelve el nombre y utiliza
+            Maracuya como respaldo si no existe.
+        -->
         <attr name="themeName" format="string" />
     </declare-styleable>
+    <!--
+        Contrato XML del botón primario basado en Compose. El host declara texto, habilitación y comportamiento de
+        progreso.
+    -->
 
     <declare-styleable name="PrimaryButtonWrp">
+        <!--
+            Texto de wrappers basados en Compose: app:text="@string/title". En el TextView nativo de este DS usar
+            android:text.
+        -->
         <attr name="text" format="string" />
+        <!--
+            Booleano del botón: solicita mostrar progreso al activarlo. Declarar app:showProgressOnPress="true";
+            el host coordina la operación asociada.
+        -->
         <attr name="showProgressOnPress" format="boolean" />
+        <!--
+            Habilitación de los wrappers que declaran este atributo: app:isEnabled="false". El TextView nativo usa
+            android:enabled.
+        -->
         <attr name="isEnabled" format="boolean" />
     </declare-styleable>
+    <!--
+        Contrato XML del botón simple con variante y receta registrada. Los listeners se asignan en la API del
+        wrapper.
+    -->
 
     <declare-styleable name="ButtonWrp">
+        <!--
+            Texto de wrappers basados en Compose: app:text="@string/title". En el TextView nativo de este DS usar
+            android:text.
+        -->
         <attr name="text" />
+        <!--
+            Booleano del botón: solicita mostrar progreso al activarlo. Declarar app:showProgressOnPress="true";
+            el host coordina la operación asociada.
+        -->
         <attr name="showProgressOnPress" />
+        <!--
+            Habilitación de los wrappers que declaran este atributo: app:isEnabled="false". El TextView nativo usa
+            android:enabled.
+        -->
         <attr name="isEnabled" />
+        <!--
+            Variante del botón simple: app:buttonVariant="primary" o "secondary".
+        -->
         <attr name="buttonVariant" format="enum">
             <enum name="primary" value="0" />
             <enum name="secondary" value="1" />
         </attr>
+        <!--
+            Nombre de receta previamente registrada en ButtonTokensOverrideRegistry. No es un ID de estilo ni
+            contiene tokens serializados.
+        -->
         <attr name="buttonTokensOverride" format="string" />
     </declare-styleable>
+    <!--
+        Contrato del botón de navegación: etiqueta, variante, icono, progreso y receta.
+    -->
 
     <declare-styleable name="ButtonNavigationWrp">
+        <!--
+            Texto localizado del botón de navegación: app:buttonNavigationLabel="@string/continue_label".
+        -->
         <attr name="buttonNavigationLabel" format="string" />
+        <!--
+            Habilitación de los wrappers que declaran este atributo: app:isEnabled="false". El TextView nativo usa
+            android:enabled.
+        -->
         <attr name="isEnabled" />
+        <!--
+            Presentación de navegación: primary, secondary, primarysquare o secondarysquare. Declarar mediante
+            app:buttonNavigationVariant.
+        -->
         <attr name="buttonNavigationVariant" format="enum">
             <enum name="primary" value="0" />
             <enum name="secondary" value="1" />
             <enum name="primarysquare" value="2" />
             <enum name="secondarysquare" value="3" />
         </attr>
+        <!--
+            Estado inicial de progreso del botón de navegación, como booleano.
+        -->
         <attr name="buttonNavigationIsLoading" format="boolean" />
+        <!--
+            Booleano que solicita iniciar el progreso al activar el botón de navegación.
+        -->
         <attr name="buttonNavigationStartsLoadingOnClick" format="boolean" />
+        <!--
+            Booleano que permite mostrar el icono elegido por el botón de navegación.
+        -->
         <attr name="buttonNavigationShowIcon" format="boolean" />
+        <!--
+            Nombre de receta de ButtonNavigationTokensOverrideRegistry; registrar antes de inflar el layout.
+        -->
         <attr name="buttonNavigationTokensOverride" format="string" />
     </declare-styleable>
+    <!--
+        Contrato del grupo de navegación: combinación de acciones y opciones de cada botón. Las dimensiones se
+        declaran con unidades Android.
+    -->
 
     <declare-styleable name="ButtonNavigationGroupWrp">
+        <!--
+            Habilitación de los wrappers que declaran este atributo: app:isEnabled="false". El TextView nativo usa
+            android:enabled.
+        -->
         <attr name="isEnabled" />
+        <!--
+            Combinación de acciones: back_continue, back_submit o skip_submit. Declarar mediante
+            app:buttonNavigationGroupVariant.
+        -->
         <attr name="buttonNavigationGroupVariant" format="enum">
             <enum name="back_continue" value="0" />
             <enum name="back_submit" value="1" />
             <enum name="skip_continue" value="2" />
             <enum name="skip_submit" value="3" />
         </attr>
+        <!--
+            Texto localizado del botón inicial del grupo.
+        -->
         <attr name="buttonNavigationGroupLeadingLabel" format="string" />
+        <!--
+            Texto localizado del botón final del grupo.
+        -->
         <attr name="buttonNavigationGroupTrailingLabel" format="string" />
+        <!--
+            Ancho del botón inicial como dimensión, por ejemplo 48dp.
+        -->
         <attr name="buttonNavigationGroupLeadingButtonWidth" format="dimension" />
+        <!--
+            Ancho del botón final como dimensión.
+        -->
         <attr name="buttonNavigationGroupTrailingButtonWidth" format="dimension" />
+        <!--
+            Separación entre los botones, por ejemplo 8dp.
+        -->
         <attr name="buttonNavigationGroupButtonSpacing" format="dimension" />
+        <!--
+            Habilitación específica del botón inicial; no sustituye la habilitación general del grupo.
+        -->
         <attr name="buttonNavigationGroupLeadingEnabled" format="boolean" />
+        <!--
+            Habilitación específica del botón final.
+        -->
         <attr name="buttonNavigationGroupTrailingEnabled" format="boolean" />
+        <!--
+            Estado inicial de progreso del botón final.
+        -->
         <attr name="buttonNavigationGroupIsTrailingLoading" format="boolean" />
+        <!--
+            Solicita iniciar progreso al activar el botón final.
+        -->
         <attr name="buttonNavigationGroupStartsTrailingLoadingOnClick" format="boolean" />
     </declare-styleable>
+    <!--
+        Contrato del Label anterior, independiente del TextView nativo. Sus opciones de texto opcional e icono no
+        definen variantes TextView.
+    -->
 
     <declare-styleable name="LabelWrp">
+        <!--
+            Texto de wrappers basados en Compose: app:text="@string/title". En el TextView nativo de este DS usar
+            android:text.
+        -->
         <attr name="text" />
+        <!--
+            Booleano de LabelWrp/TextFieldWrp para indicar contenido opcional. No es una variante del nuevo
+            TextView nativo.
+        -->
         <attr name="optionalText" format="boolean" />
+        <!--
+            Visibilidad del icono de LabelWrp. En TextView usar los atributos independientes
+            showIconStart/showIconEnd.
+        -->
         <attr name="showIcon" format="boolean" />
+        <!--
+            Estado visual de error del componente que lo declara: app:error="true". En TextView no impide acciones
+            por sí mismo; disabled tiene prioridad de color.
+        -->
         <attr name="error" format="boolean" />
+        <!--
+            Descripción localizada de la acción accesible de LabelWrp.
+        -->
         <attr name="onClickContentDescription" format="string" />
+        <!--
+            Nombre previamente registrado en LabelTokensOverrideRegistry; no se usa para recetas TextView.
+        -->
         <attr name="labelTokensOverride" format="string" />
+        <!--
+            Booleano que activa la política de límite de etiqueta de LabelWrp.
+        -->
         <attr name="limitMaxLabel" format="boolean" />
     </declare-styleable>
+    <!--
+        Contrato del campo de entrada basado en Compose, incluidas variantes y PIN. Sus atributos no se reutilizan
+        en TextView.
+    -->
     <declare-styleable name="TextFieldWrp">
+        <!--
+            Contenido inicial textual del campo: app:textFieldValue="..." o referencia string.
+        -->
         <attr name="textFieldValue" format="string" />
+        <!--
+            Contenido inicial del PIN. Se conservan dígitos hasta la longitud configurada y se rellenan posiciones
+            restantes vacías.
+        -->
         <attr name="textFieldPinValue" format="string" />
+        <!--
+            Etiqueta localizada del campo: app:textFieldLabel="@string/field_label".
+        -->
         <attr name="textFieldLabel" format="string" />
+        <!--
+            Indicación localizada mostrada cuando corresponde al campo vacío.
+        -->
         <attr name="textFieldPlaceholder" format="string" />
+        <!--
+            Longitud PIN declarada como texto: "4" o "6". El parser utiliza 4 para valores no soportados.
+        -->
         <attr name="textFieldLength" format="string" />
+        <!--
+            Habilitación de los wrappers que declaran este atributo: app:isEnabled="false". El TextView nativo usa
+            android:enabled.
+        -->
         <attr name="isEnabled" />
+        <!--
+            Booleano de solo lectura. Es una capacidad diferente de isEnabled.
+        -->
         <attr name="textFieldReadOnly" format="boolean" />
+        <!--
+            Booleano del estado de error del campo de entrada.
+        -->
         <attr name="textFieldHasError" format="boolean" />
+        <!--
+            Booleano de LabelWrp/TextFieldWrp para indicar contenido opcional. No es una variante del nuevo
+            TextView nativo.
+        -->
         <attr name="optionalText" />
+        <!--
+            Booleano para mostrar el icono de la etiqueta del campo.
+        -->
         <attr name="textFieldShowLabelIcon" format="boolean" />
+        <!--
+            Texto localizado de apoyo debajo del campo.
+        -->
         <attr name="textFieldBottomText" format="string" />
+        <!--
+            Booleano para mostrar el icono del texto de apoyo.
+        -->
         <attr name="textFieldShowBottomIcon" format="boolean" />
+        <!--
+            Variante textual: default, user, face_id, password o pin. El parser también conserva formatos
+            anteriores; preferir estos nombres.
+        -->
         <attr name="textFieldVariant" format="string" />
+        <!--
+            Booleano que permite el borrado implícito mediante el icono final del campo cuando corresponde.
+        -->
         <attr name="textFieldEnableImplicitTrailingClear" format="boolean" />
+        <!--
+            Nombre registrado en TextFieldTokensOverrideRegistry; registrar antes de inflar.
+        -->
         <attr name="textFieldTokensOverride" format="string" />
     </declare-styleable>
 
+    <!--
+        Referencia al estilo predeterminado del TextView DS desde el tema Android. Ejemplo en un style: item
+        name="textViewStyle" con valor @style/MiTextView. El layout también puede usar style directamente.
+    -->
     <attr name="textViewStyle" format="reference" />
+    <!--
+        Estado drawable propio del DS para selectores. Declarar app:state_error="true" en un item de res/color. La
+        View lo activa mediante setErrorState/setError; no se usa para configurar el error inicial del layout.
+    -->
     <attr name="state_error" format="boolean" />
+    <!--
+        Styleable leído por TextViewAttributeReader; no es el nombre de una View para inflar. Usar
+        cruxui.android.lib.wrappers.components.textviews.TextView. Precedencia: ejecución, XML resuelto,
+        receta registrada y defaults. Los callbacks se configuran en código.
+    -->
     <declare-styleable name="DesignTextView">
+        <!-- Padding de fuente explícito; por defecto false, igual que Compose. -->
+        <attr name="android:includeFontPadding" />
+        <!-- Límites nativos de líneas; defaults compartidos de 1 y sin máximo práctico. -->
+        <attr name="android:minLines" />
+        <attr name="android:maxLines" />
+        <!--
+            Contenido nativo: android:text="@string/title". Desde código admite CharSequence y spans mediante
+            setText; las variantes no inyectan contenido.
+        -->
         <attr name="android:text" />
+        <!--
+            Color o ColorStateList nativo, por ejemplo @color/my_text_selector o ?attr/libraryColorBrandPrimary.
+            Se aplica a todos los estados según el selector; no equivale al textColor semántico que solo modifica
+            normal.
+        -->
         <attr name="android:textColor" />
+        <!--
+            Tamaño nativo. Usar sp, por ejemplo android:textSize="18sp", para respetar el escalado de fuentes.
+        -->
         <attr name="android:textSize" />
+        <!--
+            Recurso @font o familia del sistema. Puede usar ?attr/libraryFontPrimary con un overlay del DS. Las
+            métricas tipográficas se configuran por separado.
+        -->
         <attr name="android:fontFamily" />
+        <!--
+            Estilo de fuente nativo: normal, bold, italic o bold|italic. El lector deriva peso/cursiva cuando no
+            hay peso explícito.
+        -->
         <attr name="android:textStyle" />
+        <!--
+            Peso numérico explícito, por ejemplo 700. Prevalece sobre el peso derivado de textStyle.
+        -->
         <attr name="android:textFontWeight" />
+        <!--
+            Alineación nativa, por ejemplo textStart, textEnd, center o gravity. Su resolución también depende de
+            la compatibilidad RTL del host.
+        -->
+        <attr name="android:textAlignment" />
+        <!--
+            Posición del texto, por ejemplo start|center_vertical. Se conserva como opción nativa de párrafo.
+        -->
+        <attr name="android:gravity" />
+        <!--
+            Modo nativo de justificación, por ejemplo none o inter_word.
+        -->
+        <attr name="android:justificationMode" />
+        <!--
+            Altura de línea, preferiblemente en sp. Si también se declara lineSpacing, la lectura inicial da
+            prioridad a lineHeight.
+        -->
         <attr name="android:lineHeight" />
+        <!--
+            Dimensión adicional entre líneas. Se combina con lineSpacingMultiplier cuando no hay lineHeight
+            explícito.
+        -->
         <attr name="android:lineSpacingExtra" />
+        <!--
+            Multiplicador nativo de altura de fuente, por ejemplo 1.2. Es alternativa a lineHeight junto con
+            lineSpacingExtra.
+        -->
         <attr name="android:lineSpacingMultiplier" />
+        <!--
+            Tracking nativo en em, por ejemplo 0.02. TypographyToken expresa su tracking en sp y el adaptador
+            realiza la conversión.
+        -->
         <attr name="android:letterSpacing" />
+        <!--
+            Referencia a TextAppearance. Con overlay del DS:
+            android:textAppearance="?attr/libraryTypographyHeadline24". Los atributos del componente pueden
+            ajustar los campos del estilo.
+        -->
         <attr name="android:textAppearance" />
+        <!--
+            Habilitación nativa. false bloquea texto e iconos y tiene prioridad visual sobre error.
+        -->
         <attr name="android:enabled" />
+        <!--
+            Recurso o drawable de fondo nativo; @null permite retirarlo. El token backgroundColor es la
+            alternativa semántica.
+        -->
+        <attr name="android:background" />
+        <!--
+            Capa drawable dibujada sobre el contenido; @null la retira. El token foregroundColor aporta una capa
+            semántica de color.
+        -->
+        <attr name="android:foreground" />
+        <!--
+            Booleano que habilita selección/copia. La selección reserva pulsación larga y doble toque del texto,
+            conservando acciones independientes de iconos.
+        -->
+        <attr name="android:textIsSelectable" />
+        <!--
+            Drawable inicial relativo. app:iconStart prevalece cuando ambos se declaran.
+        -->
+        <attr name="android:drawableStart" />
+        <!--
+            Drawable final relativo. app:iconEnd prevalece cuando ambos se declaran.
+        -->
+        <attr name="android:drawableEnd" />
+        <!--
+            Separación nativa de iconos y texto. app:iconPadding prevalece si está presente.
+        -->
+        <attr name="android:drawablePadding" />
+        <!--
+            Presentación del TextView: standard corresponde a DEFAULT; hipertext aplica enlace subrayado. No abre
+            URLs ni asigna listeners.
+        -->
         <attr name="variant">
             <enum name="standard" value="0" />
-            <enum name="optional" value="1" />
+            <enum name="hipertext" value="1" />
         </attr>
-        <attr name="typography">
-            <enum name="label" value="0" />
-            <enum name="caption" value="1" />
-            <enum name="body" value="2" />
-        </attr>
-        <attr name="textColorRole">
-            <enum name="foreground" value="0" />
-            <enum name="muted" value="1" />
-            <enum name="disabled" value="2" />
-            <enum name="error" value="3" />
-            <enum name="primary" value="4" />
-        </attr>
+        <!--
+            Estado visual de error del componente que lo declara: app:error="true". En TextView no impide acciones
+            por sí mismo; disabled tiene prioridad de color.
+        -->
         <attr name="error" />
-        <attr name="android:drawableStart" />
-        <attr name="android:drawableEnd" />
-        <attr name="android:drawablePadding" />
+        <!--
+            Drawable inicial, por ejemplo app:iconStart="@drawable/ic_info". @null lo retira explícitamente;
+            respeta dirección de lectura.
+        -->
         <attr name="iconStart" format="reference" />
+        <!--
+            Drawable final. Puede referenciar ?attr/libraryIconAlertsInfo con overlay del DS; @null lo retira.
+        -->
         <attr name="iconEnd" format="reference" />
+        <!--
+            Booleano que muestra/oculta el icono inicial elegido. true no crea un icono cuando no existe una
+            fuente.
+        -->
         <attr name="showIconStart" format="boolean" />
+        <!--
+            Booleano que muestra/oculta el icono final elegido. La ausencia conserva el comportamiento de la
+            receta.
+        -->
         <attr name="showIconEnd" format="boolean" />
+        <!--
+            Dimensión entre iconos y texto; por ejemplo 8dp. Prevalece sobre android:drawablePadding.
+        -->
         <attr name="iconPadding" format="dimension" />
+        <!--
+            Descripción localizada para las acciones accesibles del icono inicial, por ejemplo
+            @string/view_profile.
+        -->
         <attr name="iconStartContentDescription" format="string" />
+        <!--
+            Descripción localizada para las acciones accesibles del icono final, por ejemplo
+            @string/more_information.
+        -->
         <attr name="iconEndContentDescription" format="string" />
+        <!--
+            Color o selector específico de error. Tiene prioridad sobre android:textColor dentro de la capa XML
+            para ese estado.
+        -->
         <attr name="errorTextColor" format="color|reference" />
+        <!--
+            Color o selector específico deshabilitado; se aplica antes que error cuando coinciden estados.
+        -->
         <attr name="disabledTextColor" format="color|reference" />
+        <!--
+            Nombre de receta en TextViewTokensOverrideRegistry, por ejemplo sectionTitle. La receta devuelve
+            TextViewTokensOverride con typography, colores, familia e iconos; registrar antes de inflate. No usar
+            un atributo tipográfico separado.
+        -->
+        <attr name="textViewTokensOverride" format="string" />
     </declare-styleable>
 </resources>

@@ -1,0 +1,30 @@
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Cadena localizada usada por la variante opcional del componente Label.
+
+    Justificación:
+    Conserva el recurso del componente anterior sin atribuir su comportamiento al nuevo TextView.
+
+    Se comunica con:
+    LabelVariantResolver selecciona text_view_optional para LabelVariant.Optional.
+
+    Uso:
+    El host de Label configura su opción de texto opcional en esa API. El TextView nuevo no tiene variante
+    optional ni inserta esta cadena.
+    Aunque el nombre histórico empiece por text_view, pertenece al flujo Label. Mantener su traducción en los
+    recursos de idioma.
+
+    Objetivos:
+    - Mantener el recurso localizado existente.
+    - Separar los contratos Label y TextView.
+
+    @author Krause Kelsen
+    @since 07-16-2026
+    @version 0.0.13
+    @see cruxui.android.lib.ui.components.labels.variant.LabelVariantResolver
+-->
+<resources>
+    <string name="text_view_optional">(Opcional)</string>
+</resources>

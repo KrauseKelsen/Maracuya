@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path("/Users/krausekelsen/Documents/AndroidProjects/MyFirstApplication")
-PACKAGE_ROOT = ROOT / "maracuya/src/main/java/cruxui/android/maracuya"
+PACKAGE_ROOT = ROOT / "maracuya/src/main/java/cruxui/android/lib"
 OUT_JSON = ROOT / "design-system-report/tmp/kdoc-coverage.json"
 
 CLASS_DECLARATION_RE = re.compile(
@@ -273,7 +273,7 @@ def audit() -> dict[str, object]:
     result = {
         "methodology": (
             "Counts named class-like Kotlin declarations under "
-            "maracuya/src/main/java/cruxui/android/maracuya, including nested declarations and wrappers: "
+            "maracuya/src/main/java/cruxui/android/lib, including nested declarations and wrappers: "
             "class, data class, enum class, sealed class, value class, annotation class, object and interface. "
             "Public @Composable *Mrcy functions are reported separately as API functions. A declaration only "
             "counts as template-compliant when its KDoc follows the requested fields: Descripción, Uso, "

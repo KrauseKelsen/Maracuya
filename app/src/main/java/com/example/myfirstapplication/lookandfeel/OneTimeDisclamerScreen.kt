@@ -20,15 +20,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.R
-import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
-import cruxui.android.maracuya.compositions.LocalLibraryTypography
-import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
-import cruxui.android.maracuya.ui.components.checkboxes.CheckBoxMrcy
-import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
-import cruxui.android.maracuya.utils.composeadapters.ColorComposeAdapter
+import cruxui.android.lib.R
+import cruxui.android.lib.compositions.LocalLibraryColorTokens
+import cruxui.android.lib.compositions.LocalLibraryTypography
+import cruxui.android.lib.theme.MyLibraryTheme
+import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.lib.ui.components.checkboxes.CheckBoxMrcy
+import cruxui.android.lib.ui.components.labels.LabelMrcy
+import cruxui.android.lib.ui.components.labels.tokens.LabelTokensOverride
+import cruxui.android.lib.utils.composeadapters.ColorComposeAdapter
 
 @Composable
 fun OneTimeDisclamerScreen() {

@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    IDs y etiquetas accesibles de acciones de iconos iniciales/finales.
+
+    Justificación:
+    Los compound drawables no son Views hijas; sus acciones deben publicarse en el nodo accesible de la View que
+    los contiene.
+
+    Se comunica con:
+    CompoundDrawableBehaviorController agrega y ejecuta estas acciones. TextView suministra listeners y
+    descripciones por lado.
+
+    Uso:
+    El host configura setOnIconStartClickListener, setOnIconEndClickListener y sus versiones largas. Usar
+    setIconStartContentDescription/setIconEndContentDescription con texto localizado para describir la acción
+    concreta.
+    El DS usa estas cadenas como respaldo y estos IDs para distinguir acciones. Los tests o integraciones de
+    accesibilidad pueden invocar performAccessibilityAction con el ID correspondiente; no se asignan a android:id
+    de una View.
+
+    Objetivos:
+    - Diferenciar acciones de texto e iconos.
+    - Proporcionar etiquetas localizadas de respaldo.
+
+    @author Krause Kelsen
+    @since 07-16-2026
+    @version 0.0.13
+    @see cruxui.android.lib.wrappers.core.behavior.CompoundDrawableBehaviorController
+-->
 <resources>
+    <!--
+        ID estable de la acción accesible action_icon_start_click. Se utiliza por el controlador cuando el icono
+        dispone de ese listener.
+    -->
     <item name="action_icon_start_click" type="id" />
+    <!--
+        ID estable de la acción accesible action_icon_end_click. Se utiliza por el controlador cuando el icono
+        dispone de ese listener.
+    -->
     <item name="action_icon_end_click" type="id" />
+    <!--
+        ID estable de la acción accesible action_icon_start_long_click. Se utiliza por el controlador cuando el
+        icono dispone de ese listener.
+    -->
     <item name="action_icon_start_long_click" type="id" />
+    <!--
+        ID estable de la acción accesible action_icon_end_long_click. Se utiliza por el controlador cuando el
+        icono dispone de ese listener.
+    -->
     <item name="action_icon_end_long_click" type="id" />
+    <!--
+        Etiqueta localizada de respaldo de la acción action_icon_start_click. Se utiliza por el controlador cuando
+        el icono dispone de ese listener.
+    -->
     <string name="action_icon_start_click">Activar icono inicial</string>
+    <!--
+        Etiqueta localizada de respaldo de la acción action_icon_end_click. Se utiliza por el controlador cuando
+        el icono dispone de ese listener.
+    -->
     <string name="action_icon_end_click">Activar icono final</string>
+    <!--
+        Etiqueta localizada de respaldo de la acción action_icon_start_long_click. Se utiliza por el controlador
+        cuando el icono dispone de ese listener.
+    -->
     <string name="action_icon_start_long_click">Mantener pulsado el icono inicial</string>
+    <!--
+        Etiqueta localizada de respaldo de la acción action_icon_end_long_click. Se utiliza por el controlador
+        cuando el icono dispone de ese listener.
+    -->
     <string name="action_icon_end_long_click">Mantener pulsado el icono final</string>
 </resources>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
+    <cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
@@ -27,14 +27,14 @@
                 android:gravity="center_horizontal|top"
                 android:orientation="horizontal">
 
-                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                <cruxui.android.lib.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
                     android:id="@+id/buttonNavigationServicesOneXml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:buttonNavigationLabel="Pagar servicios"
                     app:buttonNavigationVariant="primarysquare" />
 
-                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                <cruxui.android.lib.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
                     android:id="@+id/buttonNavigationServicesTwoXml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                     app:buttonNavigationLabel="Sinpe\nmóvil"
                     app:buttonNavigationVariant="secondarysquare" />
 
-                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                <cruxui.android.lib.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
                     android:id="@+id/buttonNavigationServicesThreeXml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                     app:buttonNavigationLabel="Seguridad"
                     app:buttonNavigationVariant="primarysquare" />
 
-                <cruxui.android.maracuya.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
+                <cruxui.android.lib.wrappers.components.buttons.navigation.simple.ButtonNavigationWrp
                     android:id="@+id/buttonNavigationServicesFourXml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,20 +59,20 @@
                     app:buttonNavigationVariant="secondarysquare" />
             </LinearLayout>
 
-            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+            <cruxui.android.lib.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
                 android:id="@+id/buttonNavigationGroupBackContinueXml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:buttonNavigationGroupVariant="back_continue" />
 
-            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+            <cruxui.android.lib.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
                 android:id="@+id/buttonNavigationGroupBackSubmitXml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:buttonNavigationGroupVariant="back_submit" />
 
-            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+            <cruxui.android.lib.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
                 android:id="@+id/buttonNavigationGroupBackContinueLoadingXml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,21 +80,21 @@
                 app:buttonNavigationGroupIsTrailingLoading="true"
                 app:buttonNavigationGroupVariant="back_continue" />
 
-            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+            <cruxui.android.lib.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
                 android:id="@+id/buttonNavigationGroupSkipContinueXml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:buttonNavigationGroupVariant="skip_continue" />
 
-            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+            <cruxui.android.lib.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
                 android:id="@+id/buttonNavigationGroupSkipSubmitXml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:buttonNavigationGroupVariant="skip_submit" />
 
-            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+            <cruxui.android.lib.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
                 android:id="@+id/buttonNavigationGroupSkipContinueLoadingXml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                 app:buttonNavigationGroupIsTrailingLoading="true"
                 app:buttonNavigationGroupVariant="skip_continue" />
 
-            <cruxui.android.maracuya.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
+            <cruxui.android.lib.wrappers.components.buttons.navigation.group.ButtonNavigationGroupWrp
                 android:id="@+id/buttonNavigationGroupCustomXml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -116,6 +116,6 @@
 
         </LinearLayout>
 
-    </cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>
+    </cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp>
 
 </ScrollView>

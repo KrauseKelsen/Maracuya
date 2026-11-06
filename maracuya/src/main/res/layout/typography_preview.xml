@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Ejemplos XML de estilos generados desde LibraryTypographyTokens, sin recetas registradas.
+
+    Justificación:
+    Muestra que la API XML incluye encabezados, cursivas y legales además de label, caption y body1.
+    Todos los estilos del objeto Library se exportan con el mismo mecanismo; no hay una lista por componente.
+
+    Se comunica con:
+    ThemeOverlay.Maracuya resuelve los atributos libraryTypography generados. El TextView nativo del DS
+    decodifica TextAppearance mediante su capacidad tipográfica compartida.
+
+    Uso:
+    Aplicar el overlay en el ámbito Android y elegir android:textAppearance="?attr/libraryTypographyNombre".
+    Para una marca fija también se permite @style/TextAppearance.Maracuya.Nombre.
+    El editor ofrece los nombres generados después de sincronizar y compilar el proyecto.
+    Un cambio en LibraryTypographyTokens se propaga al reconstruir la librería. Para personalizaciones de
+    tema en ejecución usar el register/TokensOverride del componente, conservando sus reglas de precedencia.
+
+    Objetivos:
+    - Permitir consumo declarativo completo desde XML.
+    - Verificar inflación, pesos y cursivas fuera de una composición.
+
+    @author Krause Kelsen
+    @since 07-16-2026
+    @version 0.0.13
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.Maracuya">
+
+    <!-- Encabezado medio del catálogo; el atributo selecciona el estilo de la marca del overlay. -->
+    <cruxui.android.lib.wrappers.components.textviews.TextView
+        android:id="@+id/typographyHeadlinePreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_preview_basic"
+        android:textAppearance="?attr/libraryTypographyHeadline24Medium" />
+
+    <!-- Cuerpo en cursiva; peso, tamaño y altura se toman de la misma definición que Compose. -->
+    <cruxui.android.lib.wrappers.components.textviews.TextView
+        android:id="@+id/typographyBodyItalicPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_preview_custom"
+        android:textAppearance="?attr/libraryTypographyBody2Italic" />
+
+    <!-- Referencia directa a un TextAppearance generado: fija la marca de este estilo. -->
+    <cruxui.android.lib.wrappers.components.textviews.TextView
+        android:id="@+id/typographyLegalPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_preview_link"
+        android:textAppearance="@style/TextAppearance.Maracuya.LegalBold" />
+</LinearLayout>

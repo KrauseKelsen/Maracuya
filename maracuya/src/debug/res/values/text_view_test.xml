@@ -1,0 +1,8 @@
+<resources>
+    <!-- Recursos exclusivos de pruebas; no forman parte de la paleta ni del preview público. -->
+    <style name="Widget.Maracuya.TestTextView" parent="Widget.Maracuya.TextView">
+        <item name="android:textColor">@color/text_view_test_states</item>
+        <item name="android:fontFamily">@font/mulish_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>

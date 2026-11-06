@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path("/Users/krausekelsen/Documents/AndroidProjects/MyFirstApplication")
-WRAPPERS_ROOT = ROOT / "maracuya/src/main/java/cruxui/android/maracuya/wrappers"
+WRAPPERS_ROOT = ROOT / "maracuya/src/main/java/cruxui/android/lib/wrappers"
 OUT = ROOT / "design-system-report/tmp/wrapper-architecture.json"
 
 TARGET_ARCHITECTURE_MARKERS = (

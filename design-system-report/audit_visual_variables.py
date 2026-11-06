@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path("/Users/krausekelsen/Documents/AndroidProjects/MyFirstApplication")
-COMPONENTS_ROOT = ROOT / "maracuya/src/main/java/cruxui/android/maracuya/ui/components"
+COMPONENTS_ROOT = ROOT / "maracuya/src/main/java/cruxui/android/lib/ui/components"
 OUT = ROOT / "design-system-report/tmp/visual-variables.json"
 
 NUMERIC_DP = re.compile(r"\b\d+(?:\.\d+)?\.dp\b")

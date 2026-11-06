@@ -1,0 +1,13 @@
+<!-- Fixtures de estilos explícitos; la galería pública solo muestra los casos Compose. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <cruxui.android.lib.wrappers.components.textviews.TextView
+        android:id="@+id/nativeTextStyled" style="@style/Widget.Maracuya.TestTextView"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/text_view_preview_custom" />
+    <cruxui.android.lib.wrappers.components.textviews.TextView
+        android:id="@+id/nativeTextLocalStyled" style="@style/Widget.Maracuya.TestTextView"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/text_view_preview_custom" android:textSize="21sp"
+        android:lineSpacingExtra="6dp" android:lineSpacingMultiplier="1.2" />
+</LinearLayout>

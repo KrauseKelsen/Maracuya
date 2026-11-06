@@ -1,0 +1,6 @@
+<!-- Selector exclusivo de pruebas de precedencia y estados Android. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:state_enabled="false" android:color="#767676" />
+    <item app:state_error="true" android:color="#B3261E" />
+    <item android:color="#2450A4" />
+</selector>

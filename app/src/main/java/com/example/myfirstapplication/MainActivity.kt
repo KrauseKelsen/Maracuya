@@ -10,17 +10,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.BiometricsDisclaimerScreen
-import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
-import cruxui.android.maracuya.ui.components.inputs.basic.InputFieldBasicMrcy
-import cruxui.android.maracuya.ui.components.inputs.basic.InputFieldBasicType
-import cruxui.android.maracuya.ui.components.inputs.config.InputFieldBasicTokenGroup
-import cruxui.android.maracuya.ui.components.inputs.config.InputFieldBasicTokensResolver
-import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.textfields.TextFieldMrcy
-import cruxui.android.maracuya.ui.components.textfields.TextFieldVariant
-import cruxui.android.maracuya.ui.components.texts.LegalText
-import cruxui.android.maracuya.ui.components.texts.LegalTextTokens
+import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.lib.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
+import cruxui.android.lib.ui.components.inputs.basic.InputFieldBasicMrcy
+import cruxui.android.lib.ui.components.inputs.basic.InputFieldBasicType
+import cruxui.android.lib.ui.components.inputs.config.InputFieldBasicTokenGroup
+import cruxui.android.lib.ui.components.inputs.config.InputFieldBasicTokensResolver
+import cruxui.android.lib.ui.components.labels.LabelMrcy
+import cruxui.android.lib.ui.components.textfields.TextFieldMrcy
+import cruxui.android.lib.ui.components.textfields.TextFieldVariant
+import cruxui.android.lib.ui.components.texts.LegalText
+import cruxui.android.lib.ui.components.texts.LegalTextTokens
 
 
 class MainActivity : ComponentActivity() {

@@ -15,14 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import cruxui.android.maracuya.R
-import cruxui.android.maracuya.compositions.LocalLibraryColorTokens
-import cruxui.android.maracuya.theme.MyLibraryTheme
-import cruxui.android.maracuya.ui.components.buttons.simple.ButtonMrcy
-import cruxui.android.maracuya.ui.components.buttons.simple.ButtonTokensOverride
-import cruxui.android.maracuya.ui.components.labels.LabelMrcy
-import cruxui.android.maracuya.ui.components.labels.tokens.LabelTokensOverride
-import cruxui.android.maracuya.ui.components.layouts.LayoutPilotWellkommen
+import cruxui.android.lib.R
+import cruxui.android.lib.compositions.LocalLibraryColorTokens
+import cruxui.android.lib.theme.MyLibraryTheme
+import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.lib.ui.components.buttons.simple.ButtonTokensOverride
+import cruxui.android.lib.ui.components.labels.LabelMrcy
+import cruxui.android.lib.ui.components.labels.tokens.LabelTokensOverride
+import cruxui.android.lib.ui.components.layouts.LayoutPilotWellkommen
 
 @Composable
 fun LoginMainScreen () {

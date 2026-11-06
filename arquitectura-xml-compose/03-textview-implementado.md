@@ -1,274 +1,198 @@
-# TextView: semántica compartida con Compose y render Android
+# TokenBridgeXML: tema compartido y TextView nativo
 
-Rama: `XMLArchitecture`. Actualización: 20 de octubre de 2026.
+La fuente de verdad sigue siendo `theme/LibraryThemes.kt`, con los tokens atómicos y semánticos existentes. `LibraryThemeSet.resolve(...)` selecciona el modo y entrega un `LibraryThemeSnapshot` con `colors`, `typography`, `fontFamily` e `icons`. El snapshot es un contrato de datos: no vuelve a construir un tema ni mantiene un catálogo paralelo.
 
-El componente público es `cruxui.android.maracuya.wrappers.components.textviews.TextView`, basado en `AppCompatTextView`. Su organización sigue el patrón de los componentes Compose del DS: configuración declarativa, resolvers de variante y behavior, tokens, tokens de render y render final. Las clases semánticas existentes se comparten; la adaptación a ARGB, Typeface, píxeles y Drawable ocurre al final.
+Compose conserva sus cuatro `CompositionLocal`. La fachada `LibraryTheme.current` los agrupa y respeta también las sustituciones de un local dentro de un scope anidado. XML obtiene el mismo contrato mediante `AndroidThemeResolver`, que consulta el `MyLibraryThemeWrp` más cercano. No se abre una composición para resolver un TextView nativo.
 
-Esta revisión reemplaza el primer diseño del documento: se eliminan `AndroidThemeColors`, `AndroidThemeTypography`, la receta duplicada de Label y los XML `mrcy_mulish_family`/`mrcy_davivienda_family`. Los atributos nuevos usan nombres como `error`, `variant`, `iconStart` e `iconEnd`. El antiguo `LabelWrp` sigue disponible como API obsoleta; no se modifican sus atributos legacy.
+## Una receta para Compose y XML
 
-## Flujo de datos
+La tipografía forma parte de `TextViewTokensOverride`. No hay un atributo `mrcyTypographyToken`, una lista de nombres tipográficos propia del componente ni un segundo registro de tipografías.
 
-```mermaid
-flowchart TD
-    DS["LibraryThemeSet / LibraryColorTokens / CorporateTypography / CorporateIcons"] --> SNAP["LibraryThemeSnapshot: colecciones semánticas completas"]
-    SNAP --> LOCALS["CompositionLocals del tema Compose"]
-    LOCALS --> SHARED["LabelTokensResolver: resolución y merge compartidos"]
-    SNAP --> SHARED
-    HOST["MyLibraryThemeWrp: marca y modo"] --> SNAP
-    SHARED --> LABEL["LabelTokens / LabelTokensOverride"]
-    LABEL --> VAR["LabelVariant + LabelVariantResolver compartidos"]
-    VAR --> COMPOSE["Adaptadores Compose → LabelMrcy"]
-    VAR --> TOKENS["TextViewTokensResolver"]
-    XML["Layout / style / textAppearance / recursos"] --> ATTR["TextViewAttributeReader"]
-    ATTR --> TOKENS
-    KT["Setters Kotlin / tokens existentes / overrides"] --> TOKENS
-    TOKENS --> RENDERRES["TextViewTokensRenderResolver"]
-    FONTS["FontResourceCatalog → archivos TTF existentes"] --> ADAPTER["AndroidTokenAdapter"]
-    ADAPTER --> RENDERRES
-    RENDERRES --> MODEL["TextViewTokensRender: Typeface, px, colores y drawables start/end"]
-    MODEL --> RENDER["TextViewRenderer + CompoundDrawableRenderer"]
-    RENDER --> VIEW["AppCompatTextView"]
-    EVENTS["Click / long click / touch / accesibilidad"] --> BEHAVIOR["TextViewBehaviorResolver"]
-    BEHAVIOR --> CORE["TextInteraction: reglas puras de activación"]
-    CORE --> DISPATCH["APIs nativas + CompoundDrawableBehaviorController"]
-    DISPATCH --> LISTENERS["OnClickListener / OnLongClickListener de texto o icono"]
-```
-
-Los `CompositionLocal` se leen únicamente en el borde Compose. XML llama al overload puro del mismo `LabelTokensResolver`, pasando el snapshot. No necesita abrir una composición para obtener tokens ni mantener un registro de funciones.
-
-## Estructura y responsabilidades
-
-Rutas relativas a `maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textviews/`:
-
-| Carpeta / archivo | Tipo | Responsabilidad |
-|---|---|---|
-| `TextView.kt` | Fachada Android / orquestación | Coordina resolvers, conserva las entradas por instancia y expone setters familiares. |
-| `attributes/TextViewAttributeReader.kt` | Adaptador XML | Resuelve atributos y estilos Android a entradas tipadas. |
-| `core/TextViewDefaults.kt` | Defaults | Centraliza separación predeterminada de iconos. |
-| `variant/TextViewVariant.kt` | Variante declarativa | Alias del `LabelVariant` compartido: Default y Optional. |
-| `variant/TextViewVariantResolver.kt` | Adaptador de variante | Obtiene el contenido localizado de la receta compartida. |
-| `behavior/TextViewBehavior.kt` | Behavior declarativo | Declara listeners y permisos del texto y de cada icono. |
-| `behavior/TextViewBehaviorResolver.kt` | Behavior resolver | Consulta las reglas de `core/text` para decidir si una acción está permitida. |
-| `tokens/TextViewTokens.kt` | Tokens declarativos | Reutiliza `LabelTokens` mediante alias y declara el resultado semántico de resolución. |
-| `tokens/TextViewTokensOverride.kt` | Overrides Android | Expresa recursos, selectores, medidas y personalización independiente de ambos iconos. |
-| `tokens/TextViewTokensResolver.kt` | Tokens resolver | Invoca el resolver Label compartido, selecciona la receta y combina XML/Kotlin. |
-| `tokensrender/TextViewTokensRender.kt` | Tokens de render | Declara parámetros nativos listos para el renderer. |
-| `tokensrender/TextViewTokensRenderResolver.kt` | Render resolver | Convierte semántica y overrides en Typeface, colores, métricas y Drawable. |
-| `render/TextViewRenderer.kt` | Render | Aplica los parámetros a la View sin seleccionar nuevas recetas. |
-
-No hay capa `child`: los iconos son compound drawables nativos, no componentes hijos independientes.
-
-Las piezas reutilizables se encuentran fuera del componente:
-
-| Ubicación | Reutilización |
-|---|---|
-| `ui/components/labels/LabelTokensResolver.kt` | Mismo default y mismo merge para Compose y Views. |
-| `ui/components/labels/variant/` | Mismas recetas y selección de tipografía para ambos renderizadores. |
-| `theme/LibraryThemeSnapshot.kt` | Paleta, tipografías, iconos y familia completos del DS. |
-| `theme/FontResourceCatalog.kt` | Catálogo único de archivos TTF por familia, peso y cursiva. |
-| `wrappers/core/resources/AndroidTokenAdapter.kt` | Conversión genérica de tokens DS a valores Android. |
-| `wrappers/core/tokens/ViewTokenValues.kt` | Recursos, valores literales y selectores semánticos reutilizables por otras Views. |
-| `wrappers/core/render/CompoundDrawableRenderer.kt` | Aplicación y restauración de iconos relativos y tintes. |
-| `wrappers/core/behavior/CompoundDrawableBehaviorController.kt` | Touch, long press, RTL, cancelación y acciones accesibles para iconos. |
-| `core/text/TextInteraction.kt` | Reglas puras de enabled/error y permiso de activación. |
-
-Para un futuro TextField se conserva esta organización y se reutilizan esas funciones. Solo sus decisiones de variante, edición, validación y teclado necesitan implementación propia. No se copia una segunda paleta o un segundo catálogo de fuentes por componente.
-
-## Tema completo y acceso desde la app anfitriona
-
-`AndroidThemeSnapshot` es un alias de `LibraryThemeSnapshot`; ya no transforma el tema en un subconjunto rígido de cinco colores y tres tipografías. El host puede consultar todas las propiedades semánticas existentes:
+Definir la receta y registrarla antes de inflar la pantalla, por ejemplo desde `Application.onCreate`:
 
 ```kotlin
-val theme = nombre.getThemeTokens()
-val color = theme.colors.brandPrimary
-val typography = theme.typography.headline24
-val icon = theme.icons.alerts.info
+import cruxui.android.lib.core.components.textviews.tokens.TextViewTokensOverride
+import cruxui.android.lib.theme.LibraryThemeSnapshot
+import cruxui.android.lib.wrappers.components.textviews.tokens.TextViewTokensOverrideRegistry
 
-nombre.setTypography(typography)
-nombre.setIconStart(icon)
-nombre.setIconEnd(theme.icons.arrows.navigateNext)
+fun sectionTitle(library: LibraryThemeSnapshot) = TextViewTokensOverride(
+    typography = library.typography.headline24,
+    textColor = library.colors.brandPrimary,
+    fontFamily = library.fontFamily,
+    iconEnd = library.icons.alerts.info,
+)
+
+// Dentro de Application.onCreate(), antes de inflar layouts:
+TextViewTokensOverrideRegistry.register("sectionTitle", ::sectionTitle)
 ```
 
-Un valor concreto conserva el token elegido. Para reevaluar una selección contra cada nuevo tema se usa un selector tipado, sin registros globales:
+La misma función sirve en Compose:
 
 ```kotlin
-import cruxui.android.maracuya.wrappers.components.textviews.tokens.TextViewTokensOverride
-import cruxui.android.maracuya.wrappers.core.tokens.TextColor
-import cruxui.android.maracuya.wrappers.core.tokens.TextTypography
-import cruxui.android.maracuya.wrappers.core.tokens.ViewIcon
+import cruxui.android.lib.theme.LibraryTheme
+import cruxui.android.lib.theme.MyLibraryTheme
+import cruxui.android.lib.ui.components.textviews.TextView
 
-nombre.setTokensOverride(TextViewTokensOverride(
-    foregroundDefault = TextColor.Semantic { it.brandPrimary },
-    typography = TextTypography.Semantic { it.headline24 },
-    iconStart = ViewIcon.Semantic { it.alerts.info },
-    iconEnd = ViewIcon.Semantic { it.arrows.navigateNext },
-))
-```
-
-Estos selectores reciben las clases originales `LibraryColorTokens`, `CorporateTypography` y `CorporateIcons`; no limitan sus propiedades a un enum del wrapper. Los roles cortos XML `textColorRole` y `typography` son comodidades del componente, no un catálogo alternativo del DS.
-
-El host también puede reutilizar exactamente los tokens y overrides que recibe el componente Compose:
-
-```kotlin
-import cruxui.android.maracuya.ui.components.labels.LabelTokensOverride
-import cruxui.android.maracuya.ui.components.labels.LabelTokensResolver
-
-val sharedTokens = LabelTokensResolver.resolve(nombre.getThemeTokens())
-nombre.setTokens(sharedTokens)
-nombre.setComponentTokensOverride(LabelTokensOverride(
-    labelTypography = nombre.getThemeTokens().typography.body2,
-    infoIcon = nombre.getThemeTokens().icons.alerts.help,
-))
-```
-
-`setTokens(null)` vuelve a derivar los tokens del tema. `setComponentTokensOverride(null)` retira la personalización semántica compartida. `setThemeTokens(snapshot)` permite inyectar un snapshot completo por instancia; `null` restaura el tema del host XML más cercano. Un host anidado mantiene su propio alcance.
-
-## Variantes como recetas reutilizables
-
-`LabelVariant.Default` selecciona `LabelTokens.labelTypography`. `LabelVariant.Optional` selecciona `LabelTokens.optionalTypography` y propone el texto localizado «(Opcional)». Ambos emplean los colores ya definidos por Label; error y disabled permanecen como estados independientes.
-
-Optional es un ejemplo de receta de uso frecuente. Las siguientes variantes deben declararse en el mismo contrato compartido, con las decisiones concretas de la receta en su resolver. No es necesario crear una variante por cada combinación de error, disabled o iconos.
-
-`LabelMrcy` consume el mismo resolver para su texto principal y su texto opcional. Su API actual conserva el sufijo opcional; el TextView nativo presenta una receta por instancia. No se afirma que ambos árboles de UI sean idénticos.
-
-Un `android:text` o `setText`, incluso vacío, tiene prioridad sobre el contenido sugerido por la variante. `clearTextOverride()` restaura el texto XML inicial o el contenido de receta. XML escribe Default como `standard`, porque `default` es una palabra reservada en los recursos Java generados.
-
-## XML: atributos nativos y nombres simples
-
-Ejemplo con recursos existentes:
-
-```xml
-<cruxui.android.maracuya.wrappers.components.textviews.TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nombre"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/text_view_demo_name"
-    android:fontFamily="@font/mulish_regular"
-    android:textColor="@color/text_view_demo_states"
-    android:textSize="18sp"
-    app:variant="standard"
-    app:error="false"
-    app:iconStart="@drawable/ic_account_circle"
-    app:iconEnd="@drawable/ic_info"
-    app:iconPadding="8dp"
-    app:iconStartContentDescription="@string/text_view_demo_icon_start_description"
-    app:iconEndContentDescription="@string/text_view_demo_icon_end_description" />
-```
-
-Con `iconStart` o `iconEnd` explícitos, el icono se muestra salvo que su `showIconStart`/`showIconEnd` sea false. Sin recurso explícito, `showIconEnd="true"` usa `LabelTokens.infoIcon`. `@null` o `ViewIcon.None` retiran el icono de ese lado. `android:drawableStart` y `android:drawableEnd` también se aceptan; los atributos `app:iconStart`/`app:iconEnd` tienen prioridad cuando se definen simultáneamente.
-
-El caso mínimo no necesita fuente ni color explícitos:
-
-```xml
-<cruxui.android.maracuya.wrappers.components.textviews.TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:variant="optional"
-    app:showIconEnd="true" />
-```
-
-| Atributo XML | API Kotlin |
-|---|---|
-| `android:text` | `setText`, `text` |
-| `android:textColor` | `setColor(@ColorRes)`, `setTextColor(@ColorInt/ColorStateList)` |
-| `android:fontFamily` | `setFont(@FontRes)`, `setFont(FontFamilyToken)`, `setTypeface` |
-| `android:textSize` | `setTextSizeSp`, `setTextSize(unit, value)` |
-| `android:textAppearance` | `setTextAppearance` |
-| `android:textStyle`, `android:textFontWeight` | `setTypeface`, overrides de peso/cursiva |
-| `android:lineHeight`, `android:letterSpacing` | `setLineHeight`, `setLetterSpacing` |
-| `android:lineSpacingExtra`, `android:lineSpacingMultiplier` | `setLineSpacing` |
-| `android:enabled` | `setEnabled`, `isEnabled` |
-| `app:variant` | `setVariant(TextViewVariant)` |
-| `app:typography` | `setTypography(TextTypographyRole)` o `setTypography(TypographyToken)` |
-| `app:textColorRole` | `setColorRole(TextColorRole)` |
-| `app:error` | `setErrorState`, también `setError` nativo |
-| `app:errorTextColor`, `app:disabledTextColor` | Overrides `foregroundError`, `foregroundDisabled` |
-| `app:iconStart`, `app:iconEnd` | `setIconStart` / `setIconEnd` con `IconToken` o `ViewIcon` |
-| `app:showIconStart`, `app:showIconEnd` | `setShowIconStart` / `setShowIconEnd` |
-| `app:iconPadding` | Override `iconPadding = TextDimension(8f, TypedValue.COMPLEX_UNIT_DIP)` |
-| `app:iconStartContentDescription`, `app:iconEndContentDescription` | `setIconStartContentDescription` / `setIconEndContentDescription` |
-| `style`, atributo de tema `textViewStyle` | Cascada de estilos Android |
-
-El selector de error usa `app:state_error`. `background`, `foreground`, padding, gravity, spans, selección, maxLines y ellipsize siguen siendo capacidades nativas de TextView. El atributo de color es `android:textColor`; `android:setColor` no existe.
-
-## Behavior y eventos familiares
-
-Los listeners del texto siguen usando las APIs Android. Cada icono tiene listeners independientes y puede mantener una pulsación sin activar el listener del texto:
-
-```kotlin
-import cruxui.android.maracuya.wrappers.components.textviews.TextView as DesignTextView
-
-val nombre = findViewById<DesignTextView>(R.id.nombre)
-nombre.setOnClickListener { view -> /* Acción del texto */ }
-nombre.setOnLongClickListener { view ->
-    // Acción de pulsación larga del texto.
-    true
-}
-nombre.setOnIconStartClickListener { view -> /* Acción del icono start */ }
-nombre.setOnIconEndClickListener { view -> /* Ayuda del icono end */ }
-nombre.setOnIconEndLongClickListener { view ->
-    // true consume el evento y evita el click posterior al soltar.
-    true
+MyLibraryTheme {
+    TextView(
+        text = "Información personal",
+        tokensOverride = sectionTitle(LibraryTheme.current),
+    )
 }
 ```
 
-La configuración declarativa permite la misma composición de decisiones:
+Y en XML se selecciona la receta usando el registro existente como patrón:
 
-```kotlin
-import android.view.View
-import cruxui.android.maracuya.wrappers.components.textviews.behavior.TextViewBehavior
-import cruxui.android.maracuya.wrappers.components.textviews.behavior.TextViewIconBehavior
+```xml
+<cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:themeName="Maracuya"
+    app:themeStyle="auto">
 
-nombre.setBehavior(TextViewBehavior(
-    onClick = View.OnClickListener { /* Acción del texto */ },
-    iconEnd = TextViewIconBehavior(
-        onClick = View.OnClickListener { /* Mostrar ayuda */ },
-        onLongClick = View.OnLongClickListener { /* Mostrar detalle */ true },
-        contentDescription = getString(R.string.text_view_demo_icon_end_description),
-    ),
-))
-
-// Cambiar una política conservando los listeners ya configurados.
-nombre.setBehavior(nombre.getBehavior().copy(allowClick = false))
-nombre.isEnabled = false // Bloquea texto e iconos.
+    <cruxui.android.lib.wrappers.components.textviews.TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/section_title"
+        app:textViewTokensOverride="sectionTitle"
+        app:iconEndContentDescription="@string/more_information" />
+</cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp>
 ```
 
-`setBehavior` recibe una configuración completa. Los setters nativos de listeners posteriores actualizan esa misma configuración. `performClick`, `callOnClick`, `performLongClick` y `performIconStart/EndClick`/`performIconStart/EndLongClick` consultan las políticas antes de ejecutar el callback.
+`section_title` y `more_information` son recursos de la app del ejemplo. El registro almacena funciones puras que reciben la biblioteca activa; no almacena una marca activa global, un `Context` ni una View. Evitar capturar Activities en esas funciones. Cada instancia evalúa su receta contra su scope al crearse, adjuntarse y actualizar su tema. Los hosts anidados conservan su propio alcance.
 
-El controlador reusable maneja hit testing relativo, RTL, cancelación al mover el dedo o salir de la ventana, feedback nativo y long press. Expone acciones accesibles diferenciadas para cada icono. Los objetivos de toque se amplían hasta 48dp cuando el espacio del host lo permite; no crean una View hija. Un icono sin listener permanece decorativo.
+Los nombres se normalizan sin depender del idioma del dispositivo. Un nombre desconocido falla con un mensaje explícito; el editor de layouts permite previsualizar con defaults cuando el registro de la app no se ha ejecutado. Reemplazar una receta no observa automáticamente las Views: llamar a `refreshTheme()` en las instancias existentes. Se mantiene el overload de registro anterior con cuatro argumentos para los otros wrappers.
 
-## Fuentes y prioridad
+## Contrato y organización
 
-Se eliminaron los dos XML de familias añadidos inicialmente. `FontResourceCatalog` referencia los TTF que ya existen. Compose y Android consumen ese catálogo; el adaptador Android selecciona archivo por familia/peso/cursiva y sintetiza solo cuando no hay una coincidencia exacta. El adaptador Compose conserva su selección previa de pesos para evitar un cambio visual ajeno a esta migración.
+```text
+core/components/textviews/
+  tokens/         TextViewTokens, TextViewTokensOverride, TextViewTokenDefaults, TextViewLayoutTokens
+  tokensrender/   política visual compartida: disabled > error > normal
+  variant/        DEFAULT, HIPERTEXT
+  behavior/       Default, Selectable
 
-La prioridad es **override Android Kotlin > configuración XML resuelta > tokens/override semánticos compartidos > defaults del DS**. Android resuelve layout, `style`, `textViewStyle` y `Widget.Maracuya.TextView`. El resolver compartido respeta `LabelTokens` explícitos antes de los defaults del tema.
+theme/
+  LibraryThemes.kt          catálogo y resolución del tema
+  LibraryThemeSnapshot.kt   contrato completo compartido
+  LibraryTheme.kt           acceso agrupado a los locals Compose existentes
+  FontAssetCatalog.kt       archivos físicos por familia, peso y cursiva
 
-`setTokensOverride` combina campos no nulos. `null` significa no aportar el campo; `ViewIcon.None` significa retirar un icono. `foregroundDefault/Error/Disabled` personalizan estados concretos; `textColor` es un color general o selector. Dentro de cada capa, un color específico de estado precede al general. Un color sólido explícito conserva su valor al deshabilitar; behavior sigue bloqueando la interacción.
+wrappers/components/textviews/
+  TextView.kt       fachada AppCompatTextView, setters y ciclo de vida
+  attributes/       XML, styles y textAppearance → entradas nativas
+  core/             estado exclusivo de la instancia
+  tokens/           aliases compartidos, registro y parches nativos
+  tokensrender/     adaptación a Typeface, dimensiones, colores y drawables
+  variant/          aplicación nativa del subrayado
+  behavior/         capacidades y callbacks de texto e iconos
+  render/           aplicación del modelo final a la View
 
-`setTypography` cambia la base, conservando tamaño, fuente o espaciado explícitos. `setTextAppearance` escribe sus campos presentes en el parche Kotlin. `lineHeight` y `lineSpacing` son políticas alternativas: el último setter Kotlin sustituye la anterior.
+wrappers/core/
+  registry/         TokensOverrideRegistry<T>, reutilizable por componente
+  theme/            búsqueda del proveedor XML y resolución del tema
+  attributes/       lectura común de colores, dimensiones y superficies
+  tokens/           fuentes de valores Android, recursos y selectores semánticos
+  resources/        adaptación de tokens a recursos Android
+  render/           superficies Android
+  behavior/         gestos de View y fachada histórica de compatibilidad
 
-`clearColorOverride`, `clearTypographyOverrides` y `clearOverrides` retiran personalizaciones Android Kotlin; XML vuelve a tener efecto. `clearTypographyOverrides` conserva el rol tipográfico seleccionado. Las personalizaciones semánticas compartidas se retiran con `setComponentTokensOverride(null)`.
+wrappers/capabilities/
+  text/             lectura, resolución y render de texto
+  compounddrawables/ dibujo, celdas, geometría, gestos y accesibilidad de iconos
 
-## Validación y límites
+wrappers/adapters/compose/
+                    adaptación de recetas y medidas para wrappers Compose
+```
 
-La suite verifica inflación, cascada XML/Kotlin, variantes, equivalencia con `LabelTokensResolver`, selectores semánticos completos, cambios de tema, fuentes TTF, iconos start/end y behavior. Las pruebas del controlador ejercitan touch, RTL, long press, cancelación y accesibilidad. La tipografía con peso/cursiva se comprueba con gráficos nativos de Robolectric.
+Las rutas públicas del nuevo TextView Compose siguen disponibles mediante aliases. Ambos frontends usan las mismas clases de tokens, variantes y capacidades de comportamiento. XML no importa `LabelTokens` ni deriva su contenido de `LabelVariant.Optional`.
+
+El contrato visual conserva `textColor`, `backgroundColor`, `errorColor`, `foregroundColor`, `disabledColor`, `iconStart`, `iconEnd`, `typography` y `fontFamily`. La tipografía se convierte a tamaño, altura de línea, tracking, peso, cursiva y alineación. `HIPERTEXT` usa el color de enlace y subrayado; no cambia el texto ni abre enlaces automáticamente. Los iconos son opcionales y siguen el color efectivo del texto, igual que el componente Compose.
+
+Para incorporar otro componente: declarar sus modelos puros en `core/components`, derivar sus defaults desde `LibraryThemeSnapshot`, extender `TokensOverrideRegistry<SuTokensOverride>` y crear su lector, adaptación y renderer nativos. Reutilizar `wrappers/core`; no copiar el catálogo del tema ni el registro.
+
+## Recursos XML derivados del catálogo
+
+El módulo JVM `:token-exporter` compila las mismas fuentes puras del catálogo. La tarea `:maracuya:generateLibraryTokens` ejecuta ese catálogo antes de compilar recursos y genera:
+
+| Resultado | Ejemplo |
+|---|---|
+| Colores claros y oscuros | `@color/library_maracuya_light_brand_primary` |
+| Referencias semánticas de color | `?attr/libraryColorBrandPrimary` |
+| TextAppearances completos | `@style/TextAppearance.Maracuya.Headline24` |
+| Referencias tipográficas | `?attr/libraryTypographyHeadline24` |
+| Dimensiones | `@dimen/library_maracuya_headline24_size` |
+| Alturas de línea semánticas | `?attr/libraryLineHeightHeadline24` |
+| Estilos para TextView estándar | `@style/Widget.Maracuya.Typography.Headline24` |
+| Familias con pesos y cursivas | `@font/library_mulish`, `?attr/libraryFontPrimary` |
+| Iconos y tamaños | `?attr/libraryIconAlertsInfo`, `?attr/libraryIconAlertsInfoSize` |
+| Overlays de marca/modo | `ThemeOverlay.Maracuya`, `.Light`, `.Dark` |
+
+`ThemeOverlay.Maracuya` utiliza `values-night` para AUTO. Las referencias Kotlin se agrupan en `ThemeExports.xmlReferences` / `LibraryXmlReferences`; por ejemplo `LibraryXmlReferences.typography.headline24` es un **ID de atributo**, no el valor resuelto ni un ID de estilo. Se resuelve contra el tema del `Context` con `obtainStyledAttributes`.
+
+Un TextView estándar también puede usar los recursos exportados:
+
+```xml
+<androidx.appcompat.widget.AppCompatTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.Maracuya.Typography.Headline24"
+    android:theme="@style/ThemeOverlay.Maracuya"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/section_title"
+    android:textColor="?attr/libraryColorBrandPrimary" />
+```
+
+En el TextView del DS se puede usar `android:textAppearance="?attr/libraryTypographyHeadline24"` con el mismo overlay. La receta registrada es la opción para seguir cambios de tema dinámicos del proveedor. Los recursos `?attr` pertenecen al tema Android del `Context`: cambiar `MyLibraryThemeWrp.themeStyle` actualiza recetas y tokens semánticos, pero no reinfla estilos Android ni cambia el `Context` de Views existentes. Para cambiar referencias XML explícitas de marca/modo, aplicar el overlay correspondiente y recrear o reinflar la pantalla. Mantener `themeName`/`themeStyle` y el overlay coherentes cuando se combinan ambos mecanismos.
+
+La salida vive en `maracuya/build/generated/libraryTokens/` y no se edita ni versiona. No hay reflexión ni búsqueda de recursos por nombre durante el render; el generador produce enlaces estáticos a `R`. La reflexión se limita al proceso de construcción y a pruebas de paridad del catálogo. Ver [el módulo exportador](../token-exporter/README.md) para agregar temas o assets.
+
+## Setters, precedencia y comportamiento
+
+```kotlin
+import cruxui.android.lib.wrappers.components.textviews.TextView as DesignTextView
+import cruxui.android.lib.wrappers.components.textviews.behavior.TextViewBehavior
+import cruxui.android.lib.wrappers.components.textviews.variant.TextViewVariant
+
+val title = findViewById<DesignTextView>(R.id.title)
+title.text = "Datos de contacto"       // setText nativo: conserva spans
+title.setVariant(TextViewVariant.HIPERTEXT)
+title.setColor(title.getThemeTokens().colors.brandPrimary)
+title.setTypography(title.getThemeTokens().typography.headline24)
+title.setTextSizeSp(26f)
+title.setOnClickListener { /* acción del texto */ }
+title.setOnDoubleClickListener { /* doble pulsación del texto */ }
+title.setOnLongClickListener { /* pulsación larga */ true }
+title.setOnIconEndClickListener { /* acción independiente del icono */ }
+title.setOnIconEndLongClickListener { /* ayuda */ true }
+title.setBehavior(TextViewBehavior.Selectable)
+```
+
+Se mantienen las APIs nativas de texto, spans, `maxLines`, `ellipsize`, tamaño, fuente, `ColorStateList`, espaciado, fondos, alineación y selección. Los setters de estilo gestionados se conservan al refrescar el tema o cambiar de variante. `setError` y `setErrorState` comparten estado; deshabilitar bloquea acciones del texto e iconos. La selección nativa reserva long press y doble pulsación del texto; al desactivarla se recuperan los callbacks configurados. Las acciones de iconos se exponen también a accesibilidad. Cada icono interactivo reserva una celda mínima de 48dp y conserva el asset centrado; cada icono presente se separa 8dp del texto. Ambos valores proceden de `TextViewLayoutTokens`, compartido con Compose. Un icono decorativo ocupa solamente su tamaño.
+
+Prioridad: **parche de ejecución > XML resuelto por Android > receta registrada > defaults de la variante en el tema**. Dentro de una capa, valores nativos específicos como tamaño pueden ajustar una tipografía completa. Aplicar después una tipografía sustituye sus métricas anteriores; aplicar después `setTextSize` ajusta solo el tamaño. La familia es un campo independiente. `lineHeight` y `lineSpacing` son alternativas; el último setter elige una.
+
+`setTokensOverride` usa el mismo contrato semántico que Compose. Su `textColor` cambia el estado normal; `errorColor` y `disabledColor` mantienen la política compartida. `setTextColor` nativo aplica su color o selector a todos los estados. `setNativeOverrides(TextViewNativeOverrides(...))` acepta representaciones Android como recursos, dimensiones, selectores, drawables o `Typeface` cuando sean necesarias. `setColor(Int)` espera `@ColorRes`; para un ARGB usar `setTextColor(Int)`.
+
+Los parches combinan campos presentes; `null` significa ausencia. Para retirar un icono usar `setIconStart(null as IconToken?)`, `setIconEnd(null as IconToken?)` o `ViewIcon.None` en el parche nativo. `clearOverrides`, `clearColorOverride` y `clearTypographyOverrides` restauran los valores inferiores de XML/receta. `setTokensOverrideName(null)` retira la receta. `setThemeTokens(snapshot)` permite inyección explícita por instancia; `null` restaura la herencia del proveedor.
+
+## Migración y validación
+
+- El wrapper anterior basado en Label se sustituye por el nuevo contrato TextView. `optional`, `setTokens`, `setComponentTokensOverride`, `clearTextOverride` y los atributos particulares `typography`/`textColorRole` de aquella propuesta se retiran. El componente Label conserva su implementación independiente.
+- La configuración semántica va a `TextViewTokensOverride`; recursos/valores exclusivamente Android van a `TextViewNativeOverrides`. Las variantes Kotlin son `DEFAULT` y `HIPERTEXT`; en XML, `standard` y `hipertext`.
+- Los iconos incluidos usan `resourceName` para mantener puro el catálogo. Para obtener un drawable ID en código Android usar `LibraryAssetResources.icon(token)`; no leer `filledResId` de un icono incluido, pues ahora es cero. Se conserva `IconToken(name, filledResId = R.drawable.mi_icono)` para recursos de la app.
+- Los adaptadores Compose y Views consumen el mismo catálogo físico completo de fuentes, incluidos peso 900 y cursivas.
+
+Las pruebas cubren catálogo exportado claro/oscuro, 28 tipografías, enlaces de iconos y fuentes, recetas, scopes, inflación, precedencia, fuentes, alineación con/sin RTL, estados, selección, gestos y accesibilidad. Ejecutar:
 
 ```sh
-./gradlew :maracuya:testDebugUnitTest :maracuya:lintDebug :app:assembleDebug
+./gradlew :maracuya:testDebugUnitTest :maracuya:lintDebug :app:assembleDebug :maracuya:assembleDebugAndroidTest
 ```
 
-Resultado de esta revisión: **29 pruebas aprobadas** en Robolectric API 28 (23 de TextView y 6 del controlador de iconos), `assembleDebug` correcto y Lint sin errores. Las acciones accesibles de iconos se verifican explícitamente: su touch no llama al click del texto porque son acciones distintas.
+Las pruebas instrumentadas de interacción Compose requieren un dispositivo/emulador con `:maracuya:connectedDebugAndroidTest`. Compilar su APK no equivale a ejecutarlas. La revisión visual en dispositivo es adicional a las verificaciones automatizadas. Los callbacks y parches de ejecución se reaplican desde el propietario de la pantalla al recrearla; no se serializan snapshots ni listeners.
 
-La revisión visual en dispositivo sigue pendiente; las pruebas automatizadas no demuestran paridad visual exacta con Compose. Los overrides y callbacks de ejecución deben reaplicarse desde el propietario de la pantalla al recrearla. No se serializan automáticamente snapshots o listeners.
 
-El rol disabled continúa usando `fgSubtle` porque `LabelTokens` no define un color disabled; puede personalizarse sin cambiar la paleta compartida. Las demás APIs heredadas de TextView no se han comprobado exhaustivamente en combinación con métricas gestionadas por el renderer.
-
-## Criterio de diseño
-
-La separación de adaptación, política y render mantiene las decisiones de plataforma en el borde. La reutilización es concreta: mismo resolver y contrato Label, mismas variantes, mismo catálogo físico de fuentes y mismos modelos semánticos; las Views solo añaden resolución de recursos e interacción Android.
-
-El ocultamiento de decisiones de Parnas, el análisis de variabilidad de FODA y la independencia de dimensiones de estado orientan este reparto. Las referencias y sus límites están en [fundamentos de la propuesta](../referencias-arquitectura-xml/03-fundamentos-propuesta.md). No se presentan esos trabajos como prueba de rendimiento de esta implementación.
+La galería y el contrato de medidas se detallan en [paridad Compose–XML](07-paridad-textview-compose-xml.md).

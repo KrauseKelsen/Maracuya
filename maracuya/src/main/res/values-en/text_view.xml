@@ -1,13 +1,40 @@
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Estilo base nativo y textos compartidos por las galerías Compose y XML de TextView.
+
+    Justificación:
+    La galería muestra los mismos nueve casos en ambos renders. No declara colores alternativos:
+    sus referencias provienen de Library y el exportador. Las pruebas de estilos propios están en debug.
+
+    Uso:
+    El host utiliza Widget.Maracuya.TextView como estilo base y sus propios textos de pantalla.
+    Los textos text_view_preview son ejemplos compartidos mediante stringResource y android:text.
+    El padding de fuente, los límites de líneas y los espaciados se resuelven desde TextViewLayoutTokens.
+
+    Objetivos:
+    - Mantener una sola colección de textos de galería.
+    - Conservar el estilo público sin otra paleta de demostración.
+
+    @author Krause Kelsen
+    @since 07-16-2026
+    @version 0.0.13
+-->
 <resources>
-    <string name="text_view_optional">(Optional)</string>
     <string name="text_view_error">Error</string>
-    <string name="text_view_demo_name">Full name</string>
-    <string name="text_view_demo_error">Please check the information</string>
-    <string name="text_view_demo_disabled">Disabled text</string>
-    <string name="text_view_demo_custom">Text styled in XML</string>
-    <string name="text_view_demo_icons">Profile information</string>
-    <string name="text_view_demo_styled_error">Error with XML selector</string>
-    <string name="text_view_demo_icon_start_description">View profile</string>
-    <string name="text_view_demo_icon_end_description">More information</string>
-    <string name="text_view_demo_error_icon_description">Error indicator</string>
+    <string name="text_view_preview_basic">Basic TextView</string>
+    <string name="text_view_preview_custom">Custom tokens</string>
+    <string name="text_view_preview_error">Error state</string>
+    <string name="text_view_preview_disabled">Disabled state</string>
+    <string name="text_view_preview_icons">Design System icons</string>
+    <string name="text_view_preview_label">Label</string>
+    <string name="text_view_preview_gestures">Click, double click and long press</string>
+    <string name="text_view_preview_selectable">Selectable and copyable text</string>
+    <string name="text_view_preview_link">Hyperlink</string>
+    <string name="text_view_preview_start_description">Open initial link</string>
+    <string name="text_view_preview_end_description">Open next link</string>
+    <string name="text_view_preview_click_label">Activate text</string>
+    <string name="text_view_preview_long_click_label">Show text options</string>
+    <string name="text_view_preview_link_label">Open hyperlink</string>
 </resources>

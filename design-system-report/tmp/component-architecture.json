@@ -25,7 +25,7 @@
   "components": [
     {
       "name": "ChipChoiceBaseMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
       "status": "needs_migration",
       "complexity": "media",
       "presentLayers": [
@@ -42,10 +42,10 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
@@ -69,7 +69,7 @@
     },
     {
       "name": "ChipChoiceCarouselMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
       "status": "needs_migration",
       "complexity": "media",
       "presentLayers": [
@@ -86,10 +86,10 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
@@ -113,7 +113,7 @@
     },
     {
       "name": "ButtonNavigationGroupMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
       "status": "current",
       "complexity": "alineado",
       "presentLayers": [
@@ -129,28 +129,28 @@
       "missingLayers": [],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt"
         ],
         "tokensRender": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt"
         ],
         "tokensRenderResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt"
         ],
         "variant": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariant.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariant.kt"
         ],
         "variantResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariantResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariantResolver.kt"
         ],
         "behavior": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehavior.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehavior.kt"
         ],
         "behaviorResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehaviorResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehaviorResolver.kt"
         ]
       },
       "signals": {
@@ -168,7 +168,7 @@
     },
     {
       "name": "ButtonNavigationMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
       "status": "current",
       "complexity": "alineado",
       "presentLayers": [
@@ -184,28 +184,28 @@
       "missingLayers": [],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokensResolver.kt"
         ],
         "tokensRender": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRender.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRender.kt"
         ],
         "tokensRenderResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRenderResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRenderResolver.kt"
         ],
         "variant": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariant.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariant.kt"
         ],
         "variantResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt"
         ],
         "behavior": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehavior.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehavior.kt"
         ],
         "behaviorResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt"
         ]
       },
       "signals": {
@@ -223,7 +223,7 @@
     },
     {
       "name": "ButtonMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
       "status": "needs_migration",
       "complexity": "media",
       "presentLayers": [
@@ -240,15 +240,15 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
         "variant": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonVariant.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonVariant.kt"
         ],
         "variantResolver": [],
         "behavior": [],
@@ -269,7 +269,7 @@
     },
     {
       "name": "CheckBoxMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "status": "needs_migration",
       "complexity": "media",
       "presentLayers": [
@@ -286,10 +286,10 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
@@ -313,7 +313,7 @@
     },
     {
       "name": "DropDownMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "status": "needs_migration",
       "complexity": "alta",
       "presentLayers": [
@@ -330,15 +330,15 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
         "variant": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownVariant.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownVariant.kt"
         ],
         "variantResolver": [],
         "behavior": [],
@@ -359,7 +359,7 @@
     },
     {
       "name": "InputFieldBasicMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
       "status": "needs_migration",
       "complexity": "alta",
       "presentLayers": [
@@ -376,10 +376,10 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/config/InputFieldBasicTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/config/InputFieldBasicTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
@@ -403,7 +403,7 @@
     },
     {
       "name": "InputCheckBoxMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
       "status": "needs_migration",
       "complexity": "media",
       "presentLayers": [
@@ -420,10 +420,10 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
@@ -447,7 +447,7 @@
     },
     {
       "name": "InputDropDownMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "status": "needs_migration",
       "complexity": "media",
       "presentLayers": [
@@ -464,15 +464,15 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
         "variant": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownVariant.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownVariant.kt"
         ],
         "variantResolver": [],
         "behavior": [],
@@ -493,7 +493,7 @@
     },
     {
       "name": "LabelMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
       "status": "needs_migration",
       "complexity": "baja",
       "presentLayers": [
@@ -510,20 +510,20 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
         "variant": [],
         "variantResolver": [],
         "behavior": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelBehavior.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelBehavior.kt"
         ],
         "behaviorResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelBehaviorResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelBehaviorResolver.kt"
         ]
       },
       "signals": {
@@ -541,7 +541,7 @@
     },
     {
       "name": "TextFieldMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
       "status": "needs_migration",
       "complexity": "alta",
       "presentLayers": [
@@ -558,22 +558,22 @@
       ],
       "layers": {
         "tokens": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldTokens.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldTokens.kt"
         ],
         "tokensResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldTokensResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldTokensResolver.kt"
         ],
         "tokensRender": [],
         "tokensRenderResolver": [],
         "variant": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldVariant.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldVariant.kt"
         ],
         "variantResolver": [],
         "behavior": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldBehavior.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldBehavior.kt"
         ],
         "behaviorResolver": [
-          "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldBehaviorResolver.kt"
+          "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldBehaviorResolver.kt"
         ]
       },
       "signals": {
@@ -593,15 +593,15 @@
   "publicNonMrcyComposables": [
     {
       "name": "BackgroundPilotWellkommen",
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/layouts/BackgroundPilotWellkommen.kt"
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/layouts/BackgroundPilotWellkommen.kt"
     },
     {
       "name": "LayoutPilotWellkommen",
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/layouts/BackgroundPilotWellkommen.kt"
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/layouts/BackgroundPilotWellkommen.kt"
     },
     {
       "name": "LegalText",
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/texts/LegalText.kt"
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/texts/LegalText.kt"
     }
   ]
 }

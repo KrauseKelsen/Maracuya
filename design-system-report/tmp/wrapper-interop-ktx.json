@@ -1,6 +1,6 @@
 {
-  "scope": "maracuya/src/main/java/cruxui/android/maracuya/wrappers",
-  "coreFile": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/core/MrcyXmlComposeView.kt",
+  "scope": "maracuya/src/main/java/cruxui/android/lib/wrappers",
+  "coreFile": "maracuya/src/main/java/cruxui/android/lib/wrappers/core/MrcyXmlComposeView.kt",
   "coreLines": 120,
   "currentModifierSignals": {
     "fillMaxWidth": 2,

@@ -1,25 +1,44 @@
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Estilo base nativo y textos compartidos por las galerías Compose y XML de TextView.
+
+    Justificación:
+    La galería muestra los mismos nueve casos en ambos renders. No declara colores alternativos:
+    sus referencias provienen de Library y el exportador. Las pruebas de estilos propios están en debug.
+
+    Uso:
+    El host utiliza Widget.Maracuya.TextView como estilo base y sus propios textos de pantalla.
+    Los textos text_view_preview son ejemplos compartidos mediante stringResource y android:text.
+    El padding de fuente, los límites de líneas y los espaciados se resuelven desde TextViewLayoutTokens.
+
+    Objetivos:
+    - Mantener una sola colección de textos de galería.
+    - Conservar el estilo público sin otra paleta de demostración.
+
+    @author Krause Kelsen
+    @since 07-16-2026
+    @version 0.0.13
+-->
 <resources>
-    <string name="text_view_optional">(Opcional)</string>
     <string name="text_view_error">Error</string>
-    <string name="text_view_demo_name">Nombre completo</string>
-    <string name="text_view_demo_error">Revise la información</string>
-    <string name="text_view_demo_disabled">Texto deshabilitado</string>
-    <string name="text_view_demo_custom">Texto con estilo XML</string>
-    <string name="text_view_demo_icons">Información del perfil</string>
-    <string name="text_view_demo_styled_error">Error con selector XML</string>
-    <string name="text_view_demo_icon_start_description">Ver perfil</string>
-    <string name="text_view_demo_icon_end_description">Más información</string>
-    <string name="text_view_demo_error_icon_description">Indicador de error</string>
+    <string name="text_view_preview_basic">TextView basico</string>
+    <string name="text_view_preview_custom">Tokens personalizados</string>
+    <string name="text_view_preview_error">Estado de error</string>
+    <string name="text_view_preview_disabled">Estado deshabilitado</string>
+    <string name="text_view_preview_icons">Iconos del Design System</string>
+    <string name="text_view_preview_label">Label</string>
+    <string name="text_view_preview_gestures">Click, doble click y pulsacion larga</string>
+    <string name="text_view_preview_selectable">Texto seleccionable y copiable</string>
+    <string name="text_view_preview_link">Hipervinculo</string>
+    <string name="text_view_preview_start_description">Abrir enlace inicial</string>
+    <string name="text_view_preview_end_description">Abrir enlace siguiente</string>
+    <string name="text_view_preview_click_label">Activar texto</string>
+    <string name="text_view_preview_long_click_label">Mostrar opciones del texto</string>
+    <string name="text_view_preview_link_label">Abrir hipervinculo</string>
     <style name="Widget.Maracuya.TextView" parent="">
         <item name="variant">standard</item>
         <item name="android:textAppearance">@null</item>
     </style>
-    <style name="Widget.Maracuya.TextView.Demo" parent="Widget.Maracuya.TextView">
-        <item name="android:textColor">@color/text_view_demo_states</item>
-        <item name="android:fontFamily">@font/mulish_regular</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-    <color name="text_view_demo_normal">#2450A4</color>
-    <color name="text_view_demo_error">#B3261E</color>
-    <color name="text_view_demo_disabled">#767676</color>
 </resources>

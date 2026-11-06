@@ -27,16 +27,16 @@
   "components": [
     {
       "name": "ChipChoiceBaseMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt"
       ],
       "hardcodedVisualRefs": 5,
       "categories": {
@@ -53,7 +53,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
           "line": 29,
           "category": "radius",
           "values": [
@@ -62,7 +62,7 @@
           "snippet": "shape: Shape = RoundedCornerShape(12.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
           "line": 80,
           "category": "border",
           "values": [
@@ -71,7 +71,7 @@
           "snippet": "border = BorderStroke(1.dp, borderColor)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
           "line": 84,
           "category": "spacing",
           "values": [
@@ -81,7 +81,7 @@
           "snippet": "modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
           "line": 51,
           "category": "spacing",
           "values": [
@@ -93,13 +93,13 @@
     },
     {
       "name": "ChipChoiceCarouselMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt"
       ],
       "hardcodedVisualRefs": 1,
       "categories": {
@@ -114,7 +114,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
           "line": 51,
           "category": "spacing",
           "values": [
@@ -126,19 +126,19 @@
     },
     {
       "name": "ButtonNavigationGroupMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehavior.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehaviorResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupButton.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariant.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariantResolver.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehavior.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehaviorResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupButton.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariant.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariantResolver.kt"
       ],
       "hardcodedVisualRefs": 13,
       "categories": {
@@ -155,7 +155,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
           "line": 16,
           "category": "sizing",
           "values": [
@@ -164,7 +164,7 @@
           "snippet": "val MinLeadingButtonWidth = 136.dp"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
           "line": 17,
           "category": "sizing",
           "values": [
@@ -173,7 +173,7 @@
           "snippet": "val MinTrailingButtonWidth = 176.dp"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
           "line": 18,
           "category": "radius",
           "values": [
@@ -182,7 +182,7 @@
           "snippet": "val CornerRadius = 100.dp"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
           "line": 37,
           "category": "visual",
           "values": [
@@ -191,7 +191,7 @@
           "snippet": "get() = hasExplicitButtonSpacing && buttonSpacing > 0.dp"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
           "line": 29,
           "category": "visual",
           "values": [
@@ -203,19 +203,19 @@
     },
     {
       "name": "ButtonNavigationMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehavior.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/core/ButtonNavigationLoadingScope.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRender.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRenderResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariant.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehavior.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/core/ButtonNavigationLoadingScope.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRender.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRenderResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariant.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt"
       ],
       "hardcodedVisualRefs": 11,
       "categories": {
@@ -234,7 +234,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
           "line": 38,
           "category": "spacing",
           "values": [
@@ -244,7 +244,7 @@
           "snippet": "modifier = Modifier.padding(vertical = 8.dp, horizontal = 2.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
           "line": 51,
           "category": "spacing",
           "values": [
@@ -253,7 +253,7 @@
           "snippet": "Spacer(modifier = Modifier.width(8.dp))"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
           "line": 65,
           "category": "spacing",
           "values": [
@@ -262,7 +262,7 @@
           "snippet": "Spacer(modifier = Modifier.width(8.dp))"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
           "line": 45,
           "category": "radius",
           "values": [
@@ -271,7 +271,7 @@
           "snippet": "shape: Shape = RoundedCornerShape(100.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
           "line": 107,
           "category": "border",
           "values": [
@@ -283,13 +283,13 @@
     },
     {
       "name": "ButtonMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonContent.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonVariant.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonContent.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonVariant.kt"
       ],
       "hardcodedVisualRefs": 7,
       "categories": {
@@ -307,7 +307,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonContent.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonContent.kt",
           "line": 26,
           "category": "spacing",
           "values": [
@@ -317,7 +317,7 @@
           "snippet": "modifier = Modifier.padding(vertical = 8.dp).size(20.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonContent.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonContent.kt",
           "line": 27,
           "category": "sizing",
           "values": [
@@ -326,7 +326,7 @@
           "snippet": "strokeWidth = 2.dp,"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonContent.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonContent.kt",
           "line": 32,
           "category": "spacing",
           "values": [
@@ -336,7 +336,7 @@
           "snippet": "modifier = Modifier.padding(vertical = 8.dp, horizontal = 2.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
           "line": 26,
           "category": "radius",
           "values": [
@@ -345,7 +345,7 @@
           "snippet": "shape: Shape = RoundedCornerShape(100.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
           "line": 76,
           "category": "border",
           "values": [
@@ -357,11 +357,11 @@
     },
     {
       "name": "CheckBoxMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxTokensResolver.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxTokensResolver.kt"
       ],
       "hardcodedVisualRefs": 4,
       "categories": {
@@ -376,7 +376,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
           "line": 56,
           "category": "spacing",
           "values": [
@@ -385,7 +385,7 @@
           "snippet": "verticalArrangement = Arrangement.spacedBy(8.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
           "line": 111,
           "category": "spacing",
           "values": [
@@ -394,7 +394,7 @@
           "snippet": "verticalArrangement = Arrangement.spacedBy(8.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
           "line": 166,
           "category": "spacing",
           "values": [
@@ -403,7 +403,7 @@
           "snippet": "modifier = Modifier.padding(top = 4.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
           "line": 175,
           "category": "spacing",
           "values": [
@@ -415,13 +415,13 @@
     },
     {
       "name": "DropDownMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownContent.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownVariant.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownContent.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownVariant.kt"
       ],
       "hardcodedVisualRefs": 22,
       "categories": {
@@ -438,7 +438,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
           "line": 80,
           "category": "spacing",
           "values": [
@@ -447,7 +447,7 @@
           "snippet": "verticalArrangement = Arrangement.spacedBy(8.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
           "line": 184,
           "category": "radius",
           "values": [
@@ -456,7 +456,7 @@
           "snippet": "shape = RoundedCornerShape(12.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
           "line": 187,
           "category": "sizing",
           "values": [
@@ -465,7 +465,7 @@
           "snippet": "width = 1.dp,"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
           "line": 189,
           "category": "radius",
           "values": [
@@ -474,7 +474,7 @@
           "snippet": "shape = RoundedCornerShape(12.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
           "line": 191,
           "category": "spacing",
           "values": [
@@ -486,12 +486,12 @@
     },
     {
       "name": "InputFieldBasicMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicTypes.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicWidthType.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicTypes.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicWidthType.kt"
       ],
       "hardcodedVisualRefs": 0,
       "categories": {},
@@ -506,12 +506,12 @@
     },
     {
       "name": "InputCheckBoxMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokensGroup.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokensResolver.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokensGroup.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokensResolver.kt"
       ],
       "hardcodedVisualRefs": 1,
       "categories": {
@@ -526,7 +526,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
           "line": 85,
           "category": "spacing",
           "values": [
@@ -538,13 +538,13 @@
     },
     {
       "name": "InputDropDownMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokenGroup.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownVariant.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokenGroup.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownVariant.kt"
       ],
       "hardcodedVisualRefs": 9,
       "categories": {
@@ -561,7 +561,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
           "line": 83,
           "category": "radius",
           "values": [
@@ -570,7 +570,7 @@
           "snippet": "val shape = RoundedCornerShape(16.dp)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
           "line": 87,
           "category": "sizing",
           "values": [
@@ -579,7 +579,7 @@
           "snippet": ".heightIn(min = 56.dp)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
           "line": 93,
           "category": "sizing",
           "values": [
@@ -589,7 +589,7 @@
           "snippet": "width = if (expanded) 2.dp else 1.dp,"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
           "line": 105,
           "category": "spacing",
           "values": [
@@ -599,7 +599,7 @@
           "snippet": ".padding(horizontal = 16.dp, vertical = 12.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
           "line": 107,
           "category": "spacing",
           "values": [
@@ -611,13 +611,13 @@
     },
     {
       "name": "LabelMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelBehavior.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelBehaviorResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelTokensResolver.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelBehavior.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelBehaviorResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelTokensResolver.kt"
       ],
       "hardcodedVisualRefs": 2,
       "categories": {
@@ -632,7 +632,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
           "line": 50,
           "category": "spacing",
           "values": [
@@ -641,7 +641,7 @@
           "snippet": "horizontalArrangement = Arrangement.spacedBy(4.dp)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
           "line": 93,
           "category": "spacing",
           "values": [
@@ -653,9 +653,9 @@
     },
     {
       "name": "BottomTextMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt"
       ],
       "hardcodedVisualRefs": 3,
       "categories": {
@@ -670,7 +670,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
           "line": 41,
           "category": "spacing",
           "values": [
@@ -679,7 +679,7 @@
           "snippet": "modifier = modifier.padding(top = 10.dp)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
           "line": 49,
           "category": "spacing",
           "values": [
@@ -688,7 +688,7 @@
           "snippet": "modifier = Modifier.padding(start = 2.dp)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
           "line": 53,
           "category": "spacing",
           "values": [
@@ -700,15 +700,15 @@
     },
     {
       "name": "TextFieldMrcy",
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
       "filesAudited": [
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldBehavior.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldBehaviorResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldTokens.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldTokensResolver.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldVariant.kt"
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldBehavior.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldBehaviorResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldTokens.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldTokensResolver.kt",
+        "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldVariant.kt"
       ],
       "hardcodedVisualRefs": 6,
       "categories": {
@@ -723,7 +723,7 @@
       },
       "sampleEvidence": [
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
           "line": 41,
           "category": "spacing",
           "values": [
@@ -732,7 +732,7 @@
           "snippet": "modifier = modifier.padding(top = 10.dp)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
           "line": 49,
           "category": "spacing",
           "values": [
@@ -741,7 +741,7 @@
           "snippet": "modifier = Modifier.padding(start = 2.dp)"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
           "line": 53,
           "category": "spacing",
           "values": [
@@ -750,7 +750,7 @@
           "snippet": "Spacer(modifier = Modifier.width(4.dp))"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
           "line": 99,
           "category": "spacing",
           "values": [
@@ -759,7 +759,7 @@
           "snippet": "modifier = modifier.padding(10.dp),"
         },
         {
-          "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+          "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
           "line": 180,
           "category": "spacing",
           "values": [
@@ -772,7 +772,7 @@
   ],
   "evidence": [
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
       "line": 29,
       "category": "radius",
       "values": [
@@ -781,7 +781,7 @@
       "snippet": "shape: Shape = RoundedCornerShape(12.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
       "line": 80,
       "category": "border",
       "values": [
@@ -790,7 +790,7 @@
       "snippet": "border = BorderStroke(1.dp, borderColor)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
       "line": 84,
       "category": "spacing",
       "values": [
@@ -800,7 +800,7 @@
       "snippet": "modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
       "line": 51,
       "category": "spacing",
       "values": [
@@ -809,7 +809,7 @@
       "snippet": "contentPadding: PaddingValues = PaddingValues(horizontal = 0.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
       "line": 16,
       "category": "sizing",
       "values": [
@@ -818,7 +818,7 @@
       "snippet": "val MinLeadingButtonWidth = 136.dp"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
       "line": 17,
       "category": "sizing",
       "values": [
@@ -827,7 +827,7 @@
       "snippet": "val MinTrailingButtonWidth = 176.dp"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
       "line": 18,
       "category": "radius",
       "values": [
@@ -836,7 +836,7 @@
       "snippet": "val CornerRadius = 100.dp"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
       "line": 37,
       "category": "visual",
       "values": [
@@ -845,7 +845,7 @@
       "snippet": "get() = hasExplicitButtonSpacing && buttonSpacing > 0.dp"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
       "line": 29,
       "category": "visual",
       "values": [
@@ -854,7 +854,7 @@
       "snippet": "tokens.buttonSpacing.coerceAtLeast(0.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
       "line": 38,
       "category": "radius",
       "values": [
@@ -863,7 +863,7 @@
       "snippet": "cornerRadius = tokens.cornerRadius.coerceAtLeast(0.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "line": 46,
       "category": "visual",
       "values": [
@@ -872,7 +872,7 @@
       "snippet": "buttonSpacing = if (tokens.hasSeparatedButtons) tokens.buttonSpacing else 0.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "line": 105,
       "category": "visual",
       "values": [
@@ -881,7 +881,7 @@
       "snippet": "buttonSpacing = if (tokens.hasExplicitButtonSpacing) tokens.buttonSpacing else 0.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "line": 169,
       "category": "visual",
       "values": [
@@ -890,7 +890,7 @@
       "snippet": "topEnd = 0.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "line": 170,
       "category": "visual",
       "values": [
@@ -899,7 +899,7 @@
       "snippet": "bottomEnd = 0.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "line": 174,
       "category": "visual",
       "values": [
@@ -908,7 +908,7 @@
       "snippet": "topStart = 0.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "line": 175,
       "category": "visual",
       "values": [
@@ -917,7 +917,7 @@
       "snippet": "bottomStart = 0.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "line": 180,
       "category": "radius",
       "values": [
@@ -926,7 +926,7 @@
       "snippet": "else -> RoundedCornerShape(0.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
       "line": 38,
       "category": "spacing",
       "values": [
@@ -936,7 +936,7 @@
       "snippet": "modifier = Modifier.padding(vertical = 8.dp, horizontal = 2.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
       "line": 51,
       "category": "spacing",
       "values": [
@@ -945,7 +945,7 @@
       "snippet": "Spacer(modifier = Modifier.width(8.dp))"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationContent.kt",
       "line": 65,
       "category": "spacing",
       "values": [
@@ -954,7 +954,7 @@
       "snippet": "Spacer(modifier = Modifier.width(8.dp))"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
       "line": 45,
       "category": "radius",
       "values": [
@@ -963,7 +963,7 @@
       "snippet": "shape: Shape = RoundedCornerShape(100.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
       "line": 107,
       "category": "border",
       "values": [
@@ -972,7 +972,7 @@
       "snippet": "border = BorderStroke(1.dp, ColorComposeAdapter.toComposeColor(renderTokens.borderColor)),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
       "line": 112,
       "category": "visual",
       "values": [
@@ -981,7 +981,7 @@
       "snippet": "0.dp"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
       "line": 115,
       "category": "radius",
       "values": [
@@ -990,7 +990,7 @@
       "snippet": "private val DefaultButtonShape = RoundedCornerShape(100.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
       "line": 116,
       "category": "radius",
       "values": [
@@ -999,7 +999,7 @@
       "snippet": "private val SquareButtonShape = RoundedCornerShape(25.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
       "line": 117,
       "category": "sizing",
       "values": [
@@ -1008,7 +1008,7 @@
       "snippet": "private val SquareButtonHeight = 70.dp"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
       "line": 118,
       "category": "visual",
       "values": [
@@ -1017,7 +1017,7 @@
       "snippet": "private val SquareBottomLabelSpacing = 6.dp"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonContent.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonContent.kt",
       "line": 26,
       "category": "spacing",
       "values": [
@@ -1027,7 +1027,7 @@
       "snippet": "modifier = Modifier.padding(vertical = 8.dp).size(20.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonContent.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonContent.kt",
       "line": 27,
       "category": "sizing",
       "values": [
@@ -1036,7 +1036,7 @@
       "snippet": "strokeWidth = 2.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonContent.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonContent.kt",
       "line": 32,
       "category": "spacing",
       "values": [
@@ -1046,7 +1046,7 @@
       "snippet": "modifier = Modifier.padding(vertical = 8.dp, horizontal = 2.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
       "line": 26,
       "category": "radius",
       "values": [
@@ -1055,7 +1055,7 @@
       "snippet": "shape: Shape = RoundedCornerShape(100.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
       "line": 76,
       "category": "border",
       "values": [
@@ -1064,7 +1064,7 @@
       "snippet": "border = BorderStroke(1.dp, borderContainerColorCompose),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "line": 56,
       "category": "spacing",
       "values": [
@@ -1073,7 +1073,7 @@
       "snippet": "verticalArrangement = Arrangement.spacedBy(8.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "line": 111,
       "category": "spacing",
       "values": [
@@ -1082,7 +1082,7 @@
       "snippet": "verticalArrangement = Arrangement.spacedBy(8.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "line": 166,
       "category": "spacing",
       "values": [
@@ -1091,7 +1091,7 @@
       "snippet": "modifier = Modifier.padding(top = 4.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "line": 175,
       "category": "spacing",
       "values": [
@@ -1100,7 +1100,7 @@
       "snippet": "Spacer(modifier = Modifier.width(4.dp))"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 80,
       "category": "spacing",
       "values": [
@@ -1109,7 +1109,7 @@
       "snippet": "verticalArrangement = Arrangement.spacedBy(8.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 184,
       "category": "radius",
       "values": [
@@ -1118,7 +1118,7 @@
       "snippet": "shape = RoundedCornerShape(12.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 187,
       "category": "sizing",
       "values": [
@@ -1127,7 +1127,7 @@
       "snippet": "width = 1.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 189,
       "category": "radius",
       "values": [
@@ -1136,7 +1136,7 @@
       "snippet": "shape = RoundedCornerShape(12.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 191,
       "category": "spacing",
       "values": [
@@ -1145,7 +1145,7 @@
       "snippet": ".padding(vertical = 8.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 196,
       "category": "sizing",
       "values": [
@@ -1154,7 +1154,7 @@
       "snippet": ".heightIn(max = 260.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 197,
       "category": "spacing",
       "values": [
@@ -1163,7 +1163,7 @@
       "snippet": "verticalArrangement = Arrangement.spacedBy(2.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 216,
       "category": "spacing",
       "values": [
@@ -1172,7 +1172,7 @@
       "snippet": "modifier = Modifier.padding(horizontal = 16.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 257,
       "category": "spacing",
       "values": [
@@ -1182,7 +1182,7 @@
       "snippet": ".padding(horizontal = 16.dp, vertical = 10.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 264,
       "category": "sizing",
       "values": [
@@ -1191,7 +1191,7 @@
       "snippet": "modifier = Modifier.size(20.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 266,
       "category": "spacing",
       "values": [
@@ -1200,7 +1200,7 @@
       "snippet": "Spacer(modifier = Modifier.width(8.dp))"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 268,
       "category": "spacing",
       "values": [
@@ -1209,7 +1209,7 @@
       "snippet": "Spacer(modifier = Modifier.width(28.dp))"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 302,
       "category": "spacing",
       "values": [
@@ -1219,7 +1219,7 @@
       "snippet": ".padding(horizontal = 16.dp, vertical = 10.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 304,
       "category": "spacing",
       "values": [
@@ -1228,7 +1228,7 @@
       "snippet": "horizontalArrangement = Arrangement.spacedBy(12.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 308,
       "category": "sizing",
       "values": [
@@ -1237,7 +1237,7 @@
       "snippet": ".size(24.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 310,
       "category": "sizing",
       "values": [
@@ -1246,7 +1246,7 @@
       "snippet": "width = 1.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 312,
       "category": "radius",
       "values": [
@@ -1255,7 +1255,7 @@
       "snippet": "shape = RoundedCornerShape(6.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 320,
       "category": "sizing",
       "values": [
@@ -1264,7 +1264,7 @@
       "snippet": "modifier = Modifier.size(16.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 345,
       "category": "spacing",
       "values": [
@@ -1273,7 +1273,7 @@
       "snippet": "Row(modifier = Modifier.padding(top = 10.dp)) {"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "line": 353,
       "category": "spacing",
       "values": [
@@ -1282,7 +1282,7 @@
       "snippet": "Spacer(modifier = Modifier.width(6.dp))"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
       "line": 85,
       "category": "spacing",
       "values": [
@@ -1291,7 +1291,7 @@
       "snippet": "Modifier.padding(vertical = 4.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "line": 83,
       "category": "radius",
       "values": [
@@ -1300,7 +1300,7 @@
       "snippet": "val shape = RoundedCornerShape(16.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "line": 87,
       "category": "sizing",
       "values": [
@@ -1309,7 +1309,7 @@
       "snippet": ".heightIn(min = 56.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "line": 93,
       "category": "sizing",
       "values": [
@@ -1319,7 +1319,7 @@
       "snippet": "width = if (expanded) 2.dp else 1.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "line": 105,
       "category": "spacing",
       "values": [
@@ -1329,7 +1329,7 @@
       "snippet": ".padding(horizontal = 16.dp, vertical = 12.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "line": 107,
       "category": "spacing",
       "values": [
@@ -1338,7 +1338,7 @@
       "snippet": "horizontalArrangement = Arrangement.spacedBy(12.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "line": 113,
       "category": "sizing",
       "values": [
@@ -1347,7 +1347,7 @@
       "snippet": "size = 16.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "line": 127,
       "category": "sizing",
       "values": [
@@ -1356,7 +1356,7 @@
       "snippet": "size = 16.dp,"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
       "line": 50,
       "category": "spacing",
       "values": [
@@ -1365,7 +1365,7 @@
       "snippet": "horizontalArrangement = Arrangement.spacedBy(4.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
       "line": 93,
       "category": "spacing",
       "values": [
@@ -1374,7 +1374,7 @@
       "snippet": "modifier = Modifier.padding(start = 2.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
       "line": 41,
       "category": "spacing",
       "values": [
@@ -1383,7 +1383,7 @@
       "snippet": "modifier = modifier.padding(top = 10.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
       "line": 49,
       "category": "spacing",
       "values": [
@@ -1392,7 +1392,7 @@
       "snippet": "modifier = Modifier.padding(start = 2.dp)"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
       "line": 53,
       "category": "spacing",
       "values": [
@@ -1401,7 +1401,7 @@
       "snippet": "Spacer(modifier = Modifier.width(4.dp))"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
       "line": 99,
       "category": "spacing",
       "values": [
@@ -1410,7 +1410,7 @@
       "snippet": "modifier = modifier.padding(10.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
       "line": 180,
       "category": "spacing",
       "values": [
@@ -1419,7 +1419,7 @@
       "snippet": ".padding(top = 10.dp),"
     },
     {
-      "file": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+      "file": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
       "line": 181,
       "category": "spacing",
       "values": [

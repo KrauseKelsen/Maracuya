@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- El host de pruebas habilita RTL para comparar las Views con LocalLayoutDirection. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:supportsRtl="true" />
+</manifest>

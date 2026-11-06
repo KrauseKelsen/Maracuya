@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp
+<cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <cruxui.android.maracuya.wrappers.components.labels.LabelWrp
+        <cruxui.android.lib.wrappers.components.labels.LabelWrp
             android:id="@+id/labelMrcyDefaultFromXml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             app:showIcon="false"
             app:error="false" />
 
-        <cruxui.android.maracuya.wrappers.components.labels.LabelWrp
+        <cruxui.android.lib.wrappers.components.labels.LabelWrp
             android:id="@+id/labelMrcyWithIconFromXml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             app:error="false"
             app:onClickContentDescription="Ver información del label" />
 
-        <cruxui.android.maracuya.wrappers.components.labels.LabelWrp
+        <cruxui.android.lib.wrappers.components.labels.LabelWrp
             android:id="@+id/labelMrcyOptionalIconFromXml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             app:showIcon="true"
             app:error="false" />
 
-        <cruxui.android.maracuya.wrappers.components.labels.LabelWrp
+        <cruxui.android.lib.wrappers.components.labels.LabelWrp
             android:id="@+id/labelMrcyErrorFromXml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             app:showIcon="true"
             app:error="true" />
 
-        <cruxui.android.maracuya.wrappers.components.labels.LabelWrp
+        <cruxui.android.lib.wrappers.components.labels.LabelWrp
             android:id="@+id/labelMrcyOptionalIconErrorFromXml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             app:showIcon="true"
             app:error="true" />
 
-        <cruxui.android.maracuya.wrappers.components.labels.LabelWrp
+        <cruxui.android.lib.wrappers.components.labels.LabelWrp
             android:id="@+id/labelMrcyLargeTextFromXml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
             app:text="This a label that could extend to more than one line"
             app:limitMaxLabel="true" />
 
-        <cruxui.android.maracuya.wrappers.components.labels.LabelWrp
+        <cruxui.android.lib.wrappers.components.labels.LabelWrp
             android:id="@+id/labelMrcyTokensOverrideFromXml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,4 +81,4 @@
 
     </LinearLayout>
 
-</cruxui.android.maracuya.wrappers.theme.MyLibraryThemeWrp>
+</cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp>

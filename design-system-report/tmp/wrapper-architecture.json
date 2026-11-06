@@ -37,10 +37,10 @@
     {
       "family": "buttons/navigation/group",
       "files": [
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributeParser.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributes.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupTokensOverrideRegistry.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupWrp.kt"
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupWrp.kt"
       ],
       "fileCount": 4,
       "hasWrapperView": true,
@@ -66,10 +66,10 @@
     {
       "family": "buttons/navigation/simple",
       "files": [
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributeParser.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributes.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationTokensOverrideRegistry.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationWrp.kt"
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationWrp.kt"
       ],
       "fileCount": 4,
       "hasWrapperView": true,
@@ -95,10 +95,10 @@
     {
       "family": "buttons/simple",
       "files": [
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonAttributeParser.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonAttributes.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonTokensOverrideRegistry.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonWrp.kt"
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonWrp.kt"
       ],
       "fileCount": 4,
       "hasWrapperView": true,
@@ -124,7 +124,7 @@
     {
       "family": "core",
       "files": [
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/core/MrcyXmlComposeView.kt"
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/core/MrcyXmlComposeView.kt"
       ],
       "fileCount": 1,
       "hasWrapperView": false,
@@ -150,10 +150,10 @@
     {
       "family": "labels",
       "files": [
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelAttributeParser.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelAttributes.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelTokensOverrideRegistry.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelWrp.kt"
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelWrp.kt"
       ],
       "fileCount": 4,
       "hasWrapperView": true,
@@ -179,10 +179,10 @@
     {
       "family": "textfields",
       "files": [
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldAttributeParser.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldAttributes.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldTokensOverrideRegistry.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldWrp.kt"
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldAttributes.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldTokensOverrideRegistry.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldWrp.kt"
       ],
       "fileCount": 4,
       "hasWrapperView": true,
@@ -208,11 +208,11 @@
     {
       "family": "theme",
       "files": [
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeAttributeParser.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeConfig.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeMapper.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeProvider.kt",
-        "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeWrp.kt"
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeAttributeParser.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeConfig.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeMapper.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeProvider.kt",
+        "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeWrp.kt"
       ],
       "fileCount": 5,
       "hasWrapperView": true,

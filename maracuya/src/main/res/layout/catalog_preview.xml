@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Demuestra el consumo XML de colores e iconos generados directamente desde Library.
+
+    Justificación:
+    TextView e ImageView comparten los mismos atributos sin registrar recetas ni agregar una API por componente.
+    Se comunica con ThemeOverlay.Maracuya y LibraryXmlReferences producidos por token-exporter.
+
+    Uso:
+    Aplicar el overlay en el ámbito. Elegir un color en android:textColor y un icono en drawableStart o src.
+    El asset, tamaño y tinte son referencias separadas: una ImageView puede usar los tres atributos;
+    una receta TokensOverride recibe el IconToken completo cuando se necesita aplicar sus valores en ejecución.
+    Un tinte null conserva el asset sin forzar un color; el componente puede establecer su propia política.
+    Cambiar Library y compilar regenera las referencias. Los temas creados con copy durante la ejecución
+    se aplican mediante el proveedor o las recetas y no alteran recursos XML ya compilados.
+
+    Objetivos:
+    - Mostrar variables XML independientes del componente.
+    - Verificar inflación usando el mismo catálogo que Compose.
+
+    @author Krause Kelsen
+    @since 07-16-2026
+    @version 0.0.13
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.Maracuya">
+
+    <cruxui.android.lib.wrappers.components.textviews.TextView
+        android:id="@+id/catalogTextPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="?attr/libraryIconAlertsInfo"
+        android:text="@string/text_view_preview_icons"
+        android:textAppearance="?attr/libraryTypographyLabel"
+        android:textColor="?attr/libraryColorLinkDefault" />
+
+    <ImageView
+        android:id="@+id/catalogIconPreview"
+        android:layout_width="?attr/libraryIconAlertsInfoSize"
+        android:layout_height="?attr/libraryIconAlertsInfoSize"
+        android:contentDescription="@string/text_view_preview_end_description"
+        android:src="?attr/libraryIconAlertsInfo" />
+</LinearLayout>

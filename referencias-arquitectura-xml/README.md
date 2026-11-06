@@ -19,3 +19,7 @@ Esta es una selección inicial de fuentes, no una revisión sistemática ni una 
 Se priorizaron documentación oficial y repositorios de sus autores, con evidencia explícita de Android Views/XML. Una biblioteca exclusivamente Compose no se considera evidencia de una arquitectura XML.
 
 Los enlaces a ramas `main` y `master` pueden cambiar. Antes de adoptar una implementación concreta se deberá registrar el commit o release estudiado.
+
+## Implementación actual
+
+Estas referencias conservan la fecha de consulta original. La propuesta inicial fue concretada con TextView como componente de referencia: ver [arquitectura implementada](../arquitectura-xml-compose/02-propuesta-arquitectura.md) y [paridad XML–Compose](../arquitectura-xml-compose/07-paridad-textview-compose-xml.md). Los documentos de esta carpeta son antecedentes, no el contrato de la API actual.

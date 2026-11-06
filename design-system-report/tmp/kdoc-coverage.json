@@ -1,5 +1,5 @@
 {
-  "methodology": "Counts named class-like Kotlin declarations under maracuya/src/main/java/cruxui/android/maracuya, including nested declarations and wrappers: class, data class, enum class, sealed class, value class, annotation class, object and interface. Public @Composable *Mrcy functions are reported separately as API functions. A declaration only counts as template-compliant when its KDoc follows the requested fields: Descripción, Uso, @author, @since, @version, @param and @see. Any other KDoc is counted as partial debt.",
+  "methodology": "Counts named class-like Kotlin declarations under maracuya/src/main/java/cruxui/android/lib, including nested declarations and wrappers: class, data class, enum class, sealed class, value class, annotation class, object and interface. Public @Composable *Mrcy functions are reported separately as API functions. A declaration only counts as template-compliant when its KDoc follows the requested fields: Descripción, Uso, @author, @since, @version, @param and @see. Any other KDoc is counted as partial debt.",
   "template_checks": [
     "Descripción",
     "Uso",
@@ -396,7 +396,7 @@
   ],
   "missing_template_class_like": [
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/atoms/LibraryIconTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/atoms/LibraryIconTokens.kt",
       "folder": "atoms/LibraryIconTokens.kt",
       "line": 14,
       "indent": 0,
@@ -421,7 +421,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/atoms/icons/LibraryAlertsIconsTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/atoms/icons/LibraryAlertsIconsTokens.kt",
       "folder": "atoms/icons",
       "line": 6,
       "indent": 0,
@@ -446,7 +446,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/atoms/icons/LibraryArrowIconsTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/atoms/icons/LibraryArrowIconsTokens.kt",
       "folder": "atoms/icons",
       "line": 6,
       "indent": 0,
@@ -471,7 +471,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/atoms/icons/LibraryExtensionTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/atoms/icons/LibraryExtensionTokens.kt",
       "folder": "atoms/icons",
       "line": 6,
       "indent": 0,
@@ -496,7 +496,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/atoms/icons/LibraryGeneralIconsTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/atoms/icons/LibraryGeneralIconsTokens.kt",
       "folder": "atoms/icons",
       "line": 6,
       "indent": 0,
@@ -521,7 +521,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/atoms/icons/LibraryMoneyIconsTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/atoms/icons/LibraryMoneyIconsTokens.kt",
       "folder": "atoms/icons",
       "line": 6,
       "indent": 0,
@@ -546,7 +546,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/atoms/icons/LibraryPeopleIconsTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/atoms/icons/LibraryPeopleIconsTokens.kt",
       "folder": "atoms/icons",
       "line": 6,
       "indent": 0,
@@ -571,7 +571,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/semantics/CorporateIcons.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/semantics/CorporateIcons.kt",
       "folder": "semantics",
       "line": 21,
       "indent": 0,
@@ -596,7 +596,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/semantics/CorporateTypography.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/semantics/CorporateTypography.kt",
       "folder": "semantics",
       "line": 81,
       "indent": 0,
@@ -615,7 +615,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/theme/MyLibraryTheme.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/theme/MyLibraryTheme.kt",
       "folder": "theme",
       "line": 28,
       "indent": 0,
@@ -640,7 +640,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/base/ColorToken.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/base/ColorToken.kt",
       "folder": "tokens/base",
       "line": 8,
       "indent": 0,
@@ -664,7 +664,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/base/FontFamilyToken.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/base/FontFamilyToken.kt",
       "folder": "tokens/base",
       "line": 3,
       "indent": 0,
@@ -689,7 +689,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/base/IconToken.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/base/IconToken.kt",
       "folder": "tokens/base",
       "line": 13,
       "indent": 0,
@@ -714,7 +714,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/base/TypographyToken.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/base/TypographyToken.kt",
       "folder": "tokens/base",
       "line": 21,
       "indent": 0,
@@ -735,7 +735,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 53,
       "indent": 4,
@@ -760,7 +760,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 57,
       "indent": 4,
@@ -785,7 +785,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 58,
       "indent": 8,
@@ -810,7 +810,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 67,
       "indent": 4,
@@ -835,7 +835,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 68,
       "indent": 8,
@@ -860,7 +860,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 78,
       "indent": 4,
@@ -885,7 +885,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 84,
       "indent": 4,
@@ -910,7 +910,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 90,
       "indent": 4,
@@ -935,7 +935,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 96,
       "indent": 4,
@@ -960,7 +960,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 103,
       "indent": 4,
@@ -985,7 +985,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 112,
       "indent": 4,
@@ -1010,7 +1010,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 121,
       "indent": 4,
@@ -1035,7 +1035,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 126,
       "indent": 4,
@@ -1060,7 +1060,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 135,
       "indent": 4,
@@ -1085,7 +1085,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 137,
       "indent": 8,
@@ -1110,7 +1110,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 141,
       "indent": 8,
@@ -1135,7 +1135,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 145,
       "indent": 8,
@@ -1160,7 +1160,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 149,
       "indent": 8,
@@ -1185,7 +1185,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 154,
       "indent": 8,
@@ -1210,7 +1210,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/colors/DefaultColors.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/colors/DefaultColors.kt",
       "folder": "tokens/colors",
       "line": 158,
       "indent": 8,
@@ -1235,7 +1235,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/fonts/FontStyleTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/fonts/FontStyleTokens.kt",
       "folder": "tokens/fonts",
       "line": 19,
       "indent": 0,
@@ -1256,7 +1256,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/icons/AlertsIcons.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/icons/AlertsIcons.kt",
       "folder": "tokens/icons",
       "line": 6,
       "indent": 0,
@@ -1281,7 +1281,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/icons/ArrowIcons.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/icons/ArrowIcons.kt",
       "folder": "tokens/icons",
       "line": 6,
       "indent": 0,
@@ -1306,7 +1306,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/icons/ExtensionIcons.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/icons/ExtensionIcons.kt",
       "folder": "tokens/icons",
       "line": 6,
       "indent": 0,
@@ -1331,7 +1331,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/icons/GeneralIcons.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/icons/GeneralIcons.kt",
       "folder": "tokens/icons",
       "line": 6,
       "indent": 0,
@@ -1356,7 +1356,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/icons/MoneyIcons.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/icons/MoneyIcons.kt",
       "folder": "tokens/icons",
       "line": 6,
       "indent": 0,
@@ -1381,7 +1381,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/icons/PeopleIcons.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/icons/PeopleIcons.kt",
       "folder": "tokens/icons",
       "line": 6,
       "indent": 0,
@@ -1406,7 +1406,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/spacings/ChipChoiceSpacings.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/spacings/ChipChoiceSpacings.kt",
       "folder": "tokens/spacings",
       "line": 3,
       "indent": 0,
@@ -1431,7 +1431,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/spacings/InputCheckBoxSpacings.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/spacings/InputCheckBoxSpacings.kt",
       "folder": "tokens/spacings",
       "line": 6,
       "indent": 0,
@@ -1456,7 +1456,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/spacings/InputFieldBasicSpacings.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/spacings/InputFieldBasicSpacings.kt",
       "folder": "tokens/spacings",
       "line": 10,
       "indent": 0,
@@ -1481,7 +1481,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/tokens/spacings/LabelSpacings.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/tokens/spacings/LabelSpacings.kt",
       "folder": "tokens/spacings",
       "line": 4,
       "indent": 0,
@@ -1506,7 +1506,7 @@
       "weightReason": "Tokens, modelos, resolvers o infraestructura documentable."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseTokens.kt",
       "folder": "ui/components/buttons",
       "line": 11,
       "indent": 0,
@@ -1531,7 +1531,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseTokensResolver.kt",
       "folder": "ui/components/buttons",
       "line": 11,
       "indent": 0,
@@ -1556,7 +1556,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokens.kt",
       "folder": "ui/components/buttons",
       "line": 7,
       "indent": 0,
@@ -1581,7 +1581,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselTokensResolver.kt",
       "folder": "ui/components/buttons",
       "line": 9,
       "indent": 0,
@@ -1606,7 +1606,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
       "folder": "ui/components/buttons",
       "line": 7,
       "indent": 0,
@@ -1631,7 +1631,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceModels.kt",
       "folder": "ui/components/buttons",
       "line": 20,
       "indent": 0,
@@ -1656,7 +1656,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt",
       "folder": "ui/components/buttons",
       "line": 6,
       "indent": 0,
@@ -1681,7 +1681,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceSelectionState.kt",
       "folder": "ui/components/buttons",
       "line": 10,
       "indent": 0,
@@ -1706,7 +1706,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehavior.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehavior.kt",
       "folder": "ui/components/buttons",
       "line": 9,
       "indent": 0,
@@ -1731,7 +1731,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehaviorResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/behavior/ButtonNavigationGroupBehaviorResolver.kt",
       "folder": "ui/components/buttons",
       "line": 10,
       "indent": 0,
@@ -1756,7 +1756,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupButton.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupButton.kt",
       "folder": "ui/components/buttons",
       "line": 20,
       "indent": 0,
@@ -1781,7 +1781,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/core/ButtonNavigationGroupDefaults.kt",
       "folder": "ui/components/buttons",
       "line": 12,
       "indent": 0,
@@ -1806,7 +1806,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
       "folder": "ui/components/buttons",
       "line": 14,
       "indent": 0,
@@ -1831,7 +1831,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokens.kt",
       "folder": "ui/components/buttons",
       "line": 26,
       "indent": 0,
@@ -1856,7 +1856,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokens/ButtonNavigationGroupTokensResolver.kt",
       "folder": "ui/components/buttons",
       "line": 15,
       "indent": 0,
@@ -1881,7 +1881,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt",
       "folder": "ui/components/buttons",
       "line": 15,
       "indent": 0,
@@ -1906,7 +1906,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRender.kt",
       "folder": "ui/components/buttons",
       "line": 24,
       "indent": 0,
@@ -1931,7 +1931,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/tokensrender/ButtonNavigationGroupTokensRenderResolver.kt",
       "folder": "ui/components/buttons",
       "line": 24,
       "indent": 0,
@@ -1956,7 +1956,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariant.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariant.kt",
       "folder": "ui/components/buttons",
       "line": 9,
       "indent": 0,
@@ -1981,7 +1981,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariantResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/variant/ButtonNavigationGroupVariantResolver.kt",
       "folder": "ui/components/buttons",
       "line": 11,
       "indent": 0,
@@ -2006,7 +2006,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehavior.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehavior.kt",
       "folder": "ui/components/buttons",
       "line": 9,
       "indent": 0,
@@ -2031,7 +2031,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt",
       "folder": "ui/components/buttons",
       "line": 24,
       "indent": 0,
@@ -2056,7 +2056,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/behavior/ButtonNavigationBehaviorResolver.kt",
       "folder": "ui/components/buttons",
       "line": 105,
       "indent": 0,
@@ -2081,7 +2081,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/core/ButtonNavigationLoadingScope.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/core/ButtonNavigationLoadingScope.kt",
       "folder": "ui/components/buttons",
       "line": 6,
       "indent": 0,
@@ -2106,7 +2106,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt",
       "folder": "ui/components/buttons",
       "line": 13,
       "indent": 0,
@@ -2131,7 +2131,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokens.kt",
       "folder": "ui/components/buttons",
       "line": 32,
       "indent": 0,
@@ -2156,7 +2156,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokens/ButtonNavigationTokensResolver.kt",
       "folder": "ui/components/buttons",
       "line": 24,
       "indent": 0,
@@ -2181,7 +2181,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRender.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRender.kt",
       "folder": "ui/components/buttons",
       "line": 11,
       "indent": 0,
@@ -2206,7 +2206,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRenderResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/tokensrender/ButtonNavigationTokensRenderResolver.kt",
       "folder": "ui/components/buttons",
       "line": 9,
       "indent": 0,
@@ -2231,7 +2231,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariant.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariant.kt",
       "folder": "ui/components/buttons",
       "line": 10,
       "indent": 0,
@@ -2256,7 +2256,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/variant/ButtonNavigationVariantResolver.kt",
       "folder": "ui/components/buttons",
       "line": 14,
       "indent": 0,
@@ -2281,7 +2281,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonTokens.kt",
       "folder": "ui/components/buttons",
       "line": 9,
       "indent": 0,
@@ -2306,7 +2306,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonTokens.kt",
       "folder": "ui/components/buttons",
       "line": 22,
       "indent": 0,
@@ -2331,7 +2331,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonTokensResolver.kt",
       "folder": "ui/components/buttons",
       "line": 20,
       "indent": 0,
@@ -2356,7 +2356,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonVariant.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonVariant.kt",
       "folder": "ui/components/buttons",
       "line": 7,
       "indent": 0,
@@ -2381,7 +2381,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "folder": "ui/components/checkboxes",
       "line": 25,
       "indent": 0,
@@ -2406,7 +2406,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxTokens.kt",
       "folder": "ui/components/checkboxes",
       "line": 12,
       "indent": 0,
@@ -2431,7 +2431,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxTokensResolver.kt",
       "folder": "ui/components/checkboxes",
       "line": 13,
       "indent": 0,
@@ -2456,7 +2456,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownContent.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownContent.kt",
       "folder": "ui/components/dropdowns",
       "line": 9,
       "indent": 0,
@@ -2481,7 +2481,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownContent.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownContent.kt",
       "folder": "ui/components/dropdowns",
       "line": 11,
       "indent": 4,
@@ -2506,7 +2506,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownContent.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownContent.kt",
       "folder": "ui/components/dropdowns",
       "line": 15,
       "indent": 4,
@@ -2531,7 +2531,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownContent.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownContent.kt",
       "folder": "ui/components/dropdowns",
       "line": 21,
       "indent": 0,
@@ -2556,7 +2556,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownContent.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownContent.kt",
       "folder": "ui/components/dropdowns",
       "line": 26,
       "indent": 0,
@@ -2581,7 +2581,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownTokens.kt",
       "folder": "ui/components/dropdowns",
       "line": 12,
       "indent": 0,
@@ -2606,7 +2606,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownTokensResolver.kt",
       "folder": "ui/components/dropdowns",
       "line": 13,
       "indent": 0,
@@ -2631,7 +2631,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownVariant.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownVariant.kt",
       "folder": "ui/components/dropdowns",
       "line": 6,
       "indent": 0,
@@ -2656,7 +2656,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicTokens.kt",
       "folder": "ui/components/inputs",
       "line": 15,
       "indent": 0,
@@ -2681,7 +2681,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicTypes.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicTypes.kt",
       "folder": "ui/components/inputs",
       "line": 9,
       "indent": 0,
@@ -2706,7 +2706,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicWidthType.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicWidthType.kt",
       "folder": "ui/components/inputs",
       "line": 3,
       "indent": 0,
@@ -2731,7 +2731,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokens.kt",
       "folder": "ui/components/inputs",
       "line": 13,
       "indent": 0,
@@ -2756,7 +2756,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokensGroup.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokensGroup.kt",
       "folder": "ui/components/inputs",
       "line": 8,
       "indent": 0,
@@ -2781,7 +2781,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxTokensResolver.kt",
       "folder": "ui/components/inputs",
       "line": 12,
       "indent": 0,
@@ -2806,7 +2806,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/config/InputDropDownTokenGroup.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/config/InputDropDownTokenGroup.kt",
       "folder": "ui/components/inputs",
       "line": 6,
       "indent": 0,
@@ -2831,7 +2831,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/config/InputFieldBasicTokenGroup.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/config/InputFieldBasicTokenGroup.kt",
       "folder": "ui/components/inputs",
       "line": 8,
       "indent": 0,
@@ -2856,7 +2856,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/config/InputFieldBasicTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/config/InputFieldBasicTokensResolver.kt",
       "folder": "ui/components/inputs",
       "line": 16,
       "indent": 0,
@@ -2881,7 +2881,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokenGroup.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokenGroup.kt",
       "folder": "ui/components/inputs",
       "line": 3,
       "indent": 0,
@@ -2906,7 +2906,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokens.kt",
       "folder": "ui/components/inputs",
       "line": 11,
       "indent": 0,
@@ -2931,7 +2931,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownTokensResolver.kt",
       "folder": "ui/components/inputs",
       "line": 14,
       "indent": 0,
@@ -2956,7 +2956,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownVariant.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownVariant.kt",
       "folder": "ui/components/inputs",
       "line": 6,
       "indent": 0,
@@ -2981,7 +2981,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelBehavior.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelBehavior.kt",
       "folder": "ui/components/labels",
       "line": 3,
       "indent": 0,
@@ -3006,7 +3006,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelBehaviorResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelBehaviorResolver.kt",
       "folder": "ui/components/labels",
       "line": 3,
       "indent": 0,
@@ -3031,7 +3031,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelTokens.kt",
       "folder": "ui/components/labels",
       "line": 15,
       "indent": 0,
@@ -3056,7 +3056,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelTokens.kt",
       "folder": "ui/components/labels",
       "line": 24,
       "indent": 0,
@@ -3081,7 +3081,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelTokensResolver.kt",
       "folder": "ui/components/labels",
       "line": 16,
       "indent": 0,
@@ -3106,7 +3106,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/layouts/BackgroundLayoutSpec.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/layouts/BackgroundLayoutSpec.kt",
       "folder": "ui/components/layouts",
       "line": 10,
       "indent": 0,
@@ -3131,7 +3131,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldBehavior.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldBehavior.kt",
       "folder": "ui/components/textfields",
       "line": 7,
       "indent": 0,
@@ -3156,7 +3156,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldBehaviorResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldBehaviorResolver.kt",
       "folder": "ui/components/textfields",
       "line": 8,
       "indent": 0,
@@ -3181,7 +3181,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldTokens.kt",
       "folder": "ui/components/textfields",
       "line": 11,
       "indent": 0,
@@ -3206,7 +3206,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldTokensResolver.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldTokensResolver.kt",
       "folder": "ui/components/textfields",
       "line": 17,
       "indent": 0,
@@ -3231,7 +3231,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldVariant.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldVariant.kt",
       "folder": "ui/components/textfields",
       "line": 7,
       "indent": 0,
@@ -3256,7 +3256,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/texts/LegalTextTokens.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/texts/LegalTextTokens.kt",
       "folder": "ui/components/texts",
       "line": 12,
       "indent": 0,
@@ -3281,7 +3281,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/utils/IconPosition.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/utils/IconPosition.kt",
       "folder": "ui/components/utils",
       "line": 3,
       "indent": 0,
@@ -3306,7 +3306,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/previews/core/Mode.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/previews/core/Mode.kt",
       "folder": "ui/previews",
       "line": 5,
       "indent": 0,
@@ -3331,7 +3331,7 @@
       "weightReason": "Preview/demo o soporte visual de bajo riesgo."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/utils/LibraryThemeManager.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/utils/LibraryThemeManager.kt",
       "folder": "utils/LibraryThemeManager.kt",
       "line": 40,
       "indent": 0,
@@ -3352,7 +3352,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/utils/composeadapters/ColorComposeAdapter.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/utils/composeadapters/ColorComposeAdapter.kt",
       "folder": "utils/composeadapters",
       "line": 10,
       "indent": 0,
@@ -3377,7 +3377,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/utils/composeadapters/IconComposeAdapter.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/utils/composeadapters/IconComposeAdapter.kt",
       "folder": "utils/composeadapters",
       "line": 25,
       "indent": 0,
@@ -3402,7 +3402,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/utils/composeadapters/TypographyComposeAdapter.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/utils/composeadapters/TypographyComposeAdapter.kt",
       "folder": "utils/composeadapters",
       "line": 27,
       "indent": 0,
@@ -3423,7 +3423,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/utils/materialadapters/ColorMaterialAdapter.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/utils/materialadapters/ColorMaterialAdapter.kt",
       "folder": "utils/materialadapters",
       "line": 27,
       "indent": 0,
@@ -3448,7 +3448,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/utils/materialadapters/TypographyMaterialAdapter.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/utils/materialadapters/TypographyMaterialAdapter.kt",
       "folder": "utils/materialadapters",
       "line": 8,
       "indent": 0,
@@ -3473,7 +3473,7 @@
       "weightReason": "Utilidad, enum o contrato simple."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributeParser.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributeParser.kt",
       "folder": "wrappers/components",
       "line": 16,
       "indent": 0,
@@ -3498,7 +3498,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributes.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupAttributes.kt",
       "folder": "wrappers/components",
       "line": 15,
       "indent": 0,
@@ -3523,7 +3523,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupTokensOverrideRegistry.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupTokensOverrideRegistry.kt",
       "folder": "wrappers/components",
       "line": 14,
       "indent": 0,
@@ -3548,7 +3548,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/group/ButtonNavigationGroupWrp.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/group/ButtonNavigationGroupWrp.kt",
       "folder": "wrappers/components",
       "line": 22,
       "indent": 0,
@@ -3573,7 +3573,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributeParser.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributeParser.kt",
       "folder": "wrappers/components",
       "line": 12,
       "indent": 0,
@@ -3598,7 +3598,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributes.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationAttributes.kt",
       "folder": "wrappers/components",
       "line": 20,
       "indent": 0,
@@ -3623,7 +3623,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationTokensOverrideRegistry.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationTokensOverrideRegistry.kt",
       "folder": "wrappers/components",
       "line": 22,
       "indent": 0,
@@ -3648,7 +3648,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/navigation/simple/ButtonNavigationWrp.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/navigation/simple/ButtonNavigationWrp.kt",
       "folder": "wrappers/components",
       "line": 27,
       "indent": 0,
@@ -3673,7 +3673,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonAttributeParser.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonAttributeParser.kt",
       "folder": "wrappers/components",
       "line": 12,
       "indent": 0,
@@ -3698,7 +3698,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonAttributes.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonAttributes.kt",
       "folder": "wrappers/components",
       "line": 16,
       "indent": 0,
@@ -3723,7 +3723,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonTokensOverrideRegistry.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonTokensOverrideRegistry.kt",
       "folder": "wrappers/components",
       "line": 35,
       "indent": 0,
@@ -3748,7 +3748,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/buttons/simple/ButtonWrp.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/buttons/simple/ButtonWrp.kt",
       "folder": "wrappers/components",
       "line": 25,
       "indent": 0,
@@ -3773,7 +3773,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelAttributeParser.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelAttributeParser.kt",
       "folder": "wrappers/components",
       "line": 13,
       "indent": 0,
@@ -3798,7 +3798,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelAttributes.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelAttributes.kt",
       "folder": "wrappers/components",
       "line": 13,
       "indent": 0,
@@ -3823,7 +3823,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelTokensOverrideRegistry.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelTokensOverrideRegistry.kt",
       "folder": "wrappers/components",
       "line": 22,
       "indent": 0,
@@ -3848,7 +3848,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/labels/LabelWrp.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/labels/LabelWrp.kt",
       "folder": "wrappers/components",
       "line": 21,
       "indent": 0,
@@ -3873,7 +3873,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldAttributeParser.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldAttributeParser.kt",
       "folder": "wrappers/components",
       "line": 14,
       "indent": 0,
@@ -3898,7 +3898,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldAttributes.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldAttributes.kt",
       "folder": "wrappers/components",
       "line": 14,
       "indent": 0,
@@ -3923,7 +3923,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldTokensOverrideRegistry.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldTokensOverrideRegistry.kt",
       "folder": "wrappers/components",
       "line": 22,
       "indent": 0,
@@ -3948,7 +3948,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/components/textfields/TextFieldWrp.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/components/textfields/TextFieldWrp.kt",
       "folder": "wrappers/components",
       "line": 23,
       "indent": 0,
@@ -3973,7 +3973,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/core/MrcyXmlComposeView.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/core/MrcyXmlComposeView.kt",
       "folder": "wrappers/core",
       "line": 25,
       "indent": 0,
@@ -3998,7 +3998,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/core/MrcyXmlComposeView.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/core/MrcyXmlComposeView.kt",
       "folder": "wrappers/core",
       "line": 103,
       "indent": 0,
@@ -4023,7 +4023,7 @@
       "weightReason": "Declaración privada o helper interno."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeAttributeParser.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeAttributeParser.kt",
       "folder": "wrappers/theme",
       "line": 39,
       "indent": 0,
@@ -4043,7 +4043,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeConfig.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeConfig.kt",
       "folder": "wrappers/theme",
       "line": 41,
       "indent": 0,
@@ -4062,7 +4062,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeMapper.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeMapper.kt",
       "folder": "wrappers/theme",
       "line": 33,
       "indent": 0,
@@ -4082,7 +4082,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeProvider.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeProvider.kt",
       "folder": "wrappers/theme",
       "line": 31,
       "indent": 0,
@@ -4102,7 +4102,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/wrappers/theme/MyLibraryThemeWrp.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/wrappers/theme/MyLibraryThemeWrp.kt",
       "folder": "wrappers/theme",
       "line": 50,
       "indent": 0,
@@ -4124,7 +4124,7 @@
   ],
   "missing_template_component_functions": [
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/ChipChoiceBaseMrcy.kt",
       "folder": "ui/components/buttons",
       "line": 24,
       "kind": "fun",
@@ -4149,7 +4149,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/chipchoice/carousel/ChipChoiceCarouselMrcy.kt",
       "folder": "ui/components/buttons",
       "line": 26,
       "kind": "fun",
@@ -4174,7 +4174,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
       "folder": "ui/components/buttons",
       "line": 33,
       "kind": "fun",
@@ -4199,7 +4199,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/group/ButtonNavigationGroupMrcy.kt",
       "folder": "ui/components/buttons",
       "line": 63,
       "kind": "fun",
@@ -4224,7 +4224,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/navigation/simple/ButtonNavigationMrcy.kt",
       "folder": "ui/components/buttons",
       "line": 40,
       "kind": "fun",
@@ -4249,7 +4249,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/buttons/simple/ButtonMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/buttons/simple/ButtonMrcy.kt",
       "folder": "ui/components/buttons",
       "line": 21,
       "kind": "fun",
@@ -4274,7 +4274,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "folder": "ui/components/checkboxes",
       "line": 36,
       "kind": "fun",
@@ -4299,7 +4299,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/checkboxes/CheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/checkboxes/CheckBoxMrcy.kt",
       "folder": "ui/components/checkboxes",
       "line": 92,
       "kind": "fun",
@@ -4324,7 +4324,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/dropdowns/DropDownMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/dropdowns/DropDownMrcy.kt",
       "folder": "ui/components/dropdowns",
       "line": 47,
       "kind": "fun",
@@ -4349,7 +4349,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/basic/InputFieldBasicMrcy.kt",
       "folder": "ui/components/inputs",
       "line": 47,
       "kind": "fun",
@@ -4374,7 +4374,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/checkbox/InputCheckBoxMrcy.kt",
       "folder": "ui/components/inputs",
       "line": 42,
       "kind": "fun",
@@ -4399,7 +4399,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/inputs/dropdown/InputDropDownMrcy.kt",
       "folder": "ui/components/inputs",
       "line": 31,
       "kind": "fun",
@@ -4424,7 +4424,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/labels/LabelMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/labels/LabelMrcy.kt",
       "folder": "ui/components/labels",
       "line": 26,
       "kind": "fun",
@@ -4449,7 +4449,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/BottomTextMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/BottomTextMrcy.kt",
       "folder": "ui/components/textfields",
       "line": 27,
       "kind": "fun",
@@ -4474,7 +4474,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
       "folder": "ui/components/textfields",
       "line": 48,
       "kind": "fun",
@@ -4499,7 +4499,7 @@
       "weightReason": "Superficie pública o cercana al consumo del DS."
     },
     {
-      "path": "maracuya/src/main/java/cruxui/android/maracuya/ui/components/textfields/TextFieldMrcy.kt",
+      "path": "maracuya/src/main/java/cruxui/android/lib/ui/components/textfields/TextFieldMrcy.kt",
       "folder": "ui/components/textfields",
       "line": 126,
       "kind": "fun",
