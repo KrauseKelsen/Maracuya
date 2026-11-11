@@ -86,21 +86,17 @@
         -->
         <attr name="text" />
         <!--
-            Booleano del botón: solicita mostrar progreso al activarlo. Declarar app:showProgressOnPress="true";
-            el host coordina la operación asociada.
-        -->
-        <attr name="showProgressOnPress" />
-        <!--
             Habilitación de los wrappers que declaran este atributo: app:isEnabled="false". El TextView nativo usa
             android:enabled.
         -->
         <attr name="isEnabled" />
         <!--
-            Variante del botón simple: app:buttonVariant="primary" o "secondary".
+            Variante del botón simple: app:buttonVariant="primary", "secondary" o "terciary".
         -->
         <attr name="buttonVariant" format="enum">
             <enum name="primary" value="0" />
             <enum name="secondary" value="1" />
+            <enum name="terciary" value="2" />
         </attr>
         <!--
             Nombre de receta previamente registrada en ButtonTokensOverrideRegistry. No es un ID de estilo ni
@@ -498,5 +494,52 @@
             un atributo tipográfico separado.
         -->
         <attr name="textViewTokensOverride" format="string" />
+    </declare-styleable>
+    <!-- Button nativo: estados controlados por el host y colores por estado del catálogo Library.
+         Ejemplo: app:pressedBackground="?attr/libraryColorBrandPrimaryHover".
+         android:background conserva su semántica nativa (drawable completo); buttonBackground cambia
+         únicamente el color tokenizado sin perder forma ni borde. Solo existen primary, secondary y terciary. -->
+    <declare-styleable name="DesignButton">
+        <attr name="android:text" />
+        <attr name="android:enabled" />
+        <attr name="android:onClick" />
+        <attr name="android:textColor" />
+        <attr name="android:textAppearance" />
+        <attr name="android:fontFamily" />
+        <attr name="android:textSize" />
+        <attr name="android:maxLines" />
+        <attr name="android:drawableStart" />
+        <attr name="android:drawableEnd" />
+        <attr name="android:drawablePadding" />
+        <attr name="text" />
+        <attr name="isEnabled" />
+        <attr name="buttonVariant" />
+        <attr name="buttonTokensOverride" />
+        <attr name="iconStart" />
+        <attr name="iconEnd" />
+        <attr name="iconStartContentDescription" />
+        <attr name="iconEndContentDescription" />
+        <attr name="iconPadding" />
+        <!-- Mantiene loading hasta que el host lo retire; no es una duración ni un gesto. -->
+        <attr name="isLoading" format="boolean" />
+        <!-- Permite representar pressed desde XML/previews; el gesto nativo también lo activa. -->
+        <attr name="isPressed" format="boolean" />
+        <!-- Fondo normal; loading conserva este color. -->
+        <attr name="buttonBackground" format="color" />
+        <!-- Borde normal del botón. -->
+        <attr name="buttonBorder" format="color" />
+        <!-- Tinte compartido del texto y sus iconos durante pressed. -->
+        <attr name="pressedTextColor" format="color" />
+        <!-- Fondo pressed independiente del color de borde. -->
+        <attr name="pressedBackground" format="color" />
+        <!-- Borde pressed; no se deriva del fondo personalizado. -->
+        <attr name="pressedBorder" format="color" />
+        <attr name="disabledTextColor" />
+        <!-- Fondo cuando android:enabled=false o behavior.isDisabled=true. -->
+        <attr name="disabledBackground" format="color" />
+        <!-- Borde cuando el botón está deshabilitado. -->
+        <attr name="disabledBorder" format="color" />
+        <!-- Forma en dp; no añade variantes de tamaño. Por defecto la cápsula del core. -->
+        <attr name="buttonCornerRadius" format="dimension" />
     </declare-styleable>
 </resources>

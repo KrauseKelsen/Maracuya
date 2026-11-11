@@ -16,9 +16,15 @@ Este documento explica la arquitectura actual de `ButtonNavigationMrcy`.
 | `variant/ButtonNavigationVariant.kt` | Variant | Declara `PRIMARY`, `SECONDARY`, `PRIMARYSQUARE` y `SECONDARYSQUARE`. |
 | `variant/ButtonNavigationVariantResolver.kt` | Variant resolver | Mapea a `ButtonVariant` y resuelve propiedades derivadas de la variante. |
 | `tokens/ButtonNavigationTokens.kt` | Tokens | Declara colores, tipografia, familia e iconos base. |
-| `tokens/ButtonNavigationTokensResolver.kt` | Tokens resolver | Resuelve tokens base desde el DS o fallback y aplica overrides. |
+| `tokens/ButtonNavigationTokensResolver.kt` | Tokens resolver | Adapta los tokens del botón simple en el ámbito DS; conserva el fallback Material de navegación y aplica overrides. |
 | `tokensrender/ButtonNavigationTokensRender.kt` | Tokens render | Declara tokens finales listos para renderizar. |
 | `tokensrender/ButtonNavigationTokensRenderResolver.kt` | Tokens render resolver | Calcula colores e icono final segun estado visual. |
+
+## Relación con Button simple
+
+La migración de Button simple conserva los colores de navegación. `ButtonNavigationVariantResolver` mapea `PRIMARY` y `PRIMARYSQUARE` a `ButtonVariant.PRIMARY`; mapea `SECONDARY` y `SECONDARYSQUARE` a `ButtonVariant.TERCIARY`, la receta de borde rojo. `ButtonVariant.SECONDARY` del botón simple ahora identifica la receta de borde neutro del antiguo preview.
+
+`ButtonNavigationTokensResolver` consume `simple.tokens.ButtonTokensResolver` y traduce los nombres cortos (`background`, `textColor`, `pressedBackground`, `typography`, `fontFamily`) al contrato existente de navegación. No cambia la API pública ni el comportamiento de carga de ButtonNavigation. Fuera del ámbito DS, su fallback Material conserva la receta anterior dentro de navegación, sin invocar al nuevo ButtonTokensResolver que requiere LibraryTheme. Las variantes del botón simple contienen un TextView DEFAULT; HIPERTEXT pertenece al componente TextView.
 
 ## Flujo De Resolucion
 
@@ -100,7 +106,7 @@ Si `label` es `null` o blank, no se pinta label debajo.
 | **Variant** | Declarar variantes publicas. | Resolver iconos, colores o tokens. |
 | **VariantResolver** | Mapear a `ButtonVariant`, detectar square y resolver modifier, shape, posicion de icono, placement y spacing de label. | Crear tokens visuales o renderizar UI. |
 | **Tokens** | Declarar datos visuales base y `merge`. | Leer estado de interaccion, pressed, loading o disabled. |
-| **TokensResolver** | Resolver tokens base desde DS y aplicar overrides. | Resolver colores finales de render o click behavior. |
+| **TokensResolver** | Resolver tokens base desde DS o el fallback Material de navegación y aplicar overrides. | Resolver colores finales de render o click behavior. |
 | **TokensRenderResolver** | Resolver colores e icono final para el render actual. | Crear tokens base, leer `LocalLibraryIcons` o resolver variantes. |
 | **Core** | Declarar soporte compartido que no pertenece a variant, behavior, tokens ni render. | Resolver estado visual, leer tokens o crear UI. |
 | **Mrcy** | Orquestar resolvers y renderizar UI con propiedades ya resueltas. | Decidir defaults por variante, resolver tokens base o duplicar modelos square. |

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Galería nativa del Button: variantes y estados del DS en columnas claro/oscuro.
+
+    Justificación:
+    Permite inspeccionar el mismo contrato visual que los previews Compose sin un ComposeView por botón.
+
+    Se comunica con:
+    ButtonSimpleArchitecture.md documenta el contrato; ButtonGalleryPreview conecta las acciones de demostración.
+
+    Uso:
+    LayoutInflater.from(context).inflate(R.layout.button_secondary_preview, parent, false). Los estados estáticos son atributos del Button.
+
+    Objetivos:
+    Compartir recursos y facilitar una validación visual reproducible de la implementación.
+
+    Flujo: Layout XML → proveedor de tema → Button nativo → TextView e indicador del DS.
+
+    @author Krause Kelsen
+    @since 11-07-2026
+    @version 0.0.14
+-->
+<!-- Columnas claro/oscuro; filas normal, pressed, loading, disabled. Medidas iguales a Compose. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.Maracuya.Light"
+        app:themeStyle="light"
+        app:themeName="Maracuya">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:background="?attr/libraryColorBgBase">
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_light_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary" />
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_light_pressed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary"
+                app:isPressed="true" />
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_light_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary"
+                app:isLoading="true" />
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_light_disabled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary"
+                android:enabled="false" />
+        </LinearLayout>
+    </cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp>
+    <cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.Maracuya.Dark"
+        app:themeStyle="dark"
+        app:themeName="Maracuya">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:background="?attr/libraryColorBgBase">
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_dark_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary" />
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_dark_pressed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary"
+                app:isPressed="true" />
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_dark_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary"
+                app:isLoading="true" />
+            <cruxui.android.lib.wrappers.components.buttons.simple.Button
+                android:id="@+id/button_secondary_dark_disabled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/button_preview_label"
+                app:buttonVariant="secondary"
+                android:enabled="false" />
+        </LinearLayout>
+    </cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp>
+</LinearLayout>

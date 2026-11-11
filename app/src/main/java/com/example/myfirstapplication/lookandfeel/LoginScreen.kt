@@ -24,7 +24,7 @@ import cruxui.android.lib.compositions.LocalLibraryIcons
 import cruxui.android.lib.compositions.LocalLibraryTypography
 import cruxui.android.lib.theme.MyLibraryTheme
 import cruxui.android.lib.tokens.base.ColorToken
-import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.lib.ui.components.buttons.simple.Button
 import cruxui.android.lib.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
 import cruxui.android.lib.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
 import cruxui.android.lib.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
@@ -210,7 +210,7 @@ private fun CentralContent(modifier: Modifier = Modifier) {
                 .padding(top = 20.dp)
         )
 
-        ButtonMrcy(
+        Button(
             modifier = Modifier.fillMaxWidth(),
             text = "Continuar",
             onClick = {},

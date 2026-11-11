@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Define el arco canónico de carga de Library utilizado por Button.
+
+    Justificación:
+    Un único asset evita indicadores distintos entre XML y Compose. Su tinte lo aplica el color de texto resuelto.
+
+    Se comunica con:
+    ButtonSimpleArchitecture.md documenta el contrato; ButtonGalleryPreview conecta las acciones de demostración.
+
+    Uso:
+    El host activa behavior.isLoading o app:isLoading. El catálogo registra ic_loading automáticamente; no se sustituye por instancia.
+
+    Objetivos:
+    Compartir recursos y facilitar una validación visual reproducible de la implementación.
+
+    Flujo: LibraryGeneralIconsTokens.loading → ButtonLoadingTokens → adaptadores de icono → rotación de behavior.
+
+    @author Krause Kelsen
+    @since 11-07-2026
+    @version 0.0.14
+-->
+<!-- Arco canónico Library. Los adaptadores aplican siempre el tinte semántico del texto. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp" android:height="20dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:pathData="M12,3 A9,9 0,1 0,21,12" android:fillColor="@color/library_maracuya_light_transparent"
+        android:strokeColor="@color/library_maracuya_light_fg_on_inverse" android:strokeWidth="2.5" android:strokeLineCap="round" />
+</vector>

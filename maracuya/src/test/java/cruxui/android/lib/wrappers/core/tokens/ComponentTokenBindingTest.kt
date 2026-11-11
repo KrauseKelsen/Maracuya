@@ -2,7 +2,7 @@ package cruxui.android.lib.wrappers.core.tokens
 
 import cruxui.android.lib.theme.LibraryThemes
 import cruxui.android.lib.theme.LibraryThemeSnapshot
-import cruxui.android.lib.ui.components.buttons.simple.ButtonTokensOverride
+import cruxui.android.lib.ui.components.buttons.simple.tokens.ButtonTokensOverride
 import cruxui.android.lib.wrappers.core.registry.TokensOverrideRegistry
 import org.junit.Assert.*
 import org.junit.Test
@@ -12,7 +12,7 @@ class ComponentTokenBindingTest {
     @Test fun `Button resuelve recetas por ambito y recupera herencia al retirar tema explicito`() {
         val registry = TokensOverrideRegistry<ButtonTokensOverride>()
         registry.register("principal") { library: LibraryThemeSnapshot ->
-            ButtonTokensOverride(contentColor = library.colors.fgDefault, textTypography = library.typography.headline24)
+            ButtonTokensOverride(textColor = library.colors.fgDefault, typography = library.typography.headline24)
         }
         val light = LibraryThemes.Maracuya.resolve(false)
         val dark = LibraryThemes.Maracuya.resolve(true)
@@ -21,12 +21,12 @@ class ComponentTokenBindingTest {
         val second = ComponentTokenBinding(registry) { light }
         inherited = dark
         first.refresh()
-        assertEquals(dark.colors.fgDefault, first.recipe("principal")!!.contentColor)
-        assertEquals(light.colors.fgDefault, second.recipe("principal")!!.contentColor)
+        assertEquals(dark.colors.fgDefault, first.recipe("principal")!!.textColor)
+        assertEquals(light.colors.fgDefault, second.recipe("principal")!!.textColor)
         val custom = light.copy(typography = light.typography.copy(headline24 = light.typography.headline24.copy(fontSize = 35f)))
         first.explicitTheme = custom
         first.refresh()
-        assertEquals(35f, first.recipe("principal")!!.textTypography!!.fontSize, 0f)
+        assertEquals(35f, first.recipe("principal")!!.typography!!.fontSize, 0f)
         first.explicitTheme = null
         first.refresh()
         assertSame(dark, first.library)
@@ -35,11 +35,11 @@ class ComponentTokenBindingTest {
     @Test fun `registros diferentes admiten el mismo nombre sin mezclar recetas`() {
         val buttons = TokensOverrideRegistry<ButtonTokensOverride>()
         val counters = TokensOverrideRegistry<Int>()
-        buttons.register("principal", ButtonTokensOverride(textTypography = LibraryThemes.Maracuya.typography.body1))
+        buttons.register("principal", ButtonTokensOverride(typography = LibraryThemes.Maracuya.typography.body1))
         counters.register("principal", 63)
         val library = LibraryThemes.Maracuya.resolve(false)
         assertEquals(63, ComponentTokenBinding(counters) { library }.recipe("principal"))
-        assertNotNull(ComponentTokenBinding(buttons) { library }.recipe("principal")!!.textTypography)
+        assertNotNull(ComponentTokenBinding(buttons) { library }.recipe("principal")!!.typography)
         buttons.clear()
         assertTrue(counters.contains("principal"))
     }

@@ -286,6 +286,8 @@ data class LibraryGeneralIconsTokens (
     val link: IconToken,
     /** Token linkOff; puede sustituirse al configurar la categoría del tema. */
     val linkOff: IconToken,
+    /** Arco de carga de la categoría general; su asset y tamaño se definen en el catálogo base. */
+    val loading: IconToken,
     /** Token lock; puede sustituirse al configurar la categoría del tema. */
     val lock: IconToken,
     /** Token lookOpen; puede sustituirse al configurar la categoría del tema. */
@@ -511,6 +513,7 @@ data class LibraryGeneralIconsTokens (
             liftToTalk = IconToken("ic_lift_to_talk", resourceName = "ic_lift_to_talk"),
             link = IconToken("ic_link", resourceName = "ic_link"),
             linkOff = IconToken("ic_link_off", resourceName = "ic_link_off"),
+            loading = IconToken("ic_loading", resourceName = "ic_loading", iconSize = 20),
             lock = IconToken("ic_lock", resourceName = "ic_lock"),
             lookOpen = IconToken("ic_look_open", resourceName = "ic_look_open"),
             lookOpenRight = IconToken("ic_look_open_right", resourceName = "ic_look_open_right"),

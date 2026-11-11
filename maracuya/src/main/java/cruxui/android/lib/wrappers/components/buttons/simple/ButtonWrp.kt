@@ -1,133 +1,42 @@
 package cruxui.android.lib.wrappers.components.buttons.simple
 
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import android.content.Context
 import android.util.AttributeSet
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.unit.dp
-import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
-import cruxui.android.lib.ui.components.buttons.simple.ButtonTokens
-import cruxui.android.lib.ui.components.buttons.simple.ButtonTokensOverride
-import cruxui.android.lib.ui.components.buttons.simple.ButtonVariant
-import cruxui.android.lib.wrappers.core.MrcyXmlComposeView
 
 /**
- * Wrapper Android View que expone `ButtonMrcy` para layouts XML tradicionales.
+ * s4121779 - Krause Kelsen
  *
- * Mantiene una API mutable equivalente a los parámetros funcionales de Compose:
- * texto, enabled, shape, interactionSource, variante, tokens, overrides y progreso en press.
+ * Descripción: ButtonWrp conserva el nombre XML anterior y hereda el Button nativo.
+ *
+ * Justificación: Permite migrar layouts gradualmente sin alojar Compose ni duplicar lógica.
+ *
+ * Se comunica con: Todas sus capacidades se implementan en Button; las APIs antiguas específicas de
+ * Compose se retiran.
+ *
+ * Uso:
+ * ```kotlin
+ * val button = ButtonWrp(context)
+ * button.text = "Continuar"
+ * button.setOnClickListener { button.isLoading = true }
+ * ```
+ *
+ * Para layouts nuevos utilizar cruxui.android.lib.wrappers.components.buttons.simple.Button.
+ * showProgressOnPress deja de existir; la carga se controla explícitamente con isLoading.
+ *
+ * Objetivos:
+ * - Conservar la ruta XML sin conservar la implementación anterior.
+ *
+ * Flujo: Entrada pública → tokens y behavior → tokensrender → representación de plataforma.
+ *
+ * @param context Context temático.
+ * @param attrs Atributos iniciales.
+ * @param defStyleAttr Estilo opcional del botón.
+ * @author Krause Kelsen
+ * @since 11-07-2026
+ * @version 0.0.14
  */
-class ButtonWrp @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-) : MrcyXmlComposeView(context, attrs, defStyleAttr) {
-
-    private var buttonTextState by mutableStateOf("Button")
-    private var enabledState by mutableStateOf(isEnabled)
-    private var shapeState by mutableStateOf<Shape>(RoundedCornerShape(100.dp))
-    private var interactionSourceState by mutableStateOf(MutableInteractionSource())
-    private var buttonVariantState by mutableStateOf(ButtonVariant.PRIMARY)
-    private var buttonTokensState by mutableStateOf<ButtonTokens?>(null)
-    private var buttonTokensOverrideState by mutableStateOf<ButtonTokensOverride?>(null)
-    private var buttonTokensOverrideNameState by mutableStateOf<String?>(null)
-    private var showProgressOnPressState by mutableStateOf(true)
-
-    init {
-        val initialValues = ButtonAttributeParser.parse(context, attrs)
-        buttonTextState = initialValues.text
-        modifier = initialValues.modifier
-        enabledState = initialValues.enabled
-        shapeState = initialValues.shape
-        interactionSourceState = initialValues.interactionSource
-        buttonVariantState = initialValues.buttonVariant
-        buttonTokensState = initialValues.buttonTokens
-        buttonTokensOverrideState = initialValues.buttonTokensOverride
-        buttonTokensOverrideNameState = initialValues.buttonTokensOverrideName
-        showProgressOnPressState = initialValues.showProgressOnPress
-    }
-
-    var text: String
-        get() = buttonTextState
-        set(value) {
-            buttonTextState = value
-        }
-
-    var shape: Shape
-        get() = shapeState
-        set(value) {
-            shapeState = value
-        }
-
-    var interactionSource: MutableInteractionSource
-        get() = interactionSourceState
-        set(value) {
-            interactionSourceState = value
-        }
-
-    var buttonVariant: ButtonVariant
-        get() = buttonVariantState
-        set(value) {
-            buttonVariantState = value
-        }
-
-    var buttonTokens: ButtonTokens?
-        get() = buttonTokensState
-        set(value) {
-            buttonTokensState = value
-        }
-
-    var buttonTokensOverride: ButtonTokensOverride?
-        get() = buttonTokensOverrideState
-        set(value) {
-            buttonTokensOverrideState = value
-        }
-
-    var buttonTokensOverrideName: String?
-        get() = buttonTokensOverrideNameState
-        set(value) {
-            buttonTokensOverrideNameState = value
-        }
-
-    var showProgressOnPress: Boolean
-        get() = showProgressOnPressState
-        set(value) {
-            showProgressOnPressState = value
-        }
-
-    override fun setEnabled(enabled: Boolean) {
-        super.setEnabled(enabled)
-        enabledState = enabled
-    }
-
-    @Composable
-    override fun Content() {
-        WithXmlTheme {
-            ButtonContent()
-        }
-    }
-
-    @Composable
-    private fun ButtonContent() {
-        val resolvedButtonTokensOverride = buttonTokensOverrideState
-            ?: ButtonTokensOverrideRegistry.resolve(buttonTokensOverrideNameState)
-
-        ButtonMrcy(
-            text = buttonTextState,
-            onClick = ::performClick,
-            modifier = modifierState,
-            enabled = enabledState,
-            shape = shapeState,
-            interactionSource = interactionSourceState,
-            buttonVariant = buttonVariantState,
-            buttonTokens = buttonTokensState,
-            buttonTokensOverride = resolvedButtonTokensOverride,
-            showProgressOnPress = showProgressOnPressState,
-        )
-    }
-}
+@Deprecated("Use the native Button", ReplaceWith("Button(context, attrs, defStyleAttr)"))
+class ButtonWrp
+@JvmOverloads
+constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+    Button(context, attrs, defStyleAttr)

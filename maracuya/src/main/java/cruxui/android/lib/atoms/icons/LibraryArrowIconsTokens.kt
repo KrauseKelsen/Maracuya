@@ -167,7 +167,7 @@ data class LibraryArrowIconsTokens (
     companion object{
         /** Valores base de la categoría; fuente única de sus assets. */
         val arrows = LibraryArrowIconsTokens(
-                    adsClick = IconToken("ic_ads_click", resourceName = "ic_ads_click"),
+            adsClick = IconToken("ic_ads_click", resourceName = "ic_ads_click"),
             arrowCircleDown = IconToken("ic_arrow_circle_down", resourceName = "ic_arrow_circle_down"),
             arrowCircleLeft = IconToken("ic_arrow_circle_left", resourceName = "ic_arrow_circle_left"),
             arrowCircleRight = IconToken("ic_arrow_circle_right", resourceName = "ic_arrow_circle_right"),

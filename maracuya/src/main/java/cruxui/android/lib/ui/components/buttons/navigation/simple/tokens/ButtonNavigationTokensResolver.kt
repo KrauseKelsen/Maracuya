@@ -15,10 +15,10 @@ import cruxui.android.lib.tokens.base.TypographyToken
 import cruxui.android.lib.tokens.fonts.TextAlignTokens
 import cruxui.android.lib.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
 import cruxui.android.lib.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariantResolver
-import cruxui.android.lib.ui.components.buttons.simple.ButtonTokensResolver
+import cruxui.android.lib.ui.components.buttons.simple.tokens.ButtonTokensResolver
 
 /**
- * Resuelve los tokens del ButtonNavigation desde los tokens visuales de ButtonMrcy.
+ * Resuelve los tokens del ButtonNavigation desde los tokens visuales de Button simple.
  *
  * Mantiene la estructura estandar de resolvers: resolve, fromLibrary y fromMaterial.
  */
@@ -64,7 +64,7 @@ object ButtonNavigationTokensResolver {
     }
 
     /**
-     * Resuelve tokens desde el Design System y mapea la variante visual al ButtonMrcy base.
+     * Resuelve tokens desde el Design System y mapea la variante visual al Button simple base.
      */
     @Composable
     private fun fromLibrary(variant: ButtonNavigationVariant): ButtonNavigationTokens {
@@ -130,19 +130,19 @@ object ButtonNavigationTokensResolver {
         }
 
         return ButtonNavigationTokens(
-            contentColor = buttonTokens.contentColor,
-            contentPressColor = buttonTokens.contentPressColor,
-            containerColor = buttonTokens.containerColor,
-            disabledContentColor = buttonTokens.disabledContentColor,
-            disabledContainerColor = buttonTokens.disabledContainerColor,
-            hoverContainerColor = buttonTokens.hoverContainerColor,
-            borderContainerColor = buttonTokens.borderContainerColor,
-            borderDisabledColor = buttonTokens.borderDisabledColor,
+            contentColor = buttonTokens.textColor,
+            contentPressColor = buttonTokens.pressedTextColor,
+            containerColor = buttonTokens.background,
+            disabledContentColor = buttonTokens.disabledTextColor,
+            disabledContainerColor = buttonTokens.disabledBackground,
+            hoverContainerColor = buttonTokens.pressedBackground,
+            borderContainerColor = buttonTokens.border,
+            borderDisabledColor = buttonTokens.disabledBorder,
             iconToken = iconToken,
             loadingIconToken = icons.arrows.sync,
-            iconColor = buttonTokens.contentColor,
-            typographyToken = buttonTokens.textTypography,
-            fontFamilyToken = buttonTokens.fontFamilyToken,
+            iconColor = buttonTokens.textColor,
+            typographyToken = buttonTokens.typography,
+            fontFamilyToken = buttonTokens.fontFamily,
         )
     }
 
@@ -151,9 +151,8 @@ object ButtonNavigationTokensResolver {
      */
     @Composable
     private fun fromMaterial(variant: ButtonNavigationVariant): ButtonNavigationTokens {
-        val buttonTokens = ButtonTokensResolver.resolve(
-            variant = ButtonNavigationVariantResolver.resolve(variant),
-        )
+        // La compatibilidad Material de navegación no depende del nuevo Button, que exige LibraryTheme.
+        val fontFamily = LocalFontFamily.current
         val scheme = MaterialTheme.colorScheme
         val backRightIcon = IconToken("ic_keyboard_backspace_right", R.drawable.ic_keyboard_backspace_right)
         val backLeftIcon = IconToken("ic_keyboard_backspace_left", R.drawable.ic_keyboard_backspace_left)
@@ -191,7 +190,7 @@ object ButtonNavigationTokensResolver {
                     loadingIconToken = syncIcon,
                     iconColor = colorToken(scheme.onPrimary),
                     typographyToken = legalTypography,
-                    fontFamilyToken = buttonTokens.fontFamilyToken,
+                    fontFamilyToken = fontFamily,
                 )
 
                 ButtonNavigationVariant.SECONDARYSQUARE -> ButtonNavigationTokens(
@@ -207,7 +206,7 @@ object ButtonNavigationTokensResolver {
                     loadingIconToken = syncIcon,
                     iconColor = colorToken(scheme.primary),
                     typographyToken = legalTypography,
-                    fontFamilyToken = buttonTokens.fontFamilyToken,
+                    fontFamilyToken = fontFamily,
                 )
 
                 ButtonNavigationVariant.PRIMARY,
@@ -222,20 +221,29 @@ object ButtonNavigationTokensResolver {
             ButtonNavigationVariant.SECONDARYSQUARE -> error("Unsupported label variant: $variant")
         }
 
+        // Receta Material que antes aportaba ButtonTokensResolver.fromMaterial.
+        val primary = variant == ButtonNavigationVariant.PRIMARY
+        val content = colorToken(if (primary) scheme.onPrimary else scheme.primary)
         return ButtonNavigationTokens(
-            contentColor = buttonTokens.contentColor,
-            contentPressColor = buttonTokens.contentPressColor,
-            containerColor = buttonTokens.containerColor,
-            disabledContentColor = buttonTokens.disabledContentColor,
-            disabledContainerColor = buttonTokens.disabledContainerColor,
-            hoverContainerColor = buttonTokens.hoverContainerColor,
-            borderContainerColor = buttonTokens.borderContainerColor,
-            borderDisabledColor = buttonTokens.borderDisabledColor,
+            contentColor = content,
+            contentPressColor = colorToken(scheme.onPrimary),
+            containerColor = colorToken(if (primary) scheme.primary else scheme.surface),
+            disabledContentColor = colorToken(scheme.onSurface.copy(alpha = 0.38f)),
+            disabledContainerColor = colorToken(scheme.onSurface.copy(alpha = 0.12f)),
+            hoverContainerColor = pressedPrimary(),
+            borderContainerColor = colorToken(if (primary) scheme.outline else scheme.primary),
+            borderDisabledColor = colorToken(scheme.outlineVariant),
             iconToken = iconToken,
             loadingIconToken = syncIcon,
-            iconColor = buttonTokens.contentColor,
-            typographyToken = buttonTokens.textTypography,
-            fontFamilyToken = buttonTokens.fontFamilyToken,
+            iconColor = content,
+            typographyToken = TypographyToken(
+                fontSize = 14f,
+                lineHeight = 20f,
+                letterSpacing = 0.1f,
+                weight = 500,
+                italic = false,
+            ),
+            fontFamilyToken = fontFamily,
         )
     }
 }

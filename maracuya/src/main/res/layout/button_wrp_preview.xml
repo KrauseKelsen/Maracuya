@@ -1,39 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Galería nativa del Button: variantes y estados del DS en columnas claro/oscuro.
+
+    Justificación:
+    Permite inspeccionar el mismo contrato visual que los previews Compose sin un ComposeView por botón.
+
+    Se comunica con:
+    ButtonSimpleArchitecture.md documenta el contrato; ButtonGalleryPreview conecta las acciones de demostración.
+
+    Uso:
+    LayoutInflater.from(context).inflate(R.layout.button_wrp_preview, parent, false). Los estados estáticos son atributos del Button.
+
+    Objetivos:
+    Compartir recursos y facilitar una validación visual reproducible de la implementación.
+
+    Flujo: Layout XML → proveedor de tema → Button nativo → TextView e indicador del DS.
+
+    @author Krause Kelsen
+    @since 11-07-2026
+    @version 0.0.14
+-->
+<!-- Galería XML real. El contenedor Kotlin conecta únicamente el ejemplo controlado por el host. -->
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
-    app:themeName="Maracuya"
-    app:themeStyle="auto"
-    app:useMaterial="false">
-
-    <LinearLayout
+    android:layout_height="match_parent">
+    <cruxui.android.lib.wrappers.previews.ButtonGalleryPreview
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <cruxui.android.lib.wrappers.components.buttons.simple.ButtonWrp
-            android:id="@+id/buttonMrcyPrimaryFromXml"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:text="Primary XML"
-            app:buttonVariant="primary"
-            app:showProgressOnPress="true"
-            app:isEnabled="true" />
-
-        <cruxui.android.lib.wrappers.components.buttons.simple.ButtonWrp
-            android:id="@+id/buttonMrcySecondaryOverrideFromXml"
-            android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.Maracuya.Light">
+        <include
+            layout="@layout/button_primary_preview" />
+        <include
+            layout="@layout/button_secondary_preview" />
+        <include
+            layout="@layout/button_terciary_preview" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:text="Secondary XML override"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="primary" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="primary"
+            app:iconStart="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="primary"
+            app:iconEnd="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="primary"
+            app:iconStart="?attr/libraryIconAlertsInfo"
+            app:iconEnd="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="secondary" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
             app:buttonVariant="secondary"
-            app:buttonTokensOverride="mytokensoverride"
-            app:showProgressOnPress="false"
-            app:isEnabled="true" />
-
-    </LinearLayout>
-
-</cruxui.android.lib.wrappers.theme.MyLibraryThemeWrp>
+            app:iconStart="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="secondary"
+            app:iconEnd="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="secondary"
+            app:iconStart="?attr/libraryIconAlertsInfo"
+            app:iconEnd="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="terciary" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="terciary"
+            app:iconStart="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="terciary"
+            app:iconEnd="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/button_preview_label"
+            app:buttonVariant="terciary"
+            app:iconStart="?attr/libraryIconAlertsInfo"
+            app:iconEnd="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:id="@+id/buttonPreviewStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/button_preview_start"
+            app:iconStart="?attr/libraryIconAlertsInfo"
+            app:iconEnd="?attr/libraryIconAlertsInfo" />
+        <cruxui.android.lib.wrappers.components.buttons.simple.Button
+            android:id="@+id/buttonPreviewFinish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_preview_finish"
+            app:buttonVariant="secondary" />
+    </cruxui.android.lib.wrappers.previews.ButtonGalleryPreview>
+</ScrollView>

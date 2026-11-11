@@ -10,7 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.myfirstapplication.lookandfeel.BiometricsDisclaimerScreen
-import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
+import com.example.myfirstapplication.lookandfeel.LoginScreen
+import cruxui.android.lib.ui.components.buttons.simple.Button
 import cruxui.android.lib.ui.components.buttons.chipchoice.carousel.ChipChoiceItem
 import cruxui.android.lib.ui.components.inputs.basic.InputFieldBasicMrcy
 import cruxui.android.lib.ui.components.inputs.basic.InputFieldBasicType
@@ -43,9 +44,9 @@ class MainActivity : ComponentActivity() {
 
             //LoginMainScreen()
 
-            //LoginScreen()
+            LoginScreen()
             //VerifyCodeScreen()
-            BiometricsDisclaimerScreen()
+            //BiometricsDisclaimerScreen()
             //OneTimeDisclamerScreen()
 
 //            var selectedIds by remember { mutableStateOf(setOf("national")) }
@@ -262,10 +263,12 @@ fun DemoScreenPreview() {
 @Composable
 fun Host_UseMaterialMode() {
 
-    ButtonMrcy(
-        text = "Maracuya puro",
-        onClick = {},
-    )
+    cruxui.android.lib.theme.MyLibraryTheme {
+        Button(
+            text = "Maracuya puro",
+            onClick = {},
+        )
+    }
 
 
         // material del host

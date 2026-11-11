@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import cruxui.android.lib.R
 import cruxui.android.lib.compositions.LocalLibraryColorTokens
 import cruxui.android.lib.theme.MyLibraryTheme
-import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
-import cruxui.android.lib.ui.components.buttons.simple.ButtonTokensOverride
+import cruxui.android.lib.ui.components.buttons.simple.Button
+import cruxui.android.lib.ui.components.buttons.simple.tokens.ButtonTokensOverride
 import cruxui.android.lib.ui.components.labels.LabelMrcy
 import cruxui.android.lib.ui.components.labels.tokens.LabelTokensOverride
 import cruxui.android.lib.ui.components.layouts.LayoutPilotWellkommen
@@ -91,7 +91,7 @@ fun BottonContent(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        ButtonMrcy(
+        Button(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
                 .fillMaxWidth(),
@@ -101,7 +101,7 @@ fun BottonContent(modifier: Modifier = Modifier) {
 
         Spacer(Modifier.height(2.dp))
 
-        ButtonMrcy(
+        Button(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
                 .fillMaxWidth(),
@@ -109,11 +109,11 @@ fun BottonContent(modifier: Modifier = Modifier) {
             onClick = {
 
             },
-            buttonTokensOverride = ButtonTokensOverride(
-                containerColor = colors.fgOnInverse,
-                contentColor = colors.fgDefault,
-                borderContainerColor = colors.fgDefault,
-                hoverContainerColor = colors.fgDefault
+            tokensOverride = ButtonTokensOverride(
+                background = colors.fgOnInverse,
+                textColor = colors.fgDefault,
+                border = colors.fgDefault,
+                pressedBackground = colors.fgDefault
             )
         )
 

@@ -25,9 +25,10 @@ import cruxui.android.lib.R
 import cruxui.android.lib.compositions.LocalLibraryColorTokens
 import cruxui.android.lib.compositions.LocalLibraryIcons
 import cruxui.android.lib.compositions.LocalLibraryTypography
+import cruxui.android.lib.core.components.buttons.variant.ButtonVariant
 import cruxui.android.lib.theme.MyLibraryTheme
-import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
-import cruxui.android.lib.ui.components.buttons.simple.ButtonTokensOverride
+import cruxui.android.lib.ui.components.buttons.simple.Button
+import cruxui.android.lib.ui.components.buttons.simple.tokens.ButtonTokensOverride
 import cruxui.android.lib.ui.components.buttons.navigation.simple.ButtonNavigationMrcy
 import cruxui.android.lib.ui.components.buttons.navigation.simple.tokens.ButtonNavigationTokensOverride
 import cruxui.android.lib.ui.components.buttons.navigation.simple.variant.ButtonNavigationVariant
@@ -128,7 +129,6 @@ private fun NavigationToolbar(modifier: Modifier = Modifier) {
         )
     }
 }
-
 
 @Composable
 private fun CentralContentBiometrics(modifier: Modifier = Modifier) {
@@ -257,39 +257,26 @@ private fun BiometricBenefitsCard(
 
 @Composable
 private fun BottomContentBiometrics(modifier: Modifier = Modifier) {
-    val colors = LocalLibraryColorTokens.current
-    val typography = LocalLibraryTypography.current
-
     Column(
         modifier = modifier.fillMaxWidth()
             .padding(vertical = 50.dp)
     ) {
-        ButtonMrcy(
+        Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = { },
             text = "Activar biometría",
-            showProgressOnPress = false
         )
-
         Spacer(
             modifier = modifier
                 .fillMaxWidth()
                 .padding(top = 20.dp)
         )
-        ButtonMrcy(
+        Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = { },
             text = "Quizá más tarde",
-            buttonTokensOverride = ButtonTokensOverride(
-                contentColor = colors.fgMuted,
-                containerColor = colors.transparent,
-                textTypography = typography.subtitle2,
-                contentPressColor = colors.fgMuted,
-                borderContainerColor = colors.transparent,
-                hoverContainerColor = colors.transparent,
-            )
+            variant = ButtonVariant.SECONDARY
         )
-
         Spacer(
             modifier = modifier
                 .fillMaxWidth()

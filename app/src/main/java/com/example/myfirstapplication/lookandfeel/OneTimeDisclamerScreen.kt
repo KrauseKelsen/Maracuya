@@ -24,7 +24,7 @@ import cruxui.android.lib.R
 import cruxui.android.lib.compositions.LocalLibraryColorTokens
 import cruxui.android.lib.compositions.LocalLibraryTypography
 import cruxui.android.lib.theme.MyLibraryTheme
-import cruxui.android.lib.ui.components.buttons.simple.ButtonMrcy
+import cruxui.android.lib.ui.components.buttons.simple.Button
 import cruxui.android.lib.ui.components.checkboxes.CheckBoxMrcy
 import cruxui.android.lib.ui.components.labels.LabelMrcy
 import cruxui.android.lib.ui.components.labels.tokens.LabelTokensOverride
@@ -143,12 +143,11 @@ private fun BottomContentOneTimeDisclamer(
     Column(
         modifier = modifier
     ) {
-        ButtonMrcy(
+        Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = { },
             text = "Continuar",
             enabled = buttonEnabled,
-            showProgressOnPress = false
         )
     }
 }

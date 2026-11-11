@@ -6,24 +6,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import cruxui.android.lib.ui.components.buttons.simple.ButtonVariant
+import cruxui.android.lib.ui.components.buttons.simple.variant.ButtonVariant
 
 /**
- * Resuelve la variante declarativa al estilo base de ButtonMrcy que hereda.
+ * Resuelve la variante declarativa al estilo base de Button simple que hereda.
  */
 internal object ButtonNavigationVariantResolver {
 
     /**
-     * Convierte la variante publica en su equivalente de ButtonVariant.
+     * Convierte la variante pública conservando el borde rojo anterior: SECONDARY de navegación usa TERCIARY del botón simple.
      */
     fun resolve(
         variant: ButtonNavigationVariant,
     ): ButtonVariant =
         when (variant) {
             ButtonNavigationVariant.PRIMARY -> ButtonVariant.PRIMARY
-            ButtonNavigationVariant.SECONDARY -> ButtonVariant.SECONDARY
+            ButtonNavigationVariant.SECONDARY -> ButtonVariant.TERCIARY
             ButtonNavigationVariant.PRIMARYSQUARE -> ButtonVariant.PRIMARY
-            ButtonNavigationVariant.SECONDARYSQUARE -> ButtonVariant.SECONDARY
+            ButtonNavigationVariant.SECONDARYSQUARE -> ButtonVariant.TERCIARY
         }
 
     /**

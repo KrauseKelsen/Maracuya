@@ -1,0 +1,30 @@
+<!--
+    s4121779 - Krause Kelsen
+
+    Descripción:
+    Declara el estado accesible de carga y las etiquetas de las galerías XML del botón.
+
+    Justificación:
+    Mantiene los textos de recursos separados de los estados, animaciones y tokens de color.
+
+    Se comunica con:
+    ButtonSimpleArchitecture.md documenta el contrato; ButtonGalleryPreview conecta las acciones de demostración.
+
+    Uso:
+    android:text="@string/button_preview_label" en una galería; las pantallas del host usan sus propias cadenas localizadas.
+
+    Objetivos:
+    Compartir recursos y facilitar una validación visual reproducible de la implementación.
+
+    Flujo: Recursos Android → atributo XML o descripción accesible → presentación del Button.
+
+    @author Krause Kelsen
+    @since 11-07-2026
+    @version 0.0.14
+-->
+<resources>
+    <string name="button_loading">Cargando</string>
+    <string name="button_preview_label">Button</string>
+    <string name="button_preview_start">Iniciar carga</string>
+    <string name="button_preview_finish">Finalizar operación</string>
+</resources>
